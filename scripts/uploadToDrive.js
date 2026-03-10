@@ -69,7 +69,7 @@ const TOKEN_PATH = path.join(__dirname, "..", "token.json");
 
 // Drive folder names
 const ROOT_FOLDER_NAME = "Automation";
-const LEVEL_FOLDER_NAME = "Level 1.2(v2): Multi_Shape_Cordination_Animation";
+const LEVEL_FOLDER_NAME = "Level 1.2(v2_Almost_Perfect): Multi_Shape_Cordination_Animation";
 const CODE_FOLDER_NAME = "Code";
 const VIDEOS_FOLDER_NAME = "Videos";
 

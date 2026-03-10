@@ -134,5 +134,23 @@
     "layer": "remotion_runtime",
     "root_cause": "inputRange defined backwards [135,90].",
     "system_prompt_fix": "All interpolate inputRange values must increase chronologically (e.g., [90,135])."
+  },
+  {
+    "id": 18,
+    "prompt": "Shapes Horizontal Align Pulse. Gradient background (#E3F2FD to #BBDEFB). Circle (120px), square (120px), triangle (120px base), all magenta (#E91E63). Animation (8s): 0-2s: Circle slides in from left, square from right, triangle drops from top, all stop at center overlapping. 2-4s: Shapes slowly rotate in place. Circle moves 40px up, square 40px down, triangle shifts between them. 4-6s: All move toward exact center, overlap increases, opacity lowers where overlapping (blend mode). 6-8s: Align horizontally (150px apart), pulse scale 100% -> 105% -> 100%, fade out. [cite_start]Total duration: 8s. [cite: 379, 380, 381, 382, 383, 384]",
+    "prompt_id": 102,
+    "error_type": "TypeScript Error",
+    "layer": "code_generation",
+    "root_cause": "src/GeneratedMotion.tsx(178,15): error TS2339: Property 'mixBlendMode' does not exist on type '{ position: string; left: string; top: string; width: string; height: string; borderRadius: string; backgroundColor: string; transform: string; opacity: number; }'.\nsrc/GeneratedMotion.tsx(201,15): error TS2339: Property 'mixBlendMode' does not exist on type '{ position: string; left: string; top: string; width: string; height: string; backgroundColor: string; transform: string; opacity: number; }'.\nsr",
+    "timestamp": "2026-03-10T13:04:06.372Z"
+  },
+  {
+    "id": 19,
+    "prompt": "Circles Merge Split. Light background. Two circles: red (#F44336, 120px) and blue (#2196F3, 120px). Start separated 200px apart horizontally. Animation (8s): 0-2s: Both appear. 2-4s: Move toward each other, overlap at center. 4-5s: While overlapping, blend colors (overlapping area becomes purple). 5-6s: Merge into single purple circle (140px). 6-8s: Splits back into red and blue, separate to original positions. [cite_start]Total duration: 8s. [cite: 444, 445, 446, 447, 448]",
+    "prompt_id": 115,
+    "error_type": "TypeScript Error",
+    "layer": "code_generation",
+    "root_cause": "src/GeneratedMotion.tsx(25,7): error TS6133: 'totalFrames' is declared but its value is never read.",
+    "timestamp": "2026-03-10T13:50:05.747Z"
   }
 ]
