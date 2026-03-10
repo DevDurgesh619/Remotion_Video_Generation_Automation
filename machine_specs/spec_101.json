@@ -1,0 +1,1612 @@
+{
+  "scene_id": "374",
+  "scene_name": "Three Shapes Center Bounce",
+  "duration_sec": 6,
+  "fps": 30,
+  "canvas": {
+    "width_px": 1920,
+    "height_px": 1080,
+    "aspect_ratio": "16:9",
+    "perspective_px": 0
+  },
+  "background": {
+    "type": "solid",
+    "color": "#FFFFFF",
+    "gradient_start": "",
+    "gradient_end": "",
+    "gradient_direction": "",
+    "image_url": ""
+  },
+  "global_layout": {
+    "origin": "center",
+    "safe_margin_px": 0
+  },
+  "objects": [
+    {
+      "id": "circle_1",
+      "type": "shape",
+      "shape": "circle",
+      "subtype": "",
+      "count": 1,
+      "orientation": {
+        "facing": "",
+        "rotation_deg": 0
+      },
+      "size": {
+        "width_px": 0,
+        "height_px": 0,
+        "diameter_px": 140,
+        "thickness_px": 0
+      },
+      "corner_radius_px": 0,
+      "color": "#F44336",
+      "stroke_color": "",
+      "stroke_width_px": 0,
+      "fill_enabled": true,
+      "effects": {
+        "shadow": {
+          "enabled": false,
+          "offset_x_px": 0,
+          "offset_y_px": 0,
+          "blur_px": 0,
+          "spread_px": 0,
+          "color": "rgba(0,0,0,0)"
+        },
+        "glow": {
+          "enabled": false,
+          "color": "",
+          "blur_px": 0,
+          "intensity": 0
+        },
+        "gradient_fill": {
+          "enabled": false,
+          "start_color": "",
+          "end_color": "",
+          "direction": "",
+          "offset_pct": 0
+        }
+      },
+      "initial_state": {
+        "position": {
+          "x_value": -960,
+          "x_unit": "px",
+          "y_value": 0,
+          "y_unit": "px"
+        },
+        "rotation_deg": 0,
+        "scale": 1.0,
+        "opacity": 1.0
+      }
+    },
+    {
+      "id": "square_1",
+      "type": "shape",
+      "shape": "rectangle",
+      "subtype": "",
+      "count": 1,
+      "orientation": {
+        "facing": "",
+        "rotation_deg": 0
+      },
+      "size": {
+        "width_px": 140,
+        "height_px": 140,
+        "diameter_px": 0,
+        "thickness_px": 0
+      },
+      "corner_radius_px": 0,
+      "color": "#2196F3",
+      "stroke_color": "",
+      "stroke_width_px": 0,
+      "fill_enabled": true,
+      "effects": {
+        "shadow": {
+          "enabled": false,
+          "offset_x_px": 0,
+          "offset_y_px": 0,
+          "blur_px": 0,
+          "spread_px": 0,
+          "color": "rgba(0,0,0,0)"
+        },
+        "glow": {
+          "enabled": false,
+          "color": "",
+          "blur_px": 0,
+          "intensity": 0
+        },
+        "gradient_fill": {
+          "enabled": false,
+          "start_color": "",
+          "end_color": "",
+          "direction": "",
+          "offset_pct": 0
+        }
+      },
+      "initial_state": {
+        "position": {
+          "x_value": 960,
+          "x_unit": "px",
+          "y_value": 0,
+          "y_unit": "px"
+        },
+        "rotation_deg": 0,
+        "scale": 1.0,
+        "opacity": 1.0
+      }
+    },
+    {
+      "id": "triangle_1",
+      "type": "shape",
+      "shape": "triangle",
+      "subtype": "",
+      "count": 1,
+      "orientation": {
+        "facing": "",
+        "rotation_deg": 0
+      },
+      "size": {
+        "width_px": 140,
+        "height_px": 140,
+        "diameter_px": 0,
+        "thickness_px": 0
+      },
+      "corner_radius_px": 0,
+      "color": "#4CAF50",
+      "stroke_color": "",
+      "stroke_width_px": 0,
+      "fill_enabled": true,
+      "effects": {
+        "shadow": {
+          "enabled": false,
+          "offset_x_px": 0,
+          "offset_y_px": 0,
+          "blur_px": 0,
+          "spread_px": 0,
+          "color": "rgba(0,0,0,0)"
+        },
+        "glow": {
+          "enabled": false,
+          "color": "",
+          "blur_px": 0,
+          "intensity": 0
+        },
+        "gradient_fill": {
+          "enabled": false,
+          "start_color": "",
+          "end_color": "",
+          "direction": "",
+          "offset_pct": 0
+        }
+      },
+      "initial_state": {
+        "position": {
+          "x_value": 0,
+          "x_unit": "px",
+          "y_value": -540,
+          "y_unit": "px"
+        },
+        "rotation_deg": 0,
+        "scale": 1.0,
+        "opacity": 1.0
+      }
+    }
+  ],
+  "animations": [
+    {
+      "id": "animation_1",
+      "target_object_id": "circle_1",
+      "type": "transform",
+      "start_sec": 0,
+      "end_sec": 2,
+      "duration_sec": 2,
+      "easing": "bounce",
+      "transform": {
+        "translate": {
+          "from_x": -960,
+          "to_x": 0,
+          "x_unit": "px",
+          "from_y": 0,
+          "to_y": 0,
+          "y_unit": "px"
+        },
+        "rotate_deg": {
+          "from": 0,
+          "to": 0,
+          "axis": "2d",
+          "direction": "clockwise"
+        },
+        "scale": {
+          "from_x": 1.0,
+          "to_x": 1.0,
+          "from_y": 1.0,
+          "to_y": 1.0
+        },
+        "opacity": {
+          "from": 1.0,
+          "to": 1.0
+        },
+        "corner_radius_px": {
+          "from": 0,
+          "to": 0
+        },
+        "skew_deg": {
+          "from_x": 0,
+          "to_x": 0,
+          "from_y": 0,
+          "to_y": 0
+        }
+      },
+      "style_transition": {
+        "color": {
+          "from": "",
+          "to": ""
+        },
+        "shadow": {
+          "from_offset_x": 0,
+          "to_offset_x": 0,
+          "from_offset_y": 0,
+          "to_offset_y": 0,
+          "from_blur": 0,
+          "to_blur": 0,
+          "color": ""
+        },
+        "glow": {
+          "from_blur": 0,
+          "to_blur": 0,
+          "from_intensity": 0,
+          "to_intensity": 0
+        },
+        "gradient_flow": {
+          "from_offset_pct": 0,
+          "to_offset_pct": 100
+        }
+      },
+      "stroke_draw": {
+        "coverage_from": 0.0,
+        "coverage_to": 1.0,
+        "direction": "clockwise",
+        "thickness_px": {
+          "from": 0,
+          "to": 0
+        }
+      },
+      "dash_pattern": {
+        "dash_px": 0,
+        "gap_px": 0,
+        "offset_from_px": 0,
+        "offset_to_px": 0
+      },
+      "advanced_actions": {
+        "morph": {
+          "target_shape": "",
+          "target_width_px": 0,
+          "target_height_px": 0
+        },
+        "split": {
+          "pieces": 0,
+          "grid": {
+            "rows": 0,
+            "cols": 0
+          },
+          "scatter_distance_px": 0,
+          "scatter_rotation_deg": 0
+        },
+        "shatter": {
+          "particle_count": 0,
+          "explosion_radius_px": 0
+        },
+        "orbit": {
+          "center_x_px": 0,
+          "center_y_px": 0,
+          "radius_px": 0,
+          "degrees": 360,
+          "maintain_facing": true
+        },
+        "extrude": {
+          "layers": 0,
+          "offset_x_px": 0,
+          "offset_y_px": 0,
+          "opacity_fade": true
+        }
+      }
+    },
+    {
+      "id": "animation_2",
+      "target_object_id": "square_1",
+      "type": "transform",
+      "start_sec": 0,
+      "end_sec": 2,
+      "duration_sec": 2,
+      "easing": "bounce",
+      "transform": {
+        "translate": {
+          "from_x": 960,
+          "to_x": 0,
+          "x_unit": "px",
+          "from_y": 0,
+          "to_y": 0,
+          "y_unit": "px"
+        },
+        "rotate_deg": {
+          "from": 0,
+          "to": 0,
+          "axis": "2d",
+          "direction": "clockwise"
+        },
+        "scale": {
+          "from_x": 1.0,
+          "to_x": 1.0,
+          "from_y": 1.0,
+          "to_y": 1.0
+        },
+        "opacity": {
+          "from": 1.0,
+          "to": 1.0
+        },
+        "corner_radius_px": {
+          "from": 0,
+          "to": 0
+        },
+        "skew_deg": {
+          "from_x": 0,
+          "to_x": 0,
+          "from_y": 0,
+          "to_y": 0
+        }
+      },
+      "style_transition": {
+        "color": {
+          "from": "",
+          "to": ""
+        },
+        "shadow": {
+          "from_offset_x": 0,
+          "to_offset_x": 0,
+          "from_offset_y": 0,
+          "to_offset_y": 0,
+          "from_blur": 0,
+          "to_blur": 0,
+          "color": ""
+        },
+        "glow": {
+          "from_blur": 0,
+          "to_blur": 0,
+          "from_intensity": 0,
+          "to_intensity": 0
+        },
+        "gradient_flow": {
+          "from_offset_pct": 0,
+          "to_offset_pct": 100
+        }
+      },
+      "stroke_draw": {
+        "coverage_from": 0.0,
+        "coverage_to": 1.0,
+        "direction": "clockwise",
+        "thickness_px": {
+          "from": 0,
+          "to": 0
+        }
+      },
+      "dash_pattern": {
+        "dash_px": 0,
+        "gap_px": 0,
+        "offset_from_px": 0,
+        "offset_to_px": 0
+      },
+      "advanced_actions": {
+        "morph": {
+          "target_shape": "",
+          "target_width_px": 0,
+          "target_height_px": 0
+        },
+        "split": {
+          "pieces": 0,
+          "grid": {
+            "rows": 0,
+            "cols": 0
+          },
+          "scatter_distance_px": 0,
+          "scatter_rotation_deg": 0
+        },
+        "shatter": {
+          "particle_count": 0,
+          "explosion_radius_px": 0
+        },
+        "orbit": {
+          "center_x_px": 0,
+          "center_y_px": 0,
+          "radius_px": 0,
+          "degrees": 360,
+          "maintain_facing": true
+        },
+        "extrude": {
+          "layers": 0,
+          "offset_x_px": 0,
+          "offset_y_px": 0,
+          "opacity_fade": true
+        }
+      }
+    },
+    {
+      "id": "animation_3",
+      "target_object_id": "triangle_1",
+      "type": "transform",
+      "start_sec": 0,
+      "end_sec": 2,
+      "duration_sec": 2,
+      "easing": "bounce",
+      "transform": {
+        "translate": {
+          "from_x": 0,
+          "to_x": 0,
+          "x_unit": "px",
+          "from_y": -540,
+          "to_y": 0,
+          "y_unit": "px"
+        },
+        "rotate_deg": {
+          "from": 0,
+          "to": 0,
+          "axis": "2d",
+          "direction": "clockwise"
+        },
+        "scale": {
+          "from_x": 1.0,
+          "to_x": 1.0,
+          "from_y": 1.0,
+          "to_y": 1.0
+        },
+        "opacity": {
+          "from": 1.0,
+          "to": 1.0
+        },
+        "corner_radius_px": {
+          "from": 0,
+          "to": 0
+        },
+        "skew_deg": {
+          "from_x": 0,
+          "to_x": 0,
+          "from_y": 0,
+          "to_y": 0
+        }
+      },
+      "style_transition": {
+        "color": {
+          "from": "",
+          "to": ""
+        },
+        "shadow": {
+          "from_offset_x": 0,
+          "to_offset_x": 0,
+          "from_offset_y": 0,
+          "to_offset_y": 0,
+          "from_blur": 0,
+          "to_blur": 0,
+          "color": ""
+        },
+        "glow": {
+          "from_blur": 0,
+          "to_blur": 0,
+          "from_intensity": 0,
+          "to_intensity": 0
+        },
+        "gradient_flow": {
+          "from_offset_pct": 0,
+          "to_offset_pct": 100
+        }
+      },
+      "stroke_draw": {
+        "coverage_from": 0.0,
+        "coverage_to": 1.0,
+        "direction": "clockwise",
+        "thickness_px": {
+          "from": 0,
+          "to": 0
+        }
+      },
+      "dash_pattern": {
+        "dash_px": 0,
+        "gap_px": 0,
+        "offset_from_px": 0,
+        "offset_to_px": 0
+      },
+      "advanced_actions": {
+        "morph": {
+          "target_shape": "",
+          "target_width_px": 0,
+          "target_height_px": 0
+        },
+        "split": {
+          "pieces": 0,
+          "grid": {
+            "rows": 0,
+            "cols": 0
+          },
+          "scatter_distance_px": 0,
+          "scatter_rotation_deg": 0
+        },
+        "shatter": {
+          "particle_count": 0,
+          "explosion_radius_px": 0
+        },
+        "orbit": {
+          "center_x_px": 0,
+          "center_y_px": 0,
+          "radius_px": 0,
+          "degrees": 360,
+          "maintain_facing": true
+        },
+        "extrude": {
+          "layers": 0,
+          "offset_x_px": 0,
+          "offset_y_px": 0,
+          "opacity_fade": true
+        }
+      }
+    },
+    {
+      "id": "animation_4",
+      "target_object_id": "circle_1",
+      "type": "transform",
+      "start_sec": 2,
+      "end_sec": 4,
+      "duration_sec": 2,
+      "easing": "linear",
+      "transform": {
+        "translate": {
+          "from_x": 0,
+          "to_x": 0,
+          "x_unit": "px",
+          "from_y": 0,
+          "to_y": 0,
+          "y_unit": "px"
+        },
+        "rotate_deg": {
+          "from": 0,
+          "to": 180,
+          "axis": "2d",
+          "direction": "clockwise"
+        },
+        "scale": {
+          "from_x": 1.0,
+          "to_x": 1.0,
+          "from_y": 1.0,
+          "to_y": 1.0
+        },
+        "opacity": {
+          "from": 1.0,
+          "to": 1.0
+        },
+        "corner_radius_px": {
+          "from": 0,
+          "to": 0
+        },
+        "skew_deg": {
+          "from_x": 0,
+          "to_x": 0,
+          "from_y": 0,
+          "to_y": 0
+        }
+      },
+      "style_transition": {
+        "color": {
+          "from": "",
+          "to": ""
+        },
+        "shadow": {
+          "from_offset_x": 0,
+          "to_offset_x": 0,
+          "from_offset_y": 0,
+          "to_offset_y": 0,
+          "from_blur": 0,
+          "to_blur": 0,
+          "color": ""
+        },
+        "glow": {
+          "from_blur": 0,
+          "to_blur": 0,
+          "from_intensity": 0,
+          "to_intensity": 0
+        },
+        "gradient_flow": {
+          "from_offset_pct": 0,
+          "to_offset_pct": 100
+        }
+      },
+      "stroke_draw": {
+        "coverage_from": 0.0,
+        "coverage_to": 1.0,
+        "direction": "clockwise",
+        "thickness_px": {
+          "from": 0,
+          "to": 0
+        }
+      },
+      "dash_pattern": {
+        "dash_px": 0,
+        "gap_px": 0,
+        "offset_from_px": 0,
+        "offset_to_px": 0
+      },
+      "advanced_actions": {
+        "morph": {
+          "target_shape": "",
+          "target_width_px": 0,
+          "target_height_px": 0
+        },
+        "split": {
+          "pieces": 0,
+          "grid": {
+            "rows": 0,
+            "cols": 0
+          },
+          "scatter_distance_px": 0,
+          "scatter_rotation_deg": 0
+        },
+        "shatter": {
+          "particle_count": 0,
+          "explosion_radius_px": 0
+        },
+        "orbit": {
+          "center_x_px": 0,
+          "center_y_px": 0,
+          "radius_px": 0,
+          "degrees": 360,
+          "maintain_facing": true
+        },
+        "extrude": {
+          "layers": 0,
+          "offset_x_px": 0,
+          "offset_y_px": 0,
+          "opacity_fade": true
+        }
+      }
+    },
+    {
+      "id": "animation_5",
+      "target_object_id": "square_1",
+      "type": "transform",
+      "start_sec": 2,
+      "end_sec": 4,
+      "duration_sec": 2,
+      "easing": "linear",
+      "transform": {
+        "translate": {
+          "from_x": 0,
+          "to_x": 0,
+          "x_unit": "px",
+          "from_y": 0,
+          "to_y": 0,
+          "y_unit": "px"
+        },
+        "rotate_deg": {
+          "from": 0,
+          "to": 180,
+          "axis": "2d",
+          "direction": "clockwise"
+        },
+        "scale": {
+          "from_x": 1.0,
+          "to_x": 1.0,
+          "from_y": 1.0,
+          "to_y": 1.0
+        },
+        "opacity": {
+          "from": 1.0,
+          "to": 1.0
+        },
+        "corner_radius_px": {
+          "from": 0,
+          "to": 0
+        },
+        "skew_deg": {
+          "from_x": 0,
+          "to_x": 0,
+          "from_y": 0,
+          "to_y": 0
+        }
+      },
+      "style_transition": {
+        "color": {
+          "from": "",
+          "to": ""
+        },
+        "shadow": {
+          "from_offset_x": 0,
+          "to_offset_x": 0,
+          "from_offset_y": 0,
+          "to_offset_y": 0,
+          "from_blur": 0,
+          "to_blur": 0,
+          "color": ""
+        },
+        "glow": {
+          "from_blur": 0,
+          "to_blur": 0,
+          "from_intensity": 0,
+          "to_intensity": 0
+        },
+        "gradient_flow": {
+          "from_offset_pct": 0,
+          "to_offset_pct": 100
+        }
+      },
+      "stroke_draw": {
+        "coverage_from": 0.0,
+        "coverage_to": 1.0,
+        "direction": "clockwise",
+        "thickness_px": {
+          "from": 0,
+          "to": 0
+        }
+      },
+      "dash_pattern": {
+        "dash_px": 0,
+        "gap_px": 0,
+        "offset_from_px": 0,
+        "offset_to_px": 0
+      },
+      "advanced_actions": {
+        "morph": {
+          "target_shape": "",
+          "target_width_px": 0,
+          "target_height_px": 0
+        },
+        "split": {
+          "pieces": 0,
+          "grid": {
+            "rows": 0,
+            "cols": 0
+          },
+          "scatter_distance_px": 0,
+          "scatter_rotation_deg": 0
+        },
+        "shatter": {
+          "particle_count": 0,
+          "explosion_radius_px": 0
+        },
+        "orbit": {
+          "center_x_px": 0,
+          "center_y_px": 0,
+          "radius_px": 0,
+          "degrees": 360,
+          "maintain_facing": true
+        },
+        "extrude": {
+          "layers": 0,
+          "offset_x_px": 0,
+          "offset_y_px": 0,
+          "opacity_fade": true
+        }
+      }
+    },
+    {
+      "id": "animation_6",
+      "target_object_id": "triangle_1",
+      "type": "transform",
+      "start_sec": 2,
+      "end_sec": 4,
+      "duration_sec": 2,
+      "easing": "linear",
+      "transform": {
+        "translate": {
+          "from_x": 0,
+          "to_x": 0,
+          "x_unit": "px",
+          "from_y": 0,
+          "to_y": 0,
+          "y_unit": "px"
+        },
+        "rotate_deg": {
+          "from": 0,
+          "to": 180,
+          "axis": "2d",
+          "direction": "clockwise"
+        },
+        "scale": {
+          "from_x": 1.0,
+          "to_x": 1.0,
+          "from_y": 1.0,
+          "to_y": 1.0
+        },
+        "opacity": {
+          "from": 1.0,
+          "to": 1.0
+        },
+        "corner_radius_px": {
+          "from": 0,
+          "to": 0
+        },
+        "skew_deg": {
+          "from_x": 0,
+          "to_x": 0,
+          "from_y": 0,
+          "to_y": 0
+        }
+      },
+      "style_transition": {
+        "color": {
+          "from": "",
+          "to": ""
+        },
+        "shadow": {
+          "from_offset_x": 0,
+          "to_offset_x": 0,
+          "from_offset_y": 0,
+          "to_offset_y": 0,
+          "from_blur": 0,
+          "to_blur": 0,
+          "color": ""
+        },
+        "glow": {
+          "from_blur": 0,
+          "to_blur": 0,
+          "from_intensity": 0,
+          "to_intensity": 0
+        },
+        "gradient_flow": {
+          "from_offset_pct": 0,
+          "to_offset_pct": 100
+        }
+      },
+      "stroke_draw": {
+        "coverage_from": 0.0,
+        "coverage_to": 1.0,
+        "direction": "clockwise",
+        "thickness_px": {
+          "from": 0,
+          "to": 0
+        }
+      },
+      "dash_pattern": {
+        "dash_px": 0,
+        "gap_px": 0,
+        "offset_from_px": 0,
+        "offset_to_px": 0
+      },
+      "advanced_actions": {
+        "morph": {
+          "target_shape": "",
+          "target_width_px": 0,
+          "target_height_px": 0
+        },
+        "split": {
+          "pieces": 0,
+          "grid": {
+            "rows": 0,
+            "cols": 0
+          },
+          "scatter_distance_px": 0,
+          "scatter_rotation_deg": 0
+        },
+        "shatter": {
+          "particle_count": 0,
+          "explosion_radius_px": 0
+        },
+        "orbit": {
+          "center_x_px": 0,
+          "center_y_px": 0,
+          "radius_px": 0,
+          "degrees": 360,
+          "maintain_facing": true
+        },
+        "extrude": {
+          "layers": 0,
+          "offset_x_px": 0,
+          "offset_y_px": 0,
+          "opacity_fade": true
+        }
+      }
+    },
+    {
+      "id": "animation_7",
+      "target_object_id": "circle_1",
+      "type": "transform",
+      "start_sec": 4,
+      "end_sec": 5,
+      "duration_sec": 1,
+      "easing": "ease-in-out",
+      "transform": {
+        "translate": {
+          "from_x": 0,
+          "to_x": 0,
+          "x_unit": "px",
+          "from_y": 0,
+          "to_y": 0,
+          "y_unit": "px"
+        },
+        "rotate_deg": {
+          "from": 180,
+          "to": 180,
+          "axis": "2d",
+          "direction": "clockwise"
+        },
+        "scale": {
+          "from_x": 1.0,
+          "to_x": 1.1,
+          "from_y": 1.0,
+          "to_y": 1.1
+        },
+        "opacity": {
+          "from": 1.0,
+          "to": 1.0
+        },
+        "corner_radius_px": {
+          "from": 0,
+          "to": 0
+        },
+        "skew_deg": {
+          "from_x": 0,
+          "to_x": 0,
+          "from_y": 0,
+          "to_y": 0
+        }
+      },
+      "style_transition": {
+        "color": {
+          "from": "",
+          "to": ""
+        },
+        "shadow": {
+          "from_offset_x": 0,
+          "to_offset_x": 0,
+          "from_offset_y": 0,
+          "to_offset_y": 0,
+          "from_blur": 0,
+          "to_blur": 0,
+          "color": ""
+        },
+        "glow": {
+          "from_blur": 0,
+          "to_blur": 0,
+          "from_intensity": 0,
+          "to_intensity": 0
+        },
+        "gradient_flow": {
+          "from_offset_pct": 0,
+          "to_offset_pct": 100
+        }
+      },
+      "stroke_draw": {
+        "coverage_from": 0.0,
+        "coverage_to": 1.0,
+        "direction": "clockwise",
+        "thickness_px": {
+          "from": 0,
+          "to": 0
+        }
+      },
+      "dash_pattern": {
+        "dash_px": 0,
+        "gap_px": 0,
+        "offset_from_px": 0,
+        "offset_to_px": 0
+      },
+      "advanced_actions": {
+        "morph": {
+          "target_shape": "",
+          "target_width_px": 0,
+          "target_height_px": 0
+        },
+        "split": {
+          "pieces": 0,
+          "grid": {
+            "rows": 0,
+            "cols": 0
+          },
+          "scatter_distance_px": 0,
+          "scatter_rotation_deg": 0
+        },
+        "shatter": {
+          "particle_count": 0,
+          "explosion_radius_px": 0
+        },
+        "orbit": {
+          "center_x_px": 0,
+          "center_y_px": 0,
+          "radius_px": 0,
+          "degrees": 360,
+          "maintain_facing": true
+        },
+        "extrude": {
+          "layers": 0,
+          "offset_x_px": 0,
+          "offset_y_px": 0,
+          "opacity_fade": true
+        }
+      }
+    },
+    {
+      "id": "animation_8",
+      "target_object_id": "square_1",
+      "type": "transform",
+      "start_sec": 4,
+      "end_sec": 5,
+      "duration_sec": 1,
+      "easing": "ease-in-out",
+      "transform": {
+        "translate": {
+          "from_x": 0,
+          "to_x": 0,
+          "x_unit": "px",
+          "from_y": 0,
+          "to_y": 0,
+          "y_unit": "px"
+        },
+        "rotate_deg": {
+          "from": 180,
+          "to": 180,
+          "axis": "2d",
+          "direction": "clockwise"
+        },
+        "scale": {
+          "from_x": 1.0,
+          "to_x": 1.1,
+          "from_y": 1.0,
+          "to_y": 1.1
+        },
+        "opacity": {
+          "from": 1.0,
+          "to": 1.0
+        },
+        "corner_radius_px": {
+          "from": 0,
+          "to": 0
+        },
+        "skew_deg": {
+          "from_x": 0,
+          "to_x": 0,
+          "from_y": 0,
+          "to_y": 0
+        }
+      },
+      "style_transition": {
+        "color": {
+          "from": "",
+          "to": ""
+        },
+        "shadow": {
+          "from_offset_x": 0,
+          "to_offset_x": 0,
+          "from_offset_y": 0,
+          "to_offset_y": 0,
+          "from_blur": 0,
+          "to_blur": 0,
+          "color": ""
+        },
+        "glow": {
+          "from_blur": 0,
+          "to_blur": 0,
+          "from_intensity": 0,
+          "to_intensity": 0
+        },
+        "gradient_flow": {
+          "from_offset_pct": 0,
+          "to_offset_pct": 100
+        }
+      },
+      "stroke_draw": {
+        "coverage_from": 0.0,
+        "coverage_to": 1.0,
+        "direction": "clockwise",
+        "thickness_px": {
+          "from": 0,
+          "to": 0
+        }
+      },
+      "dash_pattern": {
+        "dash_px": 0,
+        "gap_px": 0,
+        "offset_from_px": 0,
+        "offset_to_px": 0
+      },
+      "advanced_actions": {
+        "morph": {
+          "target_shape": "",
+          "target_width_px": 0,
+          "target_height_px": 0
+        },
+        "split": {
+          "pieces": 0,
+          "grid": {
+            "rows": 0,
+            "cols": 0
+          },
+          "scatter_distance_px": 0,
+          "scatter_rotation_deg": 0
+        },
+        "shatter": {
+          "particle_count": 0,
+          "explosion_radius_px": 0
+        },
+        "orbit": {
+          "center_x_px": 0,
+          "center_y_px": 0,
+          "radius_px": 0,
+          "degrees": 360,
+          "maintain_facing": true
+        },
+        "extrude": {
+          "layers": 0,
+          "offset_x_px": 0,
+          "offset_y_px": 0,
+          "opacity_fade": true
+        }
+      }
+    },
+    {
+      "id": "animation_9",
+      "target_object_id": "triangle_1",
+      "type": "transform",
+      "start_sec": 4,
+      "end_sec": 5,
+      "duration_sec": 1,
+      "easing": "ease-in-out",
+      "transform": {
+        "translate": {
+          "from_x": 0,
+          "to_x": 0,
+          "x_unit": "px",
+          "from_y": 0,
+          "to_y": 0,
+          "y_unit": "px"
+        },
+        "rotate_deg": {
+          "from": 180,
+          "to": 180,
+          "axis": "2d",
+          "direction": "clockwise"
+        },
+        "scale": {
+          "from_x": 1.0,
+          "to_x": 1.1,
+          "from_y": 1.0,
+          "to_y": 1.1
+        },
+        "opacity": {
+          "from": 1.0,
+          "to": 1.0
+        },
+        "corner_radius_px": {
+          "from": 0,
+          "to": 0
+        },
+        "skew_deg": {
+          "from_x": 0,
+          "to_x": 0,
+          "from_y": 0,
+          "to_y": 0
+        }
+      },
+      "style_transition": {
+        "color": {
+          "from": "",
+          "to": ""
+        },
+        "shadow": {
+          "from_offset_x": 0,
+          "to_offset_x": 0,
+          "from_offset_y": 0,
+          "to_offset_y": 0,
+          "from_blur": 0,
+          "to_blur": 0,
+          "color": ""
+        },
+        "glow": {
+          "from_blur": 0,
+          "to_blur": 0,
+          "from_intensity": 0,
+          "to_intensity": 0
+        },
+        "gradient_flow": {
+          "from_offset_pct": 0,
+          "to_offset_pct": 100
+        }
+      },
+      "stroke_draw": {
+        "coverage_from": 0.0,
+        "coverage_to": 1.0,
+        "direction": "clockwise",
+        "thickness_px": {
+          "from": 0,
+          "to": 0
+        }
+      },
+      "dash_pattern": {
+        "dash_px": 0,
+        "gap_px": 0,
+        "offset_from_px": 0,
+        "offset_to_px": 0
+      },
+      "advanced_actions": {
+        "morph": {
+          "target_shape": "",
+          "target_width_px": 0,
+          "target_height_px": 0
+        },
+        "split": {
+          "pieces": 0,
+          "grid": {
+            "rows": 0,
+            "cols": 0
+          },
+          "scatter_distance_px": 0,
+          "scatter_rotation_deg": 0
+        },
+        "shatter": {
+          "particle_count": 0,
+          "explosion_radius_px": 0
+        },
+        "orbit": {
+          "center_x_px": 0,
+          "center_y_px": 0,
+          "radius_px": 0,
+          "degrees": 360,
+          "maintain_facing": true
+        },
+        "extrude": {
+          "layers": 0,
+          "offset_x_px": 0,
+          "offset_y_px": 0,
+          "opacity_fade": true
+        }
+      }
+    },
+    {
+      "id": "animation_10",
+      "target_object_id": "circle_1",
+      "type": "transform",
+      "start_sec": 5,
+      "end_sec": 6,
+      "duration_sec": 1,
+      "easing": "linear",
+      "transform": {
+        "translate": {
+          "from_x": 0,
+          "to_x": 0,
+          "x_unit": "px",
+          "from_y": 0,
+          "to_y": 0,
+          "y_unit": "px"
+        },
+        "rotate_deg": {
+          "from": 180,
+          "to": 180,
+          "axis": "2d",
+          "direction": "clockwise"
+        },
+        "scale": {
+          "from_x": 1.1,
+          "to_x": 1.0,
+          "from_y": 1.1,
+          "to_y": 1.0
+        },
+        "opacity": {
+          "from": 1.0,
+          "to": 0.0
+        },
+        "corner_radius_px": {
+          "from": 0,
+          "to": 0
+        },
+        "skew_deg": {
+          "from_x": 0,
+          "to_x": 0,
+          "from_y": 0,
+          "to_y": 0
+        }
+      },
+      "style_transition": {
+        "color": {
+          "from": "",
+          "to": ""
+        },
+        "shadow": {
+          "from_offset_x": 0,
+          "to_offset_x": 0,
+          "from_offset_y": 0,
+          "to_offset_y": 0,
+          "from_blur": 0,
+          "to_blur": 0,
+          "color": ""
+        },
+        "glow": {
+          "from_blur": 0,
+          "to_blur": 0,
+          "from_intensity": 0,
+          "to_intensity": 0
+        },
+        "gradient_flow": {
+          "from_offset_pct": 0,
+          "to_offset_pct": 100
+        }
+      },
+      "stroke_draw": {
+        "coverage_from": 0.0,
+        "coverage_to": 1.0,
+        "direction": "clockwise",
+        "thickness_px": {
+          "from": 0,
+          "to": 0
+        }
+      },
+      "dash_pattern": {
+        "dash_px": 0,
+        "gap_px": 0,
+        "offset_from_px": 0,
+        "offset_to_px": 0
+      },
+      "advanced_actions": {
+        "morph": {
+          "target_shape": "",
+          "target_width_px": 0,
+          "target_height_px": 0
+        },
+        "split": {
+          "pieces": 0,
+          "grid": {
+            "rows": 0,
+            "cols": 0
+          },
+          "scatter_distance_px": 0,
+          "scatter_rotation_deg": 0
+        },
+        "shatter": {
+          "particle_count": 0,
+          "explosion_radius_px": 0
+        },
+        "orbit": {
+          "center_x_px": 0,
+          "center_y_px": 0,
+          "radius_px": 0,
+          "degrees": 360,
+          "maintain_facing": true
+        },
+        "extrude": {
+          "layers": 0,
+          "offset_x_px": 0,
+          "offset_y_px": 0,
+          "opacity_fade": true
+        }
+      }
+    },
+    {
+      "id": "animation_11",
+      "target_object_id": "square_1",
+      "type": "transform",
+      "start_sec": 5,
+      "end_sec": 6,
+      "duration_sec": 1,
+      "easing": "linear",
+      "transform": {
+        "translate": {
+          "from_x": 0,
+          "to_x": 0,
+          "x_unit": "px",
+          "from_y": 0,
+          "to_y": 0,
+          "y_unit": "px"
+        },
+        "rotate_deg": {
+          "from": 180,
+          "to": 180,
+          "axis": "2d",
+          "direction": "clockwise"
+        },
+        "scale": {
+          "from_x": 1.1,
+          "to_x": 1.0,
+          "from_y": 1.1,
+          "to_y": 1.0
+        },
+        "opacity": {
+          "from": 1.0,
+          "to": 0.0
+        },
+        "corner_radius_px": {
+          "from": 0,
+          "to": 0
+        },
+        "skew_deg": {
+          "from_x": 0,
+          "to_x": 0,
+          "from_y": 0,
+          "to_y": 0
+        }
+      },
+      "style_transition": {
+        "color": {
+          "from": "",
+          "to": ""
+        },
+        "shadow": {
+          "from_offset_x": 0,
+          "to_offset_x": 0,
+          "from_offset_y": 0,
+          "to_offset_y": 0,
+          "from_blur": 0,
+          "to_blur": 0,
+          "color": ""
+        },
+        "glow": {
+          "from_blur": 0,
+          "to_blur": 0,
+          "from_intensity": 0,
+          "to_intensity": 0
+        },
+        "gradient_flow": {
+          "from_offset_pct": 0,
+          "to_offset_pct": 100
+        }
+      },
+      "stroke_draw": {
+        "coverage_from": 0.0,
+        "coverage_to": 1.0,
+        "direction": "clockwise",
+        "thickness_px": {
+          "from": 0,
+          "to": 0
+        }
+      },
+      "dash_pattern": {
+        "dash_px": 0,
+        "gap_px": 0,
+        "offset_from_px": 0,
+        "offset_to_px": 0
+      },
+      "advanced_actions": {
+        "morph": {
+          "target_shape": "",
+          "target_width_px": 0,
+          "target_height_px": 0
+        },
+        "split": {
+          "pieces": 0,
+          "grid": {
+            "rows": 0,
+            "cols": 0
+          },
+          "scatter_distance_px": 0,
+          "scatter_rotation_deg": 0
+        },
+        "shatter": {
+          "particle_count": 0,
+          "explosion_radius_px": 0
+        },
+        "orbit": {
+          "center_x_px": 0,
+          "center_y_px": 0,
+          "radius_px": 0,
+          "degrees": 360,
+          "maintain_facing": true
+        },
+        "extrude": {
+          "layers": 0,
+          "offset_x_px": 0,
+          "offset_y_px": 0,
+          "opacity_fade": true
+        }
+      }
+    },
+    {
+      "id": "animation_12",
+      "target_object_id": "triangle_1",
+      "type": "transform",
+      "start_sec": 5,
+      "end_sec": 6,
+      "duration_sec": 1,
+      "easing": "linear",
+      "transform": {
+        "translate": {
+          "from_x": 0,
+          "to_x": 0,
+          "x_unit": "px",
+          "from_y": 0,
+          "to_y": 0,
+          "y_unit": "px"
+        },
+        "rotate_deg": {
+          "from": 180,
+          "to": 180,
+          "axis": "2d",
+          "direction": "clockwise"
+        },
+        "scale": {
+          "from_x": 1.1,
+          "to_x": 1.0,
+          "from_y": 1.1,
+          "to_y": 1.0
+        },
+        "opacity": {
+          "from": 1.0,
+          "to": 0.0
+        },
+        "corner_radius_px": {
+          "from": 0,
+          "to": 0
+        },
+        "skew_deg": {
+          "from_x": 0,
+          "to_x": 0,
+          "from_y": 0,
+          "to_y": 0
+        }
+      },
+      "style_transition": {
+        "color": {
+          "from": "",
+          "to": ""
+        },
+        "shadow": {
+          "from_offset_x": 0,
+          "to_offset_x": 0,
+          "from_offset_y": 0,
+          "to_offset_y": 0,
+          "from_blur": 0,
+          "to_blur": 0,
+          "color": ""
+        },
+        "glow": {
+          "from_blur": 0,
+          "to_blur": 0,
+          "from_intensity": 0,
+          "to_intensity": 0
+        },
+        "gradient_flow": {
+          "from_offset_pct": 0,
+          "to_offset_pct": 100
+        }
+      },
+      "stroke_draw": {
+        "coverage_from": 0.0,
+        "coverage_to": 1.0,
+        "direction": "clockwise",
+        "thickness_px": {
+          "from": 0,
+          "to": 0
+        }
+      },
+      "dash_pattern": {
+        "dash_px": 0,
+        "gap_px": 0,
+        "offset_from_px": 0,
+        "offset_to_px": 0
+      },
+      "advanced_actions": {
+        "morph": {
+          "target_shape": "",
+          "target_width_px": 0,
+          "target_height_px": 0
+        },
+        "split": {
+          "pieces": 0,
+          "grid": {
+            "rows": 0,
+            "cols": 0
+          },
+          "scatter_distance_px": 0,
+          "scatter_rotation_deg": 0
+        },
+        "shatter": {
+          "particle_count": 0,
+          "explosion_radius_px": 0
+        },
+        "orbit": {
+          "center_x_px": 0,
+          "center_y_px": 0,
+          "radius_px": 0,
+          "degrees": 360,
+          "maintain_facing": true
+        },
+        "extrude": {
+          "layers": 0,
+          "offset_x_px": 0,
+          "offset_y_px": 0,
+          "opacity_fade": true
+        }
+      }
+    }
+  ]
+}

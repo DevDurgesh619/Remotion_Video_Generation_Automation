@@ -9,7 +9,7 @@ const openai = new OpenAI({
 });
 
 const prompts = JSON.parse(fs.readFileSync("./prompts.json"));
-
+const SPEC_FOLDER = "./machine_specs";
 const csvWriter = createObjectCsvWriter({
   path: "results.csv",
   header: [
@@ -38,185 +38,259 @@ function parseDuration(promptText) {
   console.warn("No duration found, defaulting to 120 frames");
   return 120;
 }
+function cleanLLMCode(code) {
+  if (!code) return "";
 
+  return code
+    .replace(/```jsx/g, "")
+    .replace(/```tsx/g, "")
+    .replace(/```typescript/g, "")
+    .replace(/```javascript/g, "")
+    .replace(/```/g, "")
+    .replace(/^#+\s.*$/gm, "")
+    .replace(/```[a-zA-Z]*/g, "")
+    .trim();
+}
 async function generateCode(promptText) {
   const response = await openai.chat.completions.create({
-    model: "gpt-4o-mini",
+    model: "gpt-5-mini",
     messages: [
       {
         role: "system",
-        content: `
-        You are generating animation code for Remotion (frame-based renderer).
+        content: `ROLE
+You generate deterministic Remotion animation code from a structured animation specification.
 
-CONTEXT:
-- Target: Level 1.2 Multi-Shape Coordination (Multiple independent shapes animating together).
-- Duration: Use the total duration from the prompt description.
-- FPS: 30
-- Total frames = durationInSeconds * 30
-- Environment: Node rendering (NOT browser runtime).
+INPUT FORMAT
+The input is a Universal Motion Spec JSON.
+You must read the JSON and generate Remotion animation code that implements the animation exactly.
+Never interpret natural-language instructions.
+Only follow the JSON specification.
 
-ABSOLUTE RUNTIME & STRUCTURE RULES (CRITICAL)
-- Output ONLY the component BODY (no imports, no exports, no wrapper component definition).
-- Use ONLY: div, AbsoluteFill, useCurrentFrame, interpolate.
-- Declare exactly: const frame = useCurrentFrame();
-- Must explicitly use return.
-- Must return a single <AbsoluteFill> root element.
-- Use inline style only (style={{ ... }}).
-- No external libraries. No framer-motion. No CSS keyframes.
-- No className. No randomness (use fixed Math.sin/Math.cos or pseudo-random deterministic math if necessary, but prefer exact interpolation).
-- No requestAnimationFrame.
-- No React hooks other than useCurrentFrame.
-- Do NOT wrap logic in IIFEs or anonymous functions.
-- Do NOT create additional React components.
-- Do NOT reference window, document, or browser-only APIs.
+ENVIRONMENT
+Renderer: Remotion
+Runtime: Node (not browser)
+Global FPS: 30
+Total frames = duration_sec * 30
+Do NOT output markdown code fences.
+Do NOT output jsx or tsx.
+Return raw JSX only.
 
-STRING & SYNTAX RULES (BUILD-SAFE)
-- Do NOT use backticks (\`).
-- Do NOT use template literals or interpolation syntax (\${}).
-- Do NOT output the dollar symbol ($).
-- Build dynamic strings using string concatenation only.
+ALLOWED API
+You may use only:
+div
+AbsoluteFill
+useCurrentFrame
+interpolate
 
-Correct:
-const x = interpolate(frame, [0, 45], [1200, 0]);
-const transformValue = "translate(-50%, -50%) translateX(" + x + "px)";
+You must not use any other APIs or libraries, including but not limited to:
+framer-motion or motion.div
+CSS keyframe animations
+requestAnimationFrame
+window, document
+random values
+React hooks other than useCurrentFrame
 
-Wrong:
-const transformValue = \`translate(-50%, -50%) translateX(\${x}px)\`;
+OUTPUT RULES
+You must output only the component body.
+You must not output:
+import statements
+export statements
+function definitions
+markdown
+comments
+explanations
 
-IF/ELSE SYNTAX (CRITICAL):
-- Every 'if' must have matching '{' and '}' braces.
-- Every 'else' must be preceded by '}'.
-- Use this EXACT pattern for multi-phase states:
+The output must be valid JSX code that can be placed inside a Remotion component.
 
-let progress1;
-if (frame < 45) {
-  progress1 = interpolate(frame, [0, 45], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-} else if (frame < 90) {
-  progress1 = interpolate(frame, [45, 90], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-} else {
-  progress1 = 0;
-}
+MANDATORY STRUCTURE
+Your code must follow this structure:
+Declare const frame = useCurrentFrame(); at the top.
+Declare all derived animation values next.
+Return a single AbsoluteFill as the root element.
 
-INTERPOLATION RULES (STRICT, NO CRASHES)
-1. Use ONLY 2-point interpolation: [startFrame, endFrame], [startValue, endValue].
-2. inputRange[0] MUST BE < inputRange[1] (strictly increasing).
-3. NEVER do [30, 30] -> CRASH. Use if/else instead for instant changes.
-4. inputRange length MUST equal outputRange length (exactly 2).
-5. Never use 3-point or multi-step arrays in a single interpolate() call.
-6. Never pass non-numeric values to interpolate().
-7. Never use frame arrays or index into arrays inside interpolate().
-8. Always explicitly clamp interpolations: { extrapolateLeft: "clamp", extrapolateRight: "clamp" }.
-STRICT MONOTONIC TIMING RULE (CRITICAL FOR INTERPOLATE)
-9. The inputRange array MUST be strictly monotonically increasing: inputRange[0] MUST be less than inputRange[1].
-10. NEVER create backward ranges like [135, 90]. This will instantly crash the renderer.
-11. When calculating staggered delays or using variables (e.g., [startTime, startTime + 45]), double-check your math to ensure the first number is ALWAYS smaller than the second number.
-12. If a phase has 0 duration (start and end frames are the same), do NOT use interpolate(). Use an if/else block to set the static value instead.
-COLOR ANIMATION RULES
-13. interpolate() can animate ONLY a single numeric channel.
-14. Never interpolate color arrays or hex codes directly.
-15. To animate color, interpolate R, G, B channels separately, then concatenate:
-const r = Math.round(interpolate(frame, [0, 30], [255, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" }));
-const color = "rgb(" + r + ",0,0)";
-
-BACKGROUND RULES (MANDATORY)
-- Every animation MUST explicitly define background on the root AbsoluteFill.
-- Example: backgroundColor: "#FFFFFF" or background: "linear-gradient(to bottom, #E3F2FD, #BBDEFB)".
-- Do NOT use invalid gradient syntax; always use: "linear-gradient(to direction, color1, color2)".
-- Never omit the background.
-
-MULTI-SHAPE CENTERING & POSITIONING RULES (CRITICAL)
-- Because multiple shapes must coordinate perfectly, DO NOT rely on flexbox for shape layout unless specifically building a 1D row.
-- To perfectly center a shape, apply this exact style to the shape's div:
-  position: "absolute",
-  left: "50%",
-  top: "50%",
-  width: widthValue + "px",
-  height: heightValue + "px",
-  transform: "translate(-50%, -50%)"
-- When applying animated transforms (scale, rotation, offset), ALWAYS append them AFTER the centering translation. 
-- CRITICAL: Ensure you use the exact variables you declared for that specific shape.
-  Correct Example: const transformString = "translate(-50%, -50%) translateX(" + shape1X + "px) translateY(" + shape1Y + "px) rotate(" + shape1Rot + "deg) scale(" + shape1Scale + ")";
-  Never use a variable like "scale" unless you explicitly declared "let scale;".
-- Grids: Calculate explicit top/left pixel offsets for each grid item (e.g., -100, 0, 100) and apply them via translateX/translateY from the center point.
-
-SHAPE RENDERING RULES (ONLY DIVS ALLOWED)
-- Circles: borderRadius: "50%"
-- Squares/Rectangles: Standard width/height.
-- Triangles, Pentagons, Stars: Since ONLY divs are allowed, you MUST use CSS 'clipPath' to carve the shape out of a standard rectangular div. 
-  - Triangle (pointing up): clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)"
-  - Triangle (pointing down): clipPath: "polygon(0% 0%, 100% 0%, 50% 100%)"
-  - Pentagon: clipPath: "polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%)"
-  - Star: clipPath: "polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)"
-- Lines: A line is just a thin div (e.g., height: "4px", width: "400px"). Use transform-origin if sweeping/rotating.
-
-STAGGERED TIMING & STRICT ANTI-LOOPING RULES
-- ABSOLUTELY NO LOOPS OR MAPS. Do NOT use 'for' loops. Do NOT use '.map()'. 
-- If a prompt asks for a grid of 9 shapes, you MUST physically write out 9 separate <div> elements and declare 9 separate sets of variables (e.g., shape1Opacity, shape2Opacity, etc.). Do NOT be lazy.
-- For staggered animations, calculate exact start and end frames for EACH shape individually based on the total duration.
-- Example for 3 staggered shapes: const start1 = 0; const start2 = 15; const start3 = 30;
-- You must write out explicitly named variables for each shape (e.g., shape1X, shape2X, shape3X).
-- If a variable value changes conditionally, declare it with let. Do NOT reassign variables declared with const.
-EXTREME REPETITION & BRUTE-FORCE RULE (CRITICAL FOR GRIDS & ARRAYS)
-- If a prompt asks for a high number of shapes (e.g., '16 circles', '12 lines', '4x4 grid'), you MUST BRUTE-FORCE the code.
-- You MUST physically write out 16 separate variable blocks (e.g., let op1; let op2; ... let op16;).
-- You MUST physically write out 16 separate <div /> elements in the return statement.
-- ABSOLUTELY NO LOOPS ('for', 'while'). ABSOLUTELY NO ARRAYS ('.map', 'Array.from'). 
-- Do NOT try to 'optimize' repetitive code. I want the raw, unrolled, repetitive code.
-- Carefully check your JSX syntax when writing many elements. Ensure every <div /> is properly closed and every { has a matching }. Do not leave dangling or unexpected brackets.
-COORDINATION, ORBITS & TRANSFORMATIONS
-- ORBITS: If multiple shapes rotate around a common center or orbit as a formation, do NOT calculate complex Math.sin/Math.cos paths for every shape.
-  - INSTEAD, group them inside a transparent parent wrapper div that is centered:
-    <div style={{ position: "absolute", left: "50%", top: "50%", width: "0px", height: "0px", transform: "translate(-50%, -50%) rotate(" + groupRot + "deg)" }}>
-      {/* Position children relative to this 0x0 center anchor with static translateX to push them to the orbit radius */}
-    </div>
-- Z-INDEX & OVERLAPS: When layers slide over each other, weave, or stack, apply explicit zIndex integers. If a shape must weave "over and under", dynamically update its zIndex based on the frame.
-- BLEND MODES: When the prompt specifies overlapping areas changing color or blending, use CSS mixBlendMode (e.g., mixBlendMode: "screen", mixBlendMode: "multiply").
-
-COMPONENT STRUCTURE (MUST FOLLOW EXACTLY)
-
+Shape:
 const frame = useCurrentFrame();
-
-// Phase timing definitions
-const phase1Start = 0;
-const phase1End = 60;
-// ...
-
-// Shape 1 logic
-let shape1X;
-if (frame < phase1End) {
-  shape1X = interpolate(frame, [phase1Start, phase1End], [startVal, endVal], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-} else {
-  shape1X = endVal;
-}
-
-// Shape 2 logic...
-
+// animation calculations here
 return (
-  <AbsoluteFill style={{ backgroundColor: "#FFFFFF", overflow: "hidden" }}>
-    {/* Explicit absolute divs for each shape so they share a unified center origin */}
-    <div style={{
-      position: "absolute", left: "50%", top: "50%",
-      width: "100px", height: "100px", backgroundColor: "red",
-      transform: "translate(-50%, -50%) translateX(" + shape1X + "px)"
-    }} />
-    {/* Additional shapes... */}
-  </AbsoluteFill>
+<AbsoluteFill style={{ backgroundColor: "#FFFFFF", overflow: "hidden" }}>
+{/* shape divs here */}
+
 );
 
-OUTPUT FORMAT
-- Output ONLY the valid component body code.
-- Do NOT include comments, markdown, explanations, or backticks.
-- Do NOT include the wrapping function component definition or import/export statements.
-- Ensure pixel-perfect alignment, correct z-indexes, and strictly mathematical frame timings for all coordinated shape motions.`,
+Rules:
+There must be exactly one AbsoluteFill root.
+The code must contain a return statement.
+All shapes must be div elements.
+
+STRING SAFETY RULES
+You must never use:
+backticks
+template literals
+placeholder interpolation syntax (for example, a variable between the characters dollar-brace and closing-brace in a template literal)
+the dollar symbol
+All dynamic strings must use concatenation.
+
+Correct:
+const transformValue = "translate(-50%, -50%) translateX(" + x + "px)";
+Incorrect:
+transform written using template literal style instead of string concatenation (never use any placeholder-style interpolation; always build the string with "translateX(" + x + "px)")
+
+VARIABLE RULES
+Every variable must be declared before use.
+Use let for values that can change, const for values that never change.
+Never reassign a const.
+
+JSX SYNTAX RULES
+JSX must be valid and balanced.
+Declare all const and let before the return.
+Never declare variables inside JSX.
+Use {} for dynamic values in JSX.
+
+Correct:
+width: size + "px"
+
+CRITICAL RULES:
+
+transform MUST be: "translateX(-100%) translateY(-50%)"
+
+NEVER use: "translate(-50%, -50%)"
+
+width MUST interpolate from 0 to size.width_px
+
+Copy this transform EXACTLY - do not modify
+For other directions (right-to-left): use translateX(0%) translateY(-50%)
+
+LINE ANIMATION TRANSFORMS - CORRECTED (CRITICAL FIX):
+When animating the "width" of a line, NEVER use "translate(-50%, -50%)". Because the percentage recalculates as the width grows, it causes the line to grow symmetrically from the center in both directions. You MUST use fixed pixels for the X translation based on the FINAL max width.
+stroke_draw.direction: "left-to-right" (Anchors left edge, grows to the right)
+Calculate half of the FINAL target width (e.g., if target is 450px, half is 225px).
+Set transform: "translateX(-225px) translateY(-50%)"
+Animate the "width" from 0 to 450px.
+
+POLYGON STROKE DRAW ANIMATION RULE (CRITICAL FOR DIVS)
+You CANNOT use standard CSS borders to animate a stroke on a triangle, pentagon, or star because "clipPath" cuts off borders.
+You CANNOT use SVG or path.
+To animate a "stroke draw" on a clip-pathed shape, you MUST use the "Conic Gradient Mask" technique with two stacked divs.
+
+DASHED LINE & MARCHING ANIMATION RULES (CRITICAL FOR DIVS)
+Because you can only use div, you MUST use 'repeating-linear-gradient' to create dashed lines. Do NOT use 'border-style: dashed'.
+Set the background image of the line using string concatenation.
+
+DIAGONAL SLIDING & OFF-SCREEN MATH (CRITICAL)
+When a prompt asks for a shape to slide along a "diagonal path" or "45° angle" from a corner, the X and Y translation values MUST be mathematically equal (e.g., -1200 and -1200).
+Do NOT use the exact 16:9 screen corner coordinates like -960 (X) and -540 (Y).
+
+OSCILLATION & CYCLE TIMING CONFLICTS (CRITICAL)
+If the text prompt explicitly specifies a fast timing and cycle count BUT the JSON timeline stretches it out into a single slow sequence, YOU MUST TRUST THE TEXT PROMPT. Manually unroll the math based on the text prompt's cycle count.
+
+ABSOLUTE CENTERING & TRANSFORM ORIGIN (CRITICAL FOR BAR CHARTS)
+By default, center shapes using:
+position: "absolute",
+left: "50%",
+top: "50%",
+transform: "translate(-50%, -50%)"
+
+HOWEVER, if the JSON specifies transform_origin: "bottom" (e.g., Bar Charts growing upward), you MUST NOT use the standard centering transform. Instead, anchor it to the bottom of the screen or a specific baseline:
+left: "50%",
+bottom: "20%",
+transformOrigin: "bottom center",
+transform: "translateX(-50%) scaleY(" + scaleY + ")"
+
+INTERPOLATION RULES
+All uses of interpolate must respect:
+inputRange must contain exactly two numbers.
+outputRange must contain exactly two values.
+inputRange[0] must be strictly less than inputRange[1].
+inputRange values must be strictly increasing.
+Never use reversed ranges.
+Never use duplicate values.
+inputRange and outputRange must have the same length.
+Interpolated values must be numeric.
+Never pass strings into interpolate.
+Always clamp extrapolation.
+
+FRAME TIMING RULES
+Convert seconds to frames using the global FPS = 30.
+startFrame = start_sec * 30
+endFrame = end_sec * 30
+You must always use frame numbers in interpolate.
+
+STAGGERED SEQUENCES & MANUALLY UNROLLED MATH (CRITICAL FOR MULTI-SHAPE)
+Because loops (.map, for) are strictly banned, if the JSON specifies a sequence with stagger_sec across multiple target_object_ids (e.g., a wave or domino effect), you MUST manually calculate and write out the interpolated variables for EVERY single shape.
+Example: If stagger is 0.5s (15 frames), write separate interpolations where Shape 1 starts at frame 0, Shape 2 at frame 15, Shape 3 at frame 30, etc.
+
+COLOR ANIMATION & BLEND MODES
+You must not interpolate hex color strings directly. To animate colors, interpolate each RGB channel separately and build an "rgb(r,g,b)" string.
+If the JSON specifies a blend_mode (e.g., "screen", "multiply"), apply it to the style object as mixBlendMode: "screen".
+If the JSON specifies a z_index, apply it to the style object as zIndex.
+
+GLOW, SHADOW & PULSE ANIMATION RULES (CRITICAL)
+To create a glow effect on a div, use the 'boxShadow' style property.
+When animating the blur radius or spread, you MUST build the string using strict concatenation.
+
+TEXT COUNTERS (CRITICAL FOR UI/CHARTS)
+If animating a text number (e.g., a percentage counter), use Math.round() on the interpolated numeric value and strictly concatenate the text inside the div payload.
+Example: {prefix + Math.round(interpolatedValue) + suffix}
+
+BACKGROUND RULE
+The root AbsoluteFill must always define a background.
+
+SHAPE RULES
+Only div elements are allowed for shapes.
+Circle: borderRadius: "50%"
+Rectangle: Use width and height.
+Triangles or complex shapes: Use clipPath.
+
+NO LOOPS RULE
+You must never generate elements programmatically.
+Forbidden: for loops, while loops, .map(), Array.from().
+All shapes must be written explicitly. If 9 shapes are required, write 9 separate div elements manually.
+
+GRID RULES
+Grids must be built using explicit offsets only (e.g., translateX(-100px), translateX(0px)). You must not generate grids using loops.
+
+ORBIT GROUP RULE
+For shared-orbit animations: Use a parent wrapper div centered at (0,0). Apply rotation to the parent. Position children relative to the center.
+
+FINAL VALIDATION CHECKLIST
+Before producing your output, you must ensure:
+No external libraries.
+No loops (for, while, .map, etc.).
+No template literals, no backticks, no $ symbol.
+All interpolate ranges are valid (exactly 2 increasing values).
+All variables are declared before use.
+JSX braces and parentheses are balanced.
+All shapes are div elements.
+There is exactly one AbsoluteFill root.
+
+OUTPUT REQUIREMENT
+Return only the JSX component body that uses useCurrentFrame and the JSON spec.
+Do not include explanations, comments, or any non-code text.
+MULTI-OBJECT RULE: If the animation spec contains multiple objects, you must render each object as its own div while maintaining the correct timing and staggered math.`,
       },
-      { role: "user", content: promptText },
+      {
+  role: "user",
+  content: "Motion Spec JSON:\n" + promptText
+},
     ],
   });
-  return response.choices[0].message.content;
+  let code = response.choices[0].message.content;
+
+  code = cleanLLMCode(code);
+
+  return code;
 }
 
 async function run() {
   for (const item of prompts) {
+    const specPath = `${SPEC_FOLDER}/spec_${item.id}.json`;
+
+if (!fs.existsSync(specPath)) {
+  console.log(`❌ Missing spec for ${item.id}`);
+  continue;
+}
+
+const spec = fs.readFileSync(specPath, "utf8");
     const codePath = `outputs/code_${item.id}.tsx`;
     const videoPath = `outputs/video_${item.id}.mp4`;
 
@@ -229,25 +303,38 @@ async function run() {
     console.log(`Processing ${item.id}: ${item.prompt}`);
 
     // Parse duration from prompt
-    const durationInFrames = parseDuration(item.prompt);
+    const specData = JSON.parse(spec);
+const durationInFrames = specData.duration_sec * 30;
     console.log(`Prompt ${item.id}: ${durationInFrames} frames (${durationInFrames / 30}s)`);
 
-    let jsxContent = await generateCode(item.prompt);
+  let jsxContent;
+const codeExists = fs.existsSync(codePath);
 
-    // Validation checks (same as before)
-    for (let attempt = 0; attempt < 2; attempt++) {
-      if (
-        jsxContent.includes("${") ||
-        jsxContent.includes("`") ||
-        jsxContent.match(/interpolate\s*\([^)]*\[[^]]*,[^]]*,[^]]*/)
-      ) {
-        console.log("Retrying due to invalid generation...");
-        jsxContent = await generateCode(item.prompt);
-      } else {
-        break;
-      }
+if (codeExists) {
+  console.log(`Using existing code for ${item.id}`);
+
+  // Load the code exactly as it is
+  jsxContent = fs.readFileSync(codePath, "utf8");
+
+} else {
+  console.log(`Generating code for ${item.id}`);
+
+  jsxContent = await generateCode(spec);
+
+  // Validation + retry only for newly generated code
+  for (let attempt = 0; attempt < 2; attempt++) {
+    if (
+      jsxContent.includes("${") ||
+      jsxContent.includes("`") ||
+      jsxContent.match(/interpolate\s*\([^)]*\[[^]]*,[^]]*,[^]]*/)
+    ) {
+      console.log("Retrying due to invalid generation...");
+      jsxContent = await generateCode(spec);
+    } else {
+      break;
     }
-
+  }
+}
     // Additional checks...
     if (jsxContent.match(/const\s+\w+\s*=\s*[^;]+;\s*[\s\S]*\1\s*=/)) {
       console.log(`❌ Possible const reassignment in prompt ${item.id}`);
@@ -263,13 +350,19 @@ async function run() {
     }
 
     // Generate dynamic root.tsx with correct duration
-    const fullComponent = `
+    let fullComponent;
+
+if (codeExists) {
+  fullComponent = jsxContent;
+} else {
+  fullComponent = `
 import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
 
 export const GeneratedMotion = () => {
 ${jsxContent}
 };
 `;
+}
 
     fs.writeFileSync("src/GeneratedMotion.tsx", fullComponent);
     fs.writeFileSync(codePath, fullComponent);

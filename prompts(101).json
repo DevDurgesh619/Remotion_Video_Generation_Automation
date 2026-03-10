@@ -1,0 +1,252 @@
+[
+  {
+    "id": 101,
+    "category": "coordination",
+    "prompt": "Three Shapes Center Bounce. White background. Circle (140px red #F44336), square (140px blue #2196F3), triangle (140px base green #4CAF50). Animation (6s): 0-2s: Circle slides from left, square from right, triangle drops from top. All arrive at center with bounce (overshoot 15px, settle). 2-4s: All three rotate slowly in place (each 180°). 4-5s: All scale together: 100% -> 110% -> 100%. 5-6s: Fade out together. Total duration: 6s. [cite: 374, 375, 376, 377, 378]"
+  },
+  {
+    "id": 102,
+    "category": "coordination",
+    "prompt": "Shapes Horizontal Align Pulse. Gradient background (#E3F2FD to #BBDEFB). Circle (120px), square (120px), triangle (120px base), all magenta (#E91E63). Animation (8s): 0-2s: Circle slides in from left, square from right, triangle drops from top, all stop at center overlapping. 2-4s: Shapes slowly rotate in place. Circle moves 40px up, square 40px down, triangle shifts between them. 4-6s: All move toward exact center, overlap increases, opacity lowers where overlapping (blend mode). 6-8s: Align horizontally (150px apart), pulse scale 100% -> 105% -> 100%, fade out. [cite_start]Total duration: 8s. [cite: 379, 380, 381, 382, 383, 384]"
+  },
+  {
+    "id": 103,
+    "category": "coordination",
+    "prompt": "Sequential Shape Reveal. Dark background (#212121). Five circles (each 100px), arranged in horizontal row (120px spacing), different colors: red, orange, yellow, green, blue. Animation (7s): 0-1.4s: Circle 1 (red) fades in. 1.4-2.8s: Circle 2 (orange) fades in. 2.8-4.2s: Circle 3 (yellow) fades in. 4.2-5.6s: Circle 4 (green) fades in. 5.6-7s: Circle 5 (blue) fades in, all hold. [cite_start]Total duration: 7s. [cite: 385, 386, 387, 388]"
+  },
+  {
+    "id": 104,
+    "category": "coordination",
+    "prompt": "Bar Chart Three Bars. Light grey background. Three vertical bars (rectangles): 80px wide each, 150px apart horizontally, all start at bottom (y: 80% canvas height), same base level. Colors: bar 1 blue (#1976D2), bar 2 orange (#F57C00), bar 3 green (#388E3C). Animation (6s): 0-2s: Bar 1 grows upward from 0px to 200px height (30% target). 2-4s: Bar 2 grows from 0px to 280px (40%). 4-6s: Bar 3 grows from 0px to 360px (50%). All bars have rounded top corners (10px radius). [cite_start]Total duration: 6s. [cite: 389, 390, 391, 392, 393, 394]"
+  },
+  {
+    "id": 105,
+    "category": "coordination",
+    "prompt": "Bar Chart with Counter. White background. Three bars same as prompt 104, same positions and colors. Above each bar position: percentage text ('0%' initially, white on dark grey badge 60px x 30px, rounded). Animation (7s): 0-2s: Bar 1 grows to 200px, simultaneously text counts '0%' -> '30%' above it. 2-4s: Bar 2 grows to 280px, text counts '0%' -> '40%'. 4-6s: Bar 3 grows to 360px, text counts '0%' -> '50%'. 6-7s: All hold complete. [cite_start]Total duration: 7s. [cite: 395, 396, 397, 398, 399, 400]"
+  },
+  {
+    "id": 106,
+    "category": "coordination",
+    "prompt": "Circles Orbit Center. Black background. Center: Small white circle (40px, stationary). Orbiting: Three colored circles (each 60px): red, green, blue. Each on invisible circular orbit (radius 180px from center). Animation (8s): 0-2s: Center circle appears, orbit circles appear at top, right-bottom, left-bottom positions (120° apart). 2-8s: All three circles orbit clockwise around center simultaneously, maintaining 120° spacing. Complete 1 full orbit over 6s. [cite_start]Total duration: 8s. [cite: 401, 402, 403, 404, 405]"
+  },
+  {
+    "id": 107,
+    "category": "coordination",
+    "prompt": "Square Grid Appear Sequential. White background. 3x3 grid of squares (9 total), each 80px, 20px gaps, purple (#9C27B0), centered grid. Animation (9s): Squares appear sequentially in pattern: top-left -> top-center -> top-right -> middle-left -> center -> middle-right -> bottom-left -> bottom-center -> bottom-right. Each square fades in over 0.8s with 0.2s stagger (total 8s for all 9). All hold 1s. [cite_start]Total duration: 9s. [cite: 406, 407, 408, 409, 410]"
+  },
+  {
+    "id": 108,
+    "category": "coordination",
+    "prompt": "Triangles Point Inward. Gradient background. Four triangles (each 140px base, red #E53935): top triangle pointing down, bottom pointing up, left pointing right, right pointing left. Positioned at canvas edges pointing toward center. Animation (7s): 0-2s: All four triangles slide in from their edges toward center. 2-4s: Stop 100px from center, rotate slowly (each 180°). 4-6s: Move closer to center (50px from center), opacity lowers to 60%. 6-7s: All pulse scale 100% -> 110% -> 100%. [cite_start]Total duration: 7s. [cite: 411, 412, 413, 414, 415]"
+  },
+  {
+    "id": 109,
+    "category": "coordination",
+    "prompt": "Line Star Burst. Black background. Center point. Eight lines (each 200px long, 3px thick, white), radiating from center like star burst (45° apart, forming 8 directions). Animation (6s): 0-4s: Lines draw outward from center sequentially clockwise: line 1 (top) over 0.5s, line 2 (top-right) over 0.5s, continuing for all 8 lines. 4-6s: All complete lines rotate together 45° clockwise. [cite_start]Total duration: 6s. [cite: 416, 417, 418, 419]"
+  },
+  {
+    "id": 110,
+    "category": "coordination",
+    "prompt": "Rectangles Layered Slide. Light background. Five rectangles (each 300px x 150px, rounded 12px, same size), different colors: red, orange, yellow, green, blue. Stacked at center with 10px vertical offset creating 3D layers. Animation (8s): 0-1.6s: Red slides in from left. 1.6-3.2s: Orange slides in from left, layers on red. 3.2-4.8s: Yellow slides in. 4.8-6.4s: Green slides in. 6.4-8s: Blue slides in. All layer creating colored stack. [cite_start]Total duration: 8s. [cite: 420, 421, 422, 423, 424]"
+  },
+  {
+    "id": 111,
+    "category": "coordination",
+    "prompt": "Circle Chain Connected. White background. Five circles (each 100px, blue #2196F3), arranged horizontally (140px apart). Lines (3px, grey) connect adjacent circles (center to center). Animation (7s): 0-1.4s: Circle 1 appears, no line. 1.4-2.8s: Line draws from circle 1 to position 2, then circle 2 appears. 2.8-4.2s: Line draws 2->3, circle 3 appears. 4.2-5.6s: Line draws 3->4, circle 4 appears. 5.6-7s: Line draws 4->5, circle 5 appears. [cite_start]Total duration: 7s. [cite: 425, 426, 427, 428, 429]"
+  },
+  {
+    "id": 112,
+    "category": "coordination",
+    "prompt": "Shapes Size Progression. Grey background. Five circles arranged horizontally (150px spacing), all centered vertically. Sizes increase: 60px, 90px, 120px, 150px, 180px. All cyan (#00BCD4). Animation (6s): All appear simultaneously (fade in 1s). Then scale pulse wave left to right: circle 1 pulses 100% -> 115% -> 100% (0.8s), then circle 2 (0.8s), continuing through all 5 (total 4s pulse wave). Final 1s hold. [cite_start]Total duration: 6s. [cite: 430, 431, 432, 433, 434]"
+  },
+  {
+    "id": 113,
+    "category": "coordination",
+    "prompt": "Triangle Spinning Formation. Black background. Three triangles (each 120px, different colors: red, green, blue), start at center overlapping. Animation (8s): 0-2s: All appear at center. 2-4s: Triangles separate outward to form larger triangle formation (each moves 150px from center, 120° apart). 4-6s: While in formation, all three triangles rotate clockwise (each 360°) in place. 6-8s: Formation rotates as whole (triangles orbit center 180°). [cite_start]Total duration: 8s. [cite: 435, 436, 437, 438, 439]"
+  },
+  {
+    "id": 114,
+    "category": "coordination",
+    "prompt": "Square Border Sequential Build. White background. Four rectangles forming square border frame: top bar (400px x 40px), bottom bar (400px x 40px), left bar (40px x 300px), right bar (40px x 300px). All orange (#FF9800). Animation (6s): 0-1.5s: Top bar draws left to right. 1.5-3s: Right bar draws top to bottom. 3-4.5s: Bottom bar draws right to left. 4.5-6s: Left bar draws bottom to top, completing square border. [cite_start]Total duration: 6s. [cite: 440, 441, 442, 443]"
+  },
+  {
+    "id": 115,
+    "category": "coordination",
+    "prompt": "Circles Merge Split. Light background. Two circles: red (#F44336, 120px) and blue (#2196F3, 120px). Start separated 200px apart horizontally. Animation (8s): 0-2s: Both appear. 2-4s: Move toward each other, overlap at center. 4-5s: While overlapping, blend colors (overlapping area becomes purple). 5-6s: Merge into single purple circle (140px). 6-8s: Splits back into red and blue, separate to original positions. [cite_start]Total duration: 8s. [cite: 444, 445, 446, 447, 448]"
+  },
+  {
+    "id": 116,
+    "category": "coordination",
+    "prompt": "Pentagon Ring Rotate. Dark background. Five pentagons (each 100px, same size), different colors (red, orange, yellow, green, blue), arranged in circle (radius 180px from center), evenly spaced. Animation (7s): 0-2s: All pentagons appear simultaneously. 2-5s: All pentagons orbit clockwise around invisible center circle, maintaining spacing, completing half orbit (180°). 5-7s: Each pentagon rotates in place (360°) while stationary on orbit. [cite_start]Total duration: 7s. [cite: 449, 450, 451, 452]"
+  },
+  {
+    "id": 117,
+    "category": "coordination",
+    "prompt": "Bar Graph Comparison. White background. Two groups of bars side by side. Left group (labeled 'BEFORE'): 3 bars (60px wide, grey #9E9E9E), heights 120px, 160px, 100px. Right group (labeled 'AFTER'): 3 bars (60px wide, green #4CAF50), heights 200px, 280px, 180px. Labels: small text above each group. Animation (8s): 0-2s: Labels appear. 2-5s: Left bars grow sequentially (1s each). 5-8s: Right bars grow sequentially (1s each), showing improvement. [cite_start]Total duration: 8s. [cite: 453, 454, 455, 456, 457]"
+  },
+  {
+    "id": 118,
+    "category": "coordination",
+    "prompt": "Staggered Timing Variation. Gradient background. Five squares (each 100px), arranged diagonally, colors: red, orange, yellow, green, blue. Animation with precise stagger: 0-1.4s: Red square fades in (1s fade, appears at 0s). 0.7-2.1s: Orange fades in (1s fade, starts 0.7s). 1.5-2.9s: Yellow fades in (1s fade, starts 1.5s). 2.1-3.5s: Green fades in (1s fade, starts 2.1s). 3.0-4.4s: Blue fades in (1s fade, starts 3.0s). All hold 3.6s. Total duration: 8s. [cite_start]Tests overlapping fade timings. [cite: 458, 459, 460, 461, 462, 463]"
+  },
+  {
+    "id": 119,
+    "category": "coordination",
+    "prompt": "Circles Shadow Depth. Light grey background. Three circles (each 150px, white #FFFFFF), arranged vertically (180px apart). Each has different shadow depth creating 3D layering: Circle 1 (top): shadow 0px 4px 8px (close to surface). Circle 2 (middle): shadow 0px 12px 24px (elevated). Circle 3 (bottom): shadow 0px 24px 48px (highest). Animation (6s): 0-2s: All appear with shadows. 2-4s: Shadows animate: top shadow grows to match middle, middle to match bottom, bottom shrinks to match original top (circular shadow rotation). 4-6s: Return to original depths. [cite_start]Total duration: 6s. [cite: 464, 465, 466, 467, 468, 469]"
+  },
+  {
+    "id": 120,
+    "category": "coordination",
+    "prompt": "Lines Form Grid. White background. Grid formation: 5 horizontal lines (each 400px x 2px, grey #757575, 80px vertical spacing) and 5 vertical lines (each 2px x 400px, same grey, 80px horizontal spacing) forming 4x4 grid. Animation (8s): 0-4s: Horizontal lines draw from left to right sequentially (0.8s each). 4-8s: Vertical lines draw from top to bottom sequentially (0.8s each), completing grid. [cite_start]Total duration: 8s. [cite: 470, 471, 472, 473]"
+  },
+  {
+    "id": 121,
+    "category": "coordination",
+    "prompt": "Shapes Gradient Overlap. Black background. Three large shapes overlapping at center: Circle (200px, gradient red #F44336 to transparent), square (200px, rotated 45° becoming diamond, gradient blue #2196F3 to transparent), triangle (200px, gradient green #4CAF50 to transparent). Animation (6s): 0-2s: Circle fades in. 2-4s: Square fades in overlapping circle (blend mode: screen or lighten). 4-6s: Triangle fades in overlapping both. Colors blend in overlapping areas creating compound colors. [cite_start]Total duration: 6s. [cite: 474, 475, 476, 477]"
+  },
+  {
+    "id": 122,
+    "category": "coordination",
+    "prompt": "Pulse Wave Through Row. Light background. Six circles (each 80px, blue #1E88E5), horizontal row (100px spacing). Animation (7s): Scale pulse wave travels left to right: Circle 1 pulses 100% -> 130% -> 100% over 1s. Circle 2 starts pulsing when circle 1 reaches peak (0.5s stagger). Pattern continues through all 6 circles. Wave completes, all hold normal size 2s. [cite_start]Total duration: 7s. [cite: 478, 479, 480, 481, 482]"
+  },
+  {
+    "id": 123,
+    "category": "coordination",
+    "prompt": "Rectangles Aspect Ratio. Grey background. Three rectangles, all starting 200px x 200px (squares), different colors (red, green, blue), arranged horizontally (220px spacing). Animation (8s): 0-2s: All appear as squares. 2-4s: Red morphs to wide (400px x 100px). 4-6s: Green morphs to tall (100px x 400px). Blue stays square. 6-8s: All morph back to 200px x 200px squares. [cite_start]Total duration: 8s. [cite: 483, 484, 485, 486]"
+  },
+  {
+    "id": 124,
+    "category": "coordination",
+    "prompt": "Triangle Stack Pyramid. White background. Six triangles (each 140px base, yellow #FDD835), arranged in pyramid: row 1 (bottom): 3 triangles. Row 2 (middle): 2 triangles. Row 3 (top): 1 triangle. All pointing up. Animation (9s): 0-1.5s: Bottom row appears (3 triangles simultaneously). 1.5-3s: Middle row drops in from above, stacks on bottom row. 3-4.5s: Top triangle drops in, completes pyramid. 4.5-6.5s: Entire pyramid sways gently (rotates ±5° wobble). 6.5-9s: Each triangle rotates 180° sequentially bottom to top (pointing down), then flips back. [cite_start]Total duration: 9s. [cite: 487, 488, 489, 490, 491, 492, 493]"
+  },
+  {
+    "id": 125,
+    "category": "coordination",
+    "prompt": "Color Cycling Coordination. Black background. Four squares (each 120px), arranged in 2x2 grid (40px gaps). All start red (#F44336). Animation (12s): Color wave cycles through all squares: 0-3s: Top-left cycles red -> orange -> yellow -> green -> blue -> purple -> red (completes full color cycle). 3-6s: Top-right does same cycle (3s delay). 6-9s: Bottom-left does same. 9-12s: Bottom-right completes. All end on different colors. [cite_start]Total duration: 12s. [cite: 494, 495, 496, 497, 498]"
+  },
+  {
+    "id": 126,
+    "category": "coordination",
+    "prompt": "Opacity Fade Pattern. Light background. 4x4 grid of circles (16 total), each 60px, all cyan (#00BCD4), 20px gaps. Animation (8s): 0-1s: All appear at 100%. 1-3s: Diagonal fade pattern: top-left to bottom-right diagonal fades to 20%, then next diagonal, continuing (8 diagonals total, each fades over 0.25s). 3-5s: Hold pattern (some circles 100%, others 20%). 5-7s: Reverse: all return to 100% in reverse diagonal pattern. 7-8s: Hold all 100%. [cite_start]Total duration: 8s. [cite: 499, 500, 501, 502, 503]"
+  },
+  {
+    "id": 127,
+    "category": "coordination",
+    "prompt": "Rotation Direction Contrast. White background. Two circles (each 160px): left circle red (#E53935) with small white dot showing rotation, right circle blue (#1E88E5) with white dot. Circles 250px apart. Animation (6s): 0-1s: Both appear. 1-4s: Left circle rotates 360° clockwise, right circle rotates 360° counter-clockwise simultaneously (opposite directions, same speed). 4-6s: Both rotate back to starting position (reverse direction). [cite_start]Total duration: 6s. [cite: 504, 505, 506, 507]"
+  },
+  {
+    "id": 128,
+    "category": "coordination",
+    "prompt": "Scale Coordination Inverse. Grey background. Two squares (each 140px), left orange (#FF9800), right purple (#9C27B0), 200px apart. Animation (6s): 0-1s: Both appear at 100%. 1-3s: Left scales up 100% -> 150%, simultaneously right scales down 100% -> 50% (inverse scaling). 3-5s: Reverse: left scales 150% -> 100%, right scales 50% -> 100%. 5-6s: Hold normal size. [cite_start]Total duration: 6s. [cite: 508, 509, 510, 511]"
+  },
+  {
+    "id": 129,
+    "category": "coordination",
+    "prompt": "Line Star Formation. Black background. Center point. Twelve lines (each 250px long, 2px thick, white), radiating from center at 30° intervals (forming 12-point star burst). Animation (8s): 0-6s: Lines appear sequentially clockwise, each drawing outward from center over 0.5s (12 lines x 0.5s = 6s). 6-8s: All lines rotate together as formation 30° clockwise. [cite_start]Total duration: 8s. [cite: 512, 513, 514, 515]"
+  },
+  {
+    "id": 130,
+    "category": "coordination",
+    "prompt": "Rectangles Bridge Build. Light background. Two vertical rectangles (pillars): left 80px x 300px, right 80px x 300px, purple, 400px apart horizontally. Top horizontal rectangle (bridge): 400px x 60px, orange. Animation (7s): 0-2s: Left pillar grows upward from bottom. 2-4s: Right pillar grows upward. 4-5s: Both pillars hold. 5-7s: Bridge rectangle slides in from left, resting on top of pillars, connecting them. [cite_start]Total duration: 7s. [cite: 516, 517, 518, 519]"
+  },
+  {
+    "id": 131,
+    "category": "coordination",
+    "prompt": "Circles Radial Expand. White background. Center: small circle (40px, red #F44336). Eight additional circles (each 80px, different colors) positioned in radial pattern around center (180px radius, 45° apart), all initially at center overlapping. Animation (7s): 0-1.5s: Center circle appears. 1.5-4.5s: Eight circles expand outward radially to their final positions simultaneously (from center to 180px radius). 4.5-6.5s: All outer circles rotate around center 90° clockwise. 6.5-7s: Hold. [cite_start]Total duration: 7s. [cite: 520, 521, 522, 523]"
+  },
+  {
+    "id": 132,
+    "category": "coordination",
+    "prompt": "Sequential Color Fill. Black background. Five outlined rectangles (each 200px x 150px, 3px white stroke, no fill), arranged horizontally (40px gaps). Animation (10s): All outlines appear simultaneously. Then sequential fill: 0-2s: Rectangle 1 fills with red from bottom to top. 2-4s: Rectangle 2 fills with orange. 4-6s: Rectangle 3 fills with yellow. 6-8s: Rectangle 4 fills with green. 8-10s: Rectangle 5 fills with blue. [cite_start]Total duration: 10s. [cite: 524, 525, 526, 527, 528]"
+  },
+  {
+    "id": 133,
+    "category": "coordination",
+    "prompt": "Triangle Wave Motion. Gradient background. Six triangles (each 100px base, all pointing up, cyan #00BCD4), arranged in horizontal row (120px spacing). Animation (8s): 0-1s: All appear. 1-7s: Vertical wave motion passes through row continuously: each triangle moves up 30px then down 30px in sequence with phase offset, creating wave traveling left to right. Wave repeats 3 times. 7-8s: All settle at baseline. [cite_start]Total duration: 8s. [cite: 529, 530, 531, 532]"
+  },
+  {
+    "id": 134,
+    "category": "coordination",
+    "prompt": "Squares Perspective Depth. Light grey background. Five squares (each starts 150px), same red color, arranged diagonally from top-left to bottom-right. Create depth illusion through size and opacity: Square 1 (closest): 150px, 100% opacity. Square 2: 130px, 85% opacity. Square 3: 110px, 70% opacity. Square 4: 90px, 55% opacity. Square 5 (farthest): 70px, 40% opacity. Animation (6s): 0-2s: All appear establishing depth. 2-5s: Depth reverses: sizes and opacities swap (square 1 becomes smallest/dimmest, square 5 becomes largest/brightest). 5-6s: Hold reversed depth. [cite_start]Total duration: 6s. [cite: 533, 534, 535, 536, 537, 538]"
+  },
+  {
+    "id": 135,
+    "category": "coordination",
+    "prompt": "Circle Orbit Complex. Black background. Large circle (300px diameter, white outline 3px, no fill), centered, stationary. Three small solid circles (each 60px, red, green, blue) orbit around the large circle's perimeter. Animation (10s): 0-1s: Large circle appears. 1-10s: Small circles orbit clockwise around perimeter: red starts at top (0°), green at 120°, blue at 240°. They maintain 120° spacing while orbiting. Complete 2 full orbits in 9s. [cite_start]Total duration: 10s. [cite: 539, 540, 541, 542, 543]"
+  },
+  {
+    "id": 136,
+    "category": "coordination",
+    "prompt": "Bar Graph Race. White background. Four vertical bars (each 60px wide, 100px apart horizontally), different colors: red, blue, green, orange. All start at bottom (y: 80% height), 0px tall. Animation (8s): 0-8s: Bars grow upward at different rates racing each other: Red: grows to 250px over 5s (slow). Blue: grows to 300px over 4s (medium). Green: grows to 350px over 3s (fast). Orange: grows to 400px over 6s (slow start, fast end). All finish at different times, creating race effect. [cite_start]Total duration: 8s. [cite: 544, 545, 546, 547, 548, 549]"
+  },
+  {
+    "id": 137,
+    "category": "coordination",
+    "prompt": "Glow Pulse Synchronize. Dark background. Three circles (each 140px), different colors (red, green, blue), arranged in triangle formation. Each has outer glow matching its color (0px 0px 20px). Animation (6s): 0-1s: All appear with static glow. 1-6s: All glows pulse simultaneously in sync: blur 20px -> 50px, alpha 0.5 -> 1.0, completing 2.5 pulse cycles together (2s per cycle). [cite_start]Total duration: 6s. [cite: 550, 551, 552, 553, 554]"
+  },
+  {
+    "id": 138,
+    "category": "coordination",
+    "prompt": "Rotation Speed Variation. Grey background. Four squares (each 100px, all blue #2196F3), arranged in 2x2 grid (60px gaps). All rotate clockwise but at different speeds. Animation (8s): 0-1s: All appear. 1-8s: Top-left rotates 360° over 7s (slow). Top-right rotates 720° over 7s (medium). Bottom-left rotates 1080° over 7s (fast). Bottom-right rotates 1800° over 7s (very fast). All finish simultaneously at 8s. [cite_start]Total duration: 8s. [cite: 555, 556, 557, 558, 559]"
+  },
+  {
+    "id": 139,
+    "category": "coordination",
+    "prompt": "Lines Grid Fade In. White background. Grid: 6 horizontal lines (each 500px x 1px, grey) and 6 vertical lines (each 1px x 500px, grey), 100px spacing, forming 5x5 grid cells. Animation (9s): 0-4.5s: Horizontal lines fade in sequentially top to bottom (0.75s each). 4.5-9s: Vertical lines fade in sequentially left to right (0.75s each). Grid completes. [cite_start]Total duration: 9s. [cite: 560, 561, 562, 563]"
+  },
+  {
+    "id": 140,
+    "category": "coordination",
+    "prompt": "Shapes Bounce Sequence. Light background. Three shapes in horizontal row (200px spacing): circle (120px, red), square (120px, blue), triangle (120px base, green). All start at same vertical level (40% from top). Animation (8s): 0-2s: All appear. 2-3.5s: Circle bounces (drops to 70% height, bounces back to 40%, smaller bounce, settles). 3.5-5s: Square bounces (same pattern). 5-6.5s: Triangle bounces. 6.5-8s: All three bounce together once in sync. [cite_start]Total duration: 8s. [cite: 564, 565, 566, 567, 568]"
+  },
+  {
+    "id": 141,
+    "category": "coordination",
+    "prompt": "Concentric Rings Expand. Black background. Five circles (all centered, no fill, 3px white stroke), sizes: 100px, 180px, 260px, 340px, 420px diameter. Animation (7s): 0-1.4s: Smallest circle (100px) appears. 1.4-2.8s: Second circle (180px) appears. 2.8-4.2s: Third circle appears. 4.2-5.6s: Fourth circle appears. 5.6-7s: Fifth largest circle appears. Creating expanding concentric rings. [cite_start]Total duration: 7s. [cite: 569, 570, 571, 572]"
+  },
+  {
+    "id": 142,
+    "category": "coordination",
+    "prompt": "Rectangle Cascade Fall. White background. Eight rectangles (each 150px x 80px, rounded 10px, same purple color), stacked vertically at top-center (touching edges). Animation (8s): 0-7s: Rectangles fall sequentially like dominoes: Rectangle 1 falls (rotates 90° and drops), then rectangle 2 falls (1s after), continuing through all 8 rectangles. Each takes 1s to fall, creates cascading effect. 7-8s: All settle at bottom in pile. [cite_start]Total duration: 8s. [cite: 573, 574, 575, 576]"
+  },
+  {
+    "id": 143,
+    "category": "coordination",
+    "prompt": "Triangles Mirror Symmetry. Grey background. Two triangles (each 160px base): left triangle points right (green #43A047), right triangle points left (orange #FF9800), 200px apart, centered vertically. Animation (6s): 0-1s: Both appear. 1-3s: Move toward each other, points meet at center. 3-4s: Both rotate 180° simultaneously in opposite directions. 4-6s: Move apart back to original positions, now pointing opposite directions. [cite_start]Total duration: 6s. [cite: 577, 578, 579, 580, 581]"
+  },
+  {
+    "id": 144,
+    "category": "coordination",
+    "prompt": "Grid Cells Sequential. Light background. 3x3 grid of squares (9 cells, each 100px, 10px gaps, centered). Animation (9s): Cells fill sequentially in spiral pattern starting from center: Center cell fills red (1s). Top-center fills orange (1s). Top-right fills yellow (1s). Middle-right fills green (1s). Bottom-right fills blue (1s). Bottom-center fills purple (1s). Bottom-left fills pink (1s). Middle-left fills cyan (1s). Top-left fills white (1s). Total duration: 9s. [cite_start]Spiral fill pattern. [cite: 582, 583, 584, 585, 586]"
+  },
+  {
+    "id": 145,
+    "category": "coordination",
+    "prompt": "Shadow Direction Wave. White background. Five circles (each 120px, all white #FFFFFF), horizontal row (140px spacing). All have shadows. Animation (8s): 0-1s: All appear with shadow at bottom-right (4px 4px 8px). 1-8s: Shadow direction rotates around each circle sequentially left to right creating wave: circle 1's shadow rotates clockwise around it (completing 360° over 7s), then circle 2 starts rotating (with 1.4s delay), continuing through all 5 circles. [cite_start]Total duration: 8s. [cite: 587, 588, 589, 590, 591]"
+  },
+  {
+    "id": 146,
+    "category": "coordination",
+    "prompt": "Lines Perpendicular Weave. Black background. Four horizontal lines (each 400px, 3px, white) and four vertical lines (each 400px, 3px, white), forming woven pattern with over/under crossings. Animation (10s): 0-5s: Horizontal lines draw left to right sequentially (1.25s each). 5-10s: Vertical lines draw top to bottom sequentially (1.25s each), appearing to weave over/under horizontal lines (achieved through z-index layering or draw order). [cite_start]Total duration: 10s. [cite: 592, 593, 594, 595, 596]"
+  },
+  {
+    "id": 147,
+    "category": "coordination",
+    "prompt": "Shapes Color Sync. Light grey background. Three shapes: circle (140px), square (140px), triangle (140px base), arranged horizontally (180px spacing). All start white. Animation (9s): All shapes cycle through same color sequence simultaneously in perfect sync: 0-1.5s: All morph to red. 1.5-3s: All morph to orange. 3-4.5s: All morph to yellow. 4.5-6s: All morph to green. 6-7.5s: All morph to blue. 7.5-9s: All morph to purple. [cite_start]Total duration: 9s. [cite: 597, 598, 599, 600, 601]"
+  },
+  {
+    "id": 148,
+    "category": "coordination",
+    "prompt": "Rectangles Interlock. White background. Two rectangles: horizontal (300px x 80px, blue #1976D2) and vertical (80px x 300px, red #E53935). Animation (7s): 0-2s: Horizontal rectangle slides in from left to center. 2-4s: Vertical rectangle slides down from top, interlocks with horizontal (crosses through center, forming plus/cross shape). 4-5.5s: Both rotate 45° together around intersection point. 5.5-7s: Both scale together 100% -> 120% -> 100%. [cite_start]Total duration: 7s. [cite: 602, 603, 604, 605, 606, 607]"
+  },
+  {
+    "id": 149,
+    "category": "coordination",
+    "prompt": "Opacity Gradient Cascade. Gradient background. Ten circles (each 80px, all cyan #00BCD4), vertical column (90px spacing). Animation (8s): 0-1s: All appear simultaneously at different opacities forming gradient: top circle 100%, second 90%, third 80%... bottom 10%. 1-7s: Opacity values shift downward in cascade: top becomes 90%, second becomes 100%, third becomes 90%, etc. Creates flowing opacity wave moving down column. Completes 3 cascade cycles. 7-8s: All settle at 100%. [cite_start]Total duration: 8s. [cite: 608, 609, 610, 611, 612]"
+  },
+  {
+    "id": 150,
+    "category": "coordination",
+    "prompt": "Complex Coordinated Finale. Black background. Center: Large circle (200px, gold #FFD700 outline 4px, no fill). Around it: 8 triangles (each 100px, different rainbow colors) pointing toward center, positioned radially (240px from center, 45° apart). Animation (12s): 0-2s: Center circle appears and pulses (scale 100% -> 110% -> 100%). 2-6s: Triangles appear sequentially clockwise (0.5s each). 6-8s: All triangles rotate 180° simultaneously (now pointing away from center). 8-10s: Triangles orbit clockwise around circle, maintaining formation, 90° orbit. 10-12s: All triangles move toward center, all shapes fade out together. Total duration: 12s. [cite_start]Grand finale testing all coordination techniques. [cite: 613, 614, 615, 616, 617, 618, 619]"
+  }
+]

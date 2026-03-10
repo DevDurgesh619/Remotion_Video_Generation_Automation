@@ -3,176 +3,239 @@ import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
 
 export const GeneratedMotion = () => {
 const frame = useCurrentFrame();
-
-// Phase timing definitions
-const phase1Start = 0;
-const phase1End = 60; // 2s
-const phase2Start = 60;
-const phase2End = 180; // 6s
-const phase3Start = 180;
-const phase3End = 240; // 8s
-const phase4Start = 240;
-const phase4End = 300; // 10s
-const phase5Start = 300;
-const phase5End = 360; // 12s
-
-// Center circle logic
-let circleScale;
-if (frame < phase1End) {
-  circleScale = interpolate(frame, [phase1Start, phase1End], [1, 1.1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-} else {
-  circleScale = 1;
+const f = frame;
+const fps = 30;
+const frame0 = 0;
+const frame60 = 2 * fps;
+const frame75 = 2.5 * fps;
+const frame90 = 3 * fps;
+const frame105 = 3.5 * fps;
+const frame120 = 4 * fps;
+const frame135 = 4.5 * fps;
+const frame150 = 5 * fps;
+const frame165 = 5.5 * fps;
+const frame180 = 6 * fps;
+const frame240 = 8 * fps;
+const frame360 = 12 * fps;
+// Circle animations
+const scaleStart = interpolate(f, [frame0, frame60], [1, 1.1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+const scaleEnd = interpolate(f, [frame240, frame360], [1.1, 1.0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+let circleScale = scaleStart;
+if (f >= frame240) {
+  circleScale = scaleEnd;
 }
+const circleRotate = interpolate(f, [frame240, frame360], [0, 360], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+const circleOpacity = interpolate(f, [frame240, frame360], [1, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+const circleBorder = interpolate(f, [frame240, frame360], [4, 0], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+// Triangles fade in (staggered)
+const tri1Opacity = interpolate(f, [frame60, frame75], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+const tri2Opacity = interpolate(f, [frame75, frame90], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+const tri3Opacity = interpolate(f, [frame90, frame105], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+const tri4Opacity = interpolate(f, [frame105, frame120], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+const tri5Opacity = interpolate(f, [frame120, frame135], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+const tri6Opacity = interpolate(f, [frame135, frame150], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+const tri7Opacity = interpolate(f, [frame150, frame165], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+const tri8Opacity = interpolate(f, [frame165, frame180], [0, 1], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+// Triangles rotate 0->180 between 6s and 8s
+const triRotateAnim = interpolate(f, [frame180, frame240], [0, 180], {extrapolateLeft: 'clamp', extrapolateRight: 'clamp'});
+// Triangle sizes and adjustments
+const triW = 100;
+const triH = 100;
+const halfW = triW / 2;
+const halfH = triH / 2;
+// Positions (center offsets provided) and adjusted to top-left translation origin
+const t1x = 240;
+const t1y = 0;
+const t1adjX = t1x - halfW;
+const t1adjY = t1y - halfH;
+const t1baseRot = 0;
+const t1totalRot = t1baseRot + triRotateAnim;
 
-// Triangle logic
-let triangle1Opacity, triangle2Opacity, triangle3Opacity, triangle4Opacity, triangle5Opacity, triangle6Opacity, triangle7Opacity, triangle8Opacity;
-if (frame < phase2End) {
-  if (frame < 90) {
-    triangle1Opacity = interpolate(frame, [phase2Start, phase2Start + 15], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  } else {
-    triangle1Opacity = 1;
-  }
-  
-  if (frame < 105) {
-    triangle2Opacity = interpolate(frame, [phase2Start + 15, phase2Start + 30], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  } else {
-    triangle2Opacity = 1;
-  }
-  
-  if (frame < 120) {
-    triangle3Opacity = interpolate(frame, [phase2Start + 30, phase2Start + 45], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  } else {
-    triangle3Opacity = 1;
-  }
-  
-  if (frame < 135) {
-    triangle4Opacity = interpolate(frame, [phase2Start + 45, phase2Start + 60], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  } else {
-    triangle4Opacity = 1;
-  }
-  
-  if (frame < 150) {
-    triangle5Opacity = interpolate(frame, [phase2Start + 60, phase2Start + 75], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  } else {
-    triangle5Opacity = 1;
-  }
+const t2x = 169.7;
+const t2y = 169.7;
+const t2adjX = t2x - halfW;
+const t2adjY = t2y - halfH;
+const t2baseRot = 45;
+const t2totalRot = t2baseRot + triRotateAnim;
 
-  if (frame < 165) {
-    triangle6Opacity = interpolate(frame, [phase2Start + 75, phase2Start + 90], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  } else {
-    triangle6Opacity = 1;
-  }
+const t3x = 0;
+const t3y = 240;
+const t3adjX = t3x - halfW;
+const t3adjY = t3y - halfH;
+const t3baseRot = 90;
+const t3totalRot = t3baseRot + triRotateAnim;
 
-  if (frame < 180) {
-    triangle7Opacity = interpolate(frame, [phase2Start + 90, phase2Start + 105], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  } else {
-    triangle7Opacity = 1;
-  }
+const t4x = -169.7;
+const t4y = 169.7;
+const t4adjX = t4x - halfW;
+const t4adjY = t4y - halfH;
+const t4baseRot = 135;
+const t4totalRot = t4baseRot + triRotateAnim;
 
-  if (frame < 195) {
-    triangle8Opacity = interpolate(frame, [phase2Start + 105, phase2Start + 120], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-  } else {
-    triangle8Opacity = 1;
-  }
-} else {
-  triangle1Opacity = triangle2Opacity = triangle3Opacity = triangle4Opacity = triangle5Opacity = triangle6Opacity = triangle7Opacity = triangle8Opacity = 1;
-}
+const t5x = -240;
+const t5y = 0;
+const t5adjX = t5x - halfW;
+const t5adjY = t5y - halfH;
+const t5baseRot = 180;
+const t5totalRot = t5baseRot + triRotateAnim;
 
-// Rotation logic
-let rotation;
-if (frame < phase3End) {
-  rotation = interpolate(frame, [phase3Start, phase3End], [0, 180], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-} else {
-  rotation = 180;
-}
+const t6x = -169.7;
+const t6y = -169.7;
+const t6adjX = t6x - halfW;
+const t6adjY = t6y - halfH;
+const t6baseRot = 225;
+const t6totalRot = t6baseRot + triRotateAnim;
 
-// Orbit logic
-let orbitX1, orbitX2, orbitX3, orbitX4, orbitX5, orbitX6, orbitX7, orbitX8;
-if (frame < phase5Start) {
-  const angleShift = (frame >= phase4Start && frame < phase4End) ? 90 : 0;
-  const radius = 240;
-  orbitX1 = radius * Math.cos((0 + angleShift) * Math.PI / 180);
-  orbitX2 = radius * Math.cos((45 + angleShift) * Math.PI / 180);
-  orbitX3 = radius * Math.cos((90 + angleShift) * Math.PI / 180);
-  orbitX4 = radius * Math.cos((135 + angleShift) * Math.PI / 180);
-  orbitX5 = radius * Math.cos((180 + angleShift) * Math.PI / 180);
-  orbitX6 = radius * Math.cos((225 + angleShift) * Math.PI / 180);
-  orbitX7 = radius * Math.cos((270 + angleShift) * Math.PI / 180);
-  orbitX8 = radius * Math.cos((315 + angleShift) * Math.PI / 180);
-} else {
-  orbitX1 = 0;
-  orbitX2 = 0;
-  orbitX3 = 0;
-  orbitX4 = 0;
-  orbitX5 = 0;
-  orbitX6 = 0;
-  orbitX7 = 0;
-  orbitX8 = 0;
-}
+const t7x = 0;
+const t7y = -240;
+const t7adjX = t7x - halfW;
+const t7adjY = t7y - halfH;
+const t7baseRot = 270;
+const t7totalRot = t7baseRot + triRotateAnim;
 
-// Fade out shapes
-let fadeOut;
-if (frame >= phase5Start) {
-  fadeOut = interpolate(frame, [phase5Start, phase5End], [1, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-} else {
-  fadeOut = 1;
-}
+const t8x = 169.7;
+const t8y = -169.7;
+const t8adjX = t8x - halfW;
+const t8adjY = t8y - halfH;
+const t8baseRot = 315;
+const t8totalRot = t8baseRot + triRotateAnim;
 
 return (
-  <AbsoluteFill style={{ backgroundColor: "#000000", overflow: "hidden" }}>
+<AbsoluteFill style={{ backgroundColor: "#000000", overflow: "hidden" }}>
+  <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translateX(-100%) translateY(-50%)" }}>
     <div style={{
-      position: "absolute", left: "50%", top: "50%",
-      width: "200px", height: "200px", border: "4px solid #FFD700",
-      borderRadius: "50%", transform: "translate(-50%, -50%) scale(" + circleScale + ")"
+      width: 200 + "px",
+      height: 200 + "px",
+      borderRadius: "50%",
+      borderStyle: "solid",
+      borderColor: "#FFD700",
+      borderWidth: circleBorder + "px",
+      boxSizing: "border-box",
+      transform: "rotate(" + circleRotate + "deg) scale(" + circleScale + ")",
+      opacity: circleOpacity,
+      margin: 0
     }} />
+  </div>
+
+  <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translateX(-100%) translateY(-50%)" }}>
     <div style={{
-      position: "absolute", left: "50%", top: "50%",
-      width: "100px", height: "100px", opacity: triangle1Opacity * fadeOut,
+      position: "absolute",
+      left: "50%",
+      top: "50%",
+      width: triW + "px",
+      height: triH + "px",
+      backgroundColor: "red",
       clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
-      backgroundColor: "red", transform: "translate(-50%, -50%) translateX(" + orbitX1 + "px) rotate(" + rotation + "deg)"
+      transform: "translateX(" + t1adjX + "px) translateY(" + t1adjY + "px) rotate(" + t1totalRot + "deg)",
+      transformOrigin: "50% 50%",
+      opacity: tri1Opacity
     }} />
+  </div>
+
+  <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translateX(-100%) translateY(-50%)" }}>
     <div style={{
-      position: "absolute", left: "50%", top: "50%",
-      width: "100px", height: "100px", opacity: triangle2Opacity * fadeOut,
+      position: "absolute",
+      left: "50%",
+      top: "50%",
+      width: triW + "px",
+      height: triH + "px",
+      backgroundColor: "orange",
       clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
-      backgroundColor: "orange", transform: "translate(-50%, -50%) translateX(" + orbitX2 + "px) rotate(" + rotation + "deg)"
+      transform: "translateX(" + t2adjX + "px) translateY(" + t2adjY + "px) rotate(" + t2totalRot + "deg)",
+      transformOrigin: "50% 50%",
+      opacity: tri2Opacity
     }} />
+  </div>
+
+  <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translateX(-100%) translateY(-50%)" }}>
     <div style={{
-      position: "absolute", left: "50%", top: "50%",
-      width: "100px", height: "100px", opacity: triangle3Opacity * fadeOut,
+      position: "absolute",
+      left: "50%",
+      top: "50%",
+      width: triW + "px",
+      height: triH + "px",
+      backgroundColor: "yellow",
       clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
-      backgroundColor: "yellow", transform: "translate(-50%, -50%) translateX(" + orbitX3 + "px) rotate(" + rotation + "deg)"
+      transform: "translateX(" + t3adjX + "px) translateY(" + t3adjY + "px) rotate(" + t3totalRot + "deg)",
+      transformOrigin: "50% 50%",
+      opacity: tri3Opacity
     }} />
+  </div>
+
+  <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translateX(-100%) translateY(-50%)" }}>
     <div style={{
-      position: "absolute", left: "50%", top: "50%",
-      width: "100px", height: "100px", opacity: triangle4Opacity * fadeOut,
+      position: "absolute",
+      left: "50%",
+      top: "50%",
+      width: triW + "px",
+      height: triH + "px",
+      backgroundColor: "green",
       clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
-      backgroundColor: "green", transform: "translate(-50%, -50%) translateX(" + orbitX4 + "px) rotate(" + rotation + "deg)"
+      transform: "translateX(" + t4adjX + "px) translateY(" + t4adjY + "px) rotate(" + t4totalRot + "deg)",
+      transformOrigin: "50% 50%",
+      opacity: tri4Opacity
     }} />
+  </div>
+
+  <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translateX(-100%) translateY(-50%)" }}>
     <div style={{
-      position: "absolute", left: "50%", top: "50%",
-      width: "100px", height: "100px", opacity: triangle5Opacity * fadeOut,
+      position: "absolute",
+      left: "50%",
+      top: "50%",
+      width: triW + "px",
+      height: triH + "px",
+      backgroundColor: "blue",
       clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
-      backgroundColor: "cyan", transform: "translate(-50%, -50%) translateX(" + orbitX5 + "px) rotate(" + rotation + "deg)"
+      transform: "translateX(" + t5adjX + "px) translateY(" + t5adjY + "px) rotate(" + t5totalRot + "deg)",
+      transformOrigin: "50% 50%",
+      opacity: tri5Opacity
     }} />
+  </div>
+
+  <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translateX(-100%) translateY(-50%)" }}>
     <div style={{
-      position: "absolute", left: "50%", top: "50%",
-      width: "100px", height: "100px", opacity: triangle6Opacity * fadeOut,
+      position: "absolute",
+      left: "50%",
+      top: "50%",
+      width: triW + "px",
+      height: triH + "px",
+      backgroundColor: "indigo",
       clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
-      backgroundColor: "blue", transform: "translate(-50%, -50%) translateX(" + orbitX6 + "px) rotate(" + rotation + "deg)"
+      transform: "translateX(" + t6adjX + "px) translateY(" + t6adjY + "px) rotate(" + t6totalRot + "deg)",
+      transformOrigin: "50% 50%",
+      opacity: tri6Opacity
     }} />
+  </div>
+
+  <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translateX(-100%) translateY(-50%)" }}>
     <div style={{
-      position: "absolute", left: "50%", top: "50%",
-      width: "100px", height: "100px", opacity: triangle7Opacity * fadeOut,
+      position: "absolute",
+      left: "50%",
+      top: "50%",
+      width: triW + "px",
+      height: triH + "px",
+      backgroundColor: "violet",
       clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
-      backgroundColor: "purple", transform: "translate(-50%, -50%) translateX(" + orbitX7 + "px) rotate(" + rotation + "deg)"
+      transform: "translateX(" + t7adjX + "px) translateY(" + t7adjY + "px) rotate(" + t7totalRot + "deg)",
+      transformOrigin: "50% 50%",
+      opacity: tri7Opacity
     }} />
+  </div>
+
+  <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translateX(-100%) translateY(-50%)" }}>
     <div style={{
-      position: "absolute", left: "50%", top: "50%",
-      width: "100px", height: "100px", opacity: triangle8Opacity * fadeOut,
+      position: "absolute",
+      left: "50%",
+      top: "50%",
+      width: triW + "px",
+      height: triH + "px",
+      backgroundColor: "purple",
       clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
-      backgroundColor: "pink", transform: "translate(-50%, -50%) translateX(" + orbitX8 + "px) rotate(" + rotation + "deg)"
+      transform: "translateX(" + t8adjX + "px) translateY(" + t8adjY + "px) rotate(" + t8totalRot + "deg)",
+      transformOrigin: "50% 50%",
+      opacity: tri8Opacity
     }} />
-  </AbsoluteFill>
+  </div>
+</AbsoluteFill>
 );
 };

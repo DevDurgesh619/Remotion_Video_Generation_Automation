@@ -69,7 +69,7 @@ const TOKEN_PATH = path.join(__dirname, "..", "token.json");
 
 // Drive folder names
 const ROOT_FOLDER_NAME = "Automation";
-const LEVEL_FOLDER_NAME = "LEVEL 1.2: MULTI-SHAPE COORDINATION";
+const LEVEL_FOLDER_NAME = "Level 1.2(v2): Multi_Shape_Cordination_Animation";
 const CODE_FOLDER_NAME = "Code";
 const VIDEOS_FOLDER_NAME = "Videos";
 
@@ -279,10 +279,7 @@ async function run() {
       continue;
     }
 
-    // Only process files if they belong to this batch (101-150)
-    if (index < 101 || index > 150) {
-      continue;
-    }
+   // Only process files if they belong to this batch (1-50)
 
     const title = getTitleForIndex(index);
     if (!title) {
