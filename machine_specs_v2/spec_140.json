@@ -1,0 +1,403 @@
+{
+  "scene": "triangle_shatter_reform",
+  "duration": 7,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#808080",
+  "objects": [
+    {
+      "id": "triangle_1",
+      "shape": "triangle",
+      "size": [
+        180,
+        180
+      ],
+      "color": "#FF9800",
+      "pos": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "piece_1",
+      "shape": "triangle",
+      "size": [
+        60,
+        60
+      ],
+      "color": "#FF9800",
+      "pos": [
+        -30,
+        -30
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "piece_2",
+      "shape": "triangle",
+      "size": [
+        60,
+        60
+      ],
+      "color": "#FF9800",
+      "pos": [
+        30,
+        -30
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "piece_3",
+      "shape": "triangle",
+      "size": [
+        60,
+        60
+      ],
+      "color": "#FF9800",
+      "pos": [
+        -30,
+        30
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "piece_4",
+      "shape": "triangle",
+      "size": [
+        60,
+        60
+      ],
+      "color": "#FF9800",
+      "pos": [
+        30,
+        30
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "piece_5",
+      "shape": "triangle",
+      "size": [
+        60,
+        60
+      ],
+      "color": "#FF9800",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "piece_6",
+      "shape": "triangle",
+      "size": [
+        60,
+        60
+      ],
+      "color": "#FF9800",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "triangle_1",
+      "time": [
+        0,
+        1.5
+      ],
+      "opacity": [
+        1,
+        1
+      ]
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        1.5,
+        1.6
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "piece_1",
+      "time": [
+        1.5,
+        1.6
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "piece_2",
+      "time": [
+        1.5,
+        1.6
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "piece_3",
+      "time": [
+        1.5,
+        1.6
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "piece_4",
+      "time": [
+        1.5,
+        1.6
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "piece_5",
+      "time": [
+        1.5,
+        1.6
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "piece_6",
+      "time": [
+        1.5,
+        1.6
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "piece_1",
+      "time": [
+        1.5,
+        3
+      ],
+      "pos": [
+        [
+          -30,
+          -30
+        ],
+        [
+          -80,
+          -80
+        ]
+      ]
+    },
+    {
+      "target": "piece_2",
+      "time": [
+        1.5,
+        3
+      ],
+      "pos": [
+        [
+          30,
+          -30
+        ],
+        [
+          80,
+          -80
+        ]
+      ]
+    },
+    {
+      "target": "piece_3",
+      "time": [
+        1.5,
+        3
+      ],
+      "pos": [
+        [
+          -30,
+          30
+        ],
+        [
+          -80,
+          80
+        ]
+      ]
+    },
+    {
+      "target": "piece_4",
+      "time": [
+        1.5,
+        3
+      ],
+      "pos": [
+        [
+          30,
+          30
+        ],
+        [
+          80,
+          80
+        ]
+      ]
+    },
+    {
+      "target": "piece_5",
+      "time": [
+        1.5,
+        3
+      ],
+      "pos": [
+        [
+          0,
+          0
+        ],
+        [
+          -50,
+          50
+        ]
+      ]
+    },
+    {
+      "target": "piece_6",
+      "time": [
+        1.5,
+        3
+      ],
+      "pos": [
+        [
+          0,
+          0
+        ],
+        [
+          50,
+          -50
+        ]
+      ]
+    },
+    {
+      "target": "piece_1",
+      "time": [
+        5,
+        7
+      ],
+      "pos": [
+        [
+          -80,
+          -80
+        ],
+        [
+          -30,
+          -30
+        ]
+      ]
+    },
+    {
+      "target": "piece_2",
+      "time": [
+        5,
+        7
+      ],
+      "pos": [
+        [
+          80,
+          -80
+        ],
+        [
+          30,
+          -30
+        ]
+      ]
+    },
+    {
+      "target": "piece_3",
+      "time": [
+        5,
+        7
+      ],
+      "pos": [
+        [
+          -80,
+          80
+        ],
+        [
+          -30,
+          30
+        ]
+      ]
+    },
+    {
+      "target": "piece_4",
+      "time": [
+        5,
+        7
+      ],
+      "pos": [
+        [
+          80,
+          80
+        ],
+        [
+          30,
+          30
+        ]
+      ]
+    },
+    {
+      "target": "piece_5",
+      "time": [
+        5,
+        7
+      ],
+      "pos": [
+        [
+          -50,
+          50
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    {
+      "target": "piece_6",
+      "time": [
+        5,
+        7
+      ],
+      "pos": [
+        [
+          50,
+          -50
+        ],
+        [
+          0,
+          0
+        ]
+      ]
+    }
+  ]
+}

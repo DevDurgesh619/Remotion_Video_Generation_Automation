@@ -1,0 +1,61 @@
+{
+  "scene": "triangle_corner_round",
+  "duration": 5,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#F5F5F5",
+  "objects": [
+    {
+      "id": "triangle_1",
+      "shape": "triangle",
+      "size": [
+        190,
+        190
+      ],
+      "color": "#9C27B0",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "triangle_1",
+      "time": [
+        0,
+        1.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        1.5,
+        3.5
+      ],
+      "cornerRadius": [
+        0,
+        30
+      ]
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        3.5,
+        5
+      ],
+      "cornerRadius": [
+        30,
+        0
+      ]
+    }
+  ]
+}

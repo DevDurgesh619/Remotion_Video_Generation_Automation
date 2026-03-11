@@ -1,0 +1,108 @@
+{
+  "scene": "triangle_point_morph",
+  "duration": 7,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#F5F5F5",
+  "objects": [
+    {
+      "id": "triangle_1",
+      "shape": "triangle",
+      "size": [
+        180,
+        180
+      ],
+      "color": "#1976D2",
+      "pos": [
+        0,
+        0
+      ],
+      "facing": "up",
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "triangle_1",
+      "time": [
+        0,
+        1.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        1.5,
+        3
+      ],
+      "size": [
+        [
+          180,
+          180
+        ],
+        [
+          180,
+          260
+        ]
+      ]
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        3,
+        4.5
+      ],
+      "size": [
+        [
+          180,
+          260
+        ],
+        [
+          180,
+          180
+        ]
+      ]
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        4.5,
+        6
+      ],
+      "size": [
+        [
+          180,
+          180
+        ],
+        [
+          260,
+          180
+        ]
+      ]
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        6,
+        7
+      ],
+      "size": [
+        [
+          260,
+          180
+        ],
+        [
+          180,
+          180
+        ]
+      ]
+    }
+  ]
+}

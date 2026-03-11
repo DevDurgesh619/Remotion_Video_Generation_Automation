@@ -1,0 +1,242 @@
+{
+  "scene": "multi_line_chart_product_performance_comparison",
+  "duration": 12,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#2a2a2a",
+  "objects": [
+    {
+      "id": "title",
+      "shape": "text",
+      "text": {
+        "content": "Product Growth Comparison",
+        "fontSize": 30,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        0,
+        -500
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "legend",
+      "shape": "text",
+      "text": {
+        "content": "Product A: Green, Product B: Blue, Product C: Orange",
+        "fontSize": 12,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        760,
+        -500
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_axis",
+      "shape": "line",
+      "size": [
+        1200,
+        0
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        0,
+        250
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_axis",
+      "shape": "line",
+      "size": [
+        0,
+        500
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        -600,
+        0
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "gridlines",
+      "shape": "line",
+      "size": [
+        1200,
+        0
+      ],
+      "color": "#FFFFFF",
+      "opacity": 0.2
+    },
+    {
+      "id": "product_a_line",
+      "shape": "line",
+      "size": [
+        0,
+        0
+      ],
+      "color": "#27AE60",
+      "stroke": {
+        "color": "#27AE60",
+        "width": 3
+      },
+      "pos": [
+        -600,
+        250
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "product_b_line",
+      "shape": "line",
+      "size": [
+        0,
+        0
+      ],
+      "color": "#2196F3",
+      "stroke": {
+        "color": "#2196F3",
+        "width": 3
+      },
+      "pos": [
+        -600,
+        250
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "product_c_line",
+      "shape": "line",
+      "size": [
+        0,
+        0
+      ],
+      "color": "#FF9800",
+      "stroke": {
+        "color": "#FF9800",
+        "width": 3
+      },
+      "pos": [
+        -600,
+        250
+      ],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "title",
+      "time": [
+        0,
+        0.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "legend",
+      "time": [
+        0,
+        0.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_axis",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_axis",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "product_a_line",
+      "time": [
+        1,
+        4
+      ],
+      "size": [
+        [
+          0,
+          0
+        ],
+        [
+          1200,
+          0
+        ]
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "product_b_line",
+      "time": [
+        4,
+        7
+      ],
+      "size": [
+        [
+          0,
+          0
+        ],
+        [
+          1200,
+          0
+        ]
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "product_c_line",
+      "time": [
+        7,
+        10
+      ],
+      "size": [
+        [
+          0,
+          0
+        ],
+        [
+          1200,
+          0
+        ]
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "scene": "rectangle_opacity_pattern",
+  "duration": 6,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#000000",
+  "objects": [
+    {
+      "id": "rect_1",
+      "shape": "rectangle",
+      "size": [
+        200,
+        120
+      ],
+      "color": "#00BCD4",
+      "pos": [
+        0,
+        -90
+      ],
+      "cornerRadius": 10,
+      "opacity": 0
+    },
+    {
+      "id": "rect_2",
+      "shape": "rectangle",
+      "size": [
+        200,
+        120
+      ],
+      "color": "#00BCD4",
+      "pos": [
+        0,
+        0
+      ],
+      "cornerRadius": 10,
+      "opacity": 0
+    },
+    {
+      "id": "rect_3",
+      "shape": "rectangle",
+      "size": [
+        200,
+        120
+      ],
+      "color": "#00BCD4",
+      "pos": [
+        0,
+        90
+      ],
+      "cornerRadius": 10,
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "rect_1",
+      "time": [
+        0,
+        2
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "rect_2",
+      "time": [
+        0,
+        2
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "rect_3",
+      "time": [
+        0,
+        2
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "rect_1",
+      "time": [
+        2,
+        2.5
+      ],
+      "opacity": [
+        1,
+        0.3
+      ]
+    },
+    {
+      "target": "rect_2",
+      "time": [
+        2.5,
+        3
+      ],
+      "opacity": [
+        1,
+        0.3
+      ]
+    },
+    {
+      "target": "rect_3",
+      "time": [
+        3,
+        3.5
+      ],
+      "opacity": [
+        1,
+        0.3
+      ]
+    },
+    {
+      "target": "rect_1",
+      "time": [
+        4,
+        4.5
+      ],
+      "opacity": [
+        0.3,
+        1
+      ]
+    },
+    {
+      "target": "rect_2",
+      "time": [
+        4.5,
+        5
+      ],
+      "opacity": [
+        0.3,
+        1
+      ]
+    },
+    {
+      "target": "rect_3",
+      "time": [
+        5,
+        5.5
+      ],
+      "opacity": [
+        0.3,
+        1
+      ]
+    }
+  ]
+}

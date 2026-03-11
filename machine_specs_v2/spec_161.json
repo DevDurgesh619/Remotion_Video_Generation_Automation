@@ -1,0 +1,830 @@
+{
+  "scene": "bar_chart_with_icons",
+  "duration": 11,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#F5F5F5",
+  "objects": [
+    {
+      "id": "title",
+      "shape": "text",
+      "text": {
+        "content": "Sales by Product Category",
+        "fontSize": 30,
+        "fontWeight": "bold",
+        "textColor": "#2c3e50"
+      },
+      "pos": [
+        0,
+        -490
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "bar_a",
+      "shape": "rectangle",
+      "size": [
+        70,
+        0
+      ],
+      "color": "#2196F3",
+      "pos": [
+        -315,
+        270
+      ],
+      "anchor": "bottom",
+      "cornerRadius": 6
+    },
+    {
+      "id": "bar_b",
+      "shape": "rectangle",
+      "size": [
+        70,
+        0
+      ],
+      "color": "#4CAF50",
+      "pos": [
+        -215,
+        270
+      ],
+      "anchor": "bottom",
+      "cornerRadius": 6
+    },
+    {
+      "id": "bar_c",
+      "shape": "rectangle",
+      "size": [
+        70,
+        0
+      ],
+      "color": "#FF9800",
+      "pos": [
+        -115,
+        270
+      ],
+      "anchor": "bottom",
+      "cornerRadius": 6
+    },
+    {
+      "id": "bar_d",
+      "shape": "rectangle",
+      "size": [
+        70,
+        0
+      ],
+      "color": "#9C27B0",
+      "pos": [
+        -15,
+        270
+      ],
+      "anchor": "bottom",
+      "cornerRadius": 6
+    },
+    {
+      "id": "bar_e",
+      "shape": "rectangle",
+      "size": [
+        70,
+        0
+      ],
+      "color": "#E74C3C",
+      "pos": [
+        85,
+        270
+      ],
+      "anchor": "bottom",
+      "cornerRadius": 6
+    },
+    {
+      "id": "icon_a",
+      "shape": "rectangle",
+      "size": [
+        24,
+        24
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        -315,
+        70
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "icon_b",
+      "shape": "rectangle",
+      "size": [
+        24,
+        24
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        -215,
+        30
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "icon_c",
+      "shape": "rectangle",
+      "size": [
+        24,
+        24
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        -115,
+        90
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "icon_d",
+      "shape": "rectangle",
+      "size": [
+        24,
+        24
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        -15,
+        110
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "icon_e",
+      "shape": "rectangle",
+      "size": [
+        24,
+        24
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        85,
+        80
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "label_a",
+      "shape": "text",
+      "text": {
+        "content": "Product A",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -315,
+        320
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "label_b",
+      "shape": "text",
+      "text": {
+        "content": "Product B",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -215,
+        320
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "label_c",
+      "shape": "text",
+      "text": {
+        "content": "Product C",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -115,
+        320
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "label_d",
+      "shape": "text",
+      "text": {
+        "content": "Product D",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -15,
+        320
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "label_e",
+      "shape": "text",
+      "text": {
+        "content": "Product E",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        85,
+        320
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_a",
+      "shape": "text",
+      "text": {
+        "content": "200",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -315,
+        170
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_b",
+      "shape": "text",
+      "text": {
+        "content": "240",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -215,
+        130
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_c",
+      "shape": "text",
+      "text": {
+        "content": "180",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -115,
+        190
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_d",
+      "shape": "text",
+      "text": {
+        "content": "160",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -15,
+        210
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_e",
+      "shape": "text",
+      "text": {
+        "content": "190",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        85,
+        180
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_axis_0k",
+      "shape": "text",
+      "text": {
+        "content": "0K",
+        "fontSize": 16,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -450,
+        270
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_axis_50k",
+      "shape": "text",
+      "text": {
+        "content": "50K",
+        "fontSize": 16,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -450,
+        220
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_axis_100k",
+      "shape": "text",
+      "text": {
+        "content": "100K",
+        "fontSize": 16,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -450,
+        170
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_axis_150k",
+      "shape": "text",
+      "text": {
+        "content": "150K",
+        "fontSize": 16,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -450,
+        120
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_axis_200k",
+      "shape": "text",
+      "text": {
+        "content": "200K",
+        "fontSize": 16,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -450,
+        70
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_axis_250k",
+      "shape": "text",
+      "text": {
+        "content": "250K",
+        "fontSize": 16,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -450,
+        20
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "gridline_50k",
+      "shape": "line",
+      "size": [
+        1920,
+        1
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        0,
+        220
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "gridline_100k",
+      "shape": "line",
+      "size": [
+        1920,
+        1
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        0,
+        170
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "gridline_150k",
+      "shape": "line",
+      "size": [
+        1920,
+        1
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        0,
+        120
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "gridline_200k",
+      "shape": "line",
+      "size": [
+        1920,
+        1
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        0,
+        70
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "gridline_250k",
+      "shape": "line",
+      "size": [
+        1920,
+        1
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        0,
+        20
+      ],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "title",
+      "time": [
+        0,
+        0.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_axis_0k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_axis_50k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_axis_100k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_axis_150k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_axis_200k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_axis_250k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "gridline_50k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        0.2
+      ]
+    },
+    {
+      "target": "gridline_100k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        0.2
+      ]
+    },
+    {
+      "target": "gridline_150k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        0.2
+      ]
+    },
+    {
+      "target": "gridline_200k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        0.2
+      ]
+    },
+    {
+      "target": "gridline_250k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        0.2
+      ]
+    },
+    {
+      "target": "icon_a",
+      "time": [
+        1,
+        1.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "icon_b",
+      "time": [
+        1,
+        1.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "icon_c",
+      "time": [
+        1,
+        1.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "icon_d",
+      "time": [
+        1,
+        1.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "icon_e",
+      "time": [
+        1,
+        1.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "bar_a",
+      "time": [
+        1.5,
+        2.3
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        200
+      ]
+    },
+    {
+      "target": "bar_b",
+      "time": [
+        2.8,
+        3.6
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        240
+      ]
+    },
+    {
+      "target": "bar_c",
+      "time": [
+        4.1,
+        4.9
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        180
+      ]
+    },
+    {
+      "target": "bar_d",
+      "time": [
+        5.2,
+        6
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        160
+      ]
+    },
+    {
+      "target": "bar_e",
+      "time": [
+        6.3,
+        7.1
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        190
+      ]
+    },
+    {
+      "target": "value_a",
+      "time": [
+        7,
+        8.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_b",
+      "time": [
+        7,
+        8.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_c",
+      "time": [
+        7,
+        8.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_d",
+      "time": [
+        7,
+        8.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_e",
+      "time": [
+        7,
+        8.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "label_a",
+      "time": [
+        8.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "label_b",
+      "time": [
+        8.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "label_c",
+      "time": [
+        8.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "label_d",
+      "time": [
+        8.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "label_e",
+      "time": [
+        8.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    }
+  ]
+}

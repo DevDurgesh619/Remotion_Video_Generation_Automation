@@ -125,6 +125,111 @@ Output:
     { "target": "triangle_1", "time": [5, 6], "opacity": [1, 0] }
   ]
 }
+
+---
+
+EXAMPLE 4 — Bar chart with text labels (Level 2.0)
+
+Prompt: "Bar Chart Three Bars. Light grey background. Three vertical bars (rectangles): 80px wide each, 150px apart horizontally. Colors: bar 1 blue (#1976D2), bar 2 orange (#F57C00), bar 3 green (#388E3C). Animation (6s): 0-2s: Bar 1 grows upward from 0px to 200px height. 2-4s: Bar 2 grows to 280px. 4-6s: Bar 3 grows to 360px. Title 'Sales Data' at top. Value labels appear above bars after growth. Total duration: 6s."
+
+Output:
+{
+  "scene": "bar_chart_three_bars",
+  "duration": 6,
+  "fps": 30,
+  "canvas": { "w": 1920, "h": 1080 },
+  "bg": "#F5F5F5",
+  "objects": [
+    {
+      "id": "title",
+      "shape": "text",
+      "text": { "content": "Sales Data", "fontSize": 32, "fontWeight": "bold", "textColor": "#333333" },
+      "pos": [0, -450],
+      "opacity": 0
+    },
+    {
+      "id": "bar_1",
+      "shape": "rectangle",
+      "size": [80, 0],
+      "color": "#1976D2",
+      "pos": [-150, 200],
+      "anchor": "bottom",
+      "cornerRadius": 8
+    },
+    {
+      "id": "bar_2",
+      "shape": "rectangle",
+      "size": [80, 0],
+      "color": "#F57C00",
+      "pos": [0, 200],
+      "anchor": "bottom",
+      "cornerRadius": 8
+    },
+    {
+      "id": "bar_3",
+      "shape": "rectangle",
+      "size": [80, 0],
+      "color": "#388E3C",
+      "pos": [150, 200],
+      "anchor": "bottom",
+      "cornerRadius": 8
+    },
+    {
+      "id": "label_1",
+      "shape": "text",
+      "text": { "content": "200", "fontSize": 18, "fontWeight": "bold", "textColor": "#1976D2" },
+      "pos": [-150, -10],
+      "opacity": 0
+    },
+    {
+      "id": "label_2",
+      "shape": "text",
+      "text": { "content": "280", "fontSize": 18, "fontWeight": "bold", "textColor": "#F57C00" },
+      "pos": [0, -90],
+      "opacity": 0
+    },
+    {
+      "id": "label_3",
+      "shape": "text",
+      "text": { "content": "360", "fontSize": 18, "fontWeight": "bold", "textColor": "#388E3C" },
+      "pos": [150, -170],
+      "opacity": 0
+    },
+    {
+      "id": "x_q1",
+      "shape": "text",
+      "text": { "content": "Q1", "fontSize": 20, "textColor": "#666666" },
+      "pos": [-150, 240],
+      "opacity": 0
+    },
+    {
+      "id": "x_q2",
+      "shape": "text",
+      "text": { "content": "Q2", "fontSize": 20, "textColor": "#666666" },
+      "pos": [0, 240],
+      "opacity": 0
+    },
+    {
+      "id": "x_q3",
+      "shape": "text",
+      "text": { "content": "Q3", "fontSize": 20, "textColor": "#666666" },
+      "pos": [150, 240],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    { "target": "title", "time": [0, 0.5], "opacity": [0, 1] },
+    { "target": "bar_1", "time": [0, 2], "easing": "ease-out", "height": [0, 200] },
+    { "target": "bar_2", "time": [2, 4], "easing": "ease-out", "height": [0, 280] },
+    { "target": "bar_3", "time": [4, 6], "easing": "ease-out", "height": [0, 360] },
+    { "target": "label_1", "time": [2, 2.5], "opacity": [0, 1] },
+    { "target": "label_2", "time": [4, 4.5], "opacity": [0, 1] },
+    { "target": "label_3", "time": [5.5, 6], "opacity": [0, 1] },
+    { "target": "x_q1", "time": [2, 2.3], "opacity": [0, 1] },
+    { "target": "x_q2", "time": [4, 4.3], "opacity": [0, 1] },
+    { "target": "x_q3", "time": [5.5, 5.8], "opacity": [0, 1] }
+  ]
+}
 `;
 
 const SYSTEM_PROMPT = `You are an expert Motion Graphics Specification Generator.
@@ -150,13 +255,13 @@ The spec has 5 top-level keys: scene, duration, fps, canvas, bg, objects, timeli
    Each object has ONLY the properties it needs. Omit any property that uses its default value.
 
    Required fields:
-   - "id": unique string identifier (e.g., "circle_1", "rect_2")
-   - "shape": "circle" | "rectangle" | "triangle" | "pentagon" | "star" | "line"
+   - "id": unique string identifier (e.g., "circle_1", "rect_2", "title")
+   - "shape": "circle" | "rectangle" | "triangle" | "pentagon" | "star" | "line" | "text"
 
    Optional fields (include ONLY if needed):
    - "diameter": number (for circles)
    - "size": [width, height] (for rectangles, triangles, etc.)
-   - "color": hex string (default: none / transparent)
+   - "color": hex string (fill color for shapes; default: none / transparent)
    - "stroke": { "color": "#hex", "width": number } (for outlined shapes)
    - "fill": false (default is true; only include if explicitly no fill)
    - "pos": [x, y] (default: [0, 0] = canvas center)
@@ -167,6 +272,18 @@ The spec has 5 top-level keys: scene, duration, fps, canvas, bg, objects, timeli
    - "facing": "up" | "down" | "left" | "right" (for triangles; default: "up")
    - "zIndex": number (for layering)
    - "blendMode": "screen" | "multiply" etc.
+   - "anchor": "bottom" | "top" | "left" | "right" (for bars that grow FROM an edge; determines transformOrigin)
+
+   TEXT OBJECT FIELDS (when shape is "text"):
+   - "text": { "content": "string", "fontSize": number, "fontWeight": "normal"|"bold", "textColor": "#hex", "fontFamily": "string" }
+   - Use text objects for titles, labels, axis labels, value counters, legends, annotations
+   - NEVER use rectangles as placeholders for text — always use shape: "text" with content
+
+   BAR CHART RULES:
+   - For bars that grow from a baseline, use "anchor": "bottom" and animate height from [0, targetHeight]
+   - For horizontal bars growing from left, use "anchor": "left" and animate width from [0, targetWidth]
+   - Text labels (axis labels, value labels, titles) must be shape: "text" with actual content
+   - Each text element (title, each label, each axis tick) is a SEPARATE object
 
    POSITIONING: Canvas origin is center (0, 0). Positive x = right, positive y = down.
    Off-screen left = x: -960, right = x: 960, top = y: -540, bottom = y: 540.

@@ -1,0 +1,970 @@
+{
+  "scene": "stacked_bar_chart_revenue_breakdown",
+  "duration": 11,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#1a237e",
+  "objects": [
+    {
+      "id": "title",
+      "shape": "text",
+      "text": {
+        "content": "Revenue by Stream",
+        "fontSize": 32,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        0,
+        -490
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "legend",
+      "shape": "text",
+      "text": {
+        "content": "Cloud\nLicensing\nServices",
+        "fontSize": 12,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        800,
+        -400
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_label_0",
+      "shape": "text",
+      "text": {
+        "content": "0",
+        "fontSize": 16,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -850,
+        405
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_label_40",
+      "shape": "text",
+      "text": {
+        "content": "40",
+        "fontSize": 16,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -850,
+        285
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_label_80",
+      "shape": "text",
+      "text": {
+        "content": "80",
+        "fontSize": 16,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -850,
+        165
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_label_120",
+      "shape": "text",
+      "text": {
+        "content": "120",
+        "fontSize": 16,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -850,
+        45
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_label_160",
+      "shape": "text",
+      "text": {
+        "content": "160",
+        "fontSize": 16,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -850,
+        -75
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "gridline_40",
+      "shape": "line",
+      "size": [
+        1920,
+        1
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        0,
+        285
+      ],
+      "opacity": 0.15
+    },
+    {
+      "id": "gridline_80",
+      "shape": "line",
+      "size": [
+        1920,
+        1
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        0,
+        165
+      ],
+      "opacity": 0.15
+    },
+    {
+      "id": "gridline_120",
+      "shape": "line",
+      "size": [
+        1920,
+        1
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        0,
+        45
+      ],
+      "opacity": 0.15
+    },
+    {
+      "id": "gridline_160",
+      "shape": "line",
+      "size": [
+        1920,
+        1
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        0,
+        -75
+      ],
+      "opacity": 0.15
+    },
+    {
+      "id": "bar_q1_cloud",
+      "shape": "rectangle",
+      "size": [
+        80,
+        0
+      ],
+      "color": "#2196F3",
+      "pos": [
+        -450,
+        405
+      ],
+      "anchor": "bottom"
+    },
+    {
+      "id": "bar_q1_licensing",
+      "shape": "rectangle",
+      "size": [
+        80,
+        0
+      ],
+      "color": "#4CAF50",
+      "pos": [
+        -450,
+        345
+      ],
+      "anchor": "bottom"
+    },
+    {
+      "id": "bar_q1_services",
+      "shape": "rectangle",
+      "size": [
+        80,
+        0
+      ],
+      "color": "#9C27B0",
+      "pos": [
+        -450,
+        320
+      ],
+      "anchor": "bottom"
+    },
+    {
+      "id": "bar_q2_cloud",
+      "shape": "rectangle",
+      "size": [
+        80,
+        0
+      ],
+      "color": "#2196F3",
+      "pos": [
+        -150,
+        405
+      ],
+      "anchor": "bottom"
+    },
+    {
+      "id": "bar_q2_licensing",
+      "shape": "rectangle",
+      "size": [
+        80,
+        0
+      ],
+      "color": "#4CAF50",
+      "pos": [
+        -150,
+        345
+      ],
+      "anchor": "bottom"
+    },
+    {
+      "id": "bar_q2_services",
+      "shape": "rectangle",
+      "size": [
+        80,
+        0
+      ],
+      "color": "#9C27B0",
+      "pos": [
+        -150,
+        320
+      ],
+      "anchor": "bottom"
+    },
+    {
+      "id": "bar_q3_cloud",
+      "shape": "rectangle",
+      "size": [
+        80,
+        0
+      ],
+      "color": "#2196F3",
+      "pos": [
+        150,
+        405
+      ],
+      "anchor": "bottom"
+    },
+    {
+      "id": "bar_q3_licensing",
+      "shape": "rectangle",
+      "size": [
+        80,
+        0
+      ],
+      "color": "#4CAF50",
+      "pos": [
+        150,
+        345
+      ],
+      "anchor": "bottom"
+    },
+    {
+      "id": "bar_q3_services",
+      "shape": "rectangle",
+      "size": [
+        80,
+        0
+      ],
+      "color": "#9C27B0",
+      "pos": [
+        150,
+        320
+      ],
+      "anchor": "bottom"
+    },
+    {
+      "id": "bar_q4_cloud",
+      "shape": "rectangle",
+      "size": [
+        80,
+        0
+      ],
+      "color": "#2196F3",
+      "pos": [
+        450,
+        405
+      ],
+      "anchor": "bottom"
+    },
+    {
+      "id": "bar_q4_licensing",
+      "shape": "rectangle",
+      "size": [
+        80,
+        0
+      ],
+      "color": "#4CAF50",
+      "pos": [
+        450,
+        345
+      ],
+      "anchor": "bottom"
+    },
+    {
+      "id": "bar_q4_services",
+      "shape": "rectangle",
+      "size": [
+        80,
+        0
+      ],
+      "color": "#9C27B0",
+      "pos": [
+        450,
+        320
+      ],
+      "anchor": "bottom"
+    },
+    {
+      "id": "x_label_q1",
+      "shape": "text",
+      "text": {
+        "content": "Q1",
+        "fontSize": 22,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -450,
+        450
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_label_q2",
+      "shape": "text",
+      "text": {
+        "content": "Q2",
+        "fontSize": 22,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -150,
+        450
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_label_q3",
+      "shape": "text",
+      "text": {
+        "content": "Q3",
+        "fontSize": 22,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        150,
+        450
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_label_q4",
+      "shape": "text",
+      "text": {
+        "content": "Q4",
+        "fontSize": 22,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        450,
+        450
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_q1_cloud",
+      "shape": "text",
+      "text": {
+        "content": "60",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -450,
+        375
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_q1_licensing",
+      "shape": "text",
+      "text": {
+        "content": "35",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -450,
+        330
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_q1_services",
+      "shape": "text",
+      "text": {
+        "content": "25",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -450,
+        310
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_q2_cloud",
+      "shape": "text",
+      "text": {
+        "content": "70",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -150,
+        375
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_q2_licensing",
+      "shape": "text",
+      "text": {
+        "content": "40",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -150,
+        330
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_q2_services",
+      "shape": "text",
+      "text": {
+        "content": "30",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -150,
+        310
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_q3_cloud",
+      "shape": "text",
+      "text": {
+        "content": "80",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        150,
+        375
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_q3_licensing",
+      "shape": "text",
+      "text": {
+        "content": "50",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        150,
+        330
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_q3_services",
+      "shape": "text",
+      "text": {
+        "content": "30",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        150,
+        310
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_q4_cloud",
+      "shape": "text",
+      "text": {
+        "content": "90",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        450,
+        375
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_q4_licensing",
+      "shape": "text",
+      "text": {
+        "content": "60",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        450,
+        330
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_q4_services",
+      "shape": "text",
+      "text": {
+        "content": "30",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        450,
+        310
+      ],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "title",
+      "time": [
+        0,
+        0.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "legend",
+      "time": [
+        0,
+        0.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_label_0",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_label_40",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_label_80",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_label_120",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_label_160",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "bar_q1_cloud",
+      "time": [
+        1,
+        1.3
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        60
+      ]
+    },
+    {
+      "target": "bar_q1_licensing",
+      "time": [
+        1.3,
+        1.5
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        35
+      ]
+    },
+    {
+      "target": "bar_q1_services",
+      "time": [
+        1.5,
+        1.8
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        25
+      ]
+    },
+    {
+      "target": "bar_q2_cloud",
+      "time": [
+        1.8,
+        2.1
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        70
+      ]
+    },
+    {
+      "target": "bar_q2_licensing",
+      "time": [
+        2.1,
+        2.3
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        40
+      ]
+    },
+    {
+      "target": "bar_q2_services",
+      "time": [
+        2.3,
+        2.6
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        30
+      ]
+    },
+    {
+      "target": "bar_q3_cloud",
+      "time": [
+        2.6,
+        2.9
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        80
+      ]
+    },
+    {
+      "target": "bar_q3_licensing",
+      "time": [
+        2.9,
+        3.1
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        50
+      ]
+    },
+    {
+      "target": "bar_q3_services",
+      "time": [
+        3.1,
+        3.4
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        30
+      ]
+    },
+    {
+      "target": "bar_q4_cloud",
+      "time": [
+        3.4,
+        3.7
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        90
+      ]
+    },
+    {
+      "target": "bar_q4_licensing",
+      "time": [
+        3.7,
+        3.9
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        60
+      ]
+    },
+    {
+      "target": "bar_q4_services",
+      "time": [
+        3.9,
+        4.2
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        30
+      ]
+    },
+    {
+      "target": "value_label_q1_cloud",
+      "time": [
+        6,
+        6.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_q1_licensing",
+      "time": [
+        6.5,
+        7
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_q1_services",
+      "time": [
+        7,
+        7.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_q2_cloud",
+      "time": [
+        6,
+        6.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_q2_licensing",
+      "time": [
+        6.5,
+        7
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_q2_services",
+      "time": [
+        7,
+        7.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_q3_cloud",
+      "time": [
+        6,
+        6.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_q3_licensing",
+      "time": [
+        6.5,
+        7
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_q3_services",
+      "time": [
+        7,
+        7.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_q4_cloud",
+      "time": [
+        6,
+        6.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_q4_licensing",
+      "time": [
+        6.5,
+        7
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_q4_services",
+      "time": [
+        7,
+        7.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_q1",
+      "time": [
+        8,
+        8.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_q2",
+      "time": [
+        8,
+        8.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_q3",
+      "time": [
+        8,
+        8.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_q4",
+      "time": [
+        8,
+        8.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    }
+  ]
+}

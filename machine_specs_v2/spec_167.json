@@ -1,0 +1,319 @@
+{
+  "scene": "slice_pull_out_with_rotation",
+  "duration": 12,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#FFFFFF",
+  "objects": [
+    {
+      "id": "electronics_slice",
+      "shape": "circle",
+      "diameter": 400,
+      "color": "#FF6B6B",
+      "pos": [
+        0,
+        0
+      ],
+      "rotation": 0,
+      "opacity": 1
+    },
+    {
+      "id": "electronics_gradient",
+      "shape": "circle",
+      "diameter": 400,
+      "color": "#FF6B6B",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "glow",
+      "shape": "circle",
+      "diameter": 406,
+      "color": "#FF6B6B",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "software_slice",
+      "shape": "circle",
+      "diameter": 400,
+      "color": "#CCCCCC",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 1
+    },
+    {
+      "id": "services_slice",
+      "shape": "circle",
+      "diameter": 400,
+      "color": "#CCCCCC",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 1
+    },
+    {
+      "id": "support_slice",
+      "shape": "circle",
+      "diameter": 400,
+      "color": "#CCCCCC",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 1
+    },
+    {
+      "id": "training_slice",
+      "shape": "circle",
+      "diameter": 400,
+      "color": "#CCCCCC",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 1
+    },
+    {
+      "id": "other_slice",
+      "shape": "circle",
+      "diameter": 400,
+      "color": "#CCCCCC",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 1
+    },
+    {
+      "id": "annotation_label",
+      "shape": "text",
+      "text": {
+        "content": "Largest Market Segment",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF",
+        "fontFamily": "Arial"
+      },
+      "pos": [
+        100,
+        -100
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "annotation_box",
+      "shape": "rectangle",
+      "size": [
+        160,
+        30
+      ],
+      "color": "#333333",
+      "pos": [
+        100,
+        -100
+      ],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "electronics_slice",
+      "time": [
+        5,
+        6
+      ],
+      "pos": [
+        [
+          0,
+          0
+        ],
+        [
+          50,
+          0
+        ]
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "electronics_slice",
+      "time": [
+        5,
+        6
+      ],
+      "rotation": [
+        0,
+        15
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "electronics_gradient",
+      "time": [
+        5,
+        6
+      ],
+      "opacity": [
+        0,
+        1
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "glow",
+      "time": [
+        5,
+        6
+      ],
+      "opacity": [
+        0,
+        1
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "glow",
+      "time": [
+        6,
+        12
+      ],
+      "opacity": [
+        1,
+        0.5
+      ],
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "glow",
+      "time": [
+        6.8,
+        7.6
+      ],
+      "opacity": [
+        0.5,
+        1
+      ],
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "software_slice",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        1,
+        0.4
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "services_slice",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        1,
+        0.4
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "support_slice",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        1,
+        0.4
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "training_slice",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        1,
+        0.4
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "other_slice",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        1,
+        0.4
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "annotation_label",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        0,
+        1
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "annotation_box",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        0,
+        0.7
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "annotation_label",
+      "time": [
+        6,
+        7
+      ],
+      "x": [
+        100,
+        102
+      ],
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "annotation_label",
+      "time": [
+        6.5,
+        7
+      ],
+      "x": [
+        102,
+        100
+      ],
+      "easing": "ease-in-out"
+    }
+  ]
+}

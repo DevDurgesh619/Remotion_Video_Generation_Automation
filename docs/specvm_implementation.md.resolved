@@ -1,0 +1,93 @@
+# Spec VM — Virtual Motion Engine
+
+> [!IMPORTANT]
+> The Spec VM replaces the old TSX code generation pipeline. Animations are now **interpreted at runtime** directly from Motion Spec JSON — no [GeneratedMotion.tsx](file:///Users/durgesh/Desktop/shape-motion-lab/src/GeneratedMotion.tsx) is generated.
+
+## Architecture
+
+```mermaid
+flowchart LR
+    A["Prompt"] --> B["Motion Spec JSON"]
+    B --> C["Spec VM Runtime"]
+    C --> D["Remotion Render"]
+    
+    subgraph C["Spec VM Runtime"]
+        direction TB
+        E["SpecPlayer.tsx"] --> F["animationRuntime.ts"]
+        E --> G["rendererRegistry.ts"]
+        G --> H["shapeRenderers.tsx"]
+        G --> I["mediaRenderers.tsx"]
+    end
+```
+
+## Files Created
+
+| File | Purpose |
+|------|---------|
+| [types.ts](file:///Users/durgesh/Desktop/shape-motion-lab/src/specvm/types.ts) | TypeScript interfaces matching the actual spec JSON format |
+| [animationRuntime.ts](file:///Users/durgesh/Desktop/shape-motion-lab/src/specvm/animationRuntime.ts) | Per-frame interpolation engine (position, scale, rotation, opacity, color, shadow, stroke, text) |
+| [rendererRegistry.ts](file:///Users/durgesh/Desktop/shape-motion-lab/src/specvm/rendererRegistry.ts) | Registry-based shape→renderer dispatch |
+| [shapeRenderers.tsx](file:///Users/durgesh/Desktop/shape-motion-lab/src/specvm/shapeRenderers.tsx) | Renderers for circle, square, rectangle, triangle, line |
+| [mediaRenderers.tsx](file:///Users/durgesh/Desktop/shape-motion-lab/src/specvm/mediaRenderers.tsx) | Renderers for SVG, image, text |
+| [SpecPlayer.tsx](file:///Users/durgesh/Desktop/shape-motion-lab/src/specvm/SpecPlayer.tsx) | The runtime component — reads spec, computes per-frame state, renders |
+| [Root.tsx](file:///Users/durgesh/Desktop/shape-motion-lab/src/Root.tsx) | Updated to use SpecPlayer instead of GeneratedMotion |
+
+## How It Works
+
+Each frame, [SpecPlayer](file:///Users/durgesh/Desktop/shape-motion-lab/src/specvm/SpecPlayer.tsx#36-53) does:
+
+1. **Reads all objects** from `spec.objects`
+2. **Computes state** for each object via [computeObjectState(frame, fps, spec, obj)](file:///Users/durgesh/Desktop/shape-motion-lab/src/specvm/animationRuntime.ts#143-286)
+   - Walks all `timeline` events matching the object's `target`
+   - Interpolates each animatable property using Remotion's `interpolate()` with clamped extrapolation
+   - Returns a [ComputedObjectState](file:///Users/durgesh/Desktop/shape-motion-lab/src/specvm/types.ts#131-162) with resolved x, y, scale, rotation, opacity, color, dimensions, shadow, stroke, text
+3. **Renders** each object via [renderObject(obj, state)](file:///Users/durgesh/Desktop/shape-motion-lab/src/specvm/rendererRegistry.ts#45-72) which looks up the shape in the registry
+
+## Supported Properties
+
+| Property | Type | Spec Format |
+|----------|------|-------------|
+| Position | compound | `pos: [[fromX, fromY], [toX, toY]]` or `x: [from, to]`, `y: [from, to]` |
+| Opacity | scalar | `opacity: [from, to]` |
+| Scale | scalar | `scale: [from, to]` |
+| Rotation | scalar | `rotation: [from, to]` |
+| Color | color | `color: ["#hex", "#hex"]` |
+| Size | compound | `size: [[fromW, fromH], [toW, toH]]` |
+| Diameter | scalar | `diameter: [from, to]` |
+| Shadow | nested | `shadow: { offsetX: [from, to], ... }` |
+| Stroke | nested | `stroke: { color: [from, to], width: [from, to] }` |
+| Text | nested | `text: { fontSize: [from, to], textColor: [from, to] }` |
+
+## Easing Support
+
+| Spec String | Maps To |
+|-------------|---------|
+| `linear` | `Easing.linear` |
+| `ease-in` | `Easing.in(Easing.quad)` |
+| `ease-out` | `Easing.out(Easing.quad)` |
+| `ease-in-out` | `Easing.inOut(Easing.quad)` |
+| `ease-in-cubic` | `Easing.in(Easing.cubic)` |
+| + 10 more variants | sin, exp, circle |
+
+## Adding a New Shape
+
+> [!TIP]
+> Adding a new object type requires only **2 changes** — the VM core never changes.
+
+```typescript
+// 1. Create the renderer function
+export function renderStar(obj: SceneObject, state: ComputedObjectState): React.ReactElement {
+  // ... render logic
+}
+
+// 2. Register it
+rendererRegistry["star"] = renderStar;
+```
+
+## Verification
+
+The implementation was tested in Remotion Studio with [spec_148.json](file:///Users/durgesh/Desktop/shape-motion-lab/machine_specs_v2/spec_148.json) (rectangles_interlock):
+
+![Remotion Studio showing SpecVM rendering two rotated rectangles](remotion_studio_render_1773198378164.png)
+
+The animation renders correctly: two rectangles slide in, rotate 45°, and scale — all driven purely by the spec JSON at runtime.

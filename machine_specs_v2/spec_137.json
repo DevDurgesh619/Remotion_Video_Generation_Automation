@@ -1,0 +1,71 @@
+{
+  "scene": "triangle_color_vertex",
+  "duration": 6,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#000000",
+  "objects": [
+    {
+      "id": "triangle_1",
+      "shape": "triangle",
+      "size": [
+        200,
+        200
+      ],
+      "color": "#FFEB3B",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "triangle_1",
+      "time": [
+        0,
+        1.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        1.5,
+        4
+      ],
+      "color": [
+        "#FFEB3B",
+        {
+          "type": "gradient",
+          "from": "#F44336",
+          "to": "#2196F3",
+          "direction": "to bottom-right"
+        }
+      ]
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        4,
+        6
+      ],
+      "color": [
+        {
+          "type": "gradient",
+          "from": "#F44336",
+          "to": "#2196F3",
+          "direction": "to bottom-right"
+        },
+        "#FFEB3B"
+      ]
+    }
+  ]
+}

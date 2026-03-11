@@ -1,0 +1,171 @@
+{
+  "scene": "triangle_extrude_effect",
+  "duration": 6,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#FFFFFF",
+  "objects": [
+    {
+      "id": "triangle_1",
+      "shape": "triangle",
+      "size": [
+        175,
+        175
+      ],
+      "color": "#1E88E5",
+      "pos": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "triangle_2",
+      "shape": "triangle",
+      "size": [
+        175,
+        175
+      ],
+      "color": "#1E88E5",
+      "pos": [
+        4,
+        4
+      ],
+      "opacity": 0.8
+    },
+    {
+      "id": "triangle_3",
+      "shape": "triangle",
+      "size": [
+        175,
+        175
+      ],
+      "color": "#1E88E5",
+      "pos": [
+        8,
+        8
+      ],
+      "opacity": 0.6
+    },
+    {
+      "id": "triangle_4",
+      "shape": "triangle",
+      "size": [
+        175,
+        175
+      ],
+      "color": "#1E88E5",
+      "pos": [
+        12,
+        12
+      ],
+      "opacity": 0.4
+    },
+    {
+      "id": "triangle_5",
+      "shape": "triangle",
+      "size": [
+        175,
+        175
+      ],
+      "color": "#1E88E5",
+      "pos": [
+        16,
+        16
+      ],
+      "opacity": 0.2
+    }
+  ],
+  "timeline": [
+    {
+      "target": "triangle_2",
+      "time": [
+        1.5,
+        4
+      ],
+      "opacity": [
+        0,
+        0.8
+      ]
+    },
+    {
+      "target": "triangle_3",
+      "time": [
+        1.5,
+        4
+      ],
+      "opacity": [
+        0,
+        0.6
+      ]
+    },
+    {
+      "target": "triangle_4",
+      "time": [
+        1.5,
+        4
+      ],
+      "opacity": [
+        0,
+        0.4
+      ]
+    },
+    {
+      "target": "triangle_5",
+      "time": [
+        1.5,
+        4
+      ],
+      "opacity": [
+        0,
+        0.2
+      ]
+    },
+    {
+      "target": "triangle_2",
+      "time": [
+        4,
+        6
+      ],
+      "opacity": [
+        0.8,
+        0
+      ]
+    },
+    {
+      "target": "triangle_3",
+      "time": [
+        4,
+        6
+      ],
+      "opacity": [
+        0.6,
+        0
+      ]
+    },
+    {
+      "target": "triangle_4",
+      "time": [
+        4,
+        6
+      ],
+      "opacity": [
+        0.4,
+        0
+      ]
+    },
+    {
+      "target": "triangle_5",
+      "time": [
+        4,
+        6
+      ],
+      "opacity": [
+        0.2,
+        0
+      ]
+    }
+  ]
+}

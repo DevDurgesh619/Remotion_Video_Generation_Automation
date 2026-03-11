@@ -1,0 +1,52 @@
+{
+  "scene": "triangle_scale_directional",
+  "duration": 4,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#F5F5F5",
+  "objects": [
+    {
+      "id": "triangle_1",
+      "shape": "triangle",
+      "size": [
+        180,
+        180
+      ],
+      "color": "#E53935",
+      "pos": [
+        0,
+        0
+      ],
+      "facing": "right"
+    }
+  ],
+  "timeline": [
+    {
+      "target": "triangle_1",
+      "time": [
+        0,
+        1.5
+      ],
+      "easing": "ease-out",
+      "scaleX": [
+        1,
+        1.5
+      ]
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        1.5,
+        3
+      ],
+      "easing": "ease-in",
+      "scaleX": [
+        1.5,
+        1
+      ]
+    }
+  ]
+}

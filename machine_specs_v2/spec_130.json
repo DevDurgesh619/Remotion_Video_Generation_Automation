@@ -1,0 +1,43 @@
+{
+  "scene": "triangle_stroke_animation",
+  "duration": 4,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#000000",
+  "objects": [
+    {
+      "id": "triangle_1",
+      "shape": "triangle",
+      "size": [
+        210,
+        210
+      ],
+      "fill": false,
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 4
+      },
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 1
+    }
+  ],
+  "timeline": [
+    {
+      "target": "triangle_1",
+      "time": [
+        0,
+        2.5
+      ],
+      "strokeDasharray": [
+        0,
+        630
+      ]
+    }
+  ]
+}

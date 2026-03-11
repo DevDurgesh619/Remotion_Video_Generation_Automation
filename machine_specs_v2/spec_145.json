@@ -1,0 +1,244 @@
+{
+  "scene": "shadow_direction_wave",
+  "duration": 8,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#FFFFFF",
+  "objects": [
+    {
+      "id": "circle_1",
+      "shape": "circle",
+      "diameter": 120,
+      "color": "#FFFFFF",
+      "pos": [
+        -280,
+        0
+      ],
+      "opacity": 0,
+      "shadow": {
+        "offsetX": 4,
+        "offsetY": 4,
+        "blur": 8,
+        "color": "rgba(0, 0, 0, 0.5)"
+      }
+    },
+    {
+      "id": "circle_2",
+      "shape": "circle",
+      "diameter": 120,
+      "color": "#FFFFFF",
+      "pos": [
+        -140,
+        0
+      ],
+      "opacity": 0,
+      "shadow": {
+        "offsetX": 4,
+        "offsetY": 4,
+        "blur": 8,
+        "color": "rgba(0, 0, 0, 0.5)"
+      }
+    },
+    {
+      "id": "circle_3",
+      "shape": "circle",
+      "diameter": 120,
+      "color": "#FFFFFF",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0,
+      "shadow": {
+        "offsetX": 4,
+        "offsetY": 4,
+        "blur": 8,
+        "color": "rgba(0, 0, 0, 0.5)"
+      }
+    },
+    {
+      "id": "circle_4",
+      "shape": "circle",
+      "diameter": 120,
+      "color": "#FFFFFF",
+      "pos": [
+        140,
+        0
+      ],
+      "opacity": 0,
+      "shadow": {
+        "offsetX": 4,
+        "offsetY": 4,
+        "blur": 8,
+        "color": "rgba(0, 0, 0, 0.5)"
+      }
+    },
+    {
+      "id": "circle_5",
+      "shape": "circle",
+      "diameter": 120,
+      "color": "#FFFFFF",
+      "pos": [
+        280,
+        0
+      ],
+      "opacity": 0,
+      "shadow": {
+        "offsetX": 4,
+        "offsetY": 4,
+        "blur": 8,
+        "color": "rgba(0, 0, 0, 0.5)"
+      }
+    }
+  ],
+  "timeline": [
+    {
+      "target": "circle_1",
+      "time": [
+        0,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "circle_2",
+      "time": [
+        0,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "circle_3",
+      "time": [
+        0,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "circle_4",
+      "time": [
+        0,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "circle_5",
+      "time": [
+        0,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "circle_1",
+      "time": [
+        1,
+        8
+      ],
+      "easing": "linear",
+      "shadow": {
+        "offsetX": [
+          4,
+          -4
+        ],
+        "offsetY": [
+          4,
+          -4
+        ]
+      }
+    },
+    {
+      "target": "circle_2",
+      "time": [
+        2.4,
+        8
+      ],
+      "easing": "linear",
+      "shadow": {
+        "offsetX": [
+          4,
+          -4
+        ],
+        "offsetY": [
+          4,
+          -4
+        ]
+      }
+    },
+    {
+      "target": "circle_3",
+      "time": [
+        3.8,
+        8
+      ],
+      "easing": "linear",
+      "shadow": {
+        "offsetX": [
+          4,
+          -4
+        ],
+        "offsetY": [
+          4,
+          -4
+        ]
+      }
+    },
+    {
+      "target": "circle_4",
+      "time": [
+        5.2,
+        8
+      ],
+      "easing": "linear",
+      "shadow": {
+        "offsetX": [
+          4,
+          -4
+        ],
+        "offsetY": [
+          4,
+          -4
+        ]
+      }
+    },
+    {
+      "target": "circle_5",
+      "time": [
+        6.6,
+        8
+      ],
+      "easing": "linear",
+      "shadow": {
+        "offsetX": [
+          4,
+          -4
+        ],
+        "offsetY": [
+          4,
+          -4
+        ]
+      }
+    }
+  ]
+}

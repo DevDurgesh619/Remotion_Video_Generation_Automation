@@ -152,5 +152,140 @@
     "layer": "code_generation",
     "root_cause": "src/GeneratedMotion.tsx(25,7): error TS6133: 'totalFrames' is declared but its value is never read.",
     "timestamp": "2026-03-10T13:50:05.747Z"
+  },
+  {
+    "id": 20,
+    "prompt": "Triangle Color Cycle. Grey background (#E0E0E0). Triangle 195px base, pointing right, centered. [cite: 86] Starts yellow (#FFEB3B), morphs to green (#4CAF50) over 1.3s, morphs to blue (#2196F3) over 1.3s, morphs to red (#F44336) over 1.4s. [cite: 86] Total duration: 4s. [cite: 87]",
+    "prompt_id": 129,
+    "error_type": "Compiler TS Error",
+    "layer": "spec_compiler",
+    "root_cause": "src/GeneratedMotion.tsx(41,11): error TS1117: An object literal cannot have multiple properties with the same name.",
+    "timestamp": "2026-03-11T00:17:50.455Z"
+  },
+  {
+    "id": 21,
+    "prompt": "Triangle Stroke Animation. Black background. Triangle 210px base, no fill (transparent), 4px white stroke (#FFFFFF), pointing up, centered. [cite: 89] Animation: Stroke draws on from bottom-left corner clockwise, completing full triangle outline over 2.5s (stroke-dasharray animation). [cite: 90] Hold complete 1.5s. [cite: 90] Total duration: 4s. [cite: 91]",
+    "prompt_id": 130,
+    "error_type": "Compiler TS Error",
+    "layer": "spec_compiler",
+    "root_cause": "src/GeneratedMotion.tsx(27,11): error TS1117: An object literal cannot have multiple properties with the same name.",
+    "timestamp": "2026-03-11T00:18:18.271Z"
+  },
+  {
+    "id": 22,
+    "prompt": "Triangle Scale Directional. Light background. Red triangle (#E53935), 180px base, pointing right, centered. [cite: 96] Animation: Scales horizontally (stretches width) from 100% to 150% over 1.5s, height stays constant. [cite: 97] Returns to 100% over 1.5s. [cite: 97] Hold 1s. [cite: 97] Total duration: 4s. [cite: 98]",
+    "prompt_id": 132,
+    "error_type": "Compiler TS Error",
+    "layer": "spec_compiler",
+    "root_cause": "src/GeneratedMotion.tsx(7,5): error TS6133: 'triangle_1_scaleX' is declared but its value is never read.",
+    "timestamp": "2026-03-11T00:19:27.483Z"
+  },
+  {
+    "id": 23,
+    "prompt": "Triangle Color Vertex. Dark background. Triangle 200px, centered. Starts solid yellow (#FFEB3B). [cite: 259] Animation (6s): 0-1.5s: Appears. [cite: 259] 1.5-4s: Each vertex becomes different color (top red #F44336, bottom-left blue #2196F3, bottom-right green #4CAF50), gradient fills between vertices. [cite: 260] 4-6s: Colors blend back to uniform yellow. [cite: 261] Total duration: 6s. [cite: 261]",
+    "prompt_id": 137,
+    "error_type": "Compiler TS Error",
+    "layer": "spec_compiler",
+    "root_cause": "src/GeneratedMotion.tsx(53,11): error TS1117: An object literal cannot have multiple properties with the same name.",
+    "timestamp": "2026-03-11T00:20:06.438Z"
+  },
+  {
+    "id": 24,
+    "prompt": "Triangle Stroke Fill. Black background. Triangle 195px, centered. Starts as outline only (4px white stroke, no fill). [cite: 267] Animation (6s): 0-2s: Stroke draws on clockwise from top point. [cite: 268] 2-4s: Fill color (yellow #FDD835) fades in from 0% to 100% inside outline. [cite: 269] 4-6s: Stroke fades out, leaving solid yellow triangle. [cite: 270] Total duration: 6s. [cite: 270]",
+    "prompt_id": 139,
+    "error_type": "Compiler TS Error",
+    "layer": "spec_compiler",
+    "root_cause": "src/GeneratedMotion.tsx(36,11): error TS1117: An object literal cannot have multiple properties with the same name.\nsrc/GeneratedMotion.tsx(37,11): error TS1117: An object literal cannot have multiple properties with the same name.",
+    "timestamp": "2026-03-11T00:21:02.639Z"
+  },
+  {
+    "id": 25,
+    "prompt": "Triangle Stroke Fill. Black background. Triangle 195px, centered. Starts as outline only (4px white stroke, no fill). [cite: 267] Animation (6s): 0-2s: Stroke draws on clockwise from top point. [cite: 268] 2-4s: Fill color (yellow #FDD835) fades in from 0% to 100% inside outline. [cite: 269] 4-6s: Stroke fades out, leaving solid yellow triangle. [cite: 270] Total duration: 6s. [cite: 270]",
+    "prompt_id": 139,
+    "error_type": "TypeScript Error",
+    "layer": "code_generation",
+    "root_cause": "src/GeneratedMotion.tsx(92,10): error TS2322: Type '{ position: string; left: string; top: string; width: string; height: string; backgroundColor: string; clipPath: string; transform: string; display: string; boxSizing: string; }' is not assignable to type 'Properties<string | number, string & {}>'.\nsrc/GeneratedMotion.tsx(93,12): error TS2322: Type '{ position: string; left: string; top: string; width: string; height: string; backgroundColor: string; clipPath: string; transform: string; pointer",
+    "timestamp": "2026-03-11T00:22:06.242Z"
+  },
+  {
+    "id": 26,
+    "prompt": "Shapes Color Sync. Light grey background. Three shapes: circle (140px), square (140px), triangle (140px base), arranged horizontally (180px spacing). All start white. Animation (9s): All shapes cycle through same color sequence simultaneously in perfect sync: 0-1.5s: All morph to red. 1.5-3s: All morph to orange. 3-4.5s: All morph to yellow. 4.5-6s: All morph to green. 6-7.5s: All morph to blue. 7.5-9s: All morph to purple. [cite_start]Total duration: 9s. [cite: 597, 598, 599, 600, 601]",
+    "prompt_id": 147,
+    "error_type": "Compiler TS Error",
+    "layer": "spec_compiler",
+    "root_cause": "src/GeneratedMotion.tsx(125,11): error TS1117: An object literal cannot have multiple properties with the same name.\nsrc/GeneratedMotion.tsx(138,11): error TS1117: An object literal cannot have multiple properties with the same name.\nsrc/GeneratedMotion.tsx(152,11): error TS1117: An object literal cannot have multiple properties with the same name.",
+    "timestamp": "2026-03-11T00:23:39.948Z"
+  },
+  {
+    "id": 27,
+    "prompt": "Opacity Gradient Cascade. Gradient background. Ten circles (each 80px, all cyan #00BCD4), vertical column (90px spacing). Animation (8s): 0-1s: All appear simultaneously at different opacities forming gradient: top circle 100%, second 90%, third 80%... bottom 10%. 1-7s: Opacity values shift downward in cascade: top becomes 90%, second becomes 100%, third becomes 90%, etc. Creates flowing opacity wave moving down column. Completes 3 cascade cycles. 7-8s: All settle at 100%. [cite_start]Total duration: 8s. [cite: 608, 609, 610, 611, 612]",
+    "prompt_id": 149,
+    "error_type": "Compiler TS Error",
+    "layer": "spec_compiler",
+    "root_cause": "src/GeneratedMotion.tsx(167,35): error TS1005: '}' expected.\nsrc/GeneratedMotion.tsx(167,37): error TS1003: Identifier expected.\nsrc/GeneratedMotion.tsx(167,93): error TS1005: ';' expected.\nsrc/GeneratedMotion.tsx(167,105): error TS1005: ',' expected.\nsrc/GeneratedMotion.tsx(168,5): error TS2657: JSX expressions must have one parent element.",
+    "timestamp": "2026-03-11T00:24:19.927Z"
+  },
+  {
+    "id": 28,
+    "prompt": "Complex Coordinated Finale. Black background. Center: Large circle (200px, gold #FFD700 outline 4px, no fill). Around it: 8 triangles (each 100px, different rainbow colors) pointing toward center, positioned radially (240px from center, 45° apart). Animation (12s): 0-2s: Center circle appears and pulses (scale 100% -> 110% -> 100%). 2-6s: Triangles appear sequentially clockwise (0.5s each). 6-8s: All triangles rotate 180° simultaneously (now pointing away from center). 8-10s: Triangles orbit clockwise around circle, maintaining formation, 90° orbit. 10-12s: All triangles move toward center, all shapes fade out together. Total duration: 12s. [cite_start]Grand finale testing all coordination techniques. [cite: 613, 614, 615, 616, 617, 618, 619]",
+    "prompt_id": 150,
+    "error_type": "Compiler TS Error",
+    "layer": "spec_compiler",
+    "root_cause": "src/GeneratedMotion.tsx(33,7): error TS6133: 'triangle_1_x' is declared but its value is never read.\nsrc/GeneratedMotion.tsx(34,7): error TS6133: 'triangle_1_y' is declared but its value is never read.\nsrc/GeneratedMotion.tsx(49,7): error TS6133: 'triangle_2_x' is declared but its value is never read.\nsrc/GeneratedMotion.tsx(50,7): error TS6133: 'triangle_2_y' is declared but its value is never read.\nsrc/GeneratedMotion.tsx(65,7): error TS6133: 'triangle_3_x' is declared but its value is never r",
+    "timestamp": "2026-03-11T00:25:27.029Z"
+  },
+  {
+    "id": 29,
+    "prompt": "Stacked Bar Chart - Revenue Breakdown. Background dark navy (#1a237e). Title 'Revenue by Stream' centered, 32pt bold white (#FFFFFF), 50px from top. Four quarter columns (Q1–Q4), each stacked with segments: Cloud (blue #2196F3), Licensing (green #4CAF50), Services (purple #9C27B0). Total heights: Q1 120px (Cloud 60px, License 35px, Services 25px), Q2 140px, Q3 160px, Q4 180px. Baseline at 75% y. X-axis labels Q1–Q4 (white 22pt on semi-transparent background). Y-axis labels 0, 40, 80, 120, 160 (white 16pt). Horizontal gridlines 1px white, 0.15 opacity. Legend on right side showing three streams (12pt white). Canvas 1920×1080px. Animation (11s): 0–0.5s title and legend fade in. 0.5–1s Y-axis labels fade in. 1–6s stacked bars build quarter-by-quarter (Q1 1–1.8s, Q2 1.8–2.6s, Q3 2.6–3.4s, Q4 3.4–4.2s). In each quarter, Cloud grows first from baseline, then Licensing grows atop it, then Services, with ease-out. 6–8s segment value labels appear inside each segment (white 14pt bold) with counting animation. 8–9s X-axis labels fade. 9–11s hold with subtle white glow on all bars. [cite_start]Total duration: 11s. ",
+    "prompt_id": 154,
+    "error_type": "Compiler TS Error",
+    "layer": "spec_compiler",
+    "root_cause": "src/GeneratedMotion.tsx(322,13): error TS1002: Unterminated string literal.\nsrc/GeneratedMotion.tsx(323,1): error TS1005: '}' expected.\nsrc/GeneratedMotion.tsx(324,10): error TS1381: Unexpected token. Did you mean `{'}'}` or `&rbrace;`?",
+    "timestamp": "2026-03-11T01:28:52.949Z"
+  },
+  {
+    "id": 30,
+    "prompt": "Shapes Color Sync. Light grey background. Three shapes: circle (140px), square (140px), triangle (140px base), arranged horizontally (180px spacing). All start white. Animation (9s): All shapes cycle through same color sequence simultaneously in perfect sync: 0-1.5s: All morph to red. 1.5-3s: All morph to orange. 3-4.5s: All morph to yellow. 4.5-6s: All morph to green. 6-7.5s: All morph to blue. 7.5-9s: All morph to purple. [cite_start]Total duration: 9s. [cite: 597, 598, 599, 600, 601]",
+    "prompt_id": 147,
+    "error_type": "Compiler TS Error",
+    "layer": "spec_compiler",
+    "root_cause": "src/GeneratedMotion.tsx(125,11): error TS1117: An object literal cannot have multiple properties with the same name.\nsrc/GeneratedMotion.tsx(138,11): error TS1117: An object literal cannot have multiple properties with the same name.\nsrc/GeneratedMotion.tsx(152,11): error TS1117: An object literal cannot have multiple properties with the same name.",
+    "timestamp": "2026-03-11T03:15:51.818Z"
+  },
+  {
+    "id": 31,
+    "prompt": "Triangle Color Vertex. Dark background. Triangle 200px, centered. Starts solid yellow (#FFEB3B). [cite: 259] Animation (6s): 0-1.5s: Appears. [cite: 259] 1.5-4s: Each vertex becomes different color (top red #F44336, bottom-left blue #2196F3, bottom-right green #4CAF50), gradient fills between vertices. [cite: 260] 4-6s: Colors blend back to uniform yellow. [cite: 261] Total duration: 6s. [cite: 261]",
+    "prompt_id": 137,
+    "error_type": "Render Error",
+    "layer": "specvm_runtime",
+    "root_cause": "Command failed: npx remotion render src/index.ts GeneratedMotion outputs/video_137.mp4",
+    "timestamp": "2026-03-11T04:02:19.998Z"
+  },
+  {
+    "id": 32,
+    "prompt": "Line Chart - Single Trend Over Time. Background dark (#1a1a1a). Title 'Website Traffic 12 Months' top-left, 28pt bold white (#FFFFFF), 40px from top. Chart area 1200×500px, positioned 100px from left and 150px from top. X-axis labels Jan–Dec (18pt white) centered under each month. Y-axis on left: 0, 5K, 10K, 15K, 20K, 25K (18pt white, right-aligned 20px left of chart). Horizontal gridlines at 5K intervals (1px white, 0.2 opacity). Data line: blue (#2196F3), 4px stroke, smooth curve through points 8K, 9K, 11K, 13K, 15K, 17K, 18K, 19K, 20K, 21K, 22K, 23K. Markers: 8px circles, white fill with blue border 2px. Canvas 1920×1080px. Animation (11s): 0–0.5s title fades in. 0.5–1s axes (Y labels + gridlines) fade in. 1–8s line traces left-to-right along data path over 7s, linear timing, with markers appearing as line reaches each point. 8–9.5s value labels ('XXK', 12pt bold white) above markers fade in with counting animation if needed. 9.5–10s X-axis labels fade in. 10–11s hold with marker glow pulsing (0.3s cycle). [cite_start]Total duration: 11s. ",
+    "prompt_id": 157,
+    "error_type": "Render Error",
+    "layer": "specvm_runtime",
+    "root_cause": "Command failed: npx remotion render src/index.ts GeneratedMotion outputs/video_157.mp4",
+    "timestamp": "2026-03-11T04:03:51.985Z"
+  },
+  {
+    "id": 33,
+    "prompt": "Bar Glow Emphasis - Highlighting Top Performer. Builds on Prompt 1 (vertical bar chart). At 4s mark, Q4 bar (highest value $70K) gets emphasis: bar shadow expands radially from 2px glow (#F44336 red) to 8px over 0.8s, pulsing in a 1s cycle. Bar border thickens from 1px to 3px white (#FFFFFF). Q1–Q3 bars fade to 0.5 opacity and slightly desaturate so only Q4 remains fully saturated. Q4 value label '$70K' scales from 20pt to 28pt bold and color shifts to gold (#FFD700). Behind the label, a semi-transparent highlight box appears (#FFF8DC yellow, 0.4 opacity, 4px padding). Animation timeline: 0–4s regular bar animation from Prompt 1. 4–4.8s glow expands, border thickens, label enlarges. 4.8–8s pulsing glow continues with other bars dimmed. Hold at 8s with Q4 emphasized. [cite_start]Total duration: 8s (extends base chart timeline). ",
+    "prompt_id": 166,
+    "error_type": "Render Error",
+    "layer": "specvm_runtime",
+    "root_cause": "Command failed: npx remotion render src/index.ts GeneratedMotion outputs/video_166.mp4",
+    "timestamp": "2026-03-11T04:04:44.100Z"
+  },
+  {
+    "id": 34,
+    "prompt": "Stacked Segment Flash - Individual Segment Emphasis. Builds on Prompt 4 (stacked bar chart). At 5s mark, Services segment (purple #9C27B0) in Q4 bar is emphasized. That segment gets a 2px white border and 3px white glow shadow pulsing every 0.8s. Other segments in the same Q4 bar drop to 0.6 opacity. Services segments in Q1–Q3 subtly highlight (opacity 0.8). A marketing label appears beside Q4 bar with arrow pointing to Services: 'Services Revenue: $18K' (12pt white bold in semi-transparent box). Animation: 0–5s normal stacked bar animation from Prompt 4. 5–6s Q4 Services segment gains border and glow while neighboring segments dim. 6–8s arrow and label fade in with slight scale-up. 8–12s glow continues pulsing at 1s cycle. Hold with emphasized segment visible. [cite_start]Total duration: 12s (including base stacked bar motion). ",
+    "prompt_id": 170,
+    "error_type": "Render Error",
+    "layer": "specvm_runtime",
+    "root_cause": "Command failed: npx remotion render src/index.ts GeneratedMotion outputs/video_170.mp4",
+    "timestamp": "2026-03-11T04:05:06.818Z"
   }
 ]

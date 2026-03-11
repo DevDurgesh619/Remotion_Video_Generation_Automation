@@ -1,223 +1,88 @@
 [
   {
-    "id": 101,
-    "category": "coordination",
-    "prompt": "Three Shapes Center Bounce. White background. Circle (140px red #F44336), square (140px blue #2196F3), triangle (140px base green #4CAF50). Animation (6s): 0-2s: Circle slides from left, square from right, triangle drops from top. All arrive at center with bounce (overshoot 15px, settle). 2-4s: All three rotate slowly in place (each 180°). 4-5s: All scale together: 100% -> 110% -> 100%. 5-6s: Fade out together. Total duration: 6s. [cite: 374, 375, 376, 377, 378]"
-  },
-  {
-    "id": 102,
-    "category": "coordination",
-    "prompt": "Shapes Horizontal Align Pulse. Gradient background (#E3F2FD to #BBDEFB). Circle (120px), square (120px), triangle (120px base), all magenta (#E91E63). Animation (8s): 0-2s: Circle slides in from left, square from right, triangle drops from top, all stop at center overlapping. 2-4s: Shapes slowly rotate in place. Circle moves 40px up, square 40px down, triangle shifts between them. 4-6s: All move toward exact center, overlap increases, opacity lowers where overlapping (blend mode). 6-8s: Align horizontally (150px apart), pulse scale 100% -> 105% -> 100%, fade out. [cite_start]Total duration: 8s. [cite: 379, 380, 381, 382, 383, 384]"
-  },
-  {
-    "id": 103,
-    "category": "coordination",
-    "prompt": "Sequential Shape Reveal. Dark background (#212121). Five circles (each 100px), arranged in horizontal row (120px spacing), different colors: red, orange, yellow, green, blue. Animation (7s): 0-1.4s: Circle 1 (red) fades in. 1.4-2.8s: Circle 2 (orange) fades in. 2.8-4.2s: Circle 3 (yellow) fades in. 4.2-5.6s: Circle 4 (green) fades in. 5.6-7s: Circle 5 (blue) fades in, all hold. [cite_start]Total duration: 7s. [cite: 385, 386, 387, 388]"
-  },
-  {
-    "id": 104,
-    "category": "coordination",
-    "prompt": "Bar Chart Three Bars. Light grey background. Three vertical bars (rectangles): 80px wide each, 150px apart horizontally, all start at bottom (y: 80% canvas height), same base level. Colors: bar 1 blue (#1976D2), bar 2 orange (#F57C00), bar 3 green (#388E3C). Animation (6s): 0-2s: Bar 1 grows upward from 0px to 200px height (30% target). 2-4s: Bar 2 grows from 0px to 280px (40%). 4-6s: Bar 3 grows from 0px to 360px (50%). All bars have rounded top corners (10px radius). [cite_start]Total duration: 6s. [cite: 389, 390, 391, 392, 393, 394]"
-  },
-  {
-    "id": 105,
-    "category": "coordination",
-    "prompt": "Bar Chart with Counter. White background. Three bars same as prompt 104, same positions and colors. Above each bar position: percentage text ('0%' initially, white on dark grey badge 60px x 30px, rounded). Animation (7s): 0-2s: Bar 1 grows to 200px, simultaneously text counts '0%' -> '30%' above it. 2-4s: Bar 2 grows to 280px, text counts '0%' -> '40%'. 4-6s: Bar 3 grows to 360px, text counts '0%' -> '50%'. 6-7s: All hold complete. [cite_start]Total duration: 7s. [cite: 395, 396, 397, 398, 399, 400]"
-  },
-  {
-    "id": 106,
-    "category": "coordination",
-    "prompt": "Circles Orbit Center. Black background. Center: Small white circle (40px, stationary). Orbiting: Three colored circles (each 60px): red, green, blue. Each on invisible circular orbit (radius 180px from center). Animation (8s): 0-2s: Center circle appears, orbit circles appear at top, right-bottom, left-bottom positions (120° apart). 2-8s: All three circles orbit clockwise around center simultaneously, maintaining 120° spacing. Complete 1 full orbit over 6s. [cite_start]Total duration: 8s. [cite: 401, 402, 403, 404, 405]"
-  },
-  {
-    "id": 107,
-    "category": "coordination",
-    "prompt": "Square Grid Appear Sequential. White background. 3x3 grid of squares (9 total), each 80px, 20px gaps, purple (#9C27B0), centered grid. Animation (9s): Squares appear sequentially in pattern: top-left -> top-center -> top-right -> middle-left -> center -> middle-right -> bottom-left -> bottom-center -> bottom-right. Each square fades in over 0.8s with 0.2s stagger (total 8s for all 9). All hold 1s. [cite_start]Total duration: 9s. [cite: 406, 407, 408, 409, 410]"
-  },
-  {
-    "id": 108,
-    "category": "coordination",
-    "prompt": "Triangles Point Inward. Gradient background. Four triangles (each 140px base, red #E53935): top triangle pointing down, bottom pointing up, left pointing right, right pointing left. Positioned at canvas edges pointing toward center. Animation (7s): 0-2s: All four triangles slide in from their edges toward center. 2-4s: Stop 100px from center, rotate slowly (each 180°). 4-6s: Move closer to center (50px from center), opacity lowers to 60%. 6-7s: All pulse scale 100% -> 110% -> 100%. [cite_start]Total duration: 7s. [cite: 411, 412, 413, 414, 415]"
-  },
-  {
-    "id": 109,
-    "category": "coordination",
-    "prompt": "Line Star Burst. Black background. Center point. Eight lines (each 200px long, 3px thick, white), radiating from center like star burst (45° apart, forming 8 directions). Animation (6s): 0-4s: Lines draw outward from center sequentially clockwise: line 1 (top) over 0.5s, line 2 (top-right) over 0.5s, continuing for all 8 lines. 4-6s: All complete lines rotate together 45° clockwise. [cite_start]Total duration: 6s. [cite: 416, 417, 418, 419]"
-  },
-  {
-    "id": 110,
-    "category": "coordination",
-    "prompt": "Rectangles Layered Slide. Light background. Five rectangles (each 300px x 150px, rounded 12px, same size), different colors: red, orange, yellow, green, blue. Stacked at center with 10px vertical offset creating 3D layers. Animation (8s): 0-1.6s: Red slides in from left. 1.6-3.2s: Orange slides in from left, layers on red. 3.2-4.8s: Yellow slides in. 4.8-6.4s: Green slides in. 6.4-8s: Blue slides in. All layer creating colored stack. [cite_start]Total duration: 8s. [cite: 420, 421, 422, 423, 424]"
-  },
-  {
-    "id": 111,
-    "category": "coordination",
-    "prompt": "Circle Chain Connected. White background. Five circles (each 100px, blue #2196F3), arranged horizontally (140px apart). Lines (3px, grey) connect adjacent circles (center to center). Animation (7s): 0-1.4s: Circle 1 appears, no line. 1.4-2.8s: Line draws from circle 1 to position 2, then circle 2 appears. 2.8-4.2s: Line draws 2->3, circle 3 appears. 4.2-5.6s: Line draws 3->4, circle 4 appears. 5.6-7s: Line draws 4->5, circle 5 appears. [cite_start]Total duration: 7s. [cite: 425, 426, 427, 428, 429]"
-  },
-  {
-    "id": 112,
-    "category": "coordination",
-    "prompt": "Shapes Size Progression. Grey background. Five circles arranged horizontally (150px spacing), all centered vertically. Sizes increase: 60px, 90px, 120px, 150px, 180px. All cyan (#00BCD4). Animation (6s): All appear simultaneously (fade in 1s). Then scale pulse wave left to right: circle 1 pulses 100% -> 115% -> 100% (0.8s), then circle 2 (0.8s), continuing through all 5 (total 4s pulse wave). Final 1s hold. [cite_start]Total duration: 6s. [cite: 430, 431, 432, 433, 434]"
-  },
-  {
-    "id": 113,
-    "category": "coordination",
-    "prompt": "Triangle Spinning Formation. Black background. Three triangles (each 120px, different colors: red, green, blue), start at center overlapping. Animation (8s): 0-2s: All appear at center. 2-4s: Triangles separate outward to form larger triangle formation (each moves 150px from center, 120° apart). 4-6s: While in formation, all three triangles rotate clockwise (each 360°) in place. 6-8s: Formation rotates as whole (triangles orbit center 180°). [cite_start]Total duration: 8s. [cite: 435, 436, 437, 438, 439]"
-  },
-  {
-    "id": 114,
-    "category": "coordination",
-    "prompt": "Square Border Sequential Build. White background. Four rectangles forming square border frame: top bar (400px x 40px), bottom bar (400px x 40px), left bar (40px x 300px), right bar (40px x 300px). All orange (#FF9800). Animation (6s): 0-1.5s: Top bar draws left to right. 1.5-3s: Right bar draws top to bottom. 3-4.5s: Bottom bar draws right to left. 4.5-6s: Left bar draws bottom to top, completing square border. [cite_start]Total duration: 6s. [cite: 440, 441, 442, 443]"
-  },
-  {
-    "id": 115,
-    "category": "coordination",
-    "prompt": "Circles Merge Split. Light background. Two circles: red (#F44336, 120px) and blue (#2196F3, 120px). Start separated 200px apart horizontally. Animation (8s): 0-2s: Both appear. 2-4s: Move toward each other, overlap at center. 4-5s: While overlapping, blend colors (overlapping area becomes purple). 5-6s: Merge into single purple circle (140px). 6-8s: Splits back into red and blue, separate to original positions. [cite_start]Total duration: 8s. [cite: 444, 445, 446, 447, 448]"
-  },
-  {
-    "id": 116,
-    "category": "coordination",
-    "prompt": "Pentagon Ring Rotate. Dark background. Five pentagons (each 100px, same size), different colors (red, orange, yellow, green, blue), arranged in circle (radius 180px from center), evenly spaced. Animation (7s): 0-2s: All pentagons appear simultaneously. 2-5s: All pentagons orbit clockwise around invisible center circle, maintaining spacing, completing half orbit (180°). 5-7s: Each pentagon rotates in place (360°) while stationary on orbit. [cite_start]Total duration: 7s. [cite: 449, 450, 451, 452]"
-  },
-  {
-    "id": 117,
-    "category": "coordination",
-    "prompt": "Bar Graph Comparison. White background. Two groups of bars side by side. Left group (labeled 'BEFORE'): 3 bars (60px wide, grey #9E9E9E), heights 120px, 160px, 100px. Right group (labeled 'AFTER'): 3 bars (60px wide, green #4CAF50), heights 200px, 280px, 180px. Labels: small text above each group. Animation (8s): 0-2s: Labels appear. 2-5s: Left bars grow sequentially (1s each). 5-8s: Right bars grow sequentially (1s each), showing improvement. [cite_start]Total duration: 8s. [cite: 453, 454, 455, 456, 457]"
-  },
-  {
-    "id": 118,
-    "category": "coordination",
-    "prompt": "Staggered Timing Variation. Gradient background. Five squares (each 100px), arranged diagonally, colors: red, orange, yellow, green, blue. Animation with precise stagger: 0-1.4s: Red square fades in (1s fade, appears at 0s). 0.7-2.1s: Orange fades in (1s fade, starts 0.7s). 1.5-2.9s: Yellow fades in (1s fade, starts 1.5s). 2.1-3.5s: Green fades in (1s fade, starts 2.1s). 3.0-4.4s: Blue fades in (1s fade, starts 3.0s). All hold 3.6s. Total duration: 8s. [cite_start]Tests overlapping fade timings. [cite: 458, 459, 460, 461, 462, 463]"
-  },
-  {
-    "id": 119,
-    "category": "coordination",
-    "prompt": "Circles Shadow Depth. Light grey background. Three circles (each 150px, white #FFFFFF), arranged vertically (180px apart). Each has different shadow depth creating 3D layering: Circle 1 (top): shadow 0px 4px 8px (close to surface). Circle 2 (middle): shadow 0px 12px 24px (elevated). Circle 3 (bottom): shadow 0px 24px 48px (highest). Animation (6s): 0-2s: All appear with shadows. 2-4s: Shadows animate: top shadow grows to match middle, middle to match bottom, bottom shrinks to match original top (circular shadow rotation). 4-6s: Return to original depths. [cite_start]Total duration: 6s. [cite: 464, 465, 466, 467, 468, 469]"
-  },
-  {
-    "id": 120,
-    "category": "coordination",
-    "prompt": "Lines Form Grid. White background. Grid formation: 5 horizontal lines (each 400px x 2px, grey #757575, 80px vertical spacing) and 5 vertical lines (each 2px x 400px, same grey, 80px horizontal spacing) forming 4x4 grid. Animation (8s): 0-4s: Horizontal lines draw from left to right sequentially (0.8s each). 4-8s: Vertical lines draw from top to bottom sequentially (0.8s each), completing grid. [cite_start]Total duration: 8s. [cite: 470, 471, 472, 473]"
-  },
-  {
-    "id": 121,
-    "category": "coordination",
-    "prompt": "Shapes Gradient Overlap. Black background. Three large shapes overlapping at center: Circle (200px, gradient red #F44336 to transparent), square (200px, rotated 45° becoming diamond, gradient blue #2196F3 to transparent), triangle (200px, gradient green #4CAF50 to transparent). Animation (6s): 0-2s: Circle fades in. 2-4s: Square fades in overlapping circle (blend mode: screen or lighten). 4-6s: Triangle fades in overlapping both. Colors blend in overlapping areas creating compound colors. [cite_start]Total duration: 6s. [cite: 474, 475, 476, 477]"
-  },
-  {
-    "id": 122,
-    "category": "coordination",
-    "prompt": "Pulse Wave Through Row. Light background. Six circles (each 80px, blue #1E88E5), horizontal row (100px spacing). Animation (7s): Scale pulse wave travels left to right: Circle 1 pulses 100% -> 130% -> 100% over 1s. Circle 2 starts pulsing when circle 1 reaches peak (0.5s stagger). Pattern continues through all 6 circles. Wave completes, all hold normal size 2s. [cite_start]Total duration: 7s. [cite: 478, 479, 480, 481, 482]"
-  },
-  {
-    "id": 123,
-    "category": "coordination",
-    "prompt": "Rectangles Aspect Ratio. Grey background. Three rectangles, all starting 200px x 200px (squares), different colors (red, green, blue), arranged horizontally (220px spacing). Animation (8s): 0-2s: All appear as squares. 2-4s: Red morphs to wide (400px x 100px). 4-6s: Green morphs to tall (100px x 400px). Blue stays square. 6-8s: All morph back to 200px x 200px squares. [cite_start]Total duration: 8s. [cite: 483, 484, 485, 486]"
-  },
-  {
-    "id": 124,
-    "category": "coordination",
-    "prompt": "Triangle Stack Pyramid. White background. Six triangles (each 140px base, yellow #FDD835), arranged in pyramid: row 1 (bottom): 3 triangles. Row 2 (middle): 2 triangles. Row 3 (top): 1 triangle. All pointing up. Animation (9s): 0-1.5s: Bottom row appears (3 triangles simultaneously). 1.5-3s: Middle row drops in from above, stacks on bottom row. 3-4.5s: Top triangle drops in, completes pyramid. 4.5-6.5s: Entire pyramid sways gently (rotates ±5° wobble). 6.5-9s: Each triangle rotates 180° sequentially bottom to top (pointing down), then flips back. [cite_start]Total duration: 9s. [cite: 487, 488, 489, 490, 491, 492, 493]"
-  },
-  {
-    "id": 125,
-    "category": "coordination",
-    "prompt": "Color Cycling Coordination. Black background. Four squares (each 120px), arranged in 2x2 grid (40px gaps). All start red (#F44336). Animation (12s): Color wave cycles through all squares: 0-3s: Top-left cycles red -> orange -> yellow -> green -> blue -> purple -> red (completes full color cycle). 3-6s: Top-right does same cycle (3s delay). 6-9s: Bottom-left does same. 9-12s: Bottom-right completes. All end on different colors. [cite_start]Total duration: 12s. [cite: 494, 495, 496, 497, 498]"
-  },
-  {
-    "id": 126,
-    "category": "coordination",
-    "prompt": "Opacity Fade Pattern. Light background. 4x4 grid of circles (16 total), each 60px, all cyan (#00BCD4), 20px gaps. Animation (8s): 0-1s: All appear at 100%. 1-3s: Diagonal fade pattern: top-left to bottom-right diagonal fades to 20%, then next diagonal, continuing (8 diagonals total, each fades over 0.25s). 3-5s: Hold pattern (some circles 100%, others 20%). 5-7s: Reverse: all return to 100% in reverse diagonal pattern. 7-8s: Hold all 100%. [cite_start]Total duration: 8s. [cite: 499, 500, 501, 502, 503]"
-  },
-  {
-    "id": 127,
-    "category": "coordination",
-    "prompt": "Rotation Direction Contrast. White background. Two circles (each 160px): left circle red (#E53935) with small white dot showing rotation, right circle blue (#1E88E5) with white dot. Circles 250px apart. Animation (6s): 0-1s: Both appear. 1-4s: Left circle rotates 360° clockwise, right circle rotates 360° counter-clockwise simultaneously (opposite directions, same speed). 4-6s: Both rotate back to starting position (reverse direction). [cite_start]Total duration: 6s. [cite: 504, 505, 506, 507]"
-  },
-  {
     "id": 128,
-    "category": "coordination",
-    "prompt": "Scale Coordination Inverse. Grey background. Two squares (each 140px), left orange (#FF9800), right purple (#9C27B0), 200px apart. Animation (6s): 0-1s: Both appear at 100%. 1-3s: Left scales up 100% -> 150%, simultaneously right scales down 100% -> 50% (inverse scaling). 3-5s: Reverse: left scales 150% -> 100%, right scales 50% -> 100%. 5-6s: Hold normal size. [cite_start]Total duration: 6s. [cite: 508, 509, 510, 511]"
+    "category": "Basic Shapes & Fundamental Animations",
+    "prompt": "Triangle Flip Vertical. White background. Purple triangle (#8E24AA), 185px base, pointing up, centered. [cite: 83] Animation: Flips vertically (3D rotation around horizontal axis): rotates 180° over 1.5s, now pointing down. [cite: 84] Hold 2.5s. [cite: 84] Total duration: 4s. [cite: 84]"
   },
   {
     "id": 129,
-    "category": "coordination",
-    "prompt": "Line Star Formation. Black background. Center point. Twelve lines (each 250px long, 2px thick, white), radiating from center at 30° intervals (forming 12-point star burst). Animation (8s): 0-6s: Lines appear sequentially clockwise, each drawing outward from center over 0.5s (12 lines x 0.5s = 6s). 6-8s: All lines rotate together as formation 30° clockwise. [cite_start]Total duration: 8s. [cite: 512, 513, 514, 515]"
+    "category": "Basic Shapes & Fundamental Animations",
+    "prompt": "Triangle Color Cycle. Grey background (#E0E0E0). Triangle 195px base, pointing right, centered. [cite: 86] Starts yellow (#FFEB3B), morphs to green (#4CAF50) over 1.3s, morphs to blue (#2196F3) over 1.3s, morphs to red (#F44336) over 1.4s. [cite: 86] Total duration: 4s. [cite: 87]"
   },
   {
     "id": 130,
-    "category": "coordination",
-    "prompt": "Rectangles Bridge Build. Light background. Two vertical rectangles (pillars): left 80px x 300px, right 80px x 300px, purple, 400px apart horizontally. Top horizontal rectangle (bridge): 400px x 60px, orange. Animation (7s): 0-2s: Left pillar grows upward from bottom. 2-4s: Right pillar grows upward. 4-5s: Both pillars hold. 5-7s: Bridge rectangle slides in from left, resting on top of pillars, connecting them. [cite_start]Total duration: 7s. [cite: 516, 517, 518, 519]"
+    "category": "Basic Shapes & Fundamental Animations",
+    "prompt": "Triangle Stroke Animation. Black background. Triangle 210px base, no fill (transparent), 4px white stroke (#FFFFFF), pointing up, centered. [cite: 89] Animation: Stroke draws on from bottom-left corner clockwise, completing full triangle outline over 2.5s (stroke-dasharray animation). [cite: 90] Hold complete 1.5s. [cite: 90] Total duration: 4s. [cite: 91]"
   },
   {
     "id": 131,
-    "category": "coordination",
-    "prompt": "Circles Radial Expand. White background. Center: small circle (40px, red #F44336). Eight additional circles (each 80px, different colors) positioned in radial pattern around center (180px radius, 45° apart), all initially at center overlapping. Animation (7s): 0-1.5s: Center circle appears. 1.5-4.5s: Eight circles expand outward radially to their final positions simultaneously (from center to 180px radius). 4.5-6.5s: All outer circles rotate around center 90° clockwise. 6.5-7s: Hold. [cite_start]Total duration: 7s. [cite: 520, 521, 522, 523]"
+    "category": "Basic Shapes & Fundamental Animations",
+    "prompt": "Triangle Glow Pulse. Dark blue background (#0D47A1). Yellow triangle (#FDD835), 175px base, pointing up, centered, with outer glow (0px 0px 25px rgba(253,216,53,0.7)). [cite: 93] Animation: Glow pulses: alpha 0.3 1.0 0.3 over 2s. [cite: 94] Complete 2 pulses. [cite: 94] Total duration: 4s. [cite: 94]"
   },
   {
     "id": 132,
-    "category": "coordination",
-    "prompt": "Sequential Color Fill. Black background. Five outlined rectangles (each 200px x 150px, 3px white stroke, no fill), arranged horizontally (40px gaps). Animation (10s): All outlines appear simultaneously. Then sequential fill: 0-2s: Rectangle 1 fills with red from bottom to top. 2-4s: Rectangle 2 fills with orange. 4-6s: Rectangle 3 fills with yellow. 6-8s: Rectangle 4 fills with green. 8-10s: Rectangle 5 fills with blue. [cite_start]Total duration: 10s. [cite: 524, 525, 526, 527, 528]"
+    "category": "Basic Shapes & Fundamental Animations",
+    "prompt": "Triangle Scale Directional. Light background. Red triangle (#E53935), 180px base, pointing right, centered. [cite: 96] Animation: Scales horizontally (stretches width) from 100% to 150% over 1.5s, height stays constant. [cite: 97] Returns to 100% over 1.5s. [cite: 97] Hold 1s. [cite: 97] Total duration: 4s. [cite: 98]"
   },
   {
     "id": 133,
-    "category": "coordination",
-    "prompt": "Triangle Wave Motion. Gradient background. Six triangles (each 100px base, all pointing up, cyan #00BCD4), arranged in horizontal row (120px spacing). Animation (8s): 0-1s: All appear. 1-7s: Vertical wave motion passes through row continuously: each triangle moves up 30px then down 30px in sequence with phase offset, creating wave traveling left to right. Wave repeats 3 times. 7-8s: All settle at baseline. [cite_start]Total duration: 8s. [cite: 529, 530, 531, 532]"
+    "category": "Basic Shapes & Fundamental Animations",
+    "prompt": "Triangle Opacity Wave. White background. Three blue triangles (#1976D2), each 120px base, arranged in row (150px apart), all pointing up. [cite: 100] Animation: Opacity wave passes left to right: Triangle 1 fades 100% 30% 100% (1s), then Triangle 2 does same (1s), then Triangle 3 (1s). [cite: 101] All hold 100% for 1s. [cite: 102] Total duration: 4s. [cite: 102]"
   },
   {
     "id": 134,
-    "category": "coordination",
-    "prompt": "Squares Perspective Depth. Light grey background. Five squares (each starts 150px), same red color, arranged diagonally from top-left to bottom-right. Create depth illusion through size and opacity: Square 1 (closest): 150px, 100% opacity. Square 2: 130px, 85% opacity. Square 3: 110px, 70% opacity. Square 4: 90px, 55% opacity. Square 5 (farthest): 70px, 40% opacity. Animation (6s): 0-2s: All appear establishing depth. 2-5s: Depth reverses: sizes and opacities swap (square 1 becomes smallest/dimmest, square 5 becomes largest/brightest). 5-6s: Hold reversed depth. [cite_start]Total duration: 6s. [cite: 533, 534, 535, 536, 537, 538]"
+    "category": "Single Shape Complex Animations",
+    "prompt": "Rectangle Opacity Pattern. Black background. Three rectangles (each 200px x 120px rounded 10px, cyan #00BCD4) arranged vertically (60px apart), centered. [cite: 248] Animation (6s): 0-2s: All appear at 100%. [cite: 249] 2-4s: Opacity wave top to bottom: top fades to 30%, middle fades to 30%, bottom fades to 30% (each with 0.5s stagger). [cite: 249] 4-6s: Opacity wave reverses: all return to 100% in same pattern. [cite: 250] Total duration: 6s. [cite: 250]"
   },
   {
     "id": 135,
-    "category": "coordination",
-    "prompt": "Circle Orbit Complex. Black background. Large circle (300px diameter, white outline 3px, no fill), centered, stationary. Three small solid circles (each 60px, red, green, blue) orbit around the large circle's perimeter. Animation (10s): 0-1s: Large circle appears. 1-10s: Small circles orbit clockwise around perimeter: red starts at top (0°), green at 120°, blue at 240°. They maintain 120° spacing while orbiting. Complete 2 full orbits in 9s. [cite_start]Total duration: 10s. [cite: 539, 540, 541, 542, 543]"
+    "category": "Single Shape Complex Animations",
+    "prompt": "Triangle Spin Wobble. White background. Red triangle (#D32F2F), 190px base, pointing up, centered. [cite: 252] Animation (6s): 0-1.5s: Appears. [cite: 252] 1.5-3.5s: Spins 360° clockwise smoothly. [cite: 252] 3.5-6s: Wobbles: rotates ±15° back and forth 3 times (like shaking head no). [cite: 253] Total duration: 6s. [cite: 253]"
   },
   {
     "id": 136,
-    "category": "coordination",
-    "prompt": "Bar Graph Race. White background. Four vertical bars (each 60px wide, 100px apart horizontally), different colors: red, blue, green, orange. All start at bottom (y: 80% height), 0px tall. Animation (8s): 0-8s: Bars grow upward at different rates racing each other: Red: grows to 250px over 5s (slow). Blue: grows to 300px over 4s (medium). Green: grows to 350px over 3s (fast). Orange: grows to 400px over 6s (slow start, fast end). All finish at different times, creating race effect. [cite_start]Total duration: 8s. [cite: 544, 545, 546, 547, 548, 549]"
+    "category": "Single Shape Complex Animations",
+    "prompt": "Triangle Point Morph. Light background. Blue triangle (#1976D2), 180px base, pointing up, centered. [cite: 255] Animation (7s): 0-1.5s: Appears pointing up. [cite: 255] 1.5-3s: Top point extends upward (triangle gets taller, 180px to 260px height). [cite: 256] 3-4.5s: Returns to normal 180px. [cite: 256] 4.5-6s: Base widens (180px to 260px width). [cite: 257] 6-7s: Returns to normal 180px base. [cite: 257] Total duration: 7s. [cite: 257]"
   },
   {
     "id": 137,
-    "category": "coordination",
-    "prompt": "Glow Pulse Synchronize. Dark background. Three circles (each 140px), different colors (red, green, blue), arranged in triangle formation. Each has outer glow matching its color (0px 0px 20px). Animation (6s): 0-1s: All appear with static glow. 1-6s: All glows pulse simultaneously in sync: blur 20px -> 50px, alpha 0.5 -> 1.0, completing 2.5 pulse cycles together (2s per cycle). [cite_start]Total duration: 6s. [cite: 550, 551, 552, 553, 554]"
+    "category": "Single Shape Complex Animations",
+    "prompt": "Triangle Color Vertex. Dark background. Triangle 200px, centered. Starts solid yellow (#FFEB3B). [cite: 259] Animation (6s): 0-1.5s: Appears. [cite: 259] 1.5-4s: Each vertex becomes different color (top red #F44336, bottom-left blue #2196F3, bottom-right green #4CAF50), gradient fills between vertices. [cite: 260] 4-6s: Colors blend back to uniform yellow. [cite: 261] Total duration: 6s. [cite: 261]"
   },
   {
     "id": 138,
-    "category": "coordination",
-    "prompt": "Rotation Speed Variation. Grey background. Four squares (each 100px, all blue #2196F3), arranged in 2x2 grid (60px gaps). All rotate clockwise but at different speeds. Animation (8s): 0-1s: All appear. 1-8s: Top-left rotates 360° over 7s (slow). Top-right rotates 720° over 7s (medium). Bottom-left rotates 1080° over 7s (fast). Bottom-right rotates 1800° over 7s (very fast). All finish simultaneously at 8s. [cite_start]Total duration: 8s. [cite: 555, 556, 557, 558, 559]"
+    "category": "Single Shape Complex Animations",
+    "prompt": "Triangle 3D Flip. White background. Green triangle (#43A047), 185px, pointing right, centered. [cite: 263] Animation (5s): 0-1s: Appears. [cite: 263] 1-3s: 3D flip around vertical axis: 0° to 180° (flips to point left). [cite: 264] 3-5s: Flips back 180° to 360° (points right again). [cite: 264] Total duration: 5s. [cite: 265]"
   },
   {
     "id": 139,
-    "category": "coordination",
-    "prompt": "Lines Grid Fade In. White background. Grid: 6 horizontal lines (each 500px x 1px, grey) and 6 vertical lines (each 1px x 500px, grey), 100px spacing, forming 5x5 grid cells. Animation (9s): 0-4.5s: Horizontal lines fade in sequentially top to bottom (0.75s each). 4.5-9s: Vertical lines fade in sequentially left to right (0.75s each). Grid completes. [cite_start]Total duration: 9s. [cite: 560, 561, 562, 563]"
+    "category": "Single Shape Complex Animations",
+    "prompt": "Triangle Stroke Fill. Black background. Triangle 195px, centered. Starts as outline only (4px white stroke, no fill). [cite: 267] Animation (6s): 0-2s: Stroke draws on clockwise from top point. [cite: 268] 2-4s: Fill color (yellow #FDD835) fades in from 0% to 100% inside outline. [cite: 269] 4-6s: Stroke fades out, leaving solid yellow triangle. [cite: 270] Total duration: 6s. [cite: 270]"
   },
   {
     "id": 140,
-    "category": "coordination",
-    "prompt": "Shapes Bounce Sequence. Light background. Three shapes in horizontal row (200px spacing): circle (120px, red), square (120px, blue), triangle (120px base, green). All start at same vertical level (40% from top). Animation (8s): 0-2s: All appear. 2-3.5s: Circle bounces (drops to 70% height, bounces back to 40%, smaller bounce, settles). 3.5-5s: Square bounces (same pattern). 5-6.5s: Triangle bounces. 6.5-8s: All three bounce together once in sync. [cite_start]Total duration: 8s. [cite: 564, 565, 566, 567, 568]"
+    "category": "Single Shape Complex Animations",
+    "prompt": "Triangle Shatter Reform. Grey background. Orange triangle (#FF9800), 180px, centered. [cite: 272] Animation (7s): 0-1.5s: Appears solid. [cite: 272] 1.5-3s: Breaks into 6 smaller triangular pieces, they scatter outward 50px in random directions. [cite: 273] 3-5s: Pieces hold scattered. [cite: 273] 5-7s: Pieces move back together, reforming original triangle. [cite: 274] Total duration: 7s. [cite: 274]"
   },
   {
     "id": 141,
-    "category": "coordination",
-    "prompt": "Concentric Rings Expand. Black background. Five circles (all centered, no fill, 3px white stroke), sizes: 100px, 180px, 260px, 340px, 420px diameter. Animation (7s): 0-1.4s: Smallest circle (100px) appears. 1.4-2.8s: Second circle (180px) appears. 2.8-4.2s: Third circle appears. 4.2-5.6s: Fourth circle appears. 5.6-7s: Fifth largest circle appears. Creating expanding concentric rings. [cite_start]Total duration: 7s. [cite: 569, 570, 571, 572]"
+    "category": "Single Shape Complex Animations",
+    "prompt": "Triangle Breathing Glow. Dark blue background. White triangle (#FFFFFF), 170px, centered, with glow (0px 0px 20px rgba(255,255,255,0.6)). [cite: 276] Animation (6s): Simultaneously breathes (scale 100% to 112%, 2s cycle) and glow pulses (blur 10px to 35px, 2s cycle). [cite: 277] Completes 3 synchronized breath+glow cycles. [cite: 278] Total duration: 6s. [cite: 278]"
   },
   {
     "id": 142,
-    "category": "coordination",
-    "prompt": "Rectangle Cascade Fall. White background. Eight rectangles (each 150px x 80px, rounded 10px, same purple color), stacked vertically at top-center (touching edges). Animation (8s): 0-7s: Rectangles fall sequentially like dominoes: Rectangle 1 falls (rotates 90° and drops), then rectangle 2 falls (1s after), continuing through all 8 rectangles. Each takes 1s to fall, creates cascading effect. 7-8s: All settle at bottom in pile. [cite_start]Total duration: 8s. [cite: 573, 574, 575, 576]"
+    "category": "Single Shape Complex Animations",
+    "prompt": "Triangle Corner Round. Light background. Purple triangle (#9C27B0), 190px, sharp points, centered. [cite: 280] Animation (5s): 0-1.5s: Appears. [cite: 280] 1.5-3.5s: Corner points become rounded (border-radius effect, each corner rounds with 30px radius, shape becomes more blob-like). [cite: 281] 3.5-5s: Returns to sharp points. [cite: 282] Total duration: 5s. [cite: 282]"
   },
   {
     "id": 143,
-    "category": "coordination",
-    "prompt": "Triangles Mirror Symmetry. Grey background. Two triangles (each 160px base): left triangle points right (green #43A047), right triangle points left (orange #FF9800), 200px apart, centered vertically. Animation (6s): 0-1s: Both appear. 1-3s: Move toward each other, points meet at center. 3-4s: Both rotate 180° simultaneously in opposite directions. 4-6s: Move apart back to original positions, now pointing opposite directions. [cite_start]Total duration: 6s. [cite: 577, 578, 579, 580, 581]"
+    "category": "Single Shape Complex Animations",
+    "prompt": "Triangle Extrude Effect. White background. Blue triangle (#1E88E5), 175px, centered. [cite: 284] Animation (6s): 0-1.5s: Appears flat (2D). [cite: 284] 1.5-4s: Appears to extrude into 3D: duplicate layers offset behind with decreasing opacity (creates depth illusion - 5 layers, each 4px offset down-right, opacity 80% to 20%). [cite: 285] 4-6s: Layers collapse back to flat single triangle. [cite: 286] Total duration: 6s. [cite: 286]"
   },
   {
     "id": 144,
-    "category": "coordination",
-    "prompt": "Grid Cells Sequential. Light background. 3x3 grid of squares (9 cells, each 100px, 10px gaps, centered). Animation (9s): Cells fill sequentially in spiral pattern starting from center: Center cell fills red (1s). Top-center fills orange (1s). Top-right fills yellow (1s). Middle-right fills green (1s). Bottom-right fills blue (1s). Bottom-center fills purple (1s). Bottom-left fills pink (1s). Middle-left fills cyan (1s). Top-left fills white (1s). Total duration: 9s. [cite_start]Spiral fill pattern. [cite: 582, 583, 584, 585, 586]"
+    "category": "Single Shape Complex Animations",
+    "prompt": "Triangle Orbit Path. Black background. Small yellow triangle (#FFEB3B), 80px, pointing up. Large invisible circle (300px diameter, centered) acts as orbit path. [cite: 288] Animation (6s): Triangle starts at top of orbit circle. [cite: 289] Travels clockwise around orbit circle perimeter over 6s (completes full circular orbit). [cite: 289] Triangle rotates to always point outward from center as it orbits. [cite: 290] Total duration: 6s. [cite: 290]"
   },
   {
     "id": 145,
@@ -248,5 +113,105 @@
     "id": 150,
     "category": "coordination",
     "prompt": "Complex Coordinated Finale. Black background. Center: Large circle (200px, gold #FFD700 outline 4px, no fill). Around it: 8 triangles (each 100px, different rainbow colors) pointing toward center, positioned radially (240px from center, 45° apart). Animation (12s): 0-2s: Center circle appears and pulses (scale 100% -> 110% -> 100%). 2-6s: Triangles appear sequentially clockwise (0.5s each). 6-8s: All triangles rotate 180° simultaneously (now pointing away from center). 8-10s: Triangles orbit clockwise around circle, maintaining formation, 90° orbit. 10-12s: All triangles move toward center, all shapes fade out together. Total duration: 12s. [cite_start]Grand finale testing all coordination techniques. [cite: 613, 614, 615, 616, 617, 618, 619]"
-  }
+  },
+  {
+"id": 151,
+"category": "common_video_motion_graphics",
+"prompt": "Vertical Bar Chart - Growing Bars Animation. Background white (#FFFFFF). Title 'Revenue Growth Q1-Q4' top-center, 32pt bold dark-grey (#333333), 60px from top. Four vertical bars (80px width, 40px gaps) starting from baseline at 80% y-position. Q1: blue (#2196F3) height 0→180px ($45K), Q2: green (#4CAF50) height 0→240px ($60K), Q3: orange (#FF9800) height 0→200px ($50K), Q4: red (#F44336) height 0→280px ($70K). Rounded top corners 8px. X-axis labels 'Q1', 'Q2', 'Q3', 'Q4' below bars (white text on semi-transparent dark background, 24pt). Y-axis on left: 0K, 25K, 50K, 75K labels (18pt white #FFFFFF). Horizontal gridlines behind bars (1px white #FFFFFF, 0.3 opacity). Canvas 1920×1080px. Animation (8s): 0–0.5s title fades in with scale 0.9→1.0, 0.5–1s Y-axis labels fade in, 1–3s bars grow sequentially Q1 (1–1.8s), Q2 (1.8–2.6s), Q3 (2.6–3.4s), Q4 (3.4–4.2s), ease-out, rounded corners during growth. 4.2–5s value labels above bars ('$45K', '$60K', etc, 20pt bold, color-matched) appear and count from $0. 5–5.5s X-axis labels fade in. 5.5–8s hold final state with subtle gridline glow pulsing (0.2s cycle, opacity 0.3→0.5→0.3). [cite_start]Total duration: 8s. "
+},
+{
+"id": 152,
+"category": "common_video_motion_graphics",
+"prompt": "Horizontal Bar Chart - Left-to-Right Growth. Background light grey (#F5F5F5). Title 'Market Share by Region' top-left, 28pt bold (#1f4788), 40px from top. Five horizontal bars (60px height, 20px vertical gaps) centered on canvas. North America: #E53935 width 0→220px (35%), Europe: #3F51B5 width 0→200px (32%), Asia: #00897B width 0→180px (29%), South America: #7CB342 width 0→120px (19%), Africa: #F57C00 width 0→80px (13%). Y-axis labels on left ('North America', 'Europe', 'Asia', 'South America', 'Africa') white 18pt on semi-transparent dark background. X-axis at bottom: 0%, 10%, 20%, 30%, 40% (18pt white). Vertical gridlines 1px white, 0.2 opacity. Canvas 1920×1080px. Animation (10s): 0–0.5s title fades, 0.5–1s Y-axis labels fade, 1–6s bars grow left-to-right sequentially (NA 1–2s, EU 2–3s, Asia 3–4s, SA 4–5s, Africa 5–6s) with ease-out. 6–7s percentage labels appear to the right of bars (16pt bold white) counting 0%→target. 7–8s X-axis gridlines and percentage labels fade in. 8–10s hold with subtle bar glow pulsing. [cite_start]Total duration: 10s. "
+},
+{
+"id": 153,
+"category": "common_video_motion_graphics",
+"prompt": "Grouped Bar Chart - Monthly Sales Comparison. Background white (#FFFFFF). Title 'Product Sales by Month' centered, 32pt bold (#2c3e50), 50px from top. Six month groups (Jan–Jun) each with 3 vertical bars: Product A blue (#2196F3), Product B green (#4CAF50), Product C orange (#FF9800). Bar width 45px, 8px gaps within group, 30px between month groups. Target heights: Jan (A 150px, B 120px, C 100px), Feb (A 170px, B 140px, C 110px), Mar (A 140px, B 130px, C 120px), Apr (A 180px, B 150px, C 140px), May (A 160px, B 170px, C 130px), Jun (A 190px, B 180px, C 160px). Baseline at 75% y. X-axis month labels (Jan–Jun) white 20pt on semi-transparent background. Y-axis labels 0, 50, 100, 150, 200 (white 16pt). Horizontal gridlines 1px white, 0.2 opacity. Legend top-right (Product A blue, B green, C orange, 12pt white). Canvas 1920×1080px. Animation (12s): 0–0.5s title fades in, 0.5–1s legend fades in. 1–8s month groups appear sequentially (Jan 1–1.8s, Feb 1.8–2.6s, Mar 2.6–3.4s, Apr 3.4–4.2s, May 4.2–5s, Jun 5–5.8s). Within each month, 3 bars grow from 0 to target with 0.05s stagger and ease-out. 8–9s value labels above each bar (12pt white) count 0→target. 9–10s X-axis labels fade in. 10–12s hold final chart. [cite_start]Total duration: 12s. "
+},
+{
+"id": 154,
+"category": "common_video_motion_graphics",
+"prompt": "Stacked Bar Chart - Revenue Breakdown. Background dark navy (#1a237e). Title 'Revenue by Stream' centered, 32pt bold white (#FFFFFF), 50px from top. Four quarter columns (Q1–Q4), each stacked with segments: Cloud (blue #2196F3), Licensing (green #4CAF50), Services (purple #9C27B0). Total heights: Q1 120px (Cloud 60px, License 35px, Services 25px), Q2 140px, Q3 160px, Q4 180px. Baseline at 75% y. X-axis labels Q1–Q4 (white 22pt on semi-transparent background). Y-axis labels 0, 40, 80, 120, 160 (white 16pt). Horizontal gridlines 1px white, 0.15 opacity. Legend on right side showing three streams (12pt white). Canvas 1920×1080px. Animation (11s): 0–0.5s title and legend fade in. 0.5–1s Y-axis labels fade in. 1–6s stacked bars build quarter-by-quarter (Q1 1–1.8s, Q2 1.8–2.6s, Q3 2.6–3.4s, Q4 3.4–4.2s). In each quarter, Cloud grows first from baseline, then Licensing grows atop it, then Services, with ease-out. 6–8s segment value labels appear inside each segment (white 14pt bold) with counting animation. 8–9s X-axis labels fade. 9–11s hold with subtle white glow on all bars. [cite_start]Total duration: 11s. "
+},
+{
+"id": 155,
+"category": "common_video_motion_graphics",
+"prompt": "Pie Chart - Market Share Distribution. Background white (#FFFFFF). Title 'Market Distribution 2024' top-center, 28pt bold (#333333), 50px from top. Pie chart diameter 400px, centered at 50% x and 55% y. Six touching slices: Electronics 32% (#FF6B6B), Software 25% (#4ECDC4), Services 18% (#45B7D1), Support 15% (#FFA07A), Training 7% (#98D8C8), Other 3% (#F7DC6F). Slice borders 2px white between slices. Labels at slice midpoints offset 3px from edge: product name (14pt bold white) plus percentage (16pt bold white). Legend below pie: 12pt labels with 12px color squares. Canvas 1920×1080px. Animation (9s): 0–1.5s background circle (outline only) fades in, no fill. 1.5–7s slices appear sequentially counterclockwise starting at 12 o'clock; each slice rotates in from 0° to final angle over 0.8s with 0.3s stagger and ease-out, label fades in with its slice. Each slice gets a 2px drop shadow (#000000, 0.3 opacity). 7–8s legend fades in below pie. 8–9s hold with subtle shadow pulsing on slices. [cite_start]Total duration: 9s. "
+},
+{
+"id": 156,
+"category": "common_video_motion_graphics",
+"prompt": "Donut Chart - Budget Allocation with Center Text. Background light blue (#E3F2FD). Title 'Budget Distribution' top-center, 30pt bold (#1565C0), 40px from top. Donut outer diameter 380px, inner hole diameter 160px, centered at 50% x and 55% y. Five segments: Personnel 40% (#E74C3C), Operations 25% (#3498DB), Marketing 18% (#2ECC71), Research 12% (#F39C12), Admin 5% (#95A5A6). Segment borders 2px white, outer ring thickness 110px. Center text: 'Total Budget' (16pt bold white) and '$2.5M' (28pt bold #1565C0) stacked in donut hole. Legend on right side (12pt white with color squares). Canvas 1920×1080px. Animation (10s): 0–0.5s title fades in. 0–1s donut hole appears, inner circle radius animates 0→160px. 1–6s donut segments appear clockwise; each segment rotates from 0° to final angle over 0.7s with 0.4s stagger, plus 2px glow shadow (#000000, 0.2 opacity). 6–7.5s center text fades in with scale 0.8→1.0, '$2.5M' counts from 0 to 2.5M over 1s. 7.5–9s legend fades in. 9–10s hold with pulsing shadow on ring. [cite_start]Total duration: 10s. "
+},
+{
+"id": 157,
+"category": "common_video_motion_graphics",
+"prompt": "Line Chart - Single Trend Over Time. Background dark (#1a1a1a). Title 'Website Traffic 12 Months' top-left, 28pt bold white (#FFFFFF), 40px from top. Chart area 1200×500px, positioned 100px from left and 150px from top. X-axis labels Jan–Dec (18pt white) centered under each month. Y-axis on left: 0, 5K, 10K, 15K, 20K, 25K (18pt white, right-aligned 20px left of chart). Horizontal gridlines at 5K intervals (1px white, 0.2 opacity). Data line: blue (#2196F3), 4px stroke, smooth curve through points 8K, 9K, 11K, 13K, 15K, 17K, 18K, 19K, 20K, 21K, 22K, 23K. Markers: 8px circles, white fill with blue border 2px. Canvas 1920×1080px. Animation (11s): 0–0.5s title fades in. 0.5–1s axes (Y labels + gridlines) fade in. 1–8s line traces left-to-right along data path over 7s, linear timing, with markers appearing as line reaches each point. 8–9.5s value labels ('XXK', 12pt bold white) above markers fade in with counting animation if needed. 9.5–10s X-axis labels fade in. 10–11s hold with marker glow pulsing (0.3s cycle). [cite_start]Total duration: 11s. "
+},
+{
+"id": 158,
+"category": "common_video_motion_graphics",
+"prompt": "Multi-Line Chart - Product Performance Comparison. Background dark grey (#2a2a2a). Title 'Product Growth Comparison' centered top, 30pt bold white (#FFFFFF), 40px from top. Chart 1200×500px, 100px from left, 150px from top. X-axis: Month 1–10 labels (18pt white). Y-axis: 0–100 units in 20-unit increments (16pt white). Horizontal gridlines 1px white, 0.2 opacity. Three lines: Product A green (#27AE60, 3px) with data 10,15,22,28,35,40,48,55,62,70; Product B blue (#2196F3, 3px) with 20,24,26,30,32,38,42,45,48,52; Product C orange (#FF9800, 3px) with 15,18,20,19,22,25,28,26,29,32. Markers: 6px circles, white fill with colored border. Legend top-right (12pt white) for three products. Canvas 1920×1080px. Animation (12s): 0–0.5s title and legend fade in. 0.5–1s axes fade in. 1–4s Product A line draws left-to-right over 3s, markers appear as it progresses. 4–7s Product B line draws over 3s showing comparison. 7–10s Product C line draws over 3s. 10–11s value labels (11pt white) appear on markers with counting animation. 11–12s hold with marker glow pulsing. [cite_start]Total duration: 12s. "
+},
+{
+"id": 159,
+"category": "common_video_motion_graphics",
+"prompt": "Area Chart - Revenue Trend. Background dark navy (#0d1b3c). Title 'Monthly Revenue Trend' top-center, 32pt bold white, 40px from top. Chart 1200×500px, positioned 100px from left and 150px from top. X-axis: Jan–Dec labels (18pt white). Y-axis: $0, $10K, $20K, $30K, $40K, $50K (16pt white). Horizontal gridlines 1px white, 0.15 opacity. Area fill: blue (#2196F3) gradient from solid at top to 0.1 opacity at bottom. Line stroke: #1565C0, 4px. Data: 15K,18K,22K,28K,32K,38K,42K,40K,45K,48K,52K,55K, smooth curve. Markers: 8px white circles with #1565C0 borders. Canvas 1920×1080px. Animation (10s): 0–0.5s title fades in. 0.5–1s axes fade in. 1–7s area fills from left to right over 6s, bottom edge extends rightward with gradient appearing, line border appears simultaneously. 7–8s markers fade in with scale 0.8→1.0. 8–9s value labels above markers ($XXK, 12pt white) count 0→value. 9–10s hold with marker glow pulsing. [cite_start]Total duration: 10s. "
+},
+{
+"id": 160,
+"category": "common_video_motion_graphics",
+"prompt": "Funnel Chart - Sales Conversion Stages. Background white (#FFFFFF). Title 'Sales Funnel Q3' top-center, 32pt bold (#2c3e50), 40px from top. Five funnel stages centered horizontally with decreasing widths: Awareness 1000px (100%), Interest 750px (75%), Consideration 550px (55%), Evaluation 350px (35%), Purchase 150px (15%). Each stage height 80px with 20px vertical gaps. Color gradient from top to bottom: Awareness blue (#2196F3), Interest cyan (#00BCD4), Consideration green (#4CAF50), Evaluation orange (#FF9800), Purchase red (#E74C3C). Stage labels on left ('Awareness', 'Interest', 'Consideration', 'Evaluation', 'Purchase') 18pt bold white on semi-transparent dark background. Metrics on right: '50,000 visitors', '37,500 interested', '27,500 considering', '17,500 evaluating', '7,500 purchased' (18pt bold white). Baseline at 70% y. Canvas 1920×1080px. Animation (13s): 0–0.5s title fades. 0.5–1s baseline and guides appear. 1–8s stages appear top-to-bottom sequentially, each 0.8s long: width animates 0→target, height and color fade in with ease-out, borders sharpen to 2px white. 8–10s left labels fade in together. 10–11s right metrics fade in and count from 0. 11–13s hold with subtle inner glow on stage borders. [cite_start]Total duration: 13s. "
+},
+{
+"id": 161,
+"category": "common_video_motion_graphics",
+"prompt": "Bar Chart with Icons - Product Sales with Symbols. Background light grey (#F5F5F5). Title 'Sales by Product Category' top-center, 30pt bold (#2c3e50), 50px from top. Five vertical bars (70px width, 30px gaps) on baseline at 75% y. Heights: Product A 200px (laptop icon, blue #2196F3), Product B 240px (phone icon, green #4CAF50), Product C 180px (tablet icon, orange #FF9800), Product D 160px (headphones icon, purple #9C27B0), Product E 190px (camera icon, red #E74C3C). Above each bar: simple 24px line icon, centered, white fill. Below bars: product names (white 18pt on semi-transparent dark background). Y-axis: 0K, 50K, 100K, 150K, 200K, 250K (16pt white). Horizontal gridlines 1px white, 0.2 opacity. Values on bars: count labels (16pt bold white) centered inside bars. Canvas 1920×1080px. Animation (11s): 0–0.5s title fades in. 0.5–1s Y-axis labels and gridlines fade in. 1–1.5s icons appear above bar positions with fade-in. 1.5–7s bars grow 0→target height sequentially left-to-right (each 0.8s, 0.3s stagger) with ease-out, rounded top corners 6px. 7–8.5s value labels count 0→target over 1.5s, bar borders glow slightly (1px shadow). 8.5–10s product names fade in below bars. 10–11s hold with subtle shadow glow pulsing on bars. [cite_start]Total duration: 11s. "
+},
+{
+"id": 162,
+"category": "common_video_motion_graphics",
+"prompt": "Scatter Plot - Correlation Visualization. Background dark (#1a1a1a). Title 'Marketing Spend vs Sales Conversion' top-left, 28pt bold white, 40px from top. Chart area 1000×600px at 150px left and 120px top. X-axis: Spend (in thousands) from 0–100 with labels every 20 units (white 16pt) at bottom. Y-axis: Conversion Rate (%) from 0–50 with labels every 10 units (white 16pt) on left. Grid: 20×10 increments, 1px white lines at 0.15 opacity. 25 data points as blue circles (#2196F3, 8px radius, 0.8 opacity) arranged in positive correlation pattern. Trend line: red (#E74C3C), 2px stroke from approximately (10,10) to (90,45). Legend (12pt white) with 'Data Points' blue circle and 'Trend Line' red line. Canvas 1920×1080px. Animation (11s): 0–0.5s title fades. 0.5–1s grid and axis labels fade in. 1–2.5s trend line draws diagonally left-to-right over 1.5s with ease-in-out. 2.5–8s data points appear in seemingly random order: each point fades in and scales 0.7→1.0 over 0.3s with 0.2s stagger across 25 points, showing hovering glow (2px shadow). 8–9s legend fades in. 9–11s hold with point glow pulsing (0.4s cycle, opacity 0.8→1.0→0.8). [cite_start]Total duration: 11s. "
+},
+{
+"id": 163,
+"category": "common_video_motion_graphics",
+"prompt": "Waterfall Chart - Budget Variance. Background dark navy (#0d1b3c). Title 'Budget Variance Analysis' top-center, 32pt bold white, 50px from top. Waterfall from $500K starting value to $660K final value across 8 segments. Bar widths 80px, gaps 30px. Segment 1 (Start): $500K blue (#2196F3), anchored to bottom, height 150px at 0% baseline. Segment 2 (+Revenue +$120K): green (#4CAF50), floating bar 36px tall above previous top. Segment 3 (+Cost Reduction +$80K): green, 24px tall above previous top. Segment 4 (-Unexpected -$45K): red (#E74C3C), floating downward 13.5px. Segment 5 (-Personnel -$30K): red, 9px down. Segment 6 (+Operational +$60K): green, 18px up. Segment 7 (-Market -$25K): red, 7.5px down. Segment 8 (Final): $660K blue (#1565C0), anchored to bottom, height 198px. Thin grey 1px connecting lines between segment tops. X-axis labels: 'Start', '+Revenue', '+Reduction', '-Unexpected', '-Personnel', '+Operational', '-Market', 'Final' (white 14pt). Y-axis labels: $0, $200K, $400K, $600K, $800K (white 14pt). Horizontal gridlines 1px white, 0.15 opacity. Canvas 1920×1080px. Animation (14s): 0–0.5s title fades. 0.5–1s axes and gridlines fade in. 1–2s starting bar appears from bottom with scale 0→1. 2–10s each subsequent segment appears sequentially (0.8s each, 0.5s stagger), floating to its y-position while height animates 0→target with ease-out. 10–11s connecting lines draw between segment tops. 11–12s labels on bars appear (14pt white) with counting numbers. 12–13s X-axis labels fade in. 13–14s hold with subtle segment glow. [cite_start]Total duration: 14s. "
+},
+{
+"id": 164,
+"category": "common_video_motion_graphics",
+"prompt": "Bullet Chart - KPI vs Target. Background white (#FFFFFF). Title 'Sales Performance Dashboard' top-center, 30pt bold (#2c3e50), 50px from top. Five bullet rows (60px height, 15px vertical gaps) stacked vertically, baseline centered at 50% x. Each row shows performance ranges, target marker, and actual bar. Row 1 (Product A): target 80, actual 72 (green bar #4CAF50, 72% width). Ranges: 0–50% light grey (#EEEEEE), 50–80% light green (#C8E6C9), 80–100% dark green (#A5D6A7). Row 2 (Product B): target 75, actual 85 (blue bar #2196F3 exceeding target). Row 3 (Product C): target 70, actual 65 (orange bar #FF9800 below target). Row 4 (Product D): target 90, actual 88 (green #27AE60). Row 5 (Product E): target 85, actual 95 (blue #2196F3, exceeds). Y-axis product names on left (16pt white on dark background). Value labels show target (12pt) and actual (14pt bold). Legend top-right (12pt white). Canvas 1920×1080px. Animation (11s): 0–0.5s title and legend fade in. 0.5–1s Y-axis product labels fade in. 1–2s background performance ranges appear simultaneously for all rows. 2–7s target markers (vertical 2px lines) appear sequentially per row (0.8s each, 0.2s stagger). 7–9s actual bars grow from 0 to their percentage over 0.5s per row with ease-out, color-coded by performance. 9–10s value labels appear with count animations. 10–11s hold with target markers pulsing (glow 0.3s cycle). [cite_start]Total duration: 11s. "
+},
+{
+"id": 165,
+"category": "common_video_motion_graphics",
+"prompt": "Radar Chart - Product Feature Comparison. Background dark (#1a1a1a). Title 'Product Evaluation Matrix' top-center, 30pt bold white, 40px from top. Radar chart with 6 axes forming a hexagon, 420px diameter, centered at 50% x and 55% y. Axes: Performance (top), Reliability (top-right), Cost-Effectiveness (bottom-right), Customer Support (bottom-left), Innovation (top-left), Usability (horizontal left). Scores 0–100 on each axis. Gridlines: concentric hexagons at 20, 40, 60, 80, 100 (1px white, 0.2 opacity). Product A polygon: blue (#2196F3) connecting points (Performance 95, Reliability 90, Cost 70, Support 85, Innovation 92, Usability 88), fill 0.3 opacity blue, 2px blue border. Product B polygon: orange (#FF9800) connecting (Performance 80, Reliability 85, Cost 85, Support 80, Innovation 75, Usability 92), fill 0.3 opacity orange, 2px orange border. Axis labels at endpoints (14pt white bold). Legend on right side (12pt white) for A and B. Canvas 1920×1080px. Animation (12s): 0–0.5s title fades in. 0.5–2s grid hexagon rings draw in. 2–3s axis labels fade in. 3–8s Product A polygon traces clockwise from top over 2.5s, then fill fades in with 0.3s delay. 8–11s Product B polygon traces counterclockwise with slight offset, then fills. 11–12s legend fades in. Hold with subtle shadow pulsing on polygons. [cite_start]Total duration: 12s. "
+},
+{
+"id": 166,
+"category": "advanced_emphasis_effects",
+"prompt": "Bar Glow Emphasis - Highlighting Top Performer. Builds on Prompt 1 (vertical bar chart). At 4s mark, Q4 bar (highest value $70K) gets emphasis: bar shadow expands radially from 2px glow (#F44336 red) to 8px over 0.8s, pulsing in a 1s cycle. Bar border thickens from 1px to 3px white (#FFFFFF). Q1–Q3 bars fade to 0.5 opacity and slightly desaturate so only Q4 remains fully saturated. Q4 value label '$70K' scales from 20pt to 28pt bold and color shifts to gold (#FFD700). Behind the label, a semi-transparent highlight box appears (#FFF8DC yellow, 0.4 opacity, 4px padding). Animation timeline: 0–4s regular bar animation from Prompt 1. 4–4.8s glow expands, border thickens, label enlarges. 4.8–8s pulsing glow continues with other bars dimmed. Hold at 8s with Q4 emphasized. [cite_start]Total duration: 8s (extends base chart timeline). "
+},
+{
+"id": 167,
+"category": "advanced_emphasis_effects",
+"prompt": "Slice Pull-Out with Rotation - Pie Segment Emphasis. Builds on Prompt 5 (pie chart). At 5s mark, Electronics slice (32%, #FF6B6B, largest) pulls outward 50px radially from pie center and rotates +15° around its own center. A gradient overlay appears on this slice: edge bright #FF6B6B transitioning to darker #C62828 at center with radial falloff. Remaining slices (Software, Services, Support, Training, Other) fade to 0.4 opacity and desaturate. Glow appears around pulled slice (3px shadow #FF6B6B) pulsing with 0.8s cycle. An annotation arrow points to the slice with label 'Largest Market Segment' (12pt white bold in semi-transparent dark box). Animation: 0–5s normal pie animation from Prompt 5. 5–6s slice pulls out 50px, rotates +15°, gradient and glow appear. 6–7s other slices dim and label fades in with slight horizontal wiggle (±2px). 7–12s hold with pulsing glow and stable annotation. [cite_start]Total duration: 12s (including base pie motion). "
+},
+{
+"id": 168,
+"category": "advanced_emphasis_effects",
+"prompt": "Line Highlight Brightness - Top Performer Line. Builds on Prompt 8 (multi-line chart). At 7s mark, Product A line (green #27AE60, highest performer) is emphasized. Its stroke width increases from 3px to 5px and color deepens (#27AE60→#1B5E20). A 2px glow shadow (#27AE60) appears and pulses. Product B and C lines fade to #CCCCCC at 0.3 opacity and lose shadow. Markers on Product A enlarge from 6px to 10px and glow brightly. Value labels on A's points grow from 12pt to 16pt bold and recolor to gold (#FFD700). Background gridlines behind A's region brighten (1px white at 0.3 opacity instead of 0.2). Animation: 0–7s normal chart animation from Prompt 8. 7–8s A line brightens, thickens, and glows while B/C dim. 8–9s A's markers scale up and labels enlarge with value emphasis. 9–14s hold with Product A marker glow pulsing (0.4s cycle). [cite_start]Total duration: 14s (including base chart motion). "
+},
+{
+"id": 169,
+"category": "advanced_emphasis_effects",
+"prompt": "Area Fill Spotlight - Illuminating Data Section. Builds on Prompt 9 (area chart). At 6s mark, area under curve receives a 'spotlight' effect. A radial gradient overlay appears: center bright/transparent white transitioning to outer dark grey (#333333, 0.5 opacity), positioned at the highest point of the revenue curve. This brightens peak months (Jul–Dec) while early months (Jan–Jun) fall under a 0.4 opacity dark overlay. Area fill in spotlight region brightens (blue #2196F3→bright cyan #00BCD4), while shadowed region darkens (blue→#0D47A1). Line stroke in spotlight region gains 2px white glow. Animation: 0–6s normal area animation from Prompt 9. 6–7.5s spotlight radial gradient appears, early months darken. 7.5–9s area colors shift to bright in spotlight and dark in shadow. 9–14s hold with subtle shadow pulsing (0.3s cycle, intensity 0.4→0.6). [cite_start]Total duration: 14s (including base area motion). "
+},
+{
+"id": 170,
+"category": "advanced_emphasis_effects",
+"prompt": "Stacked Segment Flash - Individual Segment Emphasis. Builds on Prompt 4 (stacked bar chart). At 5s mark, Services segment (purple #9C27B0) in Q4 bar is emphasized. That segment gets a 2px white border and 3px white glow shadow pulsing every 0.8s. Other segments in the same Q4 bar drop to 0.6 opacity. Services segments in Q1–Q3 subtly highlight (opacity 0.8). A marketing label appears beside Q4 bar with arrow pointing to Services: 'Services Revenue: $18K' (12pt white bold in semi-transparent box). Animation: 0–5s normal stacked bar animation from Prompt 4. 5–6s Q4 Services segment gains border and glow while neighboring segments dim. 6–8s arrow and label fade in with slight scale-up. 8–12s glow continues pulsing at 1s cycle. Hold with emphasized segment visible. [cite_start]Total duration: 12s (including base stacked bar motion). "
+}
 ]

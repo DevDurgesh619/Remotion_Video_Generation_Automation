@@ -1,0 +1,625 @@
+{
+  "scene": "horizontal_bar_chart_growth",
+  "duration": 10,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#F5F5F5",
+  "objects": [
+    {
+      "id": "title",
+      "shape": "text",
+      "text": {
+        "content": "Market Share by Region",
+        "fontSize": 28,
+        "fontWeight": "bold",
+        "textColor": "#1f4788"
+      },
+      "pos": [
+        -880,
+        -500
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "bar_na",
+      "shape": "rectangle",
+      "size": [
+        0,
+        60
+      ],
+      "color": "#E53935",
+      "pos": [
+        -110,
+        -120
+      ],
+      "anchor": "left"
+    },
+    {
+      "id": "bar_eu",
+      "shape": "rectangle",
+      "size": [
+        0,
+        60
+      ],
+      "color": "#3F51B5",
+      "pos": [
+        -110,
+        -40
+      ],
+      "anchor": "left"
+    },
+    {
+      "id": "bar_asia",
+      "shape": "rectangle",
+      "size": [
+        0,
+        60
+      ],
+      "color": "#00897B",
+      "pos": [
+        -110,
+        40
+      ],
+      "anchor": "left"
+    },
+    {
+      "id": "bar_sa",
+      "shape": "rectangle",
+      "size": [
+        0,
+        60
+      ],
+      "color": "#7CB342",
+      "pos": [
+        -110,
+        120
+      ],
+      "anchor": "left"
+    },
+    {
+      "id": "bar_africa",
+      "shape": "rectangle",
+      "size": [
+        0,
+        60
+      ],
+      "color": "#F57C00",
+      "pos": [
+        -110,
+        200
+      ],
+      "anchor": "left"
+    },
+    {
+      "id": "label_na",
+      "shape": "text",
+      "text": {
+        "content": "North America",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -950,
+        -120
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "label_eu",
+      "shape": "text",
+      "text": {
+        "content": "Europe",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -950,
+        -40
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "label_asia",
+      "shape": "text",
+      "text": {
+        "content": "Asia",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -950,
+        40
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "label_sa",
+      "shape": "text",
+      "text": {
+        "content": "South America",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -950,
+        120
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "label_africa",
+      "shape": "text",
+      "text": {
+        "content": "Africa",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -950,
+        200
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "percent_na",
+      "shape": "text",
+      "text": {
+        "content": "35%",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        110,
+        -120
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "percent_eu",
+      "shape": "text",
+      "text": {
+        "content": "32%",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        90,
+        -40
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "percent_asia",
+      "shape": "text",
+      "text": {
+        "content": "29%",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        70,
+        40
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "percent_sa",
+      "shape": "text",
+      "text": {
+        "content": "19%",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        10,
+        120
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "percent_africa",
+      "shape": "text",
+      "text": {
+        "content": "13%",
+        "fontSize": 16,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -30,
+        200
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_axis_0",
+      "shape": "text",
+      "text": {
+        "content": "0%",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -880,
+        500
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_axis_10",
+      "shape": "text",
+      "text": {
+        "content": "10%",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -440,
+        500
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_axis_20",
+      "shape": "text",
+      "text": {
+        "content": "20%",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        0,
+        500
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_axis_30",
+      "shape": "text",
+      "text": {
+        "content": "30%",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        440,
+        500
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_axis_40",
+      "shape": "text",
+      "text": {
+        "content": "40%",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        880,
+        500
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "gridline_10",
+      "shape": "line",
+      "size": [
+        1,
+        1080
+      ],
+      "color": "#FFFFFF",
+      "opacity": 0.2,
+      "pos": [
+        -440,
+        0
+      ]
+    },
+    {
+      "id": "gridline_20",
+      "shape": "line",
+      "size": [
+        1,
+        1080
+      ],
+      "color": "#FFFFFF",
+      "opacity": 0.2,
+      "pos": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "gridline_30",
+      "shape": "line",
+      "size": [
+        1,
+        1080
+      ],
+      "color": "#FFFFFF",
+      "opacity": 0.2,
+      "pos": [
+        440,
+        0
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "target": "title",
+      "time": [
+        0,
+        0.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "label_na",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "label_eu",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "label_asia",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "label_sa",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "label_africa",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "bar_na",
+      "time": [
+        1,
+        2
+      ],
+      "easing": "ease-out",
+      "width": [
+        0,
+        220
+      ]
+    },
+    {
+      "target": "bar_eu",
+      "time": [
+        2,
+        3
+      ],
+      "easing": "ease-out",
+      "width": [
+        0,
+        200
+      ]
+    },
+    {
+      "target": "bar_asia",
+      "time": [
+        3,
+        4
+      ],
+      "easing": "ease-out",
+      "width": [
+        0,
+        180
+      ]
+    },
+    {
+      "target": "bar_sa",
+      "time": [
+        4,
+        5
+      ],
+      "easing": "ease-out",
+      "width": [
+        0,
+        120
+      ]
+    },
+    {
+      "target": "bar_africa",
+      "time": [
+        5,
+        6
+      ],
+      "easing": "ease-out",
+      "width": [
+        0,
+        80
+      ]
+    },
+    {
+      "target": "percent_na",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "percent_eu",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "percent_asia",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "percent_sa",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "percent_africa",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_axis_0",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_axis_10",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_axis_20",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_axis_30",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_axis_40",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "gridline_10",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "gridline_20",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "gridline_30",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    }
+  ]
+}

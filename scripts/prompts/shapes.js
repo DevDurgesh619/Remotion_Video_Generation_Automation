@@ -38,6 +38,23 @@ OUTLINED SHAPES (stroke)
 If object has "stroke" but "fill" is false:
 - Set backgroundColor to "transparent"
 - Use border: strokeWidth + "px solid " + strokeColor
-- Use boxSizing: "border-box"`;
+- Use boxSizing: "border-box"
+
+TEXT RENDERING
+When shape is "text", render as a div with text content INSIDE:
+- <div style={{ position: "absolute", left: "50%", top: "50%", transform: "translate(-50%, -50%) translateX(" + posX + "px) translateY(" + posY + "px)", fontSize: spec.text.fontSize, fontWeight: spec.text.fontWeight || "normal", fontFamily: "Inter, Arial, sans-serif", color: spec.text.textColor, whiteSpace: "nowrap", textAlign: "center", opacity: ... }}>{"Actual Text Content"}</div>
+- IMPORTANT: Put the actual text content from spec.text.content INSIDE the div. Do NOT leave divs empty.
+- NEVER put text as background — use the color property for text color.
+
+ANCHORED BAR GROWTH (for bar charts)
+When a shape has "anchor": "bottom":
+- Use bottom: "50%" instead of top: "50%"
+- Add transformOrigin: "bottom center" 
+- Use transform: "translateX(-50%) translateX(" + posX + "px) translateY(" + posY + "px)"
+- This makes bars grow upward from their bottom edge (like real bar charts)
+
+When a shape has "anchor": "left":
+- Use transformOrigin: "left center"
+- This makes horizontal bars grow rightward from their left edge`;
 
 module.exports = SHAPE_RULES;

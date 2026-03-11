@@ -1,0 +1,516 @@
+{
+  "scene": "pie_chart_market_share_distribution",
+  "duration": 9,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#FFFFFF",
+  "objects": [
+    {
+      "id": "title",
+      "shape": "text",
+      "text": {
+        "content": "Market Distribution 2024",
+        "fontSize": 28,
+        "fontWeight": "bold",
+        "textColor": "#333333"
+      },
+      "pos": [
+        0,
+        -490
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "background_circle",
+      "shape": "circle",
+      "diameter": 400,
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 2
+      },
+      "pos": [
+        0,
+        30
+      ],
+      "fill": false,
+      "opacity": 0
+    },
+    {
+      "id": "slice_electronics",
+      "shape": "circle",
+      "diameter": 400,
+      "color": "#FF6B6B",
+      "pos": [
+        0,
+        30
+      ],
+      "opacity": 0,
+      "rotation": 0
+    },
+    {
+      "id": "label_electronics",
+      "shape": "text",
+      "text": {
+        "content": "Electronics 32%",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        0,
+        -170
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "slice_software",
+      "shape": "circle",
+      "diameter": 400,
+      "color": "#4ECDC4",
+      "pos": [
+        0,
+        30
+      ],
+      "opacity": 0,
+      "rotation": 0
+    },
+    {
+      "id": "label_software",
+      "shape": "text",
+      "text": {
+        "content": "Software 25%",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        120,
+        -100
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "slice_services",
+      "shape": "circle",
+      "diameter": 400,
+      "color": "#45B7D1",
+      "pos": [
+        0,
+        30
+      ],
+      "opacity": 0,
+      "rotation": 0
+    },
+    {
+      "id": "label_services",
+      "shape": "text",
+      "text": {
+        "content": "Services 18%",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        160,
+        30
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "slice_support",
+      "shape": "circle",
+      "diameter": 400,
+      "color": "#FFA07A",
+      "pos": [
+        0,
+        30
+      ],
+      "opacity": 0,
+      "rotation": 0
+    },
+    {
+      "id": "label_support",
+      "shape": "text",
+      "text": {
+        "content": "Support 15%",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        80,
+        150
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "slice_training",
+      "shape": "circle",
+      "diameter": 400,
+      "color": "#98D8C8",
+      "pos": [
+        0,
+        30
+      ],
+      "opacity": 0,
+      "rotation": 0
+    },
+    {
+      "id": "label_training",
+      "shape": "text",
+      "text": {
+        "content": "Training 7%",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -80,
+        150
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "slice_other",
+      "shape": "circle",
+      "diameter": 400,
+      "color": "#F7DC6F",
+      "pos": [
+        0,
+        30
+      ],
+      "opacity": 0,
+      "rotation": 0
+    },
+    {
+      "id": "label_other",
+      "shape": "text",
+      "text": {
+        "content": "Other 3%",
+        "fontSize": 14,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -160,
+        30
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "legend_electronics",
+      "shape": "rectangle",
+      "size": [
+        12,
+        12
+      ],
+      "color": "#FF6B6B",
+      "pos": [
+        -300,
+        250
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "legend_software",
+      "shape": "rectangle",
+      "size": [
+        12,
+        12
+      ],
+      "color": "#4ECDC4",
+      "pos": [
+        -150,
+        250
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "legend_services",
+      "shape": "rectangle",
+      "size": [
+        12,
+        12
+      ],
+      "color": "#45B7D1",
+      "pos": [
+        0,
+        250
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "legend_support",
+      "shape": "rectangle",
+      "size": [
+        12,
+        12
+      ],
+      "color": "#FFA07A",
+      "pos": [
+        150,
+        250
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "legend_training",
+      "shape": "rectangle",
+      "size": [
+        12,
+        12
+      ],
+      "color": "#98D8C8",
+      "pos": [
+        300,
+        250
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "legend_other",
+      "shape": "rectangle",
+      "size": [
+        12,
+        12
+      ],
+      "color": "#F7DC6F",
+      "pos": [
+        450,
+        250
+      ],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "title",
+      "time": [
+        0,
+        0.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "background_circle",
+      "time": [
+        0,
+        1.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "slice_electronics",
+      "time": [
+        1.5,
+        2.3
+      ],
+      "rotation": [
+        0,
+        115.2
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "label_electronics",
+      "time": [
+        1.5,
+        2.3
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "slice_software",
+      "time": [
+        1.8,
+        2.6
+      ],
+      "rotation": [
+        0,
+        90
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "label_software",
+      "time": [
+        1.8,
+        2.6
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "slice_services",
+      "time": [
+        2.1,
+        2.9
+      ],
+      "rotation": [
+        0,
+        64.8
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "label_services",
+      "time": [
+        2.1,
+        2.9
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "slice_support",
+      "time": [
+        2.4,
+        3.2
+      ],
+      "rotation": [
+        0,
+        54
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "label_support",
+      "time": [
+        2.4,
+        3.2
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "slice_training",
+      "time": [
+        2.7,
+        3.5
+      ],
+      "rotation": [
+        0,
+        25.2
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "label_training",
+      "time": [
+        2.7,
+        3.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "slice_other",
+      "time": [
+        3,
+        3.8
+      ],
+      "rotation": [
+        0,
+        10.8
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "label_other",
+      "time": [
+        3,
+        3.8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "legend_electronics",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "legend_software",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "legend_services",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "legend_support",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "legend_training",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "legend_other",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    }
+  ]
+}

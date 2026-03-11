@@ -1,0 +1,1489 @@
+{
+  "scene": "line_chart_single_trend",
+  "duration": 11,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#1a1a1a",
+  "objects": [
+    {
+      "id": "title",
+      "shape": "text",
+      "text": {
+        "content": "Website Traffic 12 Months",
+        "fontSize": 28,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -860,
+        -500
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "chart_area",
+      "shape": "rectangle",
+      "size": [
+        1200,
+        500
+      ],
+      "pos": [
+        -760,
+        -390
+      ],
+      "fill": false
+    },
+    {
+      "id": "y_label_0",
+      "shape": "text",
+      "text": {
+        "content": "0",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -890,
+        110
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_label_5k",
+      "shape": "text",
+      "text": {
+        "content": "5K",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -890,
+        60
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_label_10k",
+      "shape": "text",
+      "text": {
+        "content": "10K",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -890,
+        10
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_label_15k",
+      "shape": "text",
+      "text": {
+        "content": "15K",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -890,
+        -40
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_label_20k",
+      "shape": "text",
+      "text": {
+        "content": "20K",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -890,
+        -90
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "y_label_25k",
+      "shape": "text",
+      "text": {
+        "content": "25K",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -890,
+        -140
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "gridline_5k",
+      "shape": "line",
+      "size": [
+        1200,
+        0
+      ],
+      "pos": [
+        -760,
+        60
+      ],
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 1
+      },
+      "opacity": 0.2
+    },
+    {
+      "id": "gridline_10k",
+      "shape": "line",
+      "size": [
+        1200,
+        0
+      ],
+      "pos": [
+        -760,
+        10
+      ],
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 1
+      },
+      "opacity": 0.2
+    },
+    {
+      "id": "gridline_15k",
+      "shape": "line",
+      "size": [
+        1200,
+        0
+      ],
+      "pos": [
+        -760,
+        -40
+      ],
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 1
+      },
+      "opacity": 0.2
+    },
+    {
+      "id": "gridline_20k",
+      "shape": "line",
+      "size": [
+        1200,
+        0
+      ],
+      "pos": [
+        -760,
+        -90
+      ],
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 1
+      },
+      "opacity": 0.2
+    },
+    {
+      "id": "gridline_25k",
+      "shape": "line",
+      "size": [
+        1200,
+        0
+      ],
+      "pos": [
+        -760,
+        -140
+      ],
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 1
+      },
+      "opacity": 0.2
+    },
+    {
+      "id": "data_line",
+      "shape": "line",
+      "size": [
+        0,
+        0
+      ],
+      "stroke": {
+        "color": "#2196F3",
+        "width": 4
+      },
+      "pos": [
+        -760,
+        110
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "marker_1",
+      "shape": "circle",
+      "diameter": 8,
+      "color": "#FFFFFF",
+      "stroke": {
+        "color": "#2196F3",
+        "width": 2
+      },
+      "pos": [
+        -760,
+        70
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "marker_2",
+      "shape": "circle",
+      "diameter": 8,
+      "color": "#FFFFFF",
+      "stroke": {
+        "color": "#2196F3",
+        "width": 2
+      },
+      "pos": [
+        -640,
+        60
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "marker_3",
+      "shape": "circle",
+      "diameter": 8,
+      "color": "#FFFFFF",
+      "stroke": {
+        "color": "#2196F3",
+        "width": 2
+      },
+      "pos": [
+        -520,
+        30
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "marker_4",
+      "shape": "circle",
+      "diameter": 8,
+      "color": "#FFFFFF",
+      "stroke": {
+        "color": "#2196F3",
+        "width": 2
+      },
+      "pos": [
+        -400,
+        0
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "marker_5",
+      "shape": "circle",
+      "diameter": 8,
+      "color": "#FFFFFF",
+      "stroke": {
+        "color": "#2196F3",
+        "width": 2
+      },
+      "pos": [
+        -280,
+        -30
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "marker_6",
+      "shape": "circle",
+      "diameter": 8,
+      "color": "#FFFFFF",
+      "stroke": {
+        "color": "#2196F3",
+        "width": 2
+      },
+      "pos": [
+        -160,
+        -60
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "marker_7",
+      "shape": "circle",
+      "diameter": 8,
+      "color": "#FFFFFF",
+      "stroke": {
+        "color": "#2196F3",
+        "width": 2
+      },
+      "pos": [
+        -40,
+        -80
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "marker_8",
+      "shape": "circle",
+      "diameter": 8,
+      "color": "#FFFFFF",
+      "stroke": {
+        "color": "#2196F3",
+        "width": 2
+      },
+      "pos": [
+        80,
+        -90
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "marker_9",
+      "shape": "circle",
+      "diameter": 8,
+      "color": "#FFFFFF",
+      "stroke": {
+        "color": "#2196F3",
+        "width": 2
+      },
+      "pos": [
+        200,
+        -100
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "marker_10",
+      "shape": "circle",
+      "diameter": 8,
+      "color": "#FFFFFF",
+      "stroke": {
+        "color": "#2196F3",
+        "width": 2
+      },
+      "pos": [
+        320,
+        -110
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "marker_11",
+      "shape": "circle",
+      "diameter": 8,
+      "color": "#FFFFFF",
+      "stroke": {
+        "color": "#2196F3",
+        "width": 2
+      },
+      "pos": [
+        440,
+        -120
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_1",
+      "shape": "text",
+      "text": {
+        "content": "8K",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -760,
+        50
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_2",
+      "shape": "text",
+      "text": {
+        "content": "9K",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -640,
+        40
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_3",
+      "shape": "text",
+      "text": {
+        "content": "11K",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -520,
+        10
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_4",
+      "shape": "text",
+      "text": {
+        "content": "13K",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -400,
+        -20
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_5",
+      "shape": "text",
+      "text": {
+        "content": "15K",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -280,
+        -50
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_6",
+      "shape": "text",
+      "text": {
+        "content": "17K",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -160,
+        -80
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_7",
+      "shape": "text",
+      "text": {
+        "content": "18K",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -40,
+        -100
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_8",
+      "shape": "text",
+      "text": {
+        "content": "19K",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        80,
+        -110
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_9",
+      "shape": "text",
+      "text": {
+        "content": "20K",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        200,
+        -120
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_10",
+      "shape": "text",
+      "text": {
+        "content": "21K",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        320,
+        -130
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "value_label_11",
+      "shape": "text",
+      "text": {
+        "content": "22K",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        440,
+        -140
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_label_jan",
+      "shape": "text",
+      "text": {
+        "content": "Jan",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -760,
+        150
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_label_feb",
+      "shape": "text",
+      "text": {
+        "content": "Feb",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -640,
+        150
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_label_mar",
+      "shape": "text",
+      "text": {
+        "content": "Mar",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -520,
+        150
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_label_apr",
+      "shape": "text",
+      "text": {
+        "content": "Apr",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -400,
+        150
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_label_may",
+      "shape": "text",
+      "text": {
+        "content": "May",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -280,
+        150
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_label_jun",
+      "shape": "text",
+      "text": {
+        "content": "Jun",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -160,
+        150
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_label_jul",
+      "shape": "text",
+      "text": {
+        "content": "Jul",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        -40,
+        150
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_label_aug",
+      "shape": "text",
+      "text": {
+        "content": "Aug",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        80,
+        150
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_label_sep",
+      "shape": "text",
+      "text": {
+        "content": "Sep",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        200,
+        150
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_label_oct",
+      "shape": "text",
+      "text": {
+        "content": "Oct",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        320,
+        150
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_label_nov",
+      "shape": "text",
+      "text": {
+        "content": "Nov",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        440,
+        150
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_label_dec",
+      "shape": "text",
+      "text": {
+        "content": "Dec",
+        "fontSize": 18,
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        560,
+        150
+      ],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "title",
+      "time": [
+        0,
+        0.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_label_0",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_label_5k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_label_10k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_label_15k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_label_20k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "y_label_25k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "gridline_5k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        0.2
+      ]
+    },
+    {
+      "target": "gridline_10k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        0.2
+      ]
+    },
+    {
+      "target": "gridline_15k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        0.2
+      ]
+    },
+    {
+      "target": "gridline_20k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        0.2
+      ]
+    },
+    {
+      "target": "gridline_25k",
+      "time": [
+        0.5,
+        1
+      ],
+      "opacity": [
+        0,
+        0.2
+      ]
+    },
+    {
+      "target": "data_line",
+      "time": [
+        1,
+        8
+      ],
+      "size": [
+        1200,
+        0
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "marker_1",
+      "time": [
+        1,
+        1.64
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "marker_2",
+      "time": [
+        1.64,
+        2.27
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "marker_3",
+      "time": [
+        2.27,
+        2.91
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "marker_4",
+      "time": [
+        2.91,
+        3.55
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "marker_5",
+      "time": [
+        3.55,
+        4.18
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "marker_6",
+      "time": [
+        4.18,
+        4.82
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "marker_7",
+      "time": [
+        4.82,
+        5.45
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "marker_8",
+      "time": [
+        5.45,
+        6.09
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "marker_9",
+      "time": [
+        6.09,
+        6.73
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "marker_10",
+      "time": [
+        6.73,
+        7.36
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "marker_11",
+      "time": [
+        7.36,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_1",
+      "time": [
+        8,
+        8.14
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_2",
+      "time": [
+        8.14,
+        8.28
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_3",
+      "time": [
+        8.28,
+        8.42
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_4",
+      "time": [
+        8.42,
+        8.56
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_5",
+      "time": [
+        8.56,
+        8.7
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_6",
+      "time": [
+        8.7,
+        8.84
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_7",
+      "time": [
+        8.84,
+        8.98
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_8",
+      "time": [
+        8.98,
+        9.12
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_9",
+      "time": [
+        9.12,
+        9.26
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_10",
+      "time": [
+        9.26,
+        9.4
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "value_label_11",
+      "time": [
+        9.4,
+        9.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_jan",
+      "time": [
+        9.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_feb",
+      "time": [
+        9.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_mar",
+      "time": [
+        9.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_apr",
+      "time": [
+        9.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_may",
+      "time": [
+        9.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_jun",
+      "time": [
+        9.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_jul",
+      "time": [
+        9.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_aug",
+      "time": [
+        9.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_sep",
+      "time": [
+        9.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_oct",
+      "time": [
+        9.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_nov",
+      "time": [
+        9.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "x_label_dec",
+      "time": [
+        9.5,
+        10
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "marker_1",
+      "time": [
+        10,
+        10.3
+      ],
+      "opacity": [
+        1,
+        0.5
+      ]
+    },
+    {
+      "target": "marker_1",
+      "time": [
+        10.3,
+        10.6
+      ],
+      "opacity": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "target": "marker_2",
+      "time": [
+        10,
+        10.3
+      ],
+      "opacity": [
+        1,
+        0.5
+      ]
+    },
+    {
+      "target": "marker_2",
+      "time": [
+        10.3,
+        10.6
+      ],
+      "opacity": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "target": "marker_3",
+      "time": [
+        10,
+        10.3
+      ],
+      "opacity": [
+        1,
+        0.5
+      ]
+    },
+    {
+      "target": "marker_3",
+      "time": [
+        10.3,
+        10.6
+      ],
+      "opacity": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "target": "marker_4",
+      "time": [
+        10,
+        10.3
+      ],
+      "opacity": [
+        1,
+        0.5
+      ]
+    },
+    {
+      "target": "marker_4",
+      "time": [
+        10.3,
+        10.6
+      ],
+      "opacity": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "target": "marker_5",
+      "time": [
+        10,
+        10.3
+      ],
+      "opacity": [
+        1,
+        0.5
+      ]
+    },
+    {
+      "target": "marker_5",
+      "time": [
+        10.3,
+        10.6
+      ],
+      "opacity": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "target": "marker_6",
+      "time": [
+        10,
+        10.3
+      ],
+      "opacity": [
+        1,
+        0.5
+      ]
+    },
+    {
+      "target": "marker_6",
+      "time": [
+        10.3,
+        10.6
+      ],
+      "opacity": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "target": "marker_7",
+      "time": [
+        10,
+        10.3
+      ],
+      "opacity": [
+        1,
+        0.5
+      ]
+    },
+    {
+      "target": "marker_7",
+      "time": [
+        10.3,
+        10.6
+      ],
+      "opacity": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "target": "marker_8",
+      "time": [
+        10,
+        10.3
+      ],
+      "opacity": [
+        1,
+        0.5
+      ]
+    },
+    {
+      "target": "marker_8",
+      "time": [
+        10.3,
+        10.6
+      ],
+      "opacity": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "target": "marker_9",
+      "time": [
+        10,
+        10.3
+      ],
+      "opacity": [
+        1,
+        0.5
+      ]
+    },
+    {
+      "target": "marker_9",
+      "time": [
+        10.3,
+        10.6
+      ],
+      "opacity": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "target": "marker_10",
+      "time": [
+        10,
+        10.3
+      ],
+      "opacity": [
+        1,
+        0.5
+      ]
+    },
+    {
+      "target": "marker_10",
+      "time": [
+        10.3,
+        10.6
+      ],
+      "opacity": [
+        0.5,
+        1
+      ]
+    },
+    {
+      "target": "marker_11",
+      "time": [
+        10,
+        10.3
+      ],
+      "opacity": [
+        1,
+        0.5
+      ]
+    },
+    {
+      "target": "marker_11",
+      "time": [
+        10.3,
+        10.6
+      ],
+      "opacity": [
+        0.5,
+        1
+      ]
+    }
+  ]
+}

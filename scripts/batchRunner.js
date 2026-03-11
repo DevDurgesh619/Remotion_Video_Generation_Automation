@@ -1,23 +1,21 @@
+// SHAPE-MOTION-LAB — BATCH RUNNER v3 (Spec VM)
+// Pipeline: Spec JSON → Remotion render (via SpecPlayer runtime)
+// No code generation. No LLM. No compiler. No TypeScript validation.
+
 require("dotenv").config();
 const fs = require("fs");
-const path = require("path");
 const { execSync } = require("child_process");
-const OpenAI = require("openai");
 const { createObjectCsvWriter } = require("csv-writer");
-const { assemblePrompt, getPromptSummary } = require("./prompts/assembler");
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+// ─── Configuration ──────────────────────────────────────────────────────────
+
+const SPEC_VERSION = process.env.SPEC_VERSION || "v2";
+const SPEC_FOLDER =
+  SPEC_VERSION === "v1" ? "./machine_specs" : "./machine_specs_v2";
+const ERROR_LOG_FILE = "./errors_tracing.json";
+const PARALLEL_BATCH_SIZE = parseInt(process.env.PARALLEL_BATCH || "1", 10);
 
 const prompts = JSON.parse(fs.readFileSync("./prompts.json"));
-
-// ---------------------------------------------------------------------------
-// CONFIGURATION — Switch between v1 (dense) and v2 (sparse) spec folders
-// ---------------------------------------------------------------------------
-const SPEC_VERSION = process.env.SPEC_VERSION || "v2";
-const SPEC_FOLDER = SPEC_VERSION === "v1" ? "./machine_specs" : "./machine_specs_v2";
-const ERROR_LOG_FILE = "./errors_tracing.json";
 
 const csvWriter = createObjectCsvWriter({
   path: "results.csv",
@@ -26,7 +24,8 @@ const csvWriter = createObjectCsvWriter({
     { id: "category", title: "Category" },
     { id: "prompt", title: "Prompt" },
     { id: "videoLink", title: "Video" },
-    { id: "codeLink", title: "Code" },
+    { id: "specLink", title: "Spec" },
+    { id: "method", title: "Method" },
     { id: "visualClarity", title: "Visual Clarity (1-5)" },
     { id: "motionSmoothness", title: "Motion Smoothness (1-5)" },
     { id: "promptFaithfulness", title: "Prompt Faithfulness (1-5)" },
@@ -37,9 +36,8 @@ const csvWriter = createObjectCsvWriter({
   append: true,
 });
 
-// ---------------------------------------------------------------------------
-// ERROR LOGGING — Auto-append to errors_tracing.json
-// ---------------------------------------------------------------------------
+// ─── Error logging ──────────────────────────────────────────────────────────
+
 function logError(promptId, promptTitle, errorType, layer, rootCause) {
   let errors = [];
   try {
@@ -50,9 +48,10 @@ function logError(promptId, promptTitle, errorType, layer, rootCause) {
     errors = [];
   }
 
-  const nextId = errors.length > 0
-    ? Math.max(...errors.map(function(e) { return e.id || 0; })) + 1
-    : 1;
+  const nextId =
+    errors.length > 0
+      ? Math.max(...errors.map(function (e) { return e.id || 0; })) + 1
+      : 1;
 
   errors.push({
     id: nextId,
@@ -65,340 +64,191 @@ function logError(promptId, promptTitle, errorType, layer, rootCause) {
   });
 
   fs.writeFileSync(ERROR_LOG_FILE, JSON.stringify(errors, null, 2));
-  console.log("  Logged error to " + ERROR_LOG_FILE);
+  console.log("  📝 Logged error to " + ERROR_LOG_FILE);
 }
 
-// ---------------------------------------------------------------------------
-// CODE CLEANING — Strip markdown fences and headers from LLM output
-// ---------------------------------------------------------------------------
-function cleanLLMCode(code) {
-  if (!code) return "";
+// ─── Duration extraction ────────────────────────────────────────────────────
 
-  return code
-    .replace(/```jsx/g, "")
-    .replace(/```tsx/g, "")
-    .replace(/```typescript/g, "")
-    .replace(/```javascript/g, "")
-    .replace(/```/g, "")
-    .replace(/^#+\s.*$/gm, "")
-    .replace(/```[a-zA-Z]*/g, "")
-    .trim();
-}
-
-// ---------------------------------------------------------------------------
-// STATIC VALIDATION — Quick regex checks on generated code
-// ---------------------------------------------------------------------------
-function staticValidation(code) {
-  const issues = [];
-
-  if (code.includes("${")) {
-    issues.push("Template literal interpolation detected (${...})");
-  }
-  if (code.includes("`")) {
-    issues.push("Backtick detected (template literal)");
-  }
-  if (code.includes("for (") || code.includes("for(")) {
-    issues.push("for loop detected");
-  }
-  if (code.includes(".map(") || code.includes(".map (")) {
-    issues.push(".map() loop detected");
-  }
-  if (code.includes("Array.from")) {
-    issues.push("Array.from detected");
-  }
-  if (code.includes("while (") || code.includes("while(")) {
-    issues.push("while loop detected");
-  }
-  // Check for framer-motion usage
-  if (code.includes("motion.div") || code.includes("framer-motion")) {
-    issues.push("framer-motion usage detected");
-  }
-  // Check for import/export (should not be in body)
-  if (code.includes("import ") || code.includes("export ")) {
-    issues.push("import/export statement detected in body");
-  }
-
-  return issues;
-}
-
-// ---------------------------------------------------------------------------
-// TYPESCRIPT COMPILATION CHECK (Task 2)
-// ---------------------------------------------------------------------------
-function typeCheckComponent() {
-  try {
-    execSync("npx tsc --noEmit", {
-      stdio: "pipe",
-      cwd: process.cwd(),
-    });
-    return { success: true, error: null };
-  } catch (err) {
-    const stderr = err.stderr ? err.stderr.toString() : "";
-    const stdout = err.stdout ? err.stdout.toString() : "";
-    const errorOutput = stderr || stdout || "Unknown TypeScript error";
-    // Only look at errors in src/ files, ignore node_modules type conflicts
-    const srcErrors = errorOutput
-      .split("\n")
-      .filter(function(line) { return line.includes("src/") && line.includes("error TS"); })
-      .slice(0, 5)
-      .join("\n");
-    if (!srcErrors) {
-      // No src/ errors — only node_modules type conflicts, which are fine
-      return { success: true, error: null };
-    }
-    return { success: false, error: srcErrors };
-  }
-}
-
-// ---------------------------------------------------------------------------
-// DURATION EXTRACTION — from spec (sparse format)
-// ---------------------------------------------------------------------------
 function getDurationFromSpec(specData) {
-  // Sparse spec: top-level "duration" in seconds
+  const fps = specData.fps || 30;
+
   if (specData.duration && typeof specData.duration === "number") {
-    return Math.floor(specData.duration * 30);
+    return Math.round(specData.duration * fps);
   }
-  // Legacy dense spec: "duration_sec"
   if (specData.duration_sec && typeof specData.duration_sec === "number") {
-    return Math.floor(specData.duration_sec * 30);
+    return Math.round(specData.duration_sec * fps);
   }
-  console.warn("  No duration found in spec, defaulting to 120 frames");
+
+  console.warn("  ⚠️  No duration found in spec, defaulting to 120 frames");
   return 120;
 }
 
-// ---------------------------------------------------------------------------
-// CODE GENERATION — Uses modular prompt assembly (Task 4)
-// ---------------------------------------------------------------------------
-async function generateCode(specText, specData) {
-  // Assemble the system prompt based on spec content
-  const systemPrompt = assemblePrompt(specData);
-  const summary = getPromptSummary(specData);
-  console.log("  Prompt modules loaded: " + summary.totalModules + " (" + summary.advancedModules + " advanced: " + summary.advancedTypes.join(", ") + ")");
+// ─── Canvas dimensions ──────────────────────────────────────────────────────
 
-  const response = await openai.chat.completions.create({
-    model: "gpt-5-mini",
-    messages: [
-      {
-        role: "system",
-        content: systemPrompt,
-      },
-      {
-        role: "user",
-        content: "Motion Spec JSON:\n" + specText,
-      },
-    ],
-  });
-
-  let code = response.choices[0].message.content;
-  code = cleanLLMCode(code);
-  return code;
+function getCanvasDimensions(specData) {
+  return {
+    width: specData.canvas && specData.canvas.w ? specData.canvas.w : 720,
+    height: specData.canvas && specData.canvas.h ? specData.canvas.h : 720,
+  };
 }
 
-// ---------------------------------------------------------------------------
-// CODE GENERATION WITH ERROR FEEDBACK — Retry with TS error context
-// ---------------------------------------------------------------------------
-async function generateCodeWithFix(specText, specData, previousCode, tsError) {
-  const systemPrompt = assemblePrompt(specData);
+// ─── Process a single prompt ────────────────────────────────────────────────
 
-  const response = await openai.chat.completions.create({
-    model: "gpt-5-mini",
-    messages: [
-      {
-        role: "system",
-        content: systemPrompt,
-      },
-      {
-        role: "user",
-        content: "Motion Spec JSON:\n" + specText,
-      },
-      {
-        role: "assistant",
-        content: previousCode,
-      },
-      {
-        role: "user",
-        content: "The code above has TypeScript compilation errors:\n\n" + tsError + "\n\nPlease fix the code and return the corrected JSX component body. Return ONLY the fixed code, no explanations.",
-      },
-    ],
-  });
+async function processPrompt(item) {
+  const specPath = SPEC_FOLDER + "/spec_" + item.id + ".json";
 
-  let code = response.choices[0].message.content;
-  code = cleanLLMCode(code);
-  return code;
+  // 1. Check spec exists
+  if (!fs.existsSync(specPath)) {
+    console.log("❌ Missing spec for " + item.id + " at " + specPath);
+    return { success: false, method: "none", id: item.id };
+  }
+
+  const videoPath = "outputs/video_" + item.id + ".mp4";
+
+  // 2. Skip if already rendered
+  if (fs.existsSync(videoPath)) {
+    console.log("⏭  Skipping " + item.id + " (already rendered)");
+    return { success: true, method: "cached", id: item.id };
+  }
+
+  console.log(
+    "🔄 Processing " + item.id + ": " + item.prompt.slice(0, 60) + "..."
+  );
+
+  // 3. Parse spec JSON
+  let specData;
+  try {
+    const raw = fs.readFileSync(specPath, "utf8");
+    specData = JSON.parse(raw);
+  } catch (parseErr) {
+    console.log("  ❌ Invalid JSON in spec file for " + item.id);
+    logError(item.id, item.prompt, "JSON Parse Error", "spec", parseErr.message);
+    return { success: false, method: "none", id: item.id };
+  }
+
+  // 4. Compute duration & canvas
+  const fps = specData.fps || 30;
+  const durationInFrames = getDurationFromSpec(specData);
+  const canvas = getCanvasDimensions(specData);
+
+  console.log(
+    "  ⏱  Duration: " + durationInFrames + " frames (" +
+    (durationInFrames / fps).toFixed(1) + "s @ " + fps + " fps)"
+  );
+  console.log("  📐 Canvas: " + canvas.width + "×" + canvas.height);
+
+  // 5. Render with Remotion (SpecPlayer reads SPEC_PATH at runtime)
+  console.log("  🎬 Rendering via Spec VM...");
+  try {
+    execSync(
+      "npx remotion render src/index.ts GeneratedMotion " + videoPath,
+      {
+        stdio: "inherit",
+        env: Object.assign({}, process.env, {
+          REMOTION_APP_DURATION_FRAMES: String(durationInFrames),
+          REMOTION_APP_VIDEO_WIDTH: String(canvas.width),
+          REMOTION_APP_VIDEO_HEIGHT: String(canvas.height),
+          REMOTION_APP_SPEC_FILE: "spec_" + item.id + ".json",
+          REMOTION_APP_SPEC_VERSION: SPEC_VERSION,
+        }),
+      }
+    );
+  } catch (renderErr) {
+    const errMsg = renderErr.message || "Unknown render error";
+    console.log("  ❌ Render failed: " + errMsg.slice(0, 300));
+    logError(
+      item.id,
+      item.prompt,
+      "Render Error",
+      "specvm_runtime",
+      errMsg.slice(0, 500)
+    );
+    return { success: false, method: "specvm", id: item.id };
+  }
+
+  // 6. Log results to CSV
+  await csvWriter.writeRecords([
+    {
+      id: item.id,
+      category: item.category,
+      prompt: item.prompt,
+      videoLink: '=HYPERLINK("' + videoPath + '", "View Video")',
+      specLink: '=HYPERLINK("' + specPath + '", "View Spec")',
+      method: "specvm",
+      visualClarity: "",
+      motionSmoothness: "",
+      promptFaithfulness: "",
+      codeCleanliness: "",
+      reusability: "",
+      notes: "",
+    },
+  ]);
+
+  console.log(
+    "  ✅ Finished " + item.id + " [SPEC VM] (" + durationInFrames + " frames)\n"
+  );
+  return { success: true, method: "specvm", id: item.id };
 }
 
-// ---------------------------------------------------------------------------
-// MAIN PIPELINE
-// ---------------------------------------------------------------------------
+// ─── Main pipeline ──────────────────────────────────────────────────────────
+
 async function run() {
-  console.log("Using spec folder: " + SPEC_FOLDER);
-  console.log("Processing " + prompts.length + " prompts...\n");
+  console.log("╔══════════════════════════════════════════════════════════╗");
+  console.log("║        SHAPE-MOTION-LAB — BATCH RUNNER v3 (Spec VM)    ║");
+  console.log("╠══════════════════════════════════════════════════════════╣");
+  console.log("║  Spec folder:  " + SPEC_FOLDER.padEnd(41) + "║");
+  console.log("║  Engine:       " + "Spec VM (runtime interpreter)".padEnd(41) + "║");
+  console.log("║  Parallel:     " + (PARALLEL_BATCH_SIZE + " concurrent").padEnd(41) + "║");
+  console.log("║  Prompts:      " + (prompts.length + " total").padEnd(41) + "║");
+  console.log("╚══════════════════════════════════════════════════════════╝\n");
 
-  for (const item of prompts) {
-    const specPath = SPEC_FOLDER + "/spec_" + item.id + ".json";
+  // Ensure output directory exists
+  if (!fs.existsSync("outputs")) fs.mkdirSync("outputs", { recursive: true });
 
-    if (!fs.existsSync(specPath)) {
-      console.log("❌ Missing spec for " + item.id + " at " + specPath);
-      continue;
-    }
+  const results = { specvm: 0, cached: 0, failed: 0 };
 
-    const spec = fs.readFileSync(specPath, "utf8");
-    const codePath = "outputs/code_" + item.id + ".tsx";
-    const videoPath = "outputs/video_" + item.id + ".mp4";
+  if (PARALLEL_BATCH_SIZE > 1) {
+    // ─── PARALLEL MODE ───
+    console.log(
+      "Running in parallel mode (batch size: " + PARALLEL_BATCH_SIZE + ")\n"
+    );
 
-    // Skip if video already exists
-    if (fs.existsSync(videoPath)) {
-      console.log("Skipping " + item.id + " (already rendered)");
-      continue;
-    }
+    for (let i = 0; i < prompts.length; i += PARALLEL_BATCH_SIZE) {
+      const batch = prompts.slice(i, i + PARALLEL_BATCH_SIZE);
 
-    console.log("Processing " + item.id + ": " + item.prompt.slice(0, 60) + "...");
-
-    // Parse spec
-    let specData;
-    try {
-      specData = JSON.parse(spec);
-    } catch (parseErr) {
-      console.log("  ❌ Invalid JSON in spec file for " + item.id);
-      logError(item.id, item.prompt, "JSON Parse Error", "spec", parseErr.message);
-      continue;
-    }
-
-    const durationInFrames = getDurationFromSpec(specData);
-    console.log("  Duration: " + durationInFrames + " frames (" + (durationInFrames / 30) + "s)");
-
-    // --- STEP 1: Get or generate code ---
-    let jsxContent;
-    const codeExists = fs.existsSync(codePath);
-
-    if (codeExists) {
-      console.log("  Using existing code");
-      jsxContent = fs.readFileSync(codePath, "utf8");
-    } else {
-      console.log("  Generating code...");
-      jsxContent = await generateCode(spec, specData);
-
-      // --- Static validation + retry ---
-      for (let attempt = 0; attempt < 2; attempt++) {
-        const issues = staticValidation(jsxContent);
-        if (issues.length > 0) {
-          console.log("  ⚠️  Static issues: " + issues.join(", "));
-          console.log("  Retrying generation (attempt " + (attempt + 2) + "/3)...");
-          jsxContent = await generateCode(spec, specData);
+      // Remotion renders are serialised within each batch because the
+      // renderer reads from the same src/ entry point. True parallelism
+      // would require isolated working directories.
+      for (const item of batch) {
+        const result = await processPrompt(item);
+        if (result.success) {
+          results[result.method] = (results[result.method] || 0) + 1;
         } else {
-          break;
+          results.failed++;
         }
       }
-
-      // Final static check — log but don't skip (let TS check catch real issues)
-      const finalIssues = staticValidation(jsxContent);
-      if (finalIssues.length > 0) {
-        console.log("  ⚠️  Remaining static issues after retries: " + finalIssues.join(", "));
-      }
     }
-
-    // --- STEP 2: Wrap in full component ---
-    let fullComponent;
-    if (codeExists) {
-      fullComponent = jsxContent;
-    } else {
-      fullComponent =
-        'import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";\n\n' +
-        "export const GeneratedMotion = () => {\n" +
-        jsxContent +
-        "\n};\n";
-    }
-
-    // Write the generated component
-    fs.writeFileSync("src/GeneratedMotion.tsx", fullComponent);
-    fs.writeFileSync(codePath, fullComponent);
-
-    // --- STEP 3: TypeScript compilation check (Task 2) ---
-    console.log("  TypeScript checking...");
-    let tsResult = typeCheckComponent();
-
-    if (!tsResult.success && !codeExists) {
-      console.log("  ❌ TypeScript error: " + tsResult.error.slice(0, 200));
-      console.log("  Retrying with error feedback...");
-
-      // Retry with error context
-      jsxContent = await generateCodeWithFix(spec, specData, jsxContent, tsResult.error);
-
-      fullComponent =
-        'import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";\n\n' +
-        "export const GeneratedMotion = () => {\n" +
-        jsxContent +
-        "\n};\n";
-
-      fs.writeFileSync("src/GeneratedMotion.tsx", fullComponent);
-      fs.writeFileSync(codePath, fullComponent);
-
-      // Re-check
-      tsResult = typeCheckComponent();
-
-      if (!tsResult.success) {
-        console.log("  ❌ TypeScript still failing after retry: " + tsResult.error.slice(0, 200));
-        logError(item.id, item.prompt, "TypeScript Error", "code_generation", tsResult.error.slice(0, 500));
-        // Continue to try rendering anyway — some TS errors don't prevent rendering
+  } else {
+    // ─── SEQUENTIAL MODE ───
+    for (const item of prompts) {
+      const result = await processPrompt(item);
+      if (result.success) {
+        results[result.method] = (results[result.method] || 0) + 1;
       } else {
-        console.log("  ✅ TypeScript fixed on retry");
+        results.failed++;
       }
-    } else if (!tsResult.success && codeExists) {
-      console.log("  ⚠️  Existing code has TS errors (skipping fix): " + tsResult.error.slice(0, 200));
-    } else {
-      console.log("  ✅ TypeScript OK");
-    }
-
-    // --- STEP 4: Render with Remotion (Task 3 & 5) ---
-    // Pass duration as env var instead of rewriting Root.tsx (Task 5)
-    console.log("  Rendering...");
-    try {
-      execSync(
-  `npx remotion render src/index.ts GeneratedMotion ${videoPath}`,
-  {
-    stdio: "inherit",
-    env: {
-      ...process.env,
-      REMOTION_APP_DURATION_FRAMES: String(durationInFrames),
-      VIDEO_WIDTH: "720",
-      VIDEO_HEIGHT: "720"
     }
   }
-);
-    } catch (renderErr) {
-      // --- Task 3: Capture render errors instead of crashing ---
-      const errMsg = renderErr.message || "Unknown render error";
-      console.log("  ❌ Render failed: " + errMsg.slice(0, 300));
-      logError(
-        item.id,
-        item.prompt,
-        "Render Error",
-        "remotion_runtime",
-        errMsg.slice(0, 500)
-      );
-      continue; // Skip to next prompt instead of crashing
-    }
 
-    // --- STEP 5: Log results to CSV ---
-    await csvWriter.writeRecords([
-      {
-        id: item.id,
-        category: item.category,
-        prompt: item.prompt,
-        videoLink: '=HYPERLINK("' + videoPath + '", "View Video")',
-        codeLink: '=HYPERLINK("' + codePath + '", "View Code")',
-        visualClarity: "",
-        motionSmoothness: "",
-        promptFaithfulness: "",
-        codeCleanliness: "",
-        reusability: "",
-        notes: "",
-      },
-    ]);
-
-    console.log("  ✅ Finished " + item.id + " (" + durationInFrames + " frames)\n");
-  }
-
-  console.log("\n🎉 Batch run complete.");
+  // ─── Summary ────────────────────────────────────────────────────────────
+  console.log("\n╔══════════════════════════════════════════════════════════╗");
+  console.log("║                   BATCH RUN SUMMARY                     ║");
+  console.log("╠══════════════════════════════════════════════════════════╣");
+  console.log("║  Spec VM:      " + String(results.specvm).padEnd(41) + "║");
+  console.log("║  Cached:       " + String(results.cached).padEnd(41) + "║");
+  console.log("║  Failed:       " + String(results.failed).padEnd(41) + "║");
+  console.log("║  Total:        " + String(prompts.length).padEnd(41) + "║");
+  console.log("╚══════════════════════════════════════════════════════════╝\n");
 }
 
 run();

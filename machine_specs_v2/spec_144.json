@@ -1,0 +1,60 @@
+{
+  "scene": "triangle_orbit_path",
+  "duration": 6,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#000000",
+  "objects": [
+    {
+      "id": "orbit_circle",
+      "shape": "circle",
+      "diameter": 300,
+      "opacity": 0
+    },
+    {
+      "id": "triangle_1",
+      "shape": "triangle",
+      "size": [
+        80,
+        80
+      ],
+      "color": "#FFEB3B",
+      "pos": [
+        0,
+        -150
+      ],
+      "rotation": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "triangle_1",
+      "time": [
+        0,
+        6
+      ],
+      "orbit": {
+        "center": [
+          0,
+          0
+        ],
+        "radius": 150,
+        "degrees": 360
+      }
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        0,
+        6
+      ],
+      "rotation": [
+        0,
+        360
+      ]
+    }
+  ]
+}

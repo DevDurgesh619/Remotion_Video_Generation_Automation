@@ -1,0 +1,420 @@
+{
+  "scene": "bar_glow_emphasis",
+  "duration": 8,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#F5F5F5",
+  "objects": [
+    {
+      "id": "title",
+      "shape": "text",
+      "text": {
+        "content": "Sales Data",
+        "fontSize": 32,
+        "fontWeight": "bold",
+        "textColor": "#333333"
+      },
+      "pos": [
+        0,
+        -450
+      ]
+    },
+    {
+      "id": "bar_1",
+      "shape": "rectangle",
+      "size": [
+        80,
+        200
+      ],
+      "color": "#1976D2",
+      "pos": [
+        -225,
+        200
+      ],
+      "anchor": "bottom",
+      "cornerRadius": 8
+    },
+    {
+      "id": "bar_2",
+      "shape": "rectangle",
+      "size": [
+        80,
+        280
+      ],
+      "color": "#F57C00",
+      "pos": [
+        -75,
+        200
+      ],
+      "anchor": "bottom",
+      "cornerRadius": 8
+    },
+    {
+      "id": "bar_3",
+      "shape": "rectangle",
+      "size": [
+        80,
+        360
+      ],
+      "color": "#388E3C",
+      "pos": [
+        75,
+        200
+      ],
+      "anchor": "bottom",
+      "cornerRadius": 8
+    },
+    {
+      "id": "bar_4",
+      "shape": "rectangle",
+      "size": [
+        80,
+        400
+      ],
+      "color": "#F44336",
+      "pos": [
+        225,
+        200
+      ],
+      "anchor": "bottom",
+      "cornerRadius": 8,
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 1
+      }
+    },
+    {
+      "id": "label_1",
+      "shape": "text",
+      "text": {
+        "content": "200",
+        "fontSize": 18,
+        "fontWeight": "bold",
+        "textColor": "#1976D2"
+      },
+      "pos": [
+        -225,
+        -10
+      ]
+    },
+    {
+      "id": "label_2",
+      "shape": "text",
+      "text": {
+        "content": "280",
+        "fontSize": 18,
+        "fontWeight": "bold",
+        "textColor": "#F57C00"
+      },
+      "pos": [
+        -75,
+        -90
+      ]
+    },
+    {
+      "id": "label_3",
+      "shape": "text",
+      "text": {
+        "content": "360",
+        "fontSize": 18,
+        "fontWeight": "bold",
+        "textColor": "#388E3C"
+      },
+      "pos": [
+        75,
+        -170
+      ]
+    },
+    {
+      "id": "label_4",
+      "shape": "text",
+      "text": {
+        "content": "$70K",
+        "fontSize": 20,
+        "fontWeight": "bold",
+        "textColor": "#F44336"
+      },
+      "pos": [
+        225,
+        -210
+      ]
+    },
+    {
+      "id": "highlight_box",
+      "shape": "rectangle",
+      "size": [
+        88,
+        36
+      ],
+      "color": "#FFF8DC",
+      "pos": [
+        225,
+        -210
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "x_q1",
+      "shape": "text",
+      "text": {
+        "content": "Q1",
+        "fontSize": 20,
+        "textColor": "#666666"
+      },
+      "pos": [
+        -225,
+        240
+      ]
+    },
+    {
+      "id": "x_q2",
+      "shape": "text",
+      "text": {
+        "content": "Q2",
+        "fontSize": 20,
+        "textColor": "#666666"
+      },
+      "pos": [
+        -75,
+        240
+      ]
+    },
+    {
+      "id": "x_q3",
+      "shape": "text",
+      "text": {
+        "content": "Q3",
+        "fontSize": 20,
+        "textColor": "#666666"
+      },
+      "pos": [
+        75,
+        240
+      ]
+    },
+    {
+      "id": "x_q4",
+      "shape": "text",
+      "text": {
+        "content": "Q4",
+        "fontSize": 20,
+        "textColor": "#666666"
+      },
+      "pos": [
+        225,
+        240
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "target": "bar_1",
+      "time": [
+        0,
+        2
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        200
+      ]
+    },
+    {
+      "target": "bar_2",
+      "time": [
+        2,
+        4
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        280
+      ]
+    },
+    {
+      "target": "bar_3",
+      "time": [
+        4,
+        6
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        360
+      ]
+    },
+    {
+      "target": "bar_4",
+      "time": [
+        6,
+        8
+      ],
+      "easing": "ease-out",
+      "height": [
+        0,
+        400
+      ]
+    },
+    {
+      "target": "label_1",
+      "time": [
+        2,
+        2.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "label_2",
+      "time": [
+        4,
+        4.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "label_3",
+      "time": [
+        5.5,
+        6
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "label_4",
+      "time": [
+        6,
+        6.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "highlight_box",
+      "time": [
+        4,
+        4.8
+      ],
+      "opacity": [
+        0,
+        0.4
+      ]
+    },
+    {
+      "target": "bar_1",
+      "time": [
+        4,
+        4.8
+      ],
+      "opacity": [
+        1,
+        0.5
+      ]
+    },
+    {
+      "target": "bar_2",
+      "time": [
+        4,
+        4.8
+      ],
+      "opacity": [
+        1,
+        0.5
+      ]
+    },
+    {
+      "target": "bar_3",
+      "time": [
+        4,
+        4.8
+      ],
+      "opacity": [
+        1,
+        0.5
+      ]
+    },
+    {
+      "target": "bar_4",
+      "time": [
+        4,
+        4.8
+      ],
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 3
+      }
+    },
+    {
+      "target": "label_4",
+      "time": [
+        4,
+        4.8
+      ],
+      "text": {
+        "fontSize": 28,
+        "textColor": "#FFD700"
+      }
+    },
+    {
+      "target": "bar_4",
+      "time": [
+        4,
+        4.8
+      ],
+      "easing": "ease-out",
+      "scale": [
+        1,
+        1.1
+      ]
+    },
+    {
+      "target": "bar_4",
+      "time": [
+        4.8,
+        5.8
+      ],
+      "easing": "ease-in-out",
+      "scale": [
+        1.1,
+        1
+      ]
+    },
+    {
+      "target": "bar_4",
+      "time": [
+        5.8,
+        6.8
+      ],
+      "easing": "ease-in-out",
+      "scale": [
+        1,
+        1.1
+      ]
+    },
+    {
+      "target": "bar_4",
+      "time": [
+        6.8,
+        7.8
+      ],
+      "easing": "ease-in-out",
+      "scale": [
+        1.1,
+        1
+      ]
+    }
+  ]
+}

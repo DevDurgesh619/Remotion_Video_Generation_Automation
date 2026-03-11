@@ -1,0 +1,657 @@
+{
+  "scene": "complex_coordinated_finale",
+  "duration": 12,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#000000",
+  "objects": [
+    {
+      "id": "center_circle",
+      "shape": "circle",
+      "diameter": 200,
+      "stroke": {
+        "color": "#FFD700",
+        "width": 4
+      },
+      "fill": false,
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "triangle_1",
+      "shape": "triangle",
+      "size": [
+        100,
+        100
+      ],
+      "color": "#FF0000",
+      "pos": [
+        0,
+        -240
+      ],
+      "facing": "down",
+      "opacity": 0
+    },
+    {
+      "id": "triangle_2",
+      "shape": "triangle",
+      "size": [
+        100,
+        100
+      ],
+      "color": "#FF7F00",
+      "pos": [
+        169.71,
+        -169.71
+      ],
+      "facing": "down",
+      "opacity": 0
+    },
+    {
+      "id": "triangle_3",
+      "shape": "triangle",
+      "size": [
+        100,
+        100
+      ],
+      "color": "#FFFF00",
+      "pos": [
+        240,
+        0
+      ],
+      "facing": "down",
+      "opacity": 0
+    },
+    {
+      "id": "triangle_4",
+      "shape": "triangle",
+      "size": [
+        100,
+        100
+      ],
+      "color": "#00FF00",
+      "pos": [
+        169.71,
+        169.71
+      ],
+      "facing": "down",
+      "opacity": 0
+    },
+    {
+      "id": "triangle_5",
+      "shape": "triangle",
+      "size": [
+        100,
+        100
+      ],
+      "color": "#0000FF",
+      "pos": [
+        0,
+        240
+      ],
+      "facing": "down",
+      "opacity": 0
+    },
+    {
+      "id": "triangle_6",
+      "shape": "triangle",
+      "size": [
+        100,
+        100
+      ],
+      "color": "#4B0082",
+      "pos": [
+        -169.71,
+        169.71
+      ],
+      "facing": "down",
+      "opacity": 0
+    },
+    {
+      "id": "triangle_7",
+      "shape": "triangle",
+      "size": [
+        100,
+        100
+      ],
+      "color": "#8B00FF",
+      "pos": [
+        -240,
+        0
+      ],
+      "facing": "down",
+      "opacity": 0
+    },
+    {
+      "id": "triangle_8",
+      "shape": "triangle",
+      "size": [
+        100,
+        100
+      ],
+      "color": "#FF1493",
+      "pos": [
+        -169.71,
+        -169.71
+      ],
+      "facing": "down",
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "center_circle",
+      "time": [
+        0,
+        0.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "center_circle",
+      "time": [
+        0.5,
+        1
+      ],
+      "scale": [
+        1,
+        1.1
+      ]
+    },
+    {
+      "target": "center_circle",
+      "time": [
+        1,
+        1.5
+      ],
+      "scale": [
+        1.1,
+        1
+      ]
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        2,
+        2.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "triangle_2",
+      "time": [
+        2.5,
+        3
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "triangle_3",
+      "time": [
+        3,
+        3.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "triangle_4",
+      "time": [
+        3.5,
+        4
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "triangle_5",
+      "time": [
+        4,
+        4.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "triangle_6",
+      "time": [
+        4.5,
+        5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "triangle_7",
+      "time": [
+        5,
+        5.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "triangle_8",
+      "time": [
+        5.5,
+        6
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        6,
+        8
+      ],
+      "rotation": [
+        0,
+        180
+      ]
+    },
+    {
+      "target": "triangle_2",
+      "time": [
+        6,
+        8
+      ],
+      "rotation": [
+        0,
+        180
+      ]
+    },
+    {
+      "target": "triangle_3",
+      "time": [
+        6,
+        8
+      ],
+      "rotation": [
+        0,
+        180
+      ]
+    },
+    {
+      "target": "triangle_4",
+      "time": [
+        6,
+        8
+      ],
+      "rotation": [
+        0,
+        180
+      ]
+    },
+    {
+      "target": "triangle_5",
+      "time": [
+        6,
+        8
+      ],
+      "rotation": [
+        0,
+        180
+      ]
+    },
+    {
+      "target": "triangle_6",
+      "time": [
+        6,
+        8
+      ],
+      "rotation": [
+        0,
+        180
+      ]
+    },
+    {
+      "target": "triangle_7",
+      "time": [
+        6,
+        8
+      ],
+      "rotation": [
+        0,
+        180
+      ]
+    },
+    {
+      "target": "triangle_8",
+      "time": [
+        6,
+        8
+      ],
+      "rotation": [
+        0,
+        180
+      ]
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        8,
+        10
+      ],
+      "orbit": {
+        "center": [
+          0,
+          0
+        ],
+        "radius": 240,
+        "degrees": 90
+      }
+    },
+    {
+      "target": "triangle_2",
+      "time": [
+        8,
+        10
+      ],
+      "orbit": {
+        "center": [
+          0,
+          0
+        ],
+        "radius": 240,
+        "degrees": 90
+      }
+    },
+    {
+      "target": "triangle_3",
+      "time": [
+        8,
+        10
+      ],
+      "orbit": {
+        "center": [
+          0,
+          0
+        ],
+        "radius": 240,
+        "degrees": 90
+      }
+    },
+    {
+      "target": "triangle_4",
+      "time": [
+        8,
+        10
+      ],
+      "orbit": {
+        "center": [
+          0,
+          0
+        ],
+        "radius": 240,
+        "degrees": 90
+      }
+    },
+    {
+      "target": "triangle_5",
+      "time": [
+        8,
+        10
+      ],
+      "orbit": {
+        "center": [
+          0,
+          0
+        ],
+        "radius": 240,
+        "degrees": 90
+      }
+    },
+    {
+      "target": "triangle_6",
+      "time": [
+        8,
+        10
+      ],
+      "orbit": {
+        "center": [
+          0,
+          0
+        ],
+        "radius": 240,
+        "degrees": 90
+      }
+    },
+    {
+      "target": "triangle_7",
+      "time": [
+        8,
+        10
+      ],
+      "orbit": {
+        "center": [
+          0,
+          0
+        ],
+        "radius": 240,
+        "degrees": 90
+      }
+    },
+    {
+      "target": "triangle_8",
+      "time": [
+        8,
+        10
+      ],
+      "orbit": {
+        "center": [
+          0,
+          0
+        ],
+        "radius": 240,
+        "degrees": 90
+      }
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        10,
+        12
+      ],
+      "pos": [
+        [
+          0,
+          -240
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "triangle_2",
+      "time": [
+        10,
+        12
+      ],
+      "pos": [
+        [
+          169.71,
+          -169.71
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "triangle_3",
+      "time": [
+        10,
+        12
+      ],
+      "pos": [
+        [
+          240,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "triangle_4",
+      "time": [
+        10,
+        12
+      ],
+      "pos": [
+        [
+          169.71,
+          169.71
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "triangle_5",
+      "time": [
+        10,
+        12
+      ],
+      "pos": [
+        [
+          0,
+          240
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "triangle_6",
+      "time": [
+        10,
+        12
+      ],
+      "pos": [
+        [
+          -169.71,
+          169.71
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "triangle_7",
+      "time": [
+        10,
+        12
+      ],
+      "pos": [
+        [
+          -240,
+          0
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "triangle_8",
+      "time": [
+        10,
+        12
+      ],
+      "pos": [
+        [
+          -169.71,
+          -169.71
+        ],
+        [
+          0,
+          0
+        ]
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "center_circle",
+      "time": [
+        10,
+        12
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    }
+  ]
+}

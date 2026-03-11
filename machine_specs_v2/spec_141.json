@@ -1,0 +1,110 @@
+{
+  "scene": "triangle_breathing_glow",
+  "duration": 6,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#00008B",
+  "objects": [
+    {
+      "id": "triangle_1",
+      "shape": "triangle",
+      "size": [
+        170,
+        170
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        0,
+        0
+      ],
+      "scale": 1,
+      "glow": {
+        "blur": 10,
+        "color": "rgba(255,255,255,0.6)"
+      }
+    }
+  ],
+  "timeline": [
+    {
+      "target": "triangle_1",
+      "time": [
+        0,
+        2
+      ],
+      "scale": [
+        1,
+        1.12
+      ],
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        2,
+        4
+      ],
+      "scale": [
+        1.12,
+        1
+      ],
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        4,
+        6
+      ],
+      "scale": [
+        1,
+        1.12
+      ],
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        0,
+        2
+      ],
+      "glow": {
+        "blur": [
+          10,
+          35
+        ]
+      },
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        2,
+        4
+      ],
+      "glow": {
+        "blur": [
+          35,
+          10
+        ]
+      },
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        4,
+        6
+      ],
+      "glow": {
+        "blur": [
+          10,
+          35
+        ]
+      },
+      "easing": "ease-in-out"
+    }
+  ]
+}

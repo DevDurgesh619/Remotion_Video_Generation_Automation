@@ -1,0 +1,174 @@
+{
+  "scene": "line_highlight_brightness",
+  "duration": 14,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#FFFFFF",
+  "objects": [
+    {
+      "id": "line_product_a",
+      "shape": "line",
+      "color": "#27AE60",
+      "stroke": {
+        "color": "#27AE60",
+        "width": 3
+      }
+    },
+    {
+      "id": "line_product_b",
+      "shape": "line",
+      "color": "#000000",
+      "stroke": {
+        "color": "#000000",
+        "width": 3
+      }
+    },
+    {
+      "id": "line_product_c",
+      "shape": "line",
+      "color": "#000000",
+      "stroke": {
+        "color": "#000000",
+        "width": 3
+      }
+    },
+    {
+      "id": "marker_product_a",
+      "shape": "circle",
+      "diameter": 6,
+      "color": "#27AE60"
+    },
+    {
+      "id": "label_product_a",
+      "shape": "text",
+      "text": {
+        "content": "Value",
+        "fontSize": 12,
+        "fontWeight": "normal",
+        "textColor": "#000000"
+      }
+    },
+    {
+      "id": "gridlines",
+      "shape": "line",
+      "color": "#FFFFFF",
+      "opacity": 0.2
+    }
+  ],
+  "timeline": [
+    {
+      "target": "line_product_a",
+      "time": [
+        7,
+        8
+      ],
+      "stroke": {
+        "color": [
+          "#27AE60",
+          "#1B5E20"
+        ],
+        "width": [
+          3,
+          5
+        ]
+      }
+    },
+    {
+      "target": "line_product_a",
+      "time": [
+        7,
+        14
+      ],
+      "color": [
+        "#27AE60",
+        "#27AE60"
+      ],
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "line_product_b",
+      "time": [
+        7,
+        8
+      ],
+      "color": [
+        "#000000",
+        "#CCCCCC"
+      ],
+      "opacity": [
+        1,
+        0.3
+      ]
+    },
+    {
+      "target": "line_product_c",
+      "time": [
+        7,
+        8
+      ],
+      "color": [
+        "#000000",
+        "#CCCCCC"
+      ],
+      "opacity": [
+        1,
+        0.3
+      ]
+    },
+    {
+      "target": "marker_product_a",
+      "time": [
+        8,
+        9
+      ],
+      "diameter": [
+        6,
+        10
+      ]
+    },
+    {
+      "target": "marker_product_a",
+      "time": [
+        9,
+        14
+      ],
+      "opacity": [
+        1,
+        0.5
+      ],
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "label_product_a",
+      "time": [
+        8,
+        9
+      ],
+      "text": {
+        "fontSize": [
+          12,
+          16
+        ],
+        "fontWeight": "bold",
+        "textColor": [
+          "#000000",
+          "#FFD700"
+        ]
+      }
+    },
+    {
+      "target": "gridlines",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        0.2,
+        0.3
+      ]
+    }
+  ]
+}
