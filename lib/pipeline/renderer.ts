@@ -17,14 +17,14 @@ function getDurationFrames(specData: Record<string, unknown>): number {
 
 // Common aspect ratio presets keyed by "W:H" string
 const ASPECT_RATIO_PRESETS: Record<string, { width: number; height: number }> = {
-  "16:9":  { width: 1280, height: 720 },
-  "9:16":  { width: 720,  height: 1280 },
-  "4:3":   { width: 960,  height: 720 },
-  "3:4":   { width: 720,  height: 960 },
-  "1:1":   { width: 720,  height: 720 },
-  "3:2":   { width: 1080, height: 720 },
-  "2:3":   { width: 720,  height: 1080 },
-  "21:9":  { width: 1680, height: 720 },
+  "16:9":  { width: 854,  height: 480 },
+  "9:16":  { width: 480,  height: 854 },
+  "4:3":   { width: 640,  height: 480 },
+  "3:4":   { width: 480,  height: 640 },
+  "1:1":   { width: 480,  height: 480 },
+  "3:2":   { width: 720,  height: 480 },
+  "2:3":   { width: 480,  height: 720 },
+  "21:9":  { width: 1008, height: 432 },
 };
 const DEFAULT_DIMS = ASPECT_RATIO_PRESETS["16:9"];
 
@@ -95,7 +95,7 @@ export async function renderAndUpload(
   // Remotion render
   try {
     execSync(
-      "npx remotion render src/index.ts GeneratedMotion " + videoLocalPath,
+      "npx remotion render src/index.ts GeneratedMotion " + videoLocalPath + " --concurrency=2",
       {
         stdio: "inherit",
         cwd: PROJECT_ROOT,
