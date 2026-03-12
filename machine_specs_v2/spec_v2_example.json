@@ -1,0 +1,171 @@
+{
+  "scene": "car_drive_sparks",
+  "_schema_version": 2,
+  "_note": "Reference example of the v2 explicit-field schema. No behavior or motionType fields.",
+  "duration": 6,
+  "fps": 30,
+  "canvas": { "w": 1920, "h": 1080 },
+  "bg": "#0a0a0a",
+
+  "objects": [
+    {
+      "_comment": "Group container — invisible, drives all child positions as one unit",
+      "id": "car_group",
+      "shape": "group",
+      "pos": [-1100, 80]
+    },
+    {
+      "_comment": "Car body — child of car_group, positioned relative to group origin",
+      "id": "car_body",
+      "shape": "rectangle",
+      "parent": "car_group",
+      "localPos": [0, 0],
+      "size": [220, 80],
+      "color": "#1a6ef5",
+      "cornerRadius": 12
+    },
+    {
+      "_comment": "Left wheel — spins independently while inheriting group translation",
+      "id": "wheel_left",
+      "shape": "circle",
+      "parent": "car_group",
+      "localPos": [-70, 50],
+      "diameter": 44,
+      "color": "#222222",
+      "inheritRotation": false,
+      "inheritScale": true
+    },
+    {
+      "_comment": "Right wheel",
+      "id": "wheel_right",
+      "shape": "circle",
+      "parent": "car_group",
+      "localPos": [70, 50],
+      "diameter": 44,
+      "color": "#222222",
+      "inheritRotation": false,
+      "inheritScale": true
+    },
+    {
+      "_comment": "Spark origin — appears at hood position when car arrives",
+      "id": "spark_origin",
+      "shape": "circle",
+      "pos": [60, 40],
+      "diameter": 8,
+      "color": "#FFD700",
+      "opacity": 0
+    },
+    {
+      "_comment": "Speed lines — horizontal blur streaks behind the car",
+      "id": "speed_line_1",
+      "shape": "rectangle",
+      "pos": [-700, 60],
+      "size": [300, 3],
+      "color": "#4488FF",
+      "opacity": 0
+    },
+    {
+      "_comment": "Label below car that fades in after arrival",
+      "id": "label",
+      "shape": "text",
+      "text": { "content": "SPEED", "fontSize": 28, "fontWeight": "bold", "textColor": "#FFFFFF" },
+      "pos": [0, 200],
+      "opacity": 0
+    }
+  ],
+
+  "timeline": [
+    {
+      "_comment": "Car group slides in from left — one translate covers all children",
+      "target": "car_group",
+      "time": [0, 2.5],
+      "easing": "ease-out",
+      "x": [-1100, 0]
+    },
+    {
+      "_comment": "Left wheel rotates while car moves — negative = clockwise roll",
+      "target": "wheel_left",
+      "time": [0, 2.5],
+      "easing": "linear",
+      "rotation": [0, -900]
+    },
+    {
+      "_comment": "Right wheel — same rotation",
+      "target": "wheel_right",
+      "time": [0, 2.5],
+      "easing": "linear",
+      "rotation": [0, -900]
+    },
+    {
+      "_comment": "Speed lines appear and fade during movement",
+      "target": "speed_line_1",
+      "time": [0.2, 1.5],
+      "opacity": [0, 0.6]
+    },
+    {
+      "_comment": "Speed lines fade out as car arrives",
+      "target": "speed_line_1",
+      "time": [1.5, 2.5],
+      "opacity": [0.6, 0]
+    },
+    {
+      "_comment": "Spark origin flashes on at arrival",
+      "target": "spark_origin",
+      "time": [2.5, 2.7],
+      "opacity": [0, 1]
+    },
+    {
+      "_comment": "Shatter burst from hood on arrival",
+      "target": "spark_origin",
+      "time": [2.5, 3.5],
+      "easing": "ease-out",
+      "advanced_action": {
+        "type": "shatter",
+        "shatter": {
+          "particle_count": 18,
+          "explosion_radius_px": 140
+        }
+      }
+    },
+    {
+      "_comment": "Car settles with a slight bounce scale",
+      "target": "car_group",
+      "time": [2.5, 2.9],
+      "easing": "ease-out",
+      "scale": [1, 1.04]
+    },
+    {
+      "target": "car_group",
+      "time": [2.9, 3.2],
+      "easing": "ease-in-out",
+      "scale": [1.04, 1]
+    },
+    {
+      "_comment": "Label fades in below car after arrival",
+      "target": "label",
+      "time": [3.0, 3.6],
+      "easing": "ease-out",
+      "opacity": [0, 1],
+      "y": [220, 200]
+    },
+    {
+      "_comment": "Label pulses to draw attention",
+      "target": "label",
+      "time": [3.8, 5.0],
+      "easing": "ease-in-out",
+      "scale": [1, 1.06],
+      "repeat": "infinite"
+    },
+    {
+      "_comment": "Everything fades out at end",
+      "target": "car_group",
+      "time": [5.2, 6.0],
+      "opacity": [1, 0]
+    },
+    {
+      "target": "label",
+      "time": [5.2, 6.0],
+      "opacity": [1, 0]
+    }
+  ]
+}

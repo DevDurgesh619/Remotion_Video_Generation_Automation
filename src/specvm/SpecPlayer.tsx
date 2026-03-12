@@ -17,8 +17,8 @@ import { renderObject } from "./rendererRegistry";
 import { validateSpec } from "./specValidator";
 import { normalizeSpec } from "./specNormalizer";
 import { expandSpec } from "./specExpander";
-import { expandBehaviors } from "./behaviorExpander";
-import { expandMotionTypes } from "./motionTypeExpander";
+import { applyLegacyBehaviorShim } from "./legacyBehaviorShim";
+import { expandAdvancedActions } from "./advancedActionExpander";
 import { expandComponents } from "./componentExpander";
 import { resolveSceneGraph } from "./sceneGraphResolver";
 
@@ -45,23 +45,17 @@ const IS_DEV = process.env.NODE_ENV !== "production";
 export const SpecPlayer: React.FC<{ spec: MotionSpec }> = ({ spec }) => {
   // Validate & normalize once (not per frame)
   const safeSpec = useMemo(() => {
-    // Pipeline: expand behaviors → expand generators → expand components → resolve scene graph → validate → normalize
-    const { spec: behaviorExpanded, warnings: behaviorWarnings } = expandBehaviors(spec);
-
-    // Surface behavior expansion failures loudly — unknown behavior = dropped event = potential blank screen
-    if (behaviorWarnings.length > 0) {
-      console.error(
-        `[SpecVM] Spec "${spec.scene ?? "unnamed"}": ${behaviorWarnings.length} behavior expansion failure(s) — ` +
-        `objects may be INVISIBLE if they started at opacity:0:`,
-      );
-      behaviorWarnings.forEach((w) =>
-        console.error(`  ✗ Unknown behavior "${w.behavior}" on target "${w.target}" — event DROPPED`),
-      );
-    }
-
-    // Expand semantic motion types (orbit → pos keyframes, move → pass-through)
-    const motionExpanded    = expandMotionTypes(behaviorExpanded);
-    const expanded          = expandSpec(motionExpanded);
+    // Pipeline:
+    //   1. legacyBehaviorShim  — behavior/motionType → explicit fields (v1 specs only, no-op for v2)
+    //   2. advancedActions     — advanced_action blocks → raw keyframes / synthetic objects
+    //   3. expandSpec          — generator expansion (charts, etc.)
+    //   4. expandComponents    — component template expansion
+    //   5. resolveSceneGraph   — topological sort for parent-child
+    //   6. validateSpec        — structural warnings / errors
+    //   7. normalizeSpec       — v2 field names → internal tuples, fill defaults
+    const shimmed            = applyLegacyBehaviorShim(spec);
+    const actionsExpanded    = expandAdvancedActions(shimmed);
+    const expanded           = expandSpec(actionsExpanded);
     const componentsExpanded = expandComponents(expanded);
     const graphResolved     = resolveSceneGraph(componentsExpanded);
     const validation = validateSpec(graphResolved);

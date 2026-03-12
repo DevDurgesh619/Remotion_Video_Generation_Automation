@@ -470,7 +470,7 @@ export async function expandPrompt(simplePrompt) {
   console.log("🎬 Expanding prompt: \"" + simplePrompt + "\"");
 
   const response = await client.responses.create({
-    model: "gpt-4o-mini",
+    model: "gpt-4o",
     temperature: 0,
     input: [
       { role: "system", content: SYSTEM_PROMPT },

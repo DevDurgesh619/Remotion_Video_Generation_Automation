@@ -292,7 +292,7 @@ async function generateSpec(promptText, maxRetries = 2) {
   for (let attempt = 0; attempt <= maxRetries; attempt++) {
     try {
       const response = await client.chat.completions.create({
-        model: "gpt-4o-mini",
+        model: "gpt-4o",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
           { role: "user", content: promptText },

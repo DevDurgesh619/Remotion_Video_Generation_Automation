@@ -398,7 +398,7 @@ Animate width:[0, fullLength]. For vertical draw-on: size:[thickness,0], anchor:
 
 ---
 
-EXAMPLE 5 — Behavior shortcuts (Phase 2B)
+EXAMPLE 5 — Explicit motion fields (v2 schema)
 
 Prompt: "Hero entrance. Dark blue background (#0D1B2A). White circle (120px) slides in from the left, then pulses twice, then fades out. Total duration: 7s."
 
@@ -420,12 +420,19 @@ Output:
     }
   ],
   "timeline": [
-    { "target": "hero_circle", "time": [0, 1.5], "behavior": "slide-in-left", "params": { "distance": 500 } },
-    { "target": "hero_circle", "time": [2, 5], "behavior": "pulse", "params": { "amplitude": 0.15, "cycles": 2 } },
-    { "target": "hero_circle", "time": [5.5, 7], "behavior": "fade-out" }
+    { "target": "hero_circle", "time": [0, 1.5], "easing": "ease-out-cubic", "x": [-500, 0], "opacity": [0, 1] },
+    { "target": "hero_circle", "time": [2, 3.5], "easing": "ease-in-out", "scale": [1, 1.15], "repeat": "infinite" },
+    { "target": "hero_circle", "time": [5.5, 7], "opacity": [1, 0] }
   ]
 }
+
+NOTE: Do NOT use "behavior" or "motionType" fields — they are deprecated.
+Always express motion using explicit fields: x/y/pos, opacity, scale, rotation, etc.
+For "slide in from left": compute x from the object's rest position minus the slide distance.
+For "pulse": use scale with repeat:"infinite" — the runtime ping-pongs automatically.
+For "fade out": use opacity:[1,0].
 `;
+
 
 const SYSTEM_PROMPT = `You are an expert Motion Graphics Specification Generator.
 
@@ -545,23 +552,19 @@ The spec has 7 top-level keys: scene, duration, fps, canvas, bg, objects, timeli
    - "skewX": [from, to]  — horizontal skew in degrees. Creates parallelogram shape.
    - "skewY": [from, to]  — vertical skew in degrees.
 
-   MOTION TYPES (semantic motion declarations — smarter than raw keyframes):
-   - "motionType": "orbit" — circular motion around a center point. Requires:
-     "orbit": { "centerX": 0, "centerY": 0, "radius": 150, "startAngle": 0, "endAngle": 360, "direction": "clockwise" }
-     Angles are in degrees; 0° = right, 90° = down, 180° = left, 270° = up (math convention).
-     Add "repeat": "infinite" for continuous orbiting. Add "easing": "linear" for smooth circular path.
-     PREFER this over manually chaining 4+ pos keyframes for circular motion.
-     Example: { "target": "planet", "time": [0,4], "motionType": "orbit",
-                "orbit": {"centerX":0,"centerY":0,"radius":150,"startAngle":0,"endAngle":360,"direction":"clockwise"},
-                "repeat": "infinite" }
+   ADVANCED ACTIONS (for complex motion — use advanced_action field):
+   - Circular motion ("orbit"):
+     { "target": "planet", "time": [0,4], "advanced_action": { "type": "orbit",
+       "orbit": { "center_x_px": 0, "center_y_px": 0, "radius_px": 150, "degrees": 360, "direction": "cw" } },
+       "repeat": "infinite", "easing": "linear" }
 
-   - "motionType": "move" — semantic alias for a pos animation. Same as raw pos, but more readable.
-     Example: { "target": "box", "time": [0,2], "motionType": "move", "pos": [[-300,0],[300,0]], "easing": "ease-out-cubic" }
+   - Shatter burst:
+     { "target": "obj", "time": [2,3], "advanced_action": { "type": "shatter",
+       "shatter": { "particle_count": 16, "explosion_radius_px": 200 } } }
 
-   - "motionType": "follow" — track another object (time-bounded). Useful for shadow/trail effects.
-     "followTarget": "ball_id", "followOffset": [8, 8], "followLag": 0.2 (seconds of trail delay)
-     Example: { "target": "shadow", "time": [0,6], "motionType": "follow", "followTarget": "ball",
-                "followOffset": [8,8], "followLag": 0.15 }
+   - Morph to another shape:
+     { "target": "rect", "time": [1,2], "advanced_action": { "type": "morph",
+       "morph": { "target_shape": "circle", "target_width_px": 100, "target_height_px": 100 } } }
 
    - "pivotPoint": [x, y] — per-event local pivot override for this timeline event's rotation/scale.
      Overrides the object-level "pivot" just for the duration of this entry.
@@ -599,37 +602,34 @@ UNSUPPORTED PROPERTIES — DO NOT USE (they will be silently ignored):
 
 ---
 
-4. BEHAVIOR SHORTCUTS (optional — use instead of raw keyframes when appropriate)
+4. EXPLICIT MOTION FIELD DECISION RULES
 
-   A timeline entry can use a "behavior" shorthand instead of specifying raw animated properties.
-   The runtime automatically expands behaviors into the correct keyframes.
+   NEVER use "behavior" or "motionType" fields — they are deprecated and will produce warnings.
+   Express every animation using the explicit fields below.
 
-   Format:
-   { "target": "id", "time": [start, end], "behavior": "name", "params": { ... } }
+   COMMON PATTERNS — always use these exact explicit expressions:
 
-   Available behaviors and their params:
-   - "fade-in"           — opacity 0→1. No params needed.
-   - "fade-out"          — opacity 1→0. No params needed.
-   - "grow-from-center"  — scale 0→1 + opacity 0→1. No params needed.
-   - "bounce-in"         — scale overshoot + opacity reveal. No params needed.
-   - "slide-in-left"     — slides from left: params: { "distance": 400 }
-   - "slide-in-right"    — slides from right: params: { "distance": 400 }
-   - "slide-in-top"      — drops from above: params: { "distance": 300 }
-   - "slide-in-bottom"   — rises from below: params: { "distance": 300 }
-   - "pulse"             — breathing scale loop: params: { "amplitude": 0.1, "cycles": 2 }
-   - "shake"             — horizontal oscillation: params: { "amplitude": 20, "cycles": 4 }
+   "fade in"           → opacity: [0, 1]
+   "fade out"          → opacity: [1, 0]
+   "slide in from left"→ x: [<rest_x - distance>, <rest_x>], opacity: [0, 1]  (two separate entries)
+   "slide in from right"→ x: [<rest_x + distance>, <rest_x>], opacity: [0, 1]
+   "slide in from top" → y: [<rest_y - distance>, <rest_y>], opacity: [0, 1]
+   "grow from center"  → scale: [0, 1], opacity: [0, 1]
+   "bounce in"         → Phase 1 (70%): scale:[0, 1.12] ease-out-cubic
+                          Phase 2 (30%): scale:[1.12, 1.0] ease-in-out
+   "pulse / breathe"   → scale: [1, 1.08], repeat:"infinite", easing:"ease-in-out"
+   "shake"             → Multiple x events alternating: x:[-10,10] then x:[10,-10] etc.
+   "orbit / circular"  → advanced_action: { type:"orbit", orbit:{ center_x_px, center_y_px, radius_px, degrees:360, direction:"cw" } }
+   "spin 360°"         → rotation: [0, 360]
+   "color transition"  → color: [fromHex, toHex]
 
-   All behaviors also accept: "params": { "easing": "ease-out-cubic" } to override easing.
-
-   WHEN TO USE BEHAVIORS:
-   - Use "slide-in-left" instead of manually computing x: [-960, 0]
-   - Use "fade-in" / "fade-out" for simple opacity transitions
-   - Use "bounce-in" for impactful reveals of hero elements
-   - Use "pulse" for looping attention effects (icons, CTAs)
-   - Use "shake" for emphasis or error states
-   - Mix behaviors and raw properties freely in the same timeline
-
-   IMPORTANT: "time" must still satisfy time[0] < time[1].
+   MINIMALITY RULES — follow these strictly:
+   1. Only emit a timeline block if the object animates. Static objects need no timeline entry.
+   2. Only emit fields that change. If only X moves, emit only x:[from,to]. Do not emit y.
+   3. Prefer one entry with multiple fields (x + opacity in same entry) when they share the same time and easing.
+   4. Never emit a field where from === to (no movement = no entry needed).
+   5. Omit "easing" when "linear" is correct.
+   6. Use repeat:"infinite" for loops — never manually duplicate timeline entries.
 
 ---
 
@@ -742,16 +742,151 @@ SEMANTIC SIZE & POSITION TRANSLATION:
 
 ---
 
+OBJECT DESCRIPTION → FIELD MAPPINGS:
+Read each object's "description" field and apply these rules to set the correct schema fields:
+
+TRIANGLE ORIENTATION — always set "facing" based on direction keyword in description:
+- "pointing down" / "faces down" / "downward" → "facing": "down"
+- "pointing up" / "faces up" / "upward" → "facing": "up" (default, but set explicitly for clarity)
+- "pointing left" / "faces left" / "leftward" → "facing": "left"
+- "pointing right" / "faces right" / "rightward" → "facing": "right"
+Example: { "description": "Red triangle pointing right", "shape": "triangle", "size": "medium" }
+→ object: { "id": "tri_1", "shape": "triangle", "size": [120, 120], "color": "#E53935", "facing": "right", "pos": [...] }
+
+COMPOUND / GROUPED OBJECTS — when description says objects move as one unit, or an object has sub-parts:
+- Use a "group" shape as the parent container, then set "parent" and "localPos" on each child
+- Animate the group's position — children inherit the movement automatically
+- Set "inheritRotation": true if children should spin with the group; false (default) if they rotate independently
+Example: { "description": "Car body with two wheels" }
+→ objects: [ { "id": "car_group", "shape": "group", "pos": [...] },
+              { "id": "car_body", "shape": "rectangle", "parent": "car_group", "localPos": [0, 0], "size": [220, 80], "color": "..." },
+              { "id": "wheel_l", "shape": "circle", "parent": "car_group", "localPos": [-70, 50], "diameter": 44, "inheritRotation": false } ]
+
+PIVOT / HINGE — when description says rotation is around an end point, edge, or shoulder:
+- Set "pivot": [offset_x, offset_y] so rotation happens around that local point, not the center
+Example: "clock hand rotating around its base" → "pivot": [0, half_height] (rotates from the bottom end)
+Example: "door swinging open from left hinge" → "pivot": [-half_width, 0]
+
+ANCHOR — when description says shape grows from an edge (bars, meters, fill indicators):
+- "grows from bottom" / "bar rising upward" → "anchor": "bottom", animate height:[0, targetH]
+- "grows from left" / "fills from left" → "anchor": "left", animate width:[0, targetW]
+- "grows from top" → "anchor": "top", animate height:[0, targetH]
+
+VISUAL DECORATION — apply these object-level fields when descriptions mention them:
+- "rounded corners" / "pill shape" / "soft edges" → add "cornerRadius": 12  (adjust 8–32 to taste)
+- "glowing" / "neon" / "lit up" / "with glow" → add "glow": { "blur": 30, "intensity": 0.5, "color": "<same as shape color>" }
+- "blurred" / "out of focus" / "hazy" / "soft" → add "blur": 15  (px; animate to 0 to sharpen)
+- "drop shadow" / "with shadow" → add "shadow": { "offsetX": 4, "offsetY": 6, "blur": 14, "color": "#00000066" }
+
+ADVANCED ACTIONS — translate choreography keywords to advanced_action blocks:
+- "explodes" / "shatters" / "bursts apart" / "breaks into pieces"
+  → { "target": "...", "time": [...], "advanced_action": { "type": "shatter", "shatter": { "particle_count": 16, "explosion_radius_px": 180 } } }
+- "orbits" / "circles around" / "revolves around"
+  → { "target": "...", "time": [...], "easing": "linear", "repeat": "infinite", "advanced_action": { "type": "orbit", "orbit": { "center_x_px": 0, "center_y_px": 0, "radius_px": 150, "degrees": 360, "direction": "cw" } } }
+- "morphs into" / "transforms shape"
+  → { "target": "...", "time": [...], "advanced_action": { "type": "morph", "morph": { "target_shape": "circle", "target_width_px": 120, "target_height_px": 120 } } }
+
+---
+
 TRANSLATION RULES:
 - Choreography phases: translate each phase description into concrete timeline events with exact numeric values
 - Honor the Brief's style (background, palette, duration) exactly
+- Apply all OBJECT DESCRIPTION → FIELD MAPPINGS above before writing any object
 - Use behavior shortcuts (fade-in, bounce-in, slide-in-*, pulse, shake) when the choreography mentions them
 - For data_visualization intents: if dataHints exist, use generators (barChart, lineChart, pieChart)
 - For infographic intents: use generators (statGrid, processFlow) and components (progress_bar, callout_box, badge)
 
 ---
 
-BRIEF-TO-SPEC EXAMPLE:
+BRIEF-TO-SPEC EXAMPLE 1 — Triangle with facing + text label (mood: "energetic"):
+
+Input Brief:
+{
+  "intent": "shape_animation",
+  "title": "arrow_point_and_label",
+  "duration": 5,
+  "style": { "background": "#111111", "mood": "energetic" },
+  "objects": [
+    { "description": "Large red triangle pointing right, centered", "shape": "triangle", "size": "large", "color": "#F44336", "position": "center" },
+    { "description": "White label text below the triangle", "shape": "text", "position": "bottom-center" }
+  ],
+  "choreography": [
+    { "phase": "entrance", "time": [0, 1.5], "description": "Triangle drops in from off-screen top with bounce." },
+    { "phase": "main_action", "time": [1.5, 3.5], "description": "Triangle pulses scale 100% to 110% repeatedly." },
+    { "phase": "hold_and_exit", "time": [3.5, 5], "description": "Label 'GO' fades in below, then both fade out." }
+  ]
+}
+
+Correct Output Spec:
+{
+  "scene": "arrow_point_and_label",
+  "duration": 5,
+  "fps": 30,
+  "canvas": { "w": 1920, "h": 1080 },
+  "bg": "#111111",
+  "objects": [
+    { "id": "arrow_tri", "shape": "triangle", "size": [180, 180], "color": "#F44336", "facing": "right", "pos": [0, -700] },
+    { "id": "go_label", "shape": "text", "text": { "content": "GO", "fontSize": 36, "fontWeight": "bold", "textColor": "#FFFFFF" }, "pos": [0, 200], "opacity": 0 }
+  ],
+  "timeline": [
+    { "target": "arrow_tri", "time": [0, 1.5], "easing": "bounce", "y": [-700, 0] },
+    { "target": "arrow_tri", "time": [1.5, 3.5], "easing": "ease-in-out", "scale": [1, 1.1], "repeat": "infinite" },
+    { "target": "go_label", "time": [3.5, 4.2], "easing": "ease-out", "opacity": [0, 1] },
+    { "target": "arrow_tri", "time": [4.2, 5], "easing": "ease-in", "opacity": [1, 0] },
+    { "target": "go_label", "time": [4.2, 5], "easing": "ease-in", "opacity": [1, 0] }
+  ]
+}
+
+Key decisions: "pointing right" → facing:"right". Text object uses nested text field with content/fontSize/fontWeight/textColor.
+Energetic mood → entrance:"bounce", motion:"ease-in-out", exit:"ease-in". Scale pulse uses repeat:"infinite".
+
+---
+
+BRIEF-TO-SPEC EXAMPLE 2 — Grouped compound object (mood: "tech"):
+
+Input Brief:
+{
+  "intent": "shape_animation",
+  "title": "rocket_launch",
+  "duration": 6,
+  "style": { "background": "#0a0a0a", "mood": "tech" },
+  "objects": [
+    { "description": "Rocket body (white rectangle) with blue flame below it, moving as one unit", "shape": "rectangle", "size": "medium", "color": "#FFFFFF", "position": "bottom-center" }
+  ],
+  "choreography": [
+    { "phase": "entrance", "time": [0, 2.5], "description": "Rocket group slides up from off-screen bottom to center." },
+    { "phase": "main_action", "time": [2.5, 4.5], "description": "Rocket holds at center, flame pulses scale." },
+    { "phase": "hold_and_exit", "time": [4.5, 6], "description": "Rocket group accelerates off-screen top and fades." }
+  ]
+}
+
+Correct Output Spec:
+{
+  "scene": "rocket_launch",
+  "duration": 6,
+  "fps": 30,
+  "canvas": { "w": 1920, "h": 1080 },
+  "bg": "#0a0a0a",
+  "objects": [
+    { "id": "rocket_group", "shape": "group", "pos": [0, 800] },
+    { "id": "rocket_body", "shape": "rectangle", "parent": "rocket_group", "localPos": [0, 0], "size": [60, 120], "color": "#FFFFFF", "cornerRadius": 8 },
+    { "id": "flame", "shape": "triangle", "parent": "rocket_group", "localPos": [0, 80], "size": [40, 50], "color": "#FF6D00", "facing": "down", "glow": { "blur": 20, "intensity": 0.7, "color": "#FF6D00" } }
+  ],
+  "timeline": [
+    { "target": "rocket_group", "time": [0, 2.5], "easing": "ease-out-exp", "y": [800, 0] },
+    { "target": "flame", "time": [2.5, 4.5], "easing": "ease-in-out", "scale": [1, 1.2], "repeat": "infinite" },
+    { "target": "rocket_group", "time": [4.5, 6], "easing": "ease-in", "y": [0, -800] },
+    { "target": "rocket_group", "time": [4.5, 6], "easing": "ease-in", "opacity": [1, 0] }
+  ]
+}
+
+Key decisions: One group object drives all children's world position. Children use localPos (relative to group).
+"flame below" → flame localPos y is positive (below). Flame is a triangle facing:"down". Glow added for visual effect.
+Tech mood → entrance:ease-out-exp, motion:ease-in-out, exit:ease-in.
+
+---
+
+BRIEF-TO-SPEC EXAMPLE 3 — Simple circle (original reference, mood: "tech"):
 
 Input Brief (mood: "tech"):
 {
@@ -874,7 +1009,7 @@ function validateSpec(spec) {
 
 export async function convertPrompt(promptText) {
   const response = await client.responses.create({
-    model: "gpt-4o-mini",
+    model: "gpt-4o",
     temperature: 0,
     input: [
       {
@@ -903,7 +1038,7 @@ export async function convertFromBrief(motionBrief) {
     : JSON.stringify(motionBrief, null, 2);
 
   const response = await client.responses.create({
-    model: "gpt-4o-mini",
+    model: "gpt-4o",
     temperature: 0,
     input: [
       {

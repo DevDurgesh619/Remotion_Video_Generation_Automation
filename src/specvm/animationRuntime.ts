@@ -195,200 +195,206 @@ export function computeObjectState(
     height: obj.size ? obj.size[1] : (obj.diameter ?? 100),
     diameter: obj.diameter ?? (obj.size ? Math.max(obj.size[0], obj.size[1]) : 100),
     cornerRadius: obj.cornerRadius ?? 0,
-
-    shadow: obj.shadow
-      ? { ...obj.shadow }
-      : null,
-
-    stroke: obj.stroke
-      ? { ...obj.stroke }
-      : null,
-
-    text: obj.text
-      ? { ...obj.text, fontWeight: obj.text.fontWeight ?? "normal" }
-      : null,
-
+    shadow: obj.shadow ? { ...obj.shadow } : null,
+    stroke: obj.stroke ? { ...obj.stroke } : null,
+    text: obj.text ? { ...obj.text, fontWeight: obj.text.fontWeight ?? "normal" } : null,
     glow: obj.glow ? { ...obj.glow } : null,
-
     blur: obj.blur ?? 0,
     skewX: obj.skewX ?? 0,
     skewY: obj.skewY ?? 0,
-
-    // World-space accumulated values — populated after parent-child resolution
+    strokeCoverage: 1,   // 1 = fully drawn (no stroke_draw animation)
+    dashOffset: 0,
     worldRotation: obj.rotation ?? 0,
     worldScale: obj.scale ?? 1,
-
-    // Pivot resolved below from events / obj.pivot
     pivot: obj.pivot ?? [0, 0],
   };
 
   // ── Collect all timeline events for this object (with repeat expansion) ──
+  // By the time events reach the runtime, the normalizer has guaranteed that
+  // every event has a `time` tuple. The non-null assertion below is safe.
   const rawEvents: TimelineEvent[] = spec.timeline.filter(
-    (e) => e.target === obj.id,
+    (e) => e.target === obj.id && e.time !== undefined,
   );
   const events = expandRepeatingEvents(rawEvents, fps, spec.duration);
 
+  // Shorthand: extract the guaranteed `time` tuple from a post-normalization event.
+  const et = (ev: TimelineEvent): [number, number] => ev.time!;
+
   // Helper to find the active event for a specific property
   function getActiveEvent(hasProp: (ev: TimelineEvent) => boolean): TimelineEvent | undefined {
-    const evs = events.filter(hasProp).sort((a, b) => a.time[0] - b.time[0]);
+    const evs = events.filter(hasProp).sort((a, b) => et(a)[0] - et(b)[0]);
     if (evs.length === 0) return undefined;
     let chosen = evs[0];
     for (const ev of evs) {
-      if (Math.round(ev.time[0] * fps) <= frame) {
-        chosen = ev;
-      }
+      if (Math.round(et(ev)[0] * fps) <= frame) chosen = ev;
     }
     return chosen;
   }
 
+  // Compute helpers: frame-range shorthand
+  const sf = (ev: TimelineEvent) => Math.round(et(ev)[0] * fps);
+  const ef = (ev: TimelineEvent) => Math.round(et(ev)[1] * fps);
+
   // ── Evaluate properties individually ──
 
   const evOpacity = getActiveEvent(e => e.opacity !== undefined);
-  if (evOpacity && evOpacity.opacity) {
-    state.opacity = computeValue(frame, Math.round(evOpacity.time[0]*fps), Math.round(evOpacity.time[1]*fps), evOpacity.opacity[0], evOpacity.opacity[1], evOpacity.easing);
+  if (evOpacity) {
+    const op = evOpacity.opacity;
+    if (Array.isArray(op)) {
+      state.opacity = computeValue(frame, sf(evOpacity), ef(evOpacity), op[0], op[1], evOpacity.easing);
+    }
   }
 
   const evScale = getActiveEvent(e => e.scale !== undefined);
-  if (evScale && evScale.scale) {
-    state.scale = computeValue(frame, Math.round(evScale.time[0]*fps), Math.round(evScale.time[1]*fps), evScale.scale[0], evScale.scale[1], evScale.easing);
+  if (evScale) {
+    const sc = evScale.scale;
+    if (Array.isArray(sc)) {
+      state.scale = computeValue(frame, sf(evScale), ef(evScale), sc[0], sc[1], evScale.easing);
+    }
   }
 
   const evRotation = getActiveEvent(e => e.rotation !== undefined);
   if (evRotation && evRotation.rotation) {
-    state.rotation = computeValue(frame, Math.round(evRotation.time[0]*fps), Math.round(evRotation.time[1]*fps), evRotation.rotation[0], evRotation.rotation[1], evRotation.easing);
+    state.rotation = computeValue(frame, sf(evRotation), ef(evRotation), evRotation.rotation[0], evRotation.rotation[1], evRotation.easing);
   }
 
   const evX = getActiveEvent(e => e.x !== undefined);
   if (evX && evX.x) {
-    state.x = computeValue(frame, Math.round(evX.time[0]*fps), Math.round(evX.time[1]*fps), evX.x[0], evX.x[1], evX.easing);
+    state.x = computeValue(frame, sf(evX), ef(evX), evX.x[0], evX.x[1], evX.easing);
   }
 
   const evY = getActiveEvent(e => e.y !== undefined);
   if (evY && evY.y) {
-    state.y = computeValue(frame, Math.round(evY.time[0]*fps), Math.round(evY.time[1]*fps), evY.y[0], evY.y[1], evY.easing);
+    state.y = computeValue(frame, sf(evY), ef(evY), evY.y[0], evY.y[1], evY.easing);
   }
 
   const evPos = getActiveEvent(e => e.pos !== undefined);
   if (evPos && evPos.pos) {
-    state.x = computeValue(frame, Math.round(evPos.time[0]*fps), Math.round(evPos.time[1]*fps), evPos.pos[0][0], evPos.pos[1][0], evPos.easing);
-    state.y = computeValue(frame, Math.round(evPos.time[0]*fps), Math.round(evPos.time[1]*fps), evPos.pos[0][1], evPos.pos[1][1], evPos.easing);
+    state.x = computeValue(frame, sf(evPos), ef(evPos), evPos.pos[0][0], evPos.pos[1][0], evPos.easing);
+    state.y = computeValue(frame, sf(evPos), ef(evPos), evPos.pos[0][1], evPos.pos[1][1], evPos.easing);
   }
 
   const evColor = getActiveEvent(e => e.color !== undefined);
   if (evColor && evColor.color) {
-    state.color = computeColorValue(frame, Math.round(evColor.time[0]*fps), Math.round(evColor.time[1]*fps), evColor.color[0], evColor.color[1], evColor.easing);
+    state.color = computeColorValue(frame, sf(evColor), ef(evColor), evColor.color[0], evColor.color[1], evColor.easing);
   }
 
   const evDiameter = getActiveEvent(e => e.diameter !== undefined);
   if (evDiameter && evDiameter.diameter) {
-    const d = computeValue(frame, Math.round(evDiameter.time[0]*fps), Math.round(evDiameter.time[1]*fps), evDiameter.diameter[0], evDiameter.diameter[1], evDiameter.easing);
+    const d = computeValue(frame, sf(evDiameter), ef(evDiameter), evDiameter.diameter[0], evDiameter.diameter[1], evDiameter.easing);
     state.diameter = d; state.width = d; state.height = d;
   }
 
   const evSize = getActiveEvent(e => e.size !== undefined);
   if (evSize && evSize.size) {
-    state.width = computeValue(frame, Math.round(evSize.time[0]*fps), Math.round(evSize.time[1]*fps), evSize.size[0][0], evSize.size[1][0], evSize.easing);
-    state.height = computeValue(frame, Math.round(evSize.time[0]*fps), Math.round(evSize.time[1]*fps), evSize.size[0][1], evSize.size[1][1], evSize.easing);
+    state.width  = computeValue(frame, sf(evSize), ef(evSize), evSize.size[0][0], evSize.size[1][0], evSize.easing);
+    state.height = computeValue(frame, sf(evSize), ef(evSize), evSize.size[0][1], evSize.size[1][1], evSize.easing);
   }
 
-  // Individual width/height animations override compound size
   const evWidth = getActiveEvent(e => e.width !== undefined);
   if (evWidth && evWidth.width) {
-    state.width = computeValue(frame, Math.round(evWidth.time[0]*fps), Math.round(evWidth.time[1]*fps), evWidth.width[0], evWidth.width[1], evWidth.easing);
+    state.width = computeValue(frame, sf(evWidth), ef(evWidth), evWidth.width[0], evWidth.width[1], evWidth.easing);
   }
 
   const evHeight = getActiveEvent(e => e.height !== undefined);
   if (evHeight && evHeight.height) {
-    state.height = computeValue(frame, Math.round(evHeight.time[0]*fps), Math.round(evHeight.time[1]*fps), evHeight.height[0], evHeight.height[1], evHeight.easing);
+    state.height = computeValue(frame, sf(evHeight), ef(evHeight), evHeight.height[0], evHeight.height[1], evHeight.easing);
   }
 
-  // Directional scaling
   const evScaleX = getActiveEvent(e => e.scaleX !== undefined);
   if (evScaleX && evScaleX.scaleX) {
-    state.scaleX = computeValue(frame, Math.round(evScaleX.time[0]*fps), Math.round(evScaleX.time[1]*fps), evScaleX.scaleX[0], evScaleX.scaleX[1], evScaleX.easing);
+    state.scaleX = computeValue(frame, sf(evScaleX), ef(evScaleX), evScaleX.scaleX[0], evScaleX.scaleX[1], evScaleX.easing);
   }
 
   const evScaleY = getActiveEvent(e => e.scaleY !== undefined);
   if (evScaleY && evScaleY.scaleY) {
-    state.scaleY = computeValue(frame, Math.round(evScaleY.time[0]*fps), Math.round(evScaleY.time[1]*fps), evScaleY.scaleY[0], evScaleY.scaleY[1], evScaleY.easing);
+    state.scaleY = computeValue(frame, sf(evScaleY), ef(evScaleY), evScaleY.scaleY[0], evScaleY.scaleY[1], evScaleY.easing);
   }
 
-  // Corner radius
   const evCornerRadius = getActiveEvent(e => e.cornerRadius !== undefined);
   if (evCornerRadius && evCornerRadius.cornerRadius) {
-    state.cornerRadius = computeValue(frame, Math.round(evCornerRadius.time[0]*fps), Math.round(evCornerRadius.time[1]*fps), evCornerRadius.cornerRadius[0], evCornerRadius.cornerRadius[1], evCornerRadius.easing);
+    state.cornerRadius = computeValue(frame, sf(evCornerRadius), ef(evCornerRadius), evCornerRadius.cornerRadius[0], evCornerRadius.cornerRadius[1], evCornerRadius.easing);
   }
 
+  const evShadowX    = getActiveEvent(e => e.shadow?.offsetX !== undefined);
+  const evShadowY    = getActiveEvent(e => e.shadow?.offsetY !== undefined);
+  const evShadowBlur = getActiveEvent(e => e.shadow?.blur    !== undefined);
+  const evShadowColor = getActiveEvent(e => e.shadow?.color  !== undefined);
 
-  const evShadowX = getActiveEvent(e => e.shadow?.offsetX !== undefined);
-  const evShadowY = getActiveEvent(e => e.shadow?.offsetY !== undefined);
-  const evShadowBlur = getActiveEvent(e => e.shadow?.blur !== undefined);
-  const evShadowColor = getActiveEvent(e => e.shadow?.color !== undefined);
-  
   if (evShadowX || evShadowY || evShadowBlur || evShadowColor) {
     if (!state.shadow) state.shadow = obj.shadow ? { ...obj.shadow } : { offsetX: 0, offsetY: 0, blur: 0, color: "transparent" };
-    if (evShadowX && evShadowX.shadow?.offsetX) state.shadow.offsetX = computeValue(frame, Math.round(evShadowX.time[0]*fps), Math.round(evShadowX.time[1]*fps), evShadowX.shadow.offsetX[0], evShadowX.shadow.offsetX[1], evShadowX.easing);
-    if (evShadowY && evShadowY.shadow?.offsetY) state.shadow.offsetY = computeValue(frame, Math.round(evShadowY.time[0]*fps), Math.round(evShadowY.time[1]*fps), evShadowY.shadow.offsetY[0], evShadowY.shadow.offsetY[1], evShadowY.easing);
-    if (evShadowBlur && evShadowBlur.shadow?.blur) state.shadow.blur = computeValue(frame, Math.round(evShadowBlur.time[0]*fps), Math.round(evShadowBlur.time[1]*fps), evShadowBlur.shadow.blur[0], evShadowBlur.shadow.blur[1], evShadowBlur.easing);
-    if (evShadowColor && evShadowColor.shadow?.color) state.shadow.color = computeColorValue(frame, Math.round(evShadowColor.time[0]*fps), Math.round(evShadowColor.time[1]*fps), evShadowColor.shadow.color[0], evShadowColor.shadow.color[1], evShadowColor.easing);
+    if (evShadowX    && evShadowX.shadow?.offsetX)    state.shadow.offsetX = computeValue(frame, sf(evShadowX), ef(evShadowX), evShadowX.shadow.offsetX[0], evShadowX.shadow.offsetX[1], evShadowX.easing);
+    if (evShadowY    && evShadowY.shadow?.offsetY)    state.shadow.offsetY = computeValue(frame, sf(evShadowY), ef(evShadowY), evShadowY.shadow.offsetY[0], evShadowY.shadow.offsetY[1], evShadowY.easing);
+    if (evShadowBlur && evShadowBlur.shadow?.blur)    state.shadow.blur    = computeValue(frame, sf(evShadowBlur), ef(evShadowBlur), evShadowBlur.shadow.blur[0], evShadowBlur.shadow.blur[1], evShadowBlur.easing);
+    if (evShadowColor && evShadowColor.shadow?.color) state.shadow.color   = computeColorValue(frame, sf(evShadowColor), ef(evShadowColor), evShadowColor.shadow.color[0], evShadowColor.shadow.color[1], evShadowColor.easing);
   }
 
   const evStrokeWidth = getActiveEvent(e => e.stroke?.width !== undefined);
   const evStrokeColor = getActiveEvent(e => e.stroke?.color !== undefined);
-  
+
   if (evStrokeWidth || evStrokeColor) {
     if (!state.stroke) state.stroke = obj.stroke ? { ...obj.stroke } : { width: 1, color: "#000000" };
-    if (evStrokeWidth && evStrokeWidth.stroke?.width) state.stroke.width = computeValue(frame, Math.round(evStrokeWidth.time[0]*fps), Math.round(evStrokeWidth.time[1]*fps), evStrokeWidth.stroke.width[0], evStrokeWidth.stroke.width[1], evStrokeWidth.easing);
-    if (evStrokeColor && evStrokeColor.stroke?.color) state.stroke.color = computeColorValue(frame, Math.round(evStrokeColor.time[0]*fps), Math.round(evStrokeColor.time[1]*fps), evStrokeColor.stroke.color[0], evStrokeColor.stroke.color[1], evStrokeColor.easing);
+    if (evStrokeWidth && evStrokeWidth.stroke?.width) state.stroke.width = computeValue(frame, sf(evStrokeWidth), ef(evStrokeWidth), evStrokeWidth.stroke.width[0], evStrokeWidth.stroke.width[1], evStrokeWidth.easing);
+    if (evStrokeColor && evStrokeColor.stroke?.color) state.stroke.color = computeColorValue(frame, sf(evStrokeColor), ef(evStrokeColor), evStrokeColor.stroke.color[0], evStrokeColor.stroke.color[1], evStrokeColor.easing);
   }
 
-  const evTextSize = getActiveEvent(e => e.text?.fontSize !== undefined);
-  const evTextColor = getActiveEvent(e => e.text?.textColor !== undefined);
+  const evTextSize   = getActiveEvent(e => e.text?.fontSize   !== undefined);
+  const evTextColor  = getActiveEvent(e => e.text?.textColor  !== undefined);
   const evTextWeight = getActiveEvent(e => e.text?.fontWeight !== undefined);
 
   if (evTextSize || evTextColor || evTextWeight) {
     if (!state.text) state.text = obj.text ? { ...obj.text, fontWeight: obj.text.fontWeight ?? "normal" } : { content: "", fontSize: 16, textColor: "#000000", fontWeight: "normal" };
-    if (evTextSize && evTextSize.text?.fontSize) state.text!.fontSize = computeValue(frame, Math.round(evTextSize.time[0]*fps), Math.round(evTextSize.time[1]*fps), evTextSize.text.fontSize[0], evTextSize.text.fontSize[1], evTextSize.easing);
-    if (evTextColor && evTextColor.text?.textColor) state.text!.textColor = computeColorValue(frame, Math.round(evTextColor.time[0]*fps), Math.round(evTextColor.time[1]*fps), evTextColor.text.textColor[0], evTextColor.text.textColor[1], evTextColor.easing);
+    if (evTextSize   && evTextSize.text?.fontSize)   state.text!.fontSize  = computeValue(frame, sf(evTextSize), ef(evTextSize), evTextSize.text.fontSize[0], evTextSize.text.fontSize[1], evTextSize.easing);
+    if (evTextColor  && evTextColor.text?.textColor) state.text!.textColor = computeColorValue(frame, sf(evTextColor), ef(evTextColor), evTextColor.text.textColor[0], evTextColor.text.textColor[1], evTextColor.easing);
     if (evTextWeight && evTextWeight.text?.fontWeight) state.text!.fontWeight = evTextWeight.text.fontWeight;
   }
 
-  // Glow
-  const evGlowBlur = getActiveEvent(e => e.glow?.blur !== undefined);
+  const evGlowBlur      = getActiveEvent(e => e.glow?.blur      !== undefined);
   const evGlowIntensity = getActiveEvent(e => e.glow?.intensity !== undefined);
-  const evGlowColor = getActiveEvent(e => e.glow?.color !== undefined);
+  const evGlowColor     = getActiveEvent(e => e.glow?.color     !== undefined);
 
   if (evGlowBlur || evGlowIntensity || evGlowColor) {
     if (!state.glow) state.glow = obj.glow ? { ...obj.glow } : { blur: 0, intensity: 0, color: "transparent" };
-    if (evGlowBlur && evGlowBlur.glow?.blur) state.glow.blur = computeValue(frame, Math.round(evGlowBlur.time[0]*fps), Math.round(evGlowBlur.time[1]*fps), evGlowBlur.glow.blur[0], evGlowBlur.glow.blur[1], evGlowBlur.easing);
-    if (evGlowIntensity && evGlowIntensity.glow?.intensity) state.glow.intensity = computeValue(frame, Math.round(evGlowIntensity.time[0]*fps), Math.round(evGlowIntensity.time[1]*fps), evGlowIntensity.glow.intensity[0], evGlowIntensity.glow.intensity[1], evGlowIntensity.easing);
-    if (evGlowColor && evGlowColor.glow?.color) state.glow.color = computeColorValue(frame, Math.round(evGlowColor.time[0]*fps), Math.round(evGlowColor.time[1]*fps), evGlowColor.glow.color[0], evGlowColor.glow.color[1], evGlowColor.easing);
+    if (evGlowBlur      && evGlowBlur.glow?.blur)           state.glow.blur      = computeValue(frame, sf(evGlowBlur), ef(evGlowBlur), evGlowBlur.glow.blur[0], evGlowBlur.glow.blur[1], evGlowBlur.easing);
+    if (evGlowIntensity && evGlowIntensity.glow?.intensity) state.glow.intensity = computeValue(frame, sf(evGlowIntensity), ef(evGlowIntensity), evGlowIntensity.glow.intensity[0], evGlowIntensity.glow.intensity[1], evGlowIntensity.easing);
+    if (evGlowColor     && evGlowColor.glow?.color)         state.glow.color     = computeColorValue(frame, sf(evGlowColor), ef(evGlowColor), evGlowColor.glow.color[0], evGlowColor.glow.color[1], evGlowColor.easing);
   }
 
-  // Skew transform
   const evSkewX = getActiveEvent(e => e.skewX !== undefined);
   if (evSkewX && evSkewX.skewX) {
-    state.skewX = computeValue(frame, Math.round(evSkewX.time[0]*fps), Math.round(evSkewX.time[1]*fps), evSkewX.skewX[0], evSkewX.skewX[1], evSkewX.easing);
+    state.skewX = computeValue(frame, sf(evSkewX), ef(evSkewX), evSkewX.skewX[0], evSkewX.skewX[1], evSkewX.easing);
   }
 
   const evSkewY = getActiveEvent(e => e.skewY !== undefined);
   if (evSkewY && evSkewY.skewY) {
-    state.skewY = computeValue(frame, Math.round(evSkewY.time[0]*fps), Math.round(evSkewY.time[1]*fps), evSkewY.skewY[0], evSkewY.skewY[1], evSkewY.easing);
+    state.skewY = computeValue(frame, sf(evSkewY), ef(evSkewY), evSkewY.skewY[0], evSkewY.skewY[1], evSkewY.easing);
   }
 
-  // CSS blur filter
   const evBlur = getActiveEvent(e => e.blur !== undefined);
   if (evBlur && evBlur.blur) {
-    state.blur = computeValue(frame, Math.round(evBlur.time[0]*fps), Math.round(evBlur.time[1]*fps), evBlur.blur[0], evBlur.blur[1], evBlur.easing);
+    state.blur = computeValue(frame, sf(evBlur), ef(evBlur), evBlur.blur[0], evBlur.blur[1], evBlur.easing);
+  }
+
+  // ── Stroke draw coverage (stroke_draw field) ──
+  const evStrokeDraw = getActiveEvent(e => (e as any).stroke_draw !== undefined);
+  if (evStrokeDraw) {
+    const sd = (evStrokeDraw as any).stroke_draw;
+    state.strokeCoverage = computeValue(frame, sf(evStrokeDraw), ef(evStrokeDraw), sd.coverage_from, sd.coverage_to, evStrokeDraw.easing);
+  }
+
+  // ── Dash pattern offset (dash_pattern field) ──
+  const evDash = getActiveEvent(e => (e as any).dash_pattern !== undefined);
+  if (evDash) {
+    const dp = (evDash as any).dash_pattern;
+    state.dashOffset = computeValue(frame, sf(evDash), ef(evDash), dp.offset_from_px, dp.offset_to_px, evDash.easing);
   }
 
   // ── Pivot resolution ──
-  // Per-event pivotPoint overrides object-level pivot. Both default to [0,0].
   const evPivot = events.find(
     (e) =>
       e.pivotPoint !== undefined &&
-      Math.round(e.time[0] * fps) <= frame &&
-      frame <= Math.round(e.time[1] * fps),
+      Math.round(et(e)[0] * fps) <= frame &&
+      frame <= Math.round(et(e)[1] * fps),
   );
   if (evPivot?.pivotPoint) {
     state.pivot = evPivot.pivotPoint;
@@ -401,8 +407,8 @@ export function computeObjectState(
       (e) =>
         e.motionType === "follow" &&
         e.followTarget &&
-        Math.round(e.time[0] * fps) <= frame &&
-        frame <= Math.round(e.time[1] * fps),
+        Math.round(et(e)[0] * fps) <= frame &&
+        frame <= Math.round(et(e)[1] * fps),
     );
     if (evFollow && evFollow.followTarget) {
       const lagFrames = Math.round((evFollow.followLag ?? 0) * fps);
@@ -467,7 +473,7 @@ export function computeObjectState(
  */
 function expandRepeatingEvents(
   events: TimelineEvent[],
-  fps: number,
+  _fps: number,
   totalDuration: number,
 ): TimelineEvent[] {
   const result: TimelineEvent[] = [];
@@ -478,7 +484,9 @@ function expandRepeatingEvents(
       continue;
     }
 
-    const segDuration = ev.time[1] - ev.time[0];
+    // By the time events reach this function the normalizer has set `time`.
+    const evTime = ev.time!;
+    const segDuration = evTime[1] - evTime[0];
     if (segDuration <= 0) {
       result.push({ ...ev, repeat: undefined });
       continue;
@@ -486,20 +494,17 @@ function expandRepeatingEvents(
 
     const maxReps =
       ev.repeat === "infinite"
-        ? Math.ceil((totalDuration - ev.time[0]) / segDuration) + 1
-        : (ev.repeat as number) + 1; // +1 includes the original play
+        ? Math.ceil((totalDuration - evTime[0]) / segDuration) + 1
+        : (ev.repeat as number) + 1;
 
     for (let i = 0; i < maxReps; i++) {
-      const start = ev.time[0] + i * segDuration;
+      const start = evTime[0] + i * segDuration;
       const end = start + segDuration;
       if (start >= totalDuration) break;
 
       const segment = { ...ev, time: [start, Math.min(end, totalDuration)] as [number, number], repeat: undefined };
 
-      // Ping-pong: reverse from/to on odd repetitions
-      if (i % 2 === 1) {
-        swapTuples(segment);
-      }
+      if (i % 2 === 1) swapTuples(segment);
 
       result.push(segment);
     }
@@ -513,8 +518,11 @@ function swapTuples(ev: TimelineEvent): void {
   const swap = <T>(t: [T, T] | undefined): [T, T] | undefined =>
     t ? [t[1], t[0]] : undefined;
 
-  if (ev.opacity)      ev.opacity      = swap(ev.opacity)!;
-  if (ev.scale)        ev.scale        = swap(ev.scale)!;
+  // opacity and scale are union types; only swap if they are already in tuple form
+  // (the normalizer guarantees tuple form before the runtime, but swapTuples runs
+  // on already-normalised events, so the cast is safe here).
+  if (ev.opacity && Array.isArray(ev.opacity)) ev.opacity = swap(ev.opacity as [number, number])!;
+  if (ev.scale   && Array.isArray(ev.scale))   ev.scale   = swap(ev.scale   as [number, number])!;
   if (ev.rotation)     ev.rotation     = swap(ev.rotation)!;
   if (ev.x)            ev.x            = swap(ev.x)!;
   if (ev.y)            ev.y            = swap(ev.y)!;

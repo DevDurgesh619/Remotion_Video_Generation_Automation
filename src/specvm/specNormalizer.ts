@@ -129,29 +129,31 @@ function normalizeTimeline(
 ): { timeline: TimelineEvent[]; droppedTargets: string[] } {
   const droppedTargets: string[] = [];
 
-  const result = timeline
+  // Step 1: coerce v2 explicit-field format to the internal tuple format
+  const coerced = timeline.map(normalizeV2Fields);
+
+  const result = coerced
     .filter((ev) => {
-      // Remove entries targeting nonexistent objects
       if (!validIds.has(ev.target)) {
         droppedTargets.push(ev.target);
         return false;
       }
-      // Remove entries with invalid time
-      if (!Array.isArray(ev.time) || ev.time.length !== 2) return false;
-      if (typeof ev.time[0] !== "number" || typeof ev.time[1] !== "number") return false;
+      // After coercion every valid event must have a `time` tuple
+      const t = ev.time;
+      if (!Array.isArray(t) || t.length !== 2) return false;
+      if (typeof t[0] !== "number" || typeof t[1] !== "number") return false;
       return true;
     })
     .map((ev) => {
       const normalized = { ...ev };
+      const t = ev.time!; // guaranteed by filter above
 
-      // Ensure time is non-negative and ordered
       normalized.time = [
-        Math.max(0, sanitizeNumber(ev.time[0])),
-        Math.max(0, sanitizeNumber(ev.time[1])),
+        Math.max(0, sanitizeNumber(t[0])),
+        Math.max(0, sanitizeNumber(t[1])),
       ] as [number, number];
 
       if (normalized.time[0] > normalized.time[1]) {
-        // Swap if backwards
         normalized.time = [normalized.time[1], normalized.time[0]];
       }
 
@@ -168,18 +170,133 @@ function normalizeTimeline(
         }
       }
 
-      // Normalize glow on timeline events
-      // LLM format: { from: [blur, intensity, color], to: [blur, intensity, color] }
-      // Canonical format: { blur: [f,t], intensity: [f,t], color: [f,t] }
       if ((normalized as any).glow) {
         (normalized as any).glow = normalizeTimelineGlow((normalized as any).glow);
       }
 
       return normalized;
     })
-    .sort((a, b) => a.time[0] - b.time[0]);
+    .sort((a, b) => (a.time![0]) - (b.time![0]));
 
   return { timeline: result, droppedTargets };
+}
+
+/**
+ * Converts v2 explicit-field AnimationBlock fields to the internal tuple format.
+ *
+ * v2 fields handled:
+ *   start_sec / end_sec       → time: [start, end]
+ *   translate.from_x/to_x    → x: [from, to]
+ *   translate.from_y/to_y    → y: [from, to]
+ *   rotate_deg.from/to       → rotation: [from, to]
+ *   scale (object form)      → scaleX/scaleY or uniform scale tuple
+ *   opacity (object form)    → opacity: [from, to]
+ *   corner_radius_px.from/to → cornerRadius: [from, to]
+ *   skew_deg.from_x/to_x    → skewX: [from, to]
+ *   skew_deg.from_y/to_y    → skewY: [from, to]
+ *   style_transition.color   → color: [from, to]
+ *   style_transition.shadow  → shadow: { offsetX/Y/blur/color tuples }
+ *   style_transition.glow    → glow: { blur/intensity tuples }
+ *
+ * Fields without a v1 equivalent (stroke_draw, dash_pattern, advanced_action)
+ * are left in place for the animation runtime to consume directly.
+ */
+function normalizeV2Fields(ev: TimelineEvent): TimelineEvent {
+  const out: any = { ...ev };
+
+  // ── Time: start_sec / end_sec → time tuple ──
+  if (out.time === undefined && (out.start_sec !== undefined || out.end_sec !== undefined)) {
+    out.time = [out.start_sec ?? 0, out.end_sec ?? 0] as [number, number];
+  }
+  delete out.start_sec;
+  delete out.end_sec;
+
+  // ── translate → x / y ──
+  if (out.translate) {
+    const tr = out.translate;
+    if (tr.from_x !== undefined && tr.to_x !== undefined) {
+      out.x = [tr.from_x, tr.to_x] as [number, number];
+    }
+    if (tr.from_y !== undefined && tr.to_y !== undefined) {
+      out.y = [tr.from_y, tr.to_y] as [number, number];
+    }
+    delete out.translate;
+  }
+
+  // ── rotate_deg → rotation ──
+  if (out.rotate_deg) {
+    out.rotation = [out.rotate_deg.from, out.rotate_deg.to] as [number, number];
+    delete out.rotate_deg;
+  }
+
+  // ── scale (object form) → scaleX / scaleY or uniform scale ──
+  if (out.scale !== null && typeof out.scale === "object" && !Array.isArray(out.scale)) {
+    const s = out.scale as any;
+    const uniformX = s.from_x !== undefined && s.to_x !== undefined;
+    const uniformY = s.from_y !== undefined && s.to_y !== undefined;
+    if (uniformX && uniformY && s.from_x === s.from_y && s.to_x === s.to_y) {
+      out.scale = [s.from_x, s.to_x] as [number, number];
+    } else {
+      if (uniformX) out.scaleX = [s.from_x, s.to_x] as [number, number];
+      if (uniformY) out.scaleY = [s.from_y, s.to_y] as [number, number];
+      delete out.scale;
+    }
+  }
+
+  // ── opacity (object form) → opacity tuple ──
+  if (out.opacity !== null && typeof out.opacity === "object" && !Array.isArray(out.opacity)) {
+    const o = out.opacity as any;
+    out.opacity = [o.from, o.to] as [number, number];
+  }
+
+  // ── corner_radius_px → cornerRadius ──
+  if (out.corner_radius_px) {
+    out.cornerRadius = [out.corner_radius_px.from, out.corner_radius_px.to] as [number, number];
+    delete out.corner_radius_px;
+  }
+
+  // ── skew_deg → skewX / skewY ──
+  if (out.skew_deg) {
+    const sk = out.skew_deg;
+    if (sk.from_x !== undefined && sk.to_x !== undefined) {
+      out.skewX = [sk.from_x, sk.to_x] as [number, number];
+    }
+    if (sk.from_y !== undefined && sk.to_y !== undefined) {
+      out.skewY = [sk.from_y, sk.to_y] as [number, number];
+    }
+    delete out.skew_deg;
+  }
+
+  // ── style_transition → color / shadow / glow ──
+  if (out.style_transition) {
+    const st = out.style_transition;
+
+    if (st.color) {
+      out.color = [st.color.from, st.color.to] as [string, string];
+    }
+
+    if (st.shadow) {
+      const sh = st.shadow;
+      out.shadow = {
+        ...(sh.from_offset_x !== undefined ? { offsetX: [sh.from_offset_x, sh.to_offset_x ?? sh.from_offset_x] as [number, number] } : {}),
+        ...(sh.from_offset_y !== undefined ? { offsetY: [sh.from_offset_y, sh.to_offset_y ?? sh.from_offset_y] as [number, number] } : {}),
+        ...(sh.from_blur     !== undefined ? { blur:    [sh.from_blur, sh.to_blur ?? sh.from_blur] as [number, number] } : {}),
+        ...(sh.color         !== undefined ? { color:   [sh.color, sh.color] as [string, string] } : {}),
+      };
+    }
+
+    if (st.glow) {
+      const gl = st.glow;
+      out.glow = {
+        ...(gl.from_blur      !== undefined ? { blur:      [gl.from_blur, gl.to_blur ?? gl.from_blur] as [number, number] } : {}),
+        ...(gl.from_intensity !== undefined ? { intensity: [gl.from_intensity, gl.to_intensity ?? gl.from_intensity] as [number, number] } : {}),
+      };
+    }
+
+    delete out.style_transition;
+  }
+
+  return out as TimelineEvent;
 }
 
 /**

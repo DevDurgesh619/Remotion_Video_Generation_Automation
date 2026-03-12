@@ -124,7 +124,7 @@ export interface SceneObject {
   skewY?: number;
 }
 
-// ─── Orbit Params ────────────────────────────────────────────────────────────
+// ─── Orbit Params (legacy internal format) ───────────────────────────────────
 
 export interface OrbitParams {
   centerX: number;
@@ -135,18 +135,155 @@ export interface OrbitParams {
   direction?: "clockwise" | "counterclockwise";    // default: "clockwise"
 }
 
+// ─── v2 AnimationBlock explicit motion field types ───────────────────────────
+// These are the NEW public-facing schema types. The normalizer maps them to the
+// internal TimelineEvent format before the runtime sees them.
+
+export interface TranslateAnimation {
+  from_x?: number;
+  to_x?: number;
+  x_unit?: "px" | "pct";
+  from_y?: number;
+  to_y?: number;
+  y_unit?: "px" | "pct";
+}
+
+export interface RotateDegAnimation {
+  from: number;
+  to: number;
+  axis?: "z" | "x" | "y";        // default: "z"
+  direction?: "cw" | "ccw";
+}
+
+export interface ScaleAnimation {
+  from_x?: number;
+  to_x?: number;
+  from_y?: number;
+  to_y?: number;
+}
+
+export interface OpacityAnimation {
+  from: number;
+  to: number;
+}
+
+export interface CornerRadiusPxAnimation {
+  from: number;
+  to: number;
+}
+
+export interface SkewDegAnimation {
+  from_x?: number;
+  to_x?: number;
+  from_y?: number;
+  to_y?: number;
+}
+
+export interface StyleTransitionAnimation {
+  color?: { from: string; to: string };
+  shadow?: {
+    from_offset_x?: number; to_offset_x?: number;
+    from_offset_y?: number; to_offset_y?: number;
+    from_blur?: number;     to_blur?: number;
+    color?: string;
+  };
+  glow?: {
+    from_blur?: number;      to_blur?: number;
+    from_intensity?: number; to_intensity?: number;
+  };
+  gradient_flow?: {
+    from_offset_pct?: number;
+    to_offset_pct?: number;
+  };
+}
+
+export interface StrokeDrawAnimation {
+  coverage_from: number;          // 0–1 fraction of stroke drawn
+  coverage_to: number;
+  direction?: "forward" | "reverse";
+  thickness_px?: number;
+}
+
+export interface DashPatternAnimation {
+  dash_px: number;
+  gap_px: number;
+  offset_from_px: number;
+  offset_to_px: number;
+}
+
+// orbit params in the new v2 schema (snake_case, degrees-based sweep)
+export interface AdvancedOrbitParams {
+  center_x_px: number;
+  center_y_px: number;
+  radius_px: number;
+  degrees: number;                // total angular sweep
+  start_angle?: number;           // starting angle in degrees (default: 0 = right)
+  direction?: "cw" | "ccw";      // default: "cw"
+  maintain_facing?: boolean;
+}
+
+export type AdvancedActionType =
+  | "orbit" | "morph" | "split" | "scatter" | "shatter" | "grid" | "extrude";
+
+export interface AdvancedAction {
+  type: AdvancedActionType;
+
+  orbit?: AdvancedOrbitParams;
+
+  morph?: {
+    target_shape: string;
+    target_width_px: number;
+    target_height_px: number;
+  };
+
+  split?: {
+    pieces: number;
+    direction?: "horizontal" | "vertical" | "radial";
+  };
+
+  scatter?: {
+    scatter_distance_px: number;
+    scatter_rotation_deg?: number;
+  };
+
+  shatter?: {
+    particle_count: number;
+    explosion_radius_px: number;
+  };
+
+  grid?: {
+    rows: number;
+    cols: number;
+  };
+
+  extrude?: {
+    layers: number;
+    offset_x_px: number;
+    offset_y_px: number;
+    opacity_fade?: boolean;
+  };
+}
+
 // ─── Timeline Event ─────────────────────────────────────────────────────────
 // Each event animates properties on a target object over a time range.
-// Animatable properties are expressed as [from, to] tuples.
+// Supports both the legacy tuple format and the new v2 explicit-field format.
+// The specNormalizer converts v2 fields to the internal tuple format before runtime.
 
 export interface TimelineEvent {
   target: string;
-  time: [number, number];       // [start_sec, end_sec]
+
+  // v1 time format: [start_sec, end_sec] tuple
+  time?: [number, number];
+
+  // v2 time format: explicit fields (normalizer maps these to `time`)
+  start_sec?: number;
+  end_sec?: number;
+
   easing?: string;
 
-  // Scalar animatable properties — each expressed as [from, to]
-  opacity?: [number, number];
-  scale?: [number, number];
+  // Scalar animatable properties — each expressed as [from, to] (v1) or object (v2)
+  opacity?: [number, number] | OpacityAnimation;
+  scale?: [number, number] | ScaleAnimation;
   rotation?: [number, number];
   x?: [number, number];
   y?: [number, number];
@@ -173,8 +310,21 @@ export interface TimelineEvent {
   // repeat: "infinite" → loops until spec duration ends
   repeat?: number | "infinite";
 
-  // Behavior shorthand — resolved by behaviorExpander before the spec reaches SpecVM.
-  // Example: { "target": "hero", "time": [0, 1.5], "behavior": "slide-in-left", "params": { "distance": 400 } }
+  // ── v2 Explicit Motion Fields ─────────────────────────────────────────────
+  // Include only the fields that are required by the animation.
+  // The specNormalizer maps these to the internal tuple format before the runtime.
+
+  translate?: TranslateAnimation;
+  rotate_deg?: RotateDegAnimation;
+  corner_radius_px?: CornerRadiusPxAnimation;
+  skew_deg?: SkewDegAnimation;
+  style_transition?: StyleTransitionAnimation;
+  stroke_draw?: StrokeDrawAnimation;
+  dash_pattern?: DashPatternAnimation;
+  advanced_action?: AdvancedAction;
+
+  // ── Legacy behavior shorthand (deprecated — use explicit fields above) ────
+  /** @deprecated Use explicit motion fields (translate, rotate_deg, opacity…) */
   behavior?: string;
   params?: Record<string, number | string | boolean>;
 
@@ -552,4 +702,10 @@ export interface ComputedObjectState {
   // Skew transform in degrees
   skewX: number;
   skewY: number;
+
+  // Stroke draw animation — fraction of stroke length currently drawn (0–1)
+  strokeCoverage: number;
+
+  // Dash pattern animation — current dash offset in px
+  dashOffset: number;
 }
