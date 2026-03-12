@@ -1,0 +1,188 @@
+{
+  "scene": "square_circle_rectangle_dancing",
+  "duration": 8,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#1a1a2e",
+  "objects": [
+    {
+      "id": "square_1",
+      "shape": "rectangle",
+      "size": [
+        120,
+        120
+      ],
+      "color": "#e94560",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0
+    },
+    {
+      "id": "circle_1",
+      "shape": "circle",
+      "diameter": 120,
+      "color": "#0f3460",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0
+    },
+    {
+      "id": "rectangle_1",
+      "shape": "rectangle",
+      "size": [
+        120,
+        120
+      ],
+      "color": "#533483",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "square_1",
+      "time": [
+        0,
+        1.5
+      ],
+      "behavior": "bounce-in"
+    },
+    {
+      "target": "circle_1",
+      "time": [
+        0.3,
+        1.8
+      ],
+      "behavior": "bounce-in"
+    },
+    {
+      "target": "rectangle_1",
+      "time": [
+        0.6,
+        2.1
+      ],
+      "behavior": "bounce-in"
+    },
+    {
+      "target": "square_1",
+      "time": [
+        1.5,
+        6
+      ],
+      "easing": "ease-in-out",
+      "scale": [
+        1,
+        1.1
+      ]
+    },
+    {
+      "target": "square_1",
+      "time": [
+        1.5,
+        6
+      ],
+      "easing": "ease-in-out",
+      "rotation": [
+        0,
+        360
+      ]
+    },
+    {
+      "target": "circle_1",
+      "time": [
+        2,
+        6.5
+      ],
+      "easing": "ease-in-out",
+      "scale": [
+        1,
+        1.1
+      ]
+    },
+    {
+      "target": "circle_1",
+      "time": [
+        2,
+        6.5
+      ],
+      "easing": "ease-in-out",
+      "rotation": [
+        0,
+        360
+      ]
+    },
+    {
+      "target": "rectangle_1",
+      "time": [
+        2.5,
+        7
+      ],
+      "easing": "ease-in-out",
+      "scale": [
+        1,
+        1.1
+      ]
+    },
+    {
+      "target": "rectangle_1",
+      "time": [
+        2.5,
+        7
+      ],
+      "easing": "ease-in-out",
+      "rotation": [
+        0,
+        360
+      ]
+    },
+    {
+      "target": "square_1",
+      "time": [
+        7,
+        8
+      ],
+      "easing": "ease-in",
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "circle_1",
+      "time": [
+        7,
+        8
+      ],
+      "easing": "ease-in",
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "rectangle_1",
+      "time": [
+        7,
+        8
+      ],
+      "easing": "ease-in",
+      "opacity": [
+        1,
+        0
+      ]
+    }
+  ]
+}

@@ -27,7 +27,7 @@
       "id": "legend",
       "shape": "text",
       "text": {
-        "content": "Product A: Blue, Product B: Green, Product C: Orange",
+        "content": "Product A, Product B, Product C",
         "fontSize": 12,
         "textColor": "#FFFFFF"
       },
@@ -62,7 +62,7 @@
       "opacity": 0.2,
       "pos": [
         0,
-        0
+        60
       ]
     },
     {
@@ -76,7 +76,7 @@
       "opacity": 0.2,
       "pos": [
         0,
-        -135
+        -15
       ]
     },
     {
@@ -90,7 +90,7 @@
       "opacity": 0.2,
       "pos": [
         0,
-        -270
+        -90
       ]
     },
     {
@@ -103,9 +103,8 @@
       },
       "pos": [
         -900,
-        270
-      ],
-      "opacity": 1
+        210
+      ]
     },
     {
       "id": "y_label_50",
@@ -118,8 +117,7 @@
       "pos": [
         -900,
         135
-      ],
-      "opacity": 1
+      ]
     },
     {
       "id": "y_label_100",
@@ -131,9 +129,8 @@
       },
       "pos": [
         -900,
-        0
-      ],
-      "opacity": 1
+        60
+      ]
     },
     {
       "id": "y_label_150",
@@ -145,9 +142,8 @@
       },
       "pos": [
         -900,
-        -135
-      ],
-      "opacity": 1
+        -15
+      ]
     },
     {
       "id": "y_label_200",
@@ -159,9 +155,8 @@
       },
       "pos": [
         -900,
-        -270
-      ],
-      "opacity": 1
+        -90
+      ]
     },
     {
       "id": "x_label_jan",
@@ -173,7 +168,7 @@
       },
       "pos": [
         -720,
-        300
+        240
       ],
       "opacity": 0
     },
@@ -187,7 +182,7 @@
       },
       "pos": [
         -480,
-        300
+        240
       ],
       "opacity": 0
     },
@@ -201,7 +196,7 @@
       },
       "pos": [
         -240,
-        300
+        240
       ],
       "opacity": 0
     },
@@ -215,7 +210,7 @@
       },
       "pos": [
         0,
-        300
+        240
       ],
       "opacity": 0
     },
@@ -229,7 +224,7 @@
       },
       "pos": [
         240,
-        300
+        240
       ],
       "opacity": 0
     },
@@ -243,7 +238,7 @@
       },
       "pos": [
         480,
-        300
+        240
       ],
       "opacity": 0
     },
@@ -257,7 +252,7 @@
       "color": "#2196F3",
       "pos": [
         -750,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -271,7 +266,7 @@
       "color": "#4CAF50",
       "pos": [
         -697,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -285,7 +280,7 @@
       "color": "#FF9800",
       "pos": [
         -644,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -299,7 +294,7 @@
       "color": "#2196F3",
       "pos": [
         -510,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -313,7 +308,7 @@
       "color": "#4CAF50",
       "pos": [
         -457,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -327,7 +322,7 @@
       "color": "#FF9800",
       "pos": [
         -404,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -341,7 +336,7 @@
       "color": "#2196F3",
       "pos": [
         -270,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -355,7 +350,7 @@
       "color": "#4CAF50",
       "pos": [
         -217,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -369,7 +364,7 @@
       "color": "#FF9800",
       "pos": [
         -164,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -383,7 +378,7 @@
       "color": "#2196F3",
       "pos": [
         -30,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -397,7 +392,7 @@
       "color": "#4CAF50",
       "pos": [
         23,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -411,7 +406,7 @@
       "color": "#FF9800",
       "pos": [
         76,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -425,7 +420,7 @@
       "color": "#2196F3",
       "pos": [
         210,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -439,7 +434,7 @@
       "color": "#4CAF50",
       "pos": [
         263,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -453,7 +448,7 @@
       "color": "#FF9800",
       "pos": [
         316,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -467,7 +462,7 @@
       "color": "#2196F3",
       "pos": [
         450,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -481,7 +476,7 @@
       "color": "#4CAF50",
       "pos": [
         503,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -495,7 +490,7 @@
       "color": "#FF9800",
       "pos": [
         556,
-        270
+        135
       ],
       "anchor": "bottom"
     },
@@ -509,7 +504,7 @@
       },
       "pos": [
         -750,
-        120
+        -15
       ],
       "opacity": 0
     },
@@ -523,7 +518,7 @@
       },
       "pos": [
         -697,
-        150
+        15
       ],
       "opacity": 0
     },
@@ -537,7 +532,7 @@
       },
       "pos": [
         -644,
-        170
+        35
       ],
       "opacity": 0
     },
@@ -551,7 +546,7 @@
       },
       "pos": [
         -510,
-        100
+        -35
       ],
       "opacity": 0
     },
@@ -565,7 +560,7 @@
       },
       "pos": [
         -457,
-        130
+        -5
       ],
       "opacity": 0
     },
@@ -579,7 +574,7 @@
       },
       "pos": [
         -404,
-        160
+        25
       ],
       "opacity": 0
     },
@@ -593,7 +588,7 @@
       },
       "pos": [
         -270,
-        130
+        -5
       ],
       "opacity": 0
     },
@@ -607,7 +602,7 @@
       },
       "pos": [
         -217,
-        140
+        5
       ],
       "opacity": 0
     },
@@ -621,7 +616,7 @@
       },
       "pos": [
         -164,
-        150
+        15
       ],
       "opacity": 0
     },
@@ -635,7 +630,7 @@
       },
       "pos": [
         -30,
-        90
+        -45
       ],
       "opacity": 0
     },
@@ -649,7 +644,7 @@
       },
       "pos": [
         23,
-        120
+        -15
       ],
       "opacity": 0
     },
@@ -663,7 +658,7 @@
       },
       "pos": [
         76,
-        130
+        -5
       ],
       "opacity": 0
     },
@@ -677,7 +672,7 @@
       },
       "pos": [
         210,
-        110
+        -25
       ],
       "opacity": 0
     },
@@ -691,7 +686,7 @@
       },
       "pos": [
         263,
-        100
+        -35
       ],
       "opacity": 0
     },
@@ -705,7 +700,7 @@
       },
       "pos": [
         316,
-        140
+        5
       ],
       "opacity": 0
     },
@@ -719,7 +714,7 @@
       },
       "pos": [
         450,
-        80
+        -55
       ],
       "opacity": 0
     },
@@ -733,7 +728,7 @@
       },
       "pos": [
         503,
-        90
+        -45
       ],
       "opacity": 0
     },
@@ -747,7 +742,7 @@
       },
       "pos": [
         556,
-        110
+        -25
       ],
       "opacity": 0
     }
@@ -779,7 +774,7 @@
       "target": "bar_jan_a",
       "time": [
         1,
-        1.15
+        1.8
       ],
       "easing": "ease-out",
       "height": [
@@ -791,7 +786,7 @@
       "target": "bar_jan_b",
       "time": [
         1.05,
-        1.2
+        1.85
       ],
       "easing": "ease-out",
       "height": [
@@ -803,7 +798,7 @@
       "target": "bar_jan_c",
       "time": [
         1.1,
-        1.25
+        1.9
       ],
       "easing": "ease-out",
       "height": [
@@ -815,7 +810,7 @@
       "target": "bar_feb_a",
       "time": [
         1.8,
-        1.95
+        2.6
       ],
       "easing": "ease-out",
       "height": [
@@ -827,7 +822,7 @@
       "target": "bar_feb_b",
       "time": [
         1.85,
-        2
+        2.65
       ],
       "easing": "ease-out",
       "height": [
@@ -839,7 +834,7 @@
       "target": "bar_feb_c",
       "time": [
         1.9,
-        2.05
+        2.7
       ],
       "easing": "ease-out",
       "height": [
@@ -851,7 +846,7 @@
       "target": "bar_mar_a",
       "time": [
         2.6,
-        2.75
+        3.4
       ],
       "easing": "ease-out",
       "height": [
@@ -863,7 +858,7 @@
       "target": "bar_mar_b",
       "time": [
         2.65,
-        2.8
+        3.45
       ],
       "easing": "ease-out",
       "height": [
@@ -875,7 +870,7 @@
       "target": "bar_mar_c",
       "time": [
         2.7,
-        2.85
+        3.5
       ],
       "easing": "ease-out",
       "height": [
@@ -887,7 +882,7 @@
       "target": "bar_apr_a",
       "time": [
         3.4,
-        3.55
+        4.2
       ],
       "easing": "ease-out",
       "height": [
@@ -899,7 +894,7 @@
       "target": "bar_apr_b",
       "time": [
         3.45,
-        3.6
+        4.25
       ],
       "easing": "ease-out",
       "height": [
@@ -911,7 +906,7 @@
       "target": "bar_apr_c",
       "time": [
         3.5,
-        3.65
+        4.3
       ],
       "easing": "ease-out",
       "height": [
@@ -923,7 +918,7 @@
       "target": "bar_may_a",
       "time": [
         4.2,
-        4.35
+        5
       ],
       "easing": "ease-out",
       "height": [
@@ -935,7 +930,7 @@
       "target": "bar_may_b",
       "time": [
         4.25,
-        4.4
+        5.05
       ],
       "easing": "ease-out",
       "height": [
@@ -947,7 +942,7 @@
       "target": "bar_may_c",
       "time": [
         4.3,
-        4.45
+        5.1
       ],
       "easing": "ease-out",
       "height": [
@@ -959,7 +954,7 @@
       "target": "bar_jun_a",
       "time": [
         5,
-        5.15
+        5.8
       ],
       "easing": "ease-out",
       "height": [
@@ -971,7 +966,7 @@
       "target": "bar_jun_b",
       "time": [
         5.05,
-        5.2
+        5.85
       ],
       "easing": "ease-out",
       "height": [
@@ -983,7 +978,7 @@
       "target": "bar_jun_c",
       "time": [
         5.1,
-        5.25
+        5.9
       ],
       "easing": "ease-out",
       "height": [
@@ -995,7 +990,7 @@
       "target": "label_jan_a",
       "time": [
         8,
-        8.2
+        8.5
       ],
       "opacity": [
         0,
@@ -1005,8 +1000,8 @@
     {
       "target": "label_jan_b",
       "time": [
-        8.05,
-        8.25
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1016,8 +1011,8 @@
     {
       "target": "label_jan_c",
       "time": [
-        8.1,
-        8.3
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1027,8 +1022,8 @@
     {
       "target": "label_feb_a",
       "time": [
-        8.2,
-        8.4
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1038,8 +1033,8 @@
     {
       "target": "label_feb_b",
       "time": [
-        8.25,
-        8.45
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1049,7 +1044,7 @@
     {
       "target": "label_feb_c",
       "time": [
-        8.3,
+        8,
         8.5
       ],
       "opacity": [
@@ -1060,8 +1055,8 @@
     {
       "target": "label_mar_a",
       "time": [
-        8.4,
-        8.6
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1071,8 +1066,8 @@
     {
       "target": "label_mar_b",
       "time": [
-        8.45,
-        8.65
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1082,8 +1077,8 @@
     {
       "target": "label_mar_c",
       "time": [
-        8.5,
-        8.7
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1093,8 +1088,8 @@
     {
       "target": "label_apr_a",
       "time": [
-        8.6,
-        8.8
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1104,8 +1099,8 @@
     {
       "target": "label_apr_b",
       "time": [
-        8.65,
-        8.85
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1115,8 +1110,8 @@
     {
       "target": "label_apr_c",
       "time": [
-        8.7,
-        8.9
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1126,8 +1121,8 @@
     {
       "target": "label_may_a",
       "time": [
-        8.8,
-        9
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1137,8 +1132,8 @@
     {
       "target": "label_may_b",
       "time": [
-        8.85,
-        9.05
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1148,8 +1143,8 @@
     {
       "target": "label_may_c",
       "time": [
-        8.9,
-        9.1
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1159,8 +1154,8 @@
     {
       "target": "label_jun_a",
       "time": [
-        9,
-        9.2
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1170,8 +1165,8 @@
     {
       "target": "label_jun_b",
       "time": [
-        9.05,
-        9.25
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1181,8 +1176,8 @@
     {
       "target": "label_jun_c",
       "time": [
-        9.1,
-        9.3
+        8,
+        8.5
       ],
       "opacity": [
         0,
@@ -1193,7 +1188,7 @@
       "target": "x_label_jan",
       "time": [
         9,
-        9.2
+        10
       ],
       "opacity": [
         0,
@@ -1203,8 +1198,8 @@
     {
       "target": "x_label_feb",
       "time": [
-        9.2,
-        9.4
+        9,
+        10
       ],
       "opacity": [
         0,
@@ -1214,8 +1209,8 @@
     {
       "target": "x_label_mar",
       "time": [
-        9.4,
-        9.6
+        9,
+        10
       ],
       "opacity": [
         0,
@@ -1225,8 +1220,8 @@
     {
       "target": "x_label_apr",
       "time": [
-        9.6,
-        9.8
+        9,
+        10
       ],
       "opacity": [
         0,
@@ -1236,7 +1231,7 @@
     {
       "target": "x_label_may",
       "time": [
-        9.8,
+        9,
         10
       ],
       "opacity": [
@@ -1247,8 +1242,8 @@
     {
       "target": "x_label_jun",
       "time": [
-        10,
-        10.2
+        9,
+        10
       ],
       "opacity": [
         0,

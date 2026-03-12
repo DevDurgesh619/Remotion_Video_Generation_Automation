@@ -1,0 +1,131 @@
+{
+  "scene": "wheel_motion_circle",
+  "duration": 6,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#1a1a2e",
+  "objects": [
+    {
+      "id": "circle_1",
+      "shape": "circle",
+      "diameter": 180,
+      "color": "#e94560",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0.9
+    },
+    {
+      "id": "line_1",
+      "shape": "line",
+      "size": [
+        120,
+        2
+      ],
+      "color": "#0f3460",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0.9
+    }
+  ],
+  "timeline": [
+    {
+      "target": "circle_1",
+      "time": [
+        0,
+        1
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "circle_1",
+      "time": [
+        0,
+        1
+      ],
+      "scale": [
+        0.9,
+        1
+      ],
+      "easing": "ease-out-cubic"
+    },
+    {
+      "target": "line_1",
+      "time": [
+        0,
+        1
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "line_1",
+      "time": [
+        0,
+        1
+      ],
+      "scale": [
+        0.9,
+        1
+      ],
+      "easing": "ease-out-cubic"
+    },
+    {
+      "target": "circle_1",
+      "time": [
+        1,
+        5
+      ],
+      "rotation": [
+        0,
+        360
+      ],
+      "easing": "ease-in-out",
+      "repeat": "infinite"
+    },
+    {
+      "target": "line_1",
+      "time": [
+        1,
+        5
+      ],
+      "rotation": [
+        0,
+        360
+      ],
+      "easing": "ease-in-out",
+      "repeat": "infinite"
+    },
+    {
+      "target": "circle_1",
+      "time": [
+        5,
+        6
+      ],
+      "opacity": [
+        1,
+        0
+      ],
+      "easing": "ease-in"
+    },
+    {
+      "target": "line_1",
+      "time": [
+        5,
+        6
+      ],
+      "opacity": [
+        1,
+        0
+      ],
+      "easing": "ease-in"
+    }
+  ]
+}

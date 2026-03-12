@@ -1,0 +1,204 @@
+{
+  "scene": "rocket_launch_full_scene",
+  "duration": 12,
+  "fps": 30,
+  "canvas": { "w": 1280, "h": 720 },
+  "bg": { "from": "#02050F", "to": "#0A1628", "direction": "to bottom" },
+
+  "objects": [
+    { "id": "star_1",  "shape": "circle", "diameter": 3,  "color": "#FFFFFF", "pos": [-560, -300], "opacity": 0 },
+    { "id": "star_2",  "shape": "circle", "diameter": 2,  "color": "#FFFFFF", "pos": [ 420, -310], "opacity": 0 },
+    { "id": "star_3",  "shape": "circle", "diameter": 4,  "color": "#FFFFFF", "pos": [-280, -270], "opacity": 0 },
+    { "id": "star_4",  "shape": "circle", "diameter": 2,  "color": "#FFFFFF", "pos": [ 180, -320], "opacity": 0 },
+    { "id": "star_5",  "shape": "circle", "diameter": 3,  "color": "#FFFFFF", "pos": [ 550, -250], "opacity": 0 },
+    { "id": "star_6",  "shape": "circle", "diameter": 2,  "color": "#FFFFFF", "pos": [-480, -180], "opacity": 0 },
+    { "id": "star_7",  "shape": "circle", "diameter": 3,  "color": "#FFFFFF", "pos": [ 320, -200], "opacity": 0 },
+    { "id": "star_8",  "shape": "circle", "diameter": 2,  "color": "#FFFFFF", "pos": [-200, -330], "opacity": 0 },
+    { "id": "star_9",  "shape": "circle", "diameter": 4,  "color": "#FFFFFF", "pos": [ 600, -140], "opacity": 0 },
+    { "id": "star_10", "shape": "circle", "diameter": 2,  "color": "#FFFFFF", "pos": [-620,  -80], "opacity": 0 },
+    { "id": "star_11", "shape": "circle", "diameter": 3,  "color": "#FFFFFF", "pos": [ 100, -290], "opacity": 0 },
+    { "id": "star_12", "shape": "circle", "diameter": 2,  "color": "#FFFFFF", "pos": [-380, -240], "opacity": 0 },
+
+    {
+      "id": "moon",
+      "shape": "circle",
+      "diameter": 90,
+      "color": "#FFF9C4",
+      "pos": [520, -240],
+      "opacity": 0
+    },
+    {
+      "id": "moon_shadow",
+      "shape": "circle",
+      "diameter": 80,
+      "color": "#0d1b3c",
+      "pos": [545, -250],
+      "opacity": 0
+    },
+
+    {
+      "id": "ground",
+      "shape": "rectangle",
+      "size": [1280, 60],
+      "color": "#1A2332",
+      "pos": [0, 330],
+      "opacity": 1
+    },
+    {
+      "id": "launch_pad_base",
+      "shape": "rectangle",
+      "size": [200, 20],
+      "color": "#2C3E50",
+      "pos": [0, 315],
+      "cornerRadius": 4,
+      "opacity": 0
+    },
+    {
+      "id": "launch_pad_tower",
+      "shape": "rectangle",
+      "size": [12, 80],
+      "color": "#34495E",
+      "pos": [-70, 265],
+      "opacity": 0
+    },
+    {
+      "id": "launch_pad_arm",
+      "shape": "rectangle",
+      "size": [60, 8],
+      "color": "#34495E",
+      "pos": [-40, 228],
+      "cornerRadius": 2,
+      "opacity": 0
+    },
+
+    {
+      "id": "flame_outer",
+      "shape": "rectangle",
+      "size": [36, 0],
+      "color": "#FF6D00",
+      "cornerRadius": 6,
+      "pos": [0, 90],
+      "parent": "rocket",
+      "localPos": [0, 90],
+      "opacity": 0
+    },
+    {
+      "id": "flame_inner",
+      "shape": "rectangle",
+      "size": [18, 0],
+      "color": "#FFD600",
+      "cornerRadius": 4,
+      "pos": [0, 90],
+      "parent": "rocket",
+      "localPos": [0, 92],
+      "opacity": 0
+    },
+
+    {
+      "id": "rocket",
+      "shape": "asset",
+      "assetId": "rocket",
+      "size": [90, 150],
+      "pos": [0, 245],
+      "opacity": 0,
+      "scale": 0.85
+    },
+
+    {
+      "id": "smoke_1",
+      "shape": "circle",
+      "diameter": 30,
+      "color": "rgba(180,180,180,0.6)",
+      "pos": [-40, 310],
+      "opacity": 0,
+      "scale": 0
+    },
+    {
+      "id": "smoke_2",
+      "shape": "circle",
+      "diameter": 40,
+      "color": "rgba(150,150,150,0.5)",
+      "pos": [ 40, 310],
+      "opacity": 0,
+      "scale": 0
+    },
+    {
+      "id": "smoke_3",
+      "shape": "circle",
+      "diameter": 50,
+      "color": "rgba(120,120,120,0.4)",
+      "pos": [  0, 320],
+      "opacity": 0,
+      "scale": 0
+    },
+
+    {
+      "id": "title",
+      "shape": "text",
+      "text": { "content": "ROCKET LAUNCH", "fontSize": 42, "fontWeight": "bold", "textColor": "#FFFFFF" },
+      "pos": [0, -305],
+      "opacity": 0
+    },
+    {
+      "id": "subtitle",
+      "shape": "text",
+      "text": { "content": "T-MINUS 10 SECONDS", "fontSize": 18, "textColor": "#FF6D00" },
+      "pos": [0, -268],
+      "opacity": 0
+    },
+    {
+      "id": "liftoff_text",
+      "shape": "text",
+      "text": { "content": "LIFTOFF!", "fontSize": 58, "fontWeight": "bold", "textColor": "#FFD600" },
+      "pos": [0, 0],
+      "opacity": 0,
+      "scale": 0.6
+    }
+  ],
+
+  "timeline": [
+    { "target": "star_1",  "time": [0, 0.8], "opacity": [0, 0.9] },
+    { "target": "star_2",  "time": [0, 0.6], "opacity": [0, 0.7] },
+    { "target": "star_3",  "time": [0.1, 0.9], "opacity": [0, 1] },
+    { "target": "star_4",  "time": [0.2, 0.8], "opacity": [0, 0.8] },
+    { "target": "star_5",  "time": [0, 0.7], "opacity": [0, 0.9] },
+    { "target": "star_6",  "time": [0.3, 1.0], "opacity": [0, 0.7] },
+    { "target": "star_7",  "time": [0.1, 0.8], "opacity": [0, 0.85] },
+    { "target": "star_8",  "time": [0.2, 0.9], "opacity": [0, 0.9] },
+    { "target": "star_9",  "time": [0, 0.6], "opacity": [0, 1] },
+    { "target": "star_10", "time": [0.4, 1.0], "opacity": [0, 0.75] },
+    { "target": "star_11", "time": [0.1, 0.7], "opacity": [0, 0.8] },
+    { "target": "star_12", "time": [0.3, 0.9], "opacity": [0, 0.7] },
+
+    { "target": "moon",        "time": [0.5, 1.2], "opacity": [0, 1] },
+    { "target": "moon_shadow", "time": [0.7, 1.4], "opacity": [0, 1] },
+
+    { "target": "title",    "time": [0.8, 1.4], "opacity": [0, 1] },
+    { "target": "subtitle", "time": [1.0, 1.6], "opacity": [0, 1] },
+
+    { "target": "launch_pad_base",  "time": [1.2, 1.8], "opacity": [0, 1] },
+    { "target": "launch_pad_tower", "time": [1.2, 1.8], "opacity": [0, 1] },
+    { "target": "launch_pad_arm",   "time": [1.2, 1.8], "opacity": [0, 1] },
+
+    { "target": "rocket", "time": [1.4, 2.0], "opacity": [0, 1], "scale": [0.85, 1], "easing": "ease-out-cubic" },
+
+    { "target": "flame_outer", "time": [2.0, 2.5], "opacity": [0, 1], "height": [0, 55], "easing": "ease-out" },
+    { "target": "flame_inner", "time": [2.1, 2.5], "opacity": [0, 1], "height": [0, 38], "easing": "ease-out" },
+
+    { "target": "rocket", "time": [2.5, 8.5], "y": [245, -820], "easing": "ease-in" },
+
+    { "target": "flame_outer", "time": [2.5, 5.5], "height": [55, 70], "easing": "ease-in" },
+    { "target": "flame_inner", "time": [2.5, 5.5], "height": [38, 50], "easing": "ease-in" },
+
+    { "target": "smoke_1", "time": [2.3, 3.5], "opacity": [0.8, 0], "scale": [0.2, 2.0], "easing": "ease-out" },
+    { "target": "smoke_2", "time": [2.4, 3.7], "opacity": [0.7, 0], "scale": [0.2, 2.2], "easing": "ease-out" },
+    { "target": "smoke_3", "time": [2.5, 4.0], "opacity": [0.6, 0], "scale": [0.2, 2.5], "easing": "ease-out" },
+
+    { "target": "liftoff_text", "time": [2.5, 3.2], "opacity": [0, 1], "scale": [0.6, 1.1], "easing": "ease-out-cubic" },
+    { "target": "liftoff_text", "time": [3.5, 4.5], "opacity": [1, 0] },
+
+    { "target": "subtitle",    "time": [2.4, 2.8], "opacity": [1, 0] },
+    { "target": "flame_outer", "time": [8.0, 8.5], "opacity": [1, 0] },
+    { "target": "flame_inner", "time": [8.0, 8.5], "opacity": [1, 0] }
+  ]
+}

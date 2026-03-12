@@ -33,7 +33,7 @@
       },
       "pos": [
         800,
-        -400
+        0
       ],
       "opacity": 0
     },
@@ -243,7 +243,7 @@
       "color": "#9C27B0",
       "pos": [
         -150,
-        320
+        305
       ],
       "anchor": "bottom"
     },
@@ -285,7 +285,7 @@
       "color": "#9C27B0",
       "pos": [
         150,
-        320
+        265
       ],
       "anchor": "bottom"
     },
@@ -327,7 +327,7 @@
       "color": "#9C27B0",
       "pos": [
         450,
-        320
+        225
       ],
       "anchor": "bottom"
     },
@@ -341,7 +341,7 @@
       },
       "pos": [
         -450,
-        450
+        435
       ],
       "opacity": 0
     },
@@ -355,7 +355,7 @@
       },
       "pos": [
         -150,
-        450
+        435
       ],
       "opacity": 0
     },
@@ -369,7 +369,7 @@
       },
       "pos": [
         150,
-        450
+        435
       ],
       "opacity": 0
     },
@@ -383,187 +383,7 @@
       },
       "pos": [
         450,
-        450
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "value_label_q1_cloud",
-      "shape": "text",
-      "text": {
-        "content": "60",
-        "fontSize": 14,
-        "fontWeight": "bold",
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        -450,
-        375
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "value_label_q1_licensing",
-      "shape": "text",
-      "text": {
-        "content": "35",
-        "fontSize": 14,
-        "fontWeight": "bold",
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        -450,
-        330
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "value_label_q1_services",
-      "shape": "text",
-      "text": {
-        "content": "25",
-        "fontSize": 14,
-        "fontWeight": "bold",
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        -450,
-        310
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "value_label_q2_cloud",
-      "shape": "text",
-      "text": {
-        "content": "70",
-        "fontSize": 14,
-        "fontWeight": "bold",
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        -150,
-        375
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "value_label_q2_licensing",
-      "shape": "text",
-      "text": {
-        "content": "40",
-        "fontSize": 14,
-        "fontWeight": "bold",
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        -150,
-        330
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "value_label_q2_services",
-      "shape": "text",
-      "text": {
-        "content": "30",
-        "fontSize": 14,
-        "fontWeight": "bold",
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        -150,
-        310
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "value_label_q3_cloud",
-      "shape": "text",
-      "text": {
-        "content": "80",
-        "fontSize": 14,
-        "fontWeight": "bold",
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        150,
-        375
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "value_label_q3_licensing",
-      "shape": "text",
-      "text": {
-        "content": "50",
-        "fontSize": 14,
-        "fontWeight": "bold",
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        150,
-        330
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "value_label_q3_services",
-      "shape": "text",
-      "text": {
-        "content": "30",
-        "fontSize": 14,
-        "fontWeight": "bold",
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        150,
-        310
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "value_label_q4_cloud",
-      "shape": "text",
-      "text": {
-        "content": "90",
-        "fontSize": 14,
-        "fontWeight": "bold",
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        450,
-        375
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "value_label_q4_licensing",
-      "shape": "text",
-      "text": {
-        "content": "60",
-        "fontSize": 14,
-        "fontWeight": "bold",
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        450,
-        330
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "value_label_q4_services",
-      "shape": "text",
-      "text": {
-        "content": "30",
-        "fontSize": 14,
-        "fontWeight": "bold",
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        450,
-        310
+        435
       ],
       "opacity": 0
     }
@@ -739,7 +559,7 @@
       "easing": "ease-out",
       "height": [
         0,
-        50
+        45
       ]
     },
     {
@@ -751,7 +571,7 @@
       "easing": "ease-out",
       "height": [
         0,
-        30
+        35
       ]
     },
     {
@@ -775,7 +595,7 @@
       "easing": "ease-out",
       "height": [
         0,
-        60
+        50
       ]
     },
     {
@@ -787,146 +607,14 @@
       "easing": "ease-out",
       "height": [
         0,
-        30
-      ]
-    },
-    {
-      "target": "value_label_q1_cloud",
-      "time": [
-        6,
-        6.5
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "value_label_q1_licensing",
-      "time": [
-        6.5,
-        7
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "value_label_q1_services",
-      "time": [
-        7,
-        7.5
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "value_label_q2_cloud",
-      "time": [
-        6,
-        6.5
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "value_label_q2_licensing",
-      "time": [
-        6.5,
-        7
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "value_label_q2_services",
-      "time": [
-        7,
-        7.5
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "value_label_q3_cloud",
-      "time": [
-        6,
-        6.5
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "value_label_q3_licensing",
-      "time": [
-        6.5,
-        7
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "value_label_q3_services",
-      "time": [
-        7,
-        7.5
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "value_label_q4_cloud",
-      "time": [
-        6,
-        6.5
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "value_label_q4_licensing",
-      "time": [
-        6.5,
-        7
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "value_label_q4_services",
-      "time": [
-        7,
-        7.5
-      ],
-      "opacity": [
-        0,
-        1
+        40
       ]
     },
     {
       "target": "x_label_q1",
       "time": [
         8,
-        8.5
+        9
       ],
       "opacity": [
         0,
@@ -937,7 +625,7 @@
       "target": "x_label_q2",
       "time": [
         8,
-        8.5
+        9
       ],
       "opacity": [
         0,
@@ -948,7 +636,7 @@
       "target": "x_label_q3",
       "time": [
         8,
-        8.5
+        9
       ],
       "opacity": [
         0,
@@ -959,12 +647,264 @@
       "target": "x_label_q4",
       "time": [
         8,
-        8.5
+        9
       ],
       "opacity": [
         0,
         1
       ]
+    },
+    {
+      "target": "bar_q1_cloud",
+      "time": [
+        9,
+        11
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#FFFFFF",
+          "#FFFFFF"
+        ]
+      }
+    },
+    {
+      "target": "bar_q1_licensing",
+      "time": [
+        9,
+        11
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#FFFFFF",
+          "#FFFFFF"
+        ]
+      }
+    },
+    {
+      "target": "bar_q1_services",
+      "time": [
+        9,
+        11
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#FFFFFF",
+          "#FFFFFF"
+        ]
+      }
+    },
+    {
+      "target": "bar_q2_cloud",
+      "time": [
+        9,
+        11
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#FFFFFF",
+          "#FFFFFF"
+        ]
+      }
+    },
+    {
+      "target": "bar_q2_licensing",
+      "time": [
+        9,
+        11
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#FFFFFF",
+          "#FFFFFF"
+        ]
+      }
+    },
+    {
+      "target": "bar_q2_services",
+      "time": [
+        9,
+        11
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#FFFFFF",
+          "#FFFFFF"
+        ]
+      }
+    },
+    {
+      "target": "bar_q3_cloud",
+      "time": [
+        9,
+        11
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#FFFFFF",
+          "#FFFFFF"
+        ]
+      }
+    },
+    {
+      "target": "bar_q3_licensing",
+      "time": [
+        9,
+        11
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#FFFFFF",
+          "#FFFFFF"
+        ]
+      }
+    },
+    {
+      "target": "bar_q3_services",
+      "time": [
+        9,
+        11
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#FFFFFF",
+          "#FFFFFF"
+        ]
+      }
+    },
+    {
+      "target": "bar_q4_cloud",
+      "time": [
+        9,
+        11
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#FFFFFF",
+          "#FFFFFF"
+        ]
+      }
+    },
+    {
+      "target": "bar_q4_licensing",
+      "time": [
+        9,
+        11
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#FFFFFF",
+          "#FFFFFF"
+        ]
+      }
+    },
+    {
+      "target": "bar_q4_services",
+      "time": [
+        9,
+        11
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#FFFFFF",
+          "#FFFFFF"
+        ]
+      }
     }
   ]
 }

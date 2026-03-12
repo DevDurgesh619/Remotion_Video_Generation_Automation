@@ -24,23 +24,6 @@
       "opacity": 0
     },
     {
-      "id": "baseline",
-      "shape": "line",
-      "pos": [
-        -960,
-        216
-      ],
-      "size": [
-        1920,
-        0
-      ],
-      "stroke": {
-        "color": "#CCCCCC",
-        "width": 2
-      },
-      "opacity": 0
-    },
-    {
       "id": "awareness",
       "shape": "rectangle",
       "size": [
@@ -294,17 +277,6 @@
       ]
     },
     {
-      "target": "baseline",
-      "time": [
-        0.5,
-        1
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
       "target": "awareness",
       "time": [
         1,
@@ -418,7 +390,7 @@
       "target": "label_awareness",
       "time": [
         8,
-        8.5
+        10
       ],
       "opacity": [
         0,
@@ -429,7 +401,7 @@
       "target": "label_interest",
       "time": [
         8,
-        8.5
+        10
       ],
       "opacity": [
         0,
@@ -440,7 +412,7 @@
       "target": "label_consideration",
       "time": [
         8,
-        8.5
+        10
       ],
       "opacity": [
         0,
@@ -451,7 +423,7 @@
       "target": "label_evaluation",
       "time": [
         8,
-        8.5
+        10
       ],
       "opacity": [
         0,
@@ -462,7 +434,7 @@
       "target": "label_purchase",
       "time": [
         8,
-        8.5
+        10
       ],
       "opacity": [
         0,
@@ -523,6 +495,111 @@
         0,
         1
       ]
+    },
+    {
+      "target": "awareness",
+      "time": [
+        11,
+        13
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#2196F3",
+          "#FFFFFF"
+        ]
+      }
+    },
+    {
+      "target": "interest",
+      "time": [
+        11,
+        13
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#00BCD4",
+          "#FFFFFF"
+        ]
+      }
+    },
+    {
+      "target": "consideration",
+      "time": [
+        11,
+        13
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#4CAF50",
+          "#FFFFFF"
+        ]
+      }
+    },
+    {
+      "target": "evaluation",
+      "time": [
+        11,
+        13
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#FF9800",
+          "#FFFFFF"
+        ]
+      }
+    },
+    {
+      "target": "purchase",
+      "time": [
+        11,
+        13
+      ],
+      "glow": {
+        "blur": [
+          0,
+          10
+        ],
+        "intensity": [
+          0,
+          0.5
+        ],
+        "color": [
+          "#E74C3C",
+          "#FFFFFF"
+        ]
+      }
     }
   ]
 }

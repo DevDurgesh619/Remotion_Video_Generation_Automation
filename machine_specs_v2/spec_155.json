@@ -33,7 +33,7 @@
       },
       "pos": [
         0,
-        30
+        59
       ],
       "fill": false,
       "opacity": 0
@@ -45,10 +45,16 @@
       "color": "#FF6B6B",
       "pos": [
         0,
-        30
+        59
       ],
       "opacity": 0,
-      "rotation": 0
+      "rotation": -90,
+      "shadow": {
+        "offsetX": 0,
+        "offsetY": 0,
+        "blur": 2,
+        "color": "#000000"
+      }
     },
     {
       "id": "label_electronics",
@@ -61,7 +67,7 @@
       },
       "pos": [
         0,
-        -170
+        -200
       ],
       "opacity": 0
     },
@@ -72,10 +78,16 @@
       "color": "#4ECDC4",
       "pos": [
         0,
-        30
+        59
       ],
       "opacity": 0,
-      "rotation": 0
+      "rotation": -58.2,
+      "shadow": {
+        "offsetX": 0,
+        "offsetY": 0,
+        "blur": 2,
+        "color": "#000000"
+      }
     },
     {
       "id": "label_software",
@@ -87,8 +99,8 @@
         "textColor": "#FFFFFF"
       },
       "pos": [
-        120,
-        -100
+        100,
+        -150
       ],
       "opacity": 0
     },
@@ -99,10 +111,16 @@
       "color": "#45B7D1",
       "pos": [
         0,
-        30
+        59
       ],
       "opacity": 0,
-      "rotation": 0
+      "rotation": -18,
+      "shadow": {
+        "offsetX": 0,
+        "offsetY": 0,
+        "blur": 2,
+        "color": "#000000"
+      }
     },
     {
       "id": "label_services",
@@ -114,8 +132,8 @@
         "textColor": "#FFFFFF"
       },
       "pos": [
-        160,
-        30
+        150,
+        0
       ],
       "opacity": 0
     },
@@ -126,10 +144,16 @@
       "color": "#FFA07A",
       "pos": [
         0,
-        30
+        59
       ],
       "opacity": 0,
-      "rotation": 0
+      "rotation": 18,
+      "shadow": {
+        "offsetX": 0,
+        "offsetY": 0,
+        "blur": 2,
+        "color": "#000000"
+      }
     },
     {
       "id": "label_support",
@@ -141,7 +165,7 @@
         "textColor": "#FFFFFF"
       },
       "pos": [
-        80,
+        100,
         150
       ],
       "opacity": 0
@@ -153,10 +177,16 @@
       "color": "#98D8C8",
       "pos": [
         0,
-        30
+        59
       ],
       "opacity": 0,
-      "rotation": 0
+      "rotation": 54,
+      "shadow": {
+        "offsetX": 0,
+        "offsetY": 0,
+        "blur": 2,
+        "color": "#000000"
+      }
     },
     {
       "id": "label_training",
@@ -168,8 +198,8 @@
         "textColor": "#FFFFFF"
       },
       "pos": [
-        -80,
-        150
+        0,
+        200
       ],
       "opacity": 0
     },
@@ -180,10 +210,16 @@
       "color": "#F7DC6F",
       "pos": [
         0,
-        30
+        59
       ],
       "opacity": 0,
-      "rotation": 0
+      "rotation": 72,
+      "shadow": {
+        "offsetX": 0,
+        "offsetY": 0,
+        "blur": 2,
+        "color": "#000000"
+      }
     },
     {
       "id": "label_other",
@@ -195,92 +231,22 @@
         "textColor": "#FFFFFF"
       },
       "pos": [
-        -160,
-        30
+        -100,
+        150
       ],
       "opacity": 0
     },
     {
-      "id": "legend_electronics",
-      "shape": "rectangle",
-      "size": [
-        12,
-        12
-      ],
-      "color": "#FF6B6B",
-      "pos": [
-        -300,
-        250
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "legend_software",
-      "shape": "rectangle",
-      "size": [
-        12,
-        12
-      ],
-      "color": "#4ECDC4",
-      "pos": [
-        -150,
-        250
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "legend_services",
-      "shape": "rectangle",
-      "size": [
-        12,
-        12
-      ],
-      "color": "#45B7D1",
+      "id": "legend",
+      "shape": "text",
+      "text": {
+        "content": "Legend",
+        "fontSize": 12,
+        "textColor": "#333333"
+      },
       "pos": [
         0,
-        250
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "legend_support",
-      "shape": "rectangle",
-      "size": [
-        12,
-        12
-      ],
-      "color": "#FFA07A",
-      "pos": [
-        150,
-        250
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "legend_training",
-      "shape": "rectangle",
-      "size": [
-        12,
-        12
-      ],
-      "color": "#98D8C8",
-      "pos": [
-        300,
-        250
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "legend_other",
-      "shape": "rectangle",
-      "size": [
-        12,
-        12
-      ],
-      "color": "#F7DC6F",
-      "pos": [
-        450,
-        250
+        300
       ],
       "opacity": 0
     }
@@ -314,11 +280,11 @@
         1.5,
         2.3
       ],
+      "easing": "ease-out",
       "rotation": [
-        0,
-        115.2
-      ],
-      "easing": "ease-out"
+        -90,
+        -58.2
+      ]
     },
     {
       "target": "label_electronics",
@@ -337,11 +303,11 @@
         1.8,
         2.6
       ],
+      "easing": "ease-out",
       "rotation": [
-        0,
-        90
-      ],
-      "easing": "ease-out"
+        -58.2,
+        -18
+      ]
     },
     {
       "target": "label_software",
@@ -360,11 +326,11 @@
         2.1,
         2.9
       ],
+      "easing": "ease-out",
       "rotation": [
-        0,
-        64.8
-      ],
-      "easing": "ease-out"
+        -18,
+        18
+      ]
     },
     {
       "target": "label_services",
@@ -383,11 +349,11 @@
         2.4,
         3.2
       ],
+      "easing": "ease-out",
       "rotation": [
-        0,
+        18,
         54
-      ],
-      "easing": "ease-out"
+      ]
     },
     {
       "target": "label_support",
@@ -406,11 +372,11 @@
         2.7,
         3.5
       ],
+      "easing": "ease-out",
       "rotation": [
-        0,
-        25.2
-      ],
-      "easing": "ease-out"
+        54,
+        72
+      ]
     },
     {
       "target": "label_training",
@@ -429,11 +395,11 @@
         3,
         3.8
       ],
+      "easing": "ease-out",
       "rotation": [
-        0,
-        10.8
-      ],
-      "easing": "ease-out"
+        72,
+        90
+      ]
     },
     {
       "target": "label_other",
@@ -447,7 +413,7 @@
       ]
     },
     {
-      "target": "legend_electronics",
+      "target": "legend",
       "time": [
         7,
         8
@@ -458,59 +424,154 @@
       ]
     },
     {
-      "target": "legend_software",
+      "target": "slice_electronics",
       "time": [
-        7,
-        8
+        8,
+        9
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "shadow": {
+        "offsetX": [
+          0,
+          0
+        ],
+        "offsetY": [
+          0,
+          0
+        ],
+        "blur": [
+          2,
+          4
+        ],
+        "color": [
+          "#000000",
+          "#000000"
+        ]
+      }
     },
     {
-      "target": "legend_services",
+      "target": "slice_software",
       "time": [
-        7,
-        8
+        8,
+        9
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "shadow": {
+        "offsetX": [
+          0,
+          0
+        ],
+        "offsetY": [
+          0,
+          0
+        ],
+        "blur": [
+          2,
+          4
+        ],
+        "color": [
+          "#000000",
+          "#000000"
+        ]
+      }
     },
     {
-      "target": "legend_support",
+      "target": "slice_services",
       "time": [
-        7,
-        8
+        8,
+        9
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "shadow": {
+        "offsetX": [
+          0,
+          0
+        ],
+        "offsetY": [
+          0,
+          0
+        ],
+        "blur": [
+          2,
+          4
+        ],
+        "color": [
+          "#000000",
+          "#000000"
+        ]
+      }
     },
     {
-      "target": "legend_training",
+      "target": "slice_support",
       "time": [
-        7,
-        8
+        8,
+        9
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "shadow": {
+        "offsetX": [
+          0,
+          0
+        ],
+        "offsetY": [
+          0,
+          0
+        ],
+        "blur": [
+          2,
+          4
+        ],
+        "color": [
+          "#000000",
+          "#000000"
+        ]
+      }
     },
     {
-      "target": "legend_other",
+      "target": "slice_training",
       "time": [
-        7,
-        8
+        8,
+        9
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "shadow": {
+        "offsetX": [
+          0,
+          0
+        ],
+        "offsetY": [
+          0,
+          0
+        ],
+        "blur": [
+          2,
+          4
+        ],
+        "color": [
+          "#000000",
+          "#000000"
+        ]
+      }
+    },
+    {
+      "target": "slice_other",
+      "time": [
+        8,
+        9
+      ],
+      "shadow": {
+        "offsetX": [
+          0,
+          0
+        ],
+        "offsetY": [
+          0,
+          0
+        ],
+        "blur": [
+          2,
+          4
+        ],
+        "color": [
+          "#000000",
+          "#000000"
+        ]
+      }
     }
   ]
 }

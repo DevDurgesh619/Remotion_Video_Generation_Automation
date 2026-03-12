@@ -1,0 +1,53 @@
+{
+  "intent": "shape_animation",
+  "title": "stick_figure_character_animation",
+  "duration": 8,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": "#F8F9FA",
+    "palette": [
+      "#333333",
+      "#666666",
+      "#999999"
+    ],
+    "mood": "playful"
+  },
+  "objects": [
+    {
+      "description": "Stick figure character",
+      "shape": "stick_figure_component",
+      "size": "medium",
+      "color": "#333333",
+      "position": "center"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        1.5
+      ],
+      "description": "Stick figure character slides in from the left with a bounce-in effect, scaling slightly from 0.9 to 1."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        1.5,
+        6
+      ],
+      "description": "The stick figure performs a simple dance routine, moving its arms and legs in a rhythmic pattern. The head nods slightly to the beat, and the figure sways side to side."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        6,
+        8
+      ],
+      "description": "The stick figure holds a final pose with arms raised, then fades out gently over the last 1.5 seconds."
+    }
+  ]
+}

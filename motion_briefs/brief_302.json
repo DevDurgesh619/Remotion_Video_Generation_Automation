@@ -1,0 +1,87 @@
+{
+  "intent": "shape_animation",
+  "title": "stick_figure_wave",
+  "duration": 8,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": "#F8F9FA",
+    "palette": [
+      "#333333",
+      "#666666"
+    ],
+    "mood": "playful"
+  },
+  "objects": [
+    {
+      "description": "Body rectangle, medium",
+      "shape": "rectangle",
+      "size": "medium",
+      "color": "#333333",
+      "position": "center"
+    },
+    {
+      "description": "Head circle, small",
+      "shape": "circle",
+      "size": "small",
+      "color": "#333333",
+      "position": "top-center"
+    },
+    {
+      "description": "Left arm line",
+      "shape": "line",
+      "size": "small",
+      "color": "#666666",
+      "position": "left-center"
+    },
+    {
+      "description": "Right arm line",
+      "shape": "line",
+      "size": "small",
+      "color": "#666666",
+      "position": "right-center"
+    },
+    {
+      "description": "Left leg line",
+      "shape": "line",
+      "size": "small",
+      "color": "#666666",
+      "position": "bottom-left"
+    },
+    {
+      "description": "Right leg line",
+      "shape": "line",
+      "size": "small",
+      "color": "#666666",
+      "position": "bottom-right"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        1.5
+      ],
+      "description": "All parts fade in together with a slight scale from 0.9 to 1. Arms and legs pivot slightly to show connection points."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        1.5,
+        6
+      ],
+      "description": "Arms perform a pivot rotation from their connection points, moving up and down in a waving motion. The head circle performs a gentle squash animation, shrinking slightly and expanding back repeatedly. All motions use pivot points where the shapes connect to the body."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        6,
+        8
+      ],
+      "description": "The waving motion slows down and stops. The head holds its final expanded state. All parts fade out together."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 200">
+  <!-- Nose cone -->
+  <polygon points="60,4 35,62 85,62" fill="#D32F2F"/>
+  <ellipse cx="60" cy="62" rx="25" ry="8" fill="#C62828"/>
+
+  <!-- Main body -->
+  <rect x="35" y="58" width="50" height="110" rx="6" fill="#ECEFF1"/>
+
+  <!-- Body accent stripes -->
+  <rect x="35" y="90" width="50" height="8" fill="#2196F3"/>
+  <rect x="35" y="130" width="50" height="6" fill="#1565C0"/>
+
+  <!-- Porthole window -->
+  <circle cx="60" cy="76" r="13" fill="#1565C0"/>
+  <circle cx="60" cy="76" r="10" fill="#29B6F6"/>
+  <circle cx="56" cy="72" r="3" fill="rgba(255,255,255,0.55)"/>
+
+  <!-- Left fin -->
+  <polygon points="35,138 12,178 35,168" fill="#B71C1C"/>
+  <!-- Right fin -->
+  <polygon points="85,138 108,178 85,168" fill="#B71C1C"/>
+
+  <!-- Nozzle housing -->
+  <rect x="40" y="165" width="40" height="14" rx="4" fill="#607D8B"/>
+  <!-- Nozzle bell -->
+  <ellipse cx="60" cy="179" rx="20" ry="6" fill="#455A64"/>
+  <ellipse cx="60" cy="179" rx="14" ry="4" fill="#37474F"/>
+</svg>

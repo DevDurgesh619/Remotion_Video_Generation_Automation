@@ -1,0 +1,149 @@
+{
+  "scene": "three_circles_bouncing",
+  "duration": 7,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#1a1a2e",
+  "objects": [
+    {
+      "id": "circle_red",
+      "shape": "circle",
+      "diameter": 120,
+      "color": "#e94560",
+      "pos": [
+        -300,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0
+    },
+    {
+      "id": "circle_blue",
+      "shape": "circle",
+      "diameter": 120,
+      "color": "#0f3460",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0
+    },
+    {
+      "id": "circle_purple",
+      "shape": "circle",
+      "diameter": 120,
+      "color": "#533483",
+      "pos": [
+        300,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "circle_red",
+      "time": [
+        0,
+        1.5
+      ],
+      "behavior": "bounce-in"
+    },
+    {
+      "target": "circle_blue",
+      "time": [
+        0.3,
+        1.8
+      ],
+      "behavior": "bounce-in"
+    },
+    {
+      "target": "circle_purple",
+      "time": [
+        0.6,
+        2.1
+      ],
+      "behavior": "bounce-in"
+    },
+    {
+      "target": "circle_red",
+      "time": [
+        1.5,
+        5
+      ],
+      "y": [
+        0,
+        80
+      ],
+      "easing": "bounce",
+      "repeat": "infinite"
+    },
+    {
+      "target": "circle_blue",
+      "time": [
+        1.75,
+        5.25
+      ],
+      "y": [
+        0,
+        80
+      ],
+      "easing": "bounce",
+      "repeat": "infinite"
+    },
+    {
+      "target": "circle_purple",
+      "time": [
+        2,
+        5.5
+      ],
+      "y": [
+        0,
+        80
+      ],
+      "easing": "bounce",
+      "repeat": "infinite"
+    },
+    {
+      "target": "circle_red",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        1,
+        0
+      ],
+      "easing": "ease-in"
+    },
+    {
+      "target": "circle_blue",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        1,
+        0
+      ],
+      "easing": "ease-in"
+    },
+    {
+      "target": "circle_purple",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        1,
+        0
+      ],
+      "easing": "ease-in"
+    }
+  ]
+}

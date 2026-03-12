@@ -105,10 +105,15 @@ async function processPrompt(item) {
 
   const videoPath = "outputs/video_" + item.id + ".mp4";
 
-  // 2. Skip if already rendered
+  // 2. Skip if already rendered AND spec hasn't changed since last render
   if (fs.existsSync(videoPath)) {
-    console.log("⏭  Skipping " + item.id + " (already rendered)");
-    return { success: true, method: "cached", id: item.id };
+    const specMtime = fs.statSync(specPath).mtimeMs;
+    const videoMtime = fs.statSync(videoPath).mtimeMs;
+    if (videoMtime >= specMtime) {
+      console.log("⏭  Skipping " + item.id + " (video is up-to-date)");
+      return { success: true, method: "cached", id: item.id };
+    }
+    console.log("🔁 Re-rendering " + item.id + " (spec updated since last render)");
   }
 
   console.log(

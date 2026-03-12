@@ -18,7 +18,8 @@ import {
   renderTriangle,
   renderLine,
 } from "./shapeRenderers";
-import { renderSVG, renderImage, renderText } from "./mediaRenderers";
+import { renderSVG, renderImage, renderText, renderAsset } from "./mediaRenderers";
+import { renderArc, renderPolyline, renderPolygon } from "./chartRenderers";
 
 // ─── Renderer function type ─────────────────────────────────────────────────
 
@@ -38,14 +39,22 @@ export const rendererRegistry: Record<string, RendererFn> = {
   svg: renderSVG,
   image: renderImage,
   text: renderText,
+  asset: renderAsset,
+  arc: renderArc,
+  polyline: renderPolyline,
+  polygon: renderPolygon,
 };
+
+// ─── Track warnings to avoid per-frame spam ─────────────────────────────────
+
+const warnedShapes = new Set<string>();
 
 // ─── Public helper ──────────────────────────────────────────────────────────
 
 /**
  * Look up the renderer for `obj.shape` and invoke it.
- * Falls back to a transparent placeholder for unknown types so the
- * animation never crashes.
+ * Falls back to a visible debug placeholder for unknown types so the
+ * animation never crashes. Warnings are deduplicated.
  */
 export function renderObject(
   obj: SceneObject,
@@ -57,15 +66,33 @@ export function renderObject(
     return renderer(obj, state);
   }
 
-  // Unknown shape — render an invisible placeholder with a console warning
-  console.warn(
-    `[SpecVM] No renderer registered for shape "${obj.shape}" (object "${obj.id}"). ` +
-      `Register one in rendererRegistry.`,
-  );
+  // Unknown shape — warn once per shape type (not per frame)
+  const warnKey = `${obj.shape}:${obj.id}`;
+  if (!warnedShapes.has(warnKey)) {
+    warnedShapes.add(warnKey);
+    console.warn(
+      `[SpecVM] No renderer registered for shape "${obj.shape}" (object "${obj.id}"). ` +
+        `Register one in rendererRegistry. Rendering fallback placeholder.`,
+    );
+  }
 
+  // Render a visible placeholder (small, semi-transparent) instead of invisible
   return React.createElement("div", {
     key: obj.id,
     "data-specvm-unknown": obj.shape,
-    style: { display: "none" },
+    style: {
+      position: "absolute",
+      left: "50%",
+      top: "50%",
+      transform: `translate(${state.x}px, ${state.y}px)`,
+      width: 20,
+      height: 20,
+      marginLeft: -10,
+      marginTop: -10,
+      backgroundColor: "rgba(255, 0, 0, 0.3)",
+      border: "1px dashed red",
+      borderRadius: 2,
+      opacity: state.opacity,
+    },
   });
 }

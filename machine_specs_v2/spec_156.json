@@ -24,109 +24,99 @@
       "opacity": 0
     },
     {
-      "id": "donut_outer",
-      "shape": "circle",
-      "diameter": 380,
-      "stroke": {
-        "color": "#FFFFFF",
-        "width": 2
-      },
-      "pos": [
-        0,
-        54
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "donut_inner",
+      "id": "donut_hole",
       "shape": "circle",
       "diameter": 0,
       "color": "#E3F2FD",
       "pos": [
         0,
         54
-      ]
+      ],
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 2
+      }
     },
     {
       "id": "segment_personnel",
       "shape": "circle",
       "diameter": 380,
       "color": "#E74C3C",
-      "stroke": {
-        "color": "#FFFFFF",
-        "width": 2
-      },
       "pos": [
         0,
         54
       ],
-      "opacity": 0
+      "opacity": 0,
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 2
+      }
     },
     {
       "id": "segment_operations",
       "shape": "circle",
       "diameter": 380,
       "color": "#3498DB",
-      "stroke": {
-        "color": "#FFFFFF",
-        "width": 2
-      },
       "pos": [
         0,
         54
       ],
-      "opacity": 0
+      "opacity": 0,
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 2
+      }
     },
     {
       "id": "segment_marketing",
       "shape": "circle",
       "diameter": 380,
       "color": "#2ECC71",
-      "stroke": {
-        "color": "#FFFFFF",
-        "width": 2
-      },
       "pos": [
         0,
         54
       ],
-      "opacity": 0
+      "opacity": 0,
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 2
+      }
     },
     {
       "id": "segment_research",
       "shape": "circle",
       "diameter": 380,
       "color": "#F39C12",
-      "stroke": {
-        "color": "#FFFFFF",
-        "width": 2
-      },
       "pos": [
         0,
         54
       ],
-      "opacity": 0
+      "opacity": 0,
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 2
+      }
     },
     {
       "id": "segment_admin",
       "shape": "circle",
       "diameter": 380,
       "color": "#95A5A6",
-      "stroke": {
-        "color": "#FFFFFF",
-        "width": 2
-      },
       "pos": [
         0,
         54
       ],
-      "opacity": 0
+      "opacity": 0,
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 2
+      }
     },
     {
-      "id": "center_text_1",
+      "id": "center_text",
       "shape": "text",
       "text": {
-        "content": "Total Budget",
+        "content": "Total Budget\n$2.5M",
         "fontSize": 16,
         "fontWeight": "bold",
         "textColor": "#FFFFFF"
@@ -139,7 +129,7 @@
       "scale": 0.8
     },
     {
-      "id": "center_text_2",
+      "id": "center_value",
       "shape": "text",
       "text": {
         "content": "$2.5M",
@@ -149,78 +139,22 @@
       },
       "pos": [
         0,
-        84
+        80
       ],
       "opacity": 0,
       "scale": 0.8
     },
     {
-      "id": "legend_personnel",
+      "id": "legend",
       "shape": "text",
       "text": {
-        "content": "Personnel",
+        "content": "Personnel\nOperations\nMarketing\nResearch\nAdmin",
         "fontSize": 12,
         "textColor": "#FFFFFF"
       },
       "pos": [
-        500,
-        -200
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "legend_operations",
-      "shape": "text",
-      "text": {
-        "content": "Operations",
-        "fontSize": 12,
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        500,
-        -160
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "legend_marketing",
-      "shape": "text",
-      "text": {
-        "content": "Marketing",
-        "fontSize": 12,
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        500,
-        -120
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "legend_research",
-      "shape": "text",
-      "text": {
-        "content": "Research",
-        "fontSize": 12,
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        500,
-        -80
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "legend_admin",
-      "shape": "text",
-      "text": {
-        "content": "Admin",
-        "fontSize": 12,
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        500,
-        -40
+        400,
+        0
       ],
       "opacity": 0
     }
@@ -232,13 +166,10 @@
         0,
         0.5
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
     },
     {
-      "target": "donut_inner",
+      "target": "donut_hole",
       "time": [
         0,
         1
@@ -261,7 +192,21 @@
       "rotation": [
         0,
         144
-      ]
+      ],
+      "glow": {
+        "blur": [
+          0,
+          2
+        ],
+        "intensity": [
+          0,
+          0.2
+        ],
+        "color": [
+          "#000000",
+          "#000000"
+        ]
+      }
     },
     {
       "target": "segment_operations",
@@ -276,7 +221,21 @@
       "rotation": [
         0,
         90
-      ]
+      ],
+      "glow": {
+        "blur": [
+          0,
+          2
+        ],
+        "intensity": [
+          0,
+          0.2
+        ],
+        "color": [
+          "#000000",
+          "#000000"
+        ]
+      }
     },
     {
       "target": "segment_marketing",
@@ -291,7 +250,21 @@
       "rotation": [
         0,
         64.8
-      ]
+      ],
+      "glow": {
+        "blur": [
+          0,
+          2
+        ],
+        "intensity": [
+          0,
+          0.2
+        ],
+        "color": [
+          "#000000",
+          "#000000"
+        ]
+      }
     },
     {
       "target": "segment_research",
@@ -306,7 +279,21 @@
       "rotation": [
         0,
         43.2
-      ]
+      ],
+      "glow": {
+        "blur": [
+          0,
+          2
+        ],
+        "intensity": [
+          0,
+          0.2
+        ],
+        "color": [
+          "#000000",
+          "#000000"
+        ]
+      }
     },
     {
       "target": "segment_admin",
@@ -321,10 +308,24 @@
       "rotation": [
         0,
         18
-      ]
+      ],
+      "glow": {
+        "blur": [
+          0,
+          2
+        ],
+        "intensity": [
+          0,
+          0.2
+        ],
+        "color": [
+          "#000000",
+          "#000000"
+        ]
+      }
     },
     {
-      "target": "center_text_1",
+      "target": "center_text",
       "time": [
         6,
         7.5
@@ -339,7 +340,7 @@
       ]
     },
     {
-      "target": "center_text_2",
+      "target": "center_value",
       "time": [
         6,
         7.5
@@ -354,7 +355,7 @@
       ]
     },
     {
-      "target": "center_text_2",
+      "target": "center_value",
       "time": [
         6.5,
         7.5
@@ -367,59 +368,34 @@
       }
     },
     {
-      "target": "legend_personnel",
+      "target": "legend",
       "time": [
         7.5,
         9
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
     },
     {
-      "target": "legend_operations",
+      "target": "donut_hole",
       "time": [
-        7.5,
-        9
+        9,
+        10
       ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "legend_marketing",
-      "time": [
-        7.5,
-        9
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "legend_research",
-      "time": [
-        7.5,
-        9
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "legend_admin",
-      "time": [
-        7.5,
-        9
-      ],
-      "opacity": [
-        0,
-        1
-      ]
+      "glow": {
+        "blur": [
+          2,
+          4
+        ],
+        "intensity": [
+          0.2,
+          0.4
+        ],
+        "color": [
+          "#000000",
+          "#000000"
+        ]
+      },
+      "repeat": "infinite"
     }
   ]
 }

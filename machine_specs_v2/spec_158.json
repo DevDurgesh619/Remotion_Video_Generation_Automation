@@ -19,7 +19,7 @@
       },
       "pos": [
         0,
-        -500
+        -490
       ],
       "opacity": 0
     },
@@ -32,8 +32,8 @@
         "textColor": "#FFFFFF"
       },
       "pos": [
-        760,
-        -500
+        700,
+        -490
       ],
       "opacity": 0
     },
@@ -42,7 +42,7 @@
       "shape": "line",
       "size": [
         1200,
-        0
+        1
       ],
       "color": "#FFFFFF",
       "pos": [
@@ -55,7 +55,7 @@
       "id": "y_axis",
       "shape": "line",
       "size": [
-        0,
+        1,
         500
       ],
       "color": "#FFFFFF",
@@ -70,23 +70,24 @@
       "shape": "line",
       "size": [
         1200,
-        0
+        1
       ],
       "color": "#FFFFFF",
-      "opacity": 0.2
+      "opacity": 0.2,
+      "repeat": 5,
+      "pos": [
+        0,
+        150
+      ]
     },
     {
       "id": "product_a_line",
       "shape": "line",
       "size": [
         0,
-        0
+        3
       ],
       "color": "#27AE60",
-      "stroke": {
-        "color": "#27AE60",
-        "width": 3
-      },
       "pos": [
         -600,
         250
@@ -98,13 +99,9 @@
       "shape": "line",
       "size": [
         0,
-        0
+        3
       ],
       "color": "#2196F3",
-      "stroke": {
-        "color": "#2196F3",
-        "width": 3
-      },
       "pos": [
         -600,
         250
@@ -116,13 +113,9 @@
       "shape": "line",
       "size": [
         0,
-        0
+        3
       ],
       "color": "#FF9800",
-      "stroke": {
-        "color": "#FF9800",
-        "width": 3
-      },
       "pos": [
         -600,
         250
@@ -137,10 +130,7 @@
         0,
         0.5
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
     },
     {
       "target": "legend",
@@ -148,10 +138,7 @@
         0,
         0.5
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
     },
     {
       "target": "x_axis",
@@ -159,10 +146,7 @@
         0.5,
         1
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
     },
     {
       "target": "y_axis",
@@ -170,10 +154,15 @@
         0.5,
         1
       ],
-      "opacity": [
-        0,
+      "behavior": "fade-in"
+    },
+    {
+      "target": "gridlines",
+      "time": [
+        0.5,
         1
-      ]
+      ],
+      "behavior": "fade-in"
     },
     {
       "target": "product_a_line",
@@ -181,19 +170,9 @@
         1,
         4
       ],
-      "size": [
-        [
-          0,
-          0
-        ],
-        [
-          1200,
-          0
-        ]
-      ],
-      "opacity": [
+      "width": [
         0,
-        1
+        1200
       ]
     },
     {
@@ -202,19 +181,9 @@
         4,
         7
       ],
-      "size": [
-        [
-          0,
-          0
-        ],
-        [
-          1200,
-          0
-        ]
-      ],
-      "opacity": [
+      "width": [
         0,
-        1
+        1200
       ]
     },
     {
@@ -223,19 +192,9 @@
         7,
         10
       ],
-      "size": [
-        [
-          0,
-          0
-        ],
-        [
-          1200,
-          0
-        ]
-      ],
-      "opacity": [
+      "width": [
         0,
-        1
+        1200
       ]
     }
   ]

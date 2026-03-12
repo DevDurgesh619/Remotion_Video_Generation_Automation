@@ -1,0 +1,88 @@
+{
+  "scene": "stick_figure_character_animation",
+  "duration": 8,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#F8F9FA",
+  "objects": [
+    {
+      "id": "stick_figure",
+      "shape": "rectangle",
+      "size": [
+        120,
+        120
+      ],
+      "color": "#333333",
+      "pos": [
+        -960,
+        0
+      ],
+      "opacity": 0.9
+    }
+  ],
+  "timeline": [
+    {
+      "target": "stick_figure",
+      "time": [
+        0,
+        1.5
+      ],
+      "behavior": "slide-in-left",
+      "params": {
+        "distance": 960
+      }
+    },
+    {
+      "target": "stick_figure",
+      "time": [
+        0,
+        1.5
+      ],
+      "scale": [
+        0.9,
+        1
+      ],
+      "easing": "bounce"
+    },
+    {
+      "target": "stick_figure",
+      "time": [
+        1.5,
+        6
+      ],
+      "x": [
+        -20,
+        20
+      ],
+      "repeat": "infinite",
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "stick_figure",
+      "time": [
+        1.5,
+        6
+      ],
+      "rotation": [
+        -5,
+        5
+      ],
+      "repeat": "infinite",
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "stick_figure",
+      "time": [
+        6,
+        8
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    }
+  ]
+}

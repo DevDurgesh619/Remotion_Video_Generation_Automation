@@ -27,34 +27,36 @@
       "id": "grid_20",
       "shape": "polygon",
       "size": [
-        84,
-        84
+        420,
+        420
       ],
+      "color": "#FFFFFF",
+      "opacity": 0.2,
       "stroke": {
         "color": "#FFFFFF",
         "width": 1
       },
-      "opacity": 0.2,
       "pos": [
         0,
-        60
+        59
       ]
     },
     {
       "id": "grid_40",
       "shape": "polygon",
       "size": [
-        168,
-        168
+        336,
+        336
       ],
+      "color": "#FFFFFF",
+      "opacity": 0.2,
       "stroke": {
         "color": "#FFFFFF",
         "width": 1
       },
-      "opacity": 0.2,
       "pos": [
         0,
-        60
+        59
       ]
     },
     {
@@ -64,48 +66,51 @@
         252,
         252
       ],
+      "color": "#FFFFFF",
+      "opacity": 0.2,
       "stroke": {
         "color": "#FFFFFF",
         "width": 1
       },
-      "opacity": 0.2,
       "pos": [
         0,
-        60
+        59
       ]
     },
     {
       "id": "grid_80",
       "shape": "polygon",
       "size": [
-        336,
-        336
+        168,
+        168
       ],
+      "color": "#FFFFFF",
+      "opacity": 0.2,
       "stroke": {
         "color": "#FFFFFF",
         "width": 1
       },
-      "opacity": 0.2,
       "pos": [
         0,
-        60
+        59
       ]
     },
     {
       "id": "grid_100",
       "shape": "polygon",
       "size": [
-        420,
-        420
+        84,
+        84
       ],
+      "color": "#FFFFFF",
+      "opacity": 0.2,
       "stroke": {
         "color": "#FFFFFF",
         "width": 1
       },
-      "opacity": 0.2,
       "pos": [
         0,
-        60
+        59
       ]
     },
     {
@@ -116,14 +121,14 @@
         420
       ],
       "color": "#2196F3",
+      "opacity": 0,
       "stroke": {
         "color": "#2196F3",
         "width": 2
       },
-      "opacity": 0,
       "pos": [
         0,
-        60
+        59
       ]
     },
     {
@@ -134,14 +139,14 @@
         420
       ],
       "color": "#FF9800",
+      "opacity": 0,
       "stroke": {
         "color": "#FF9800",
         "width": 2
       },
-      "opacity": 0,
       "pos": [
         0,
-        60
+        59
       ]
     },
     {
@@ -229,22 +234,36 @@
         "textColor": "#FFFFFF"
       },
       "pos": [
-        -270,
+        -234,
         0
       ],
       "opacity": 0
     },
     {
-      "id": "legend",
+      "id": "legend_a",
       "shape": "text",
       "text": {
-        "content": "A: Product A\nB: Product B",
+        "content": "Product A",
         "fontSize": 12,
-        "textColor": "#FFFFFF"
+        "textColor": "#2196F3"
       },
       "pos": [
-        500,
-        60
+        400,
+        0
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "legend_b",
+      "shape": "text",
+      "text": {
+        "content": "Product B",
+        "fontSize": 12,
+        "textColor": "#FF9800"
+      },
+      "pos": [
+        400,
+        30
       ],
       "opacity": 0
     }
@@ -256,10 +275,7 @@
         0,
         0.5
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
     },
     {
       "target": "grid_20",
@@ -322,10 +338,7 @@
         2,
         3
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
     },
     {
       "target": "label_reliability",
@@ -333,10 +346,7 @@
         2,
         3
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
     },
     {
       "target": "label_cost",
@@ -344,10 +354,7 @@
         2,
         3
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
     },
     {
       "target": "label_support",
@@ -355,10 +362,7 @@
         2,
         3
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
     },
     {
       "target": "label_innovation",
@@ -366,10 +370,7 @@
         2,
         3
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
     },
     {
       "target": "label_usability",
@@ -377,27 +378,13 @@
         2,
         3
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
     },
     {
       "target": "product_a",
       "time": [
         3,
         5.5
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "product_a",
-      "time": [
-        5.8,
-        6.1
       ],
       "opacity": [
         0,
@@ -412,30 +399,24 @@
       ],
       "opacity": [
         0,
-        1
-      ]
-    },
-    {
-      "target": "product_b",
-      "time": [
-        10.8,
-        11.1
-      ],
-      "opacity": [
-        0,
         0.3
       ]
     },
     {
-      "target": "legend",
+      "target": "legend_a",
       "time": [
         11,
         12
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
+    },
+    {
+      "target": "legend_b",
+      "time": [
+        11,
+        12
+      ],
+      "behavior": "fade-in"
     }
   ]
 }

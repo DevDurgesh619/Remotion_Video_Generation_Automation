@@ -1,0 +1,60 @@
+{
+  "intent": "shape_animation",
+  "title": "wheel_motion_circle",
+  "duration": 6,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": "#1a1a2e",
+    "palette": [
+      "#e94560",
+      "#0f3460",
+      "#533483"
+    ],
+    "mood": "tech"
+  },
+  "objects": [
+    {
+      "description": "Large circle with 12 lines radiating from center, resembling a wheel",
+      "shape": "circle",
+      "size": "large",
+      "color": "#e94560",
+      "position": "center"
+    },
+    {
+      "description": "12 lines radiating from the center of the circle",
+      "shape": "line",
+      "size": "medium",
+      "color": "#0f3460",
+      "position": "center"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        1
+      ],
+      "description": "Circle and lines fade in together with a slight scale from 0.9 to 1, using ease-out-cubic."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        1,
+        5
+      ],
+      "description": "The circle and lines rotate together clockwise, creating a wheel motion effect. Use continuous rotation with ease-in-out for smooth motion."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        5,
+        6
+      ],
+      "description": "Rotation slows down and holds. The circle and lines fade out together over the last second with ease-in."
+    }
+  ]
+}

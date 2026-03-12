@@ -11,119 +11,81 @@
     {
       "id": "electronics_slice",
       "shape": "circle",
-      "diameter": 400,
+      "diameter": 300,
       "color": "#FF6B6B",
       "pos": [
         0,
         0
       ],
-      "rotation": 0,
       "opacity": 1
     },
     {
-      "id": "electronics_gradient",
+      "id": "gradient_overlay",
       "shape": "circle",
-      "diameter": 400,
-      "color": "#FF6B6B",
-      "pos": [
-        0,
-        0
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "glow",
-      "shape": "circle",
-      "diameter": 406,
-      "color": "#FF6B6B",
-      "pos": [
-        0,
-        0
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "software_slice",
-      "shape": "circle",
-      "diameter": 400,
-      "color": "#CCCCCC",
-      "pos": [
-        0,
-        0
-      ],
-      "opacity": 1
-    },
-    {
-      "id": "services_slice",
-      "shape": "circle",
-      "diameter": 400,
-      "color": "#CCCCCC",
-      "pos": [
-        0,
-        0
-      ],
-      "opacity": 1
-    },
-    {
-      "id": "support_slice",
-      "shape": "circle",
-      "diameter": 400,
-      "color": "#CCCCCC",
-      "pos": [
-        0,
-        0
-      ],
-      "opacity": 1
-    },
-    {
-      "id": "training_slice",
-      "shape": "circle",
-      "diameter": 400,
-      "color": "#CCCCCC",
-      "pos": [
-        0,
-        0
-      ],
-      "opacity": 1
-    },
-    {
-      "id": "other_slice",
-      "shape": "circle",
-      "diameter": 400,
-      "color": "#CCCCCC",
-      "pos": [
-        0,
-        0
-      ],
-      "opacity": 1
-    },
-    {
-      "id": "annotation_label",
-      "shape": "text",
-      "text": {
-        "content": "Largest Market Segment",
-        "fontSize": 12,
-        "fontWeight": "bold",
-        "textColor": "#FFFFFF",
-        "fontFamily": "Arial"
+      "diameter": 300,
+      "color": {
+        "type": "gradient",
+        "from": "#FF6B6B",
+        "to": "#C62828",
+        "direction": "radial"
       },
       "pos": [
-        100,
-        -100
+        0,
+        0
       ],
       "opacity": 0
+    },
+    {
+      "id": "other_slices",
+      "shape": "circle",
+      "diameter": 300,
+      "color": "#CCCCCC",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 1
     },
     {
       "id": "annotation_box",
       "shape": "rectangle",
       "size": [
-        160,
-        30
+        200,
+        50
       ],
       "color": "#333333",
       "pos": [
-        100,
+        200,
         -100
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "annotation_text",
+      "shape": "text",
+      "text": {
+        "content": "Largest Market Segment",
+        "fontSize": 12,
+        "fontWeight": "bold",
+        "textColor": "#FFFFFF"
+      },
+      "pos": [
+        200,
+        -100
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "annotation_arrow",
+      "shape": "line",
+      "size": [
+        50,
+        2
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        150,
+        -75
       ],
       "opacity": 0
     }
@@ -145,70 +107,46 @@
           0
         ]
       ],
-      "easing": "ease-out"
+      "rotation": [
+        0,
+        15
+      ]
+    },
+    {
+      "target": "gradient_overlay",
+      "time": [
+        5,
+        6
+      ],
+      "opacity": [
+        0,
+        1
+      ]
     },
     {
       "target": "electronics_slice",
       "time": [
         5,
-        6
-      ],
-      "rotation": [
-        0,
-        15
-      ],
-      "easing": "ease-out"
-    },
-    {
-      "target": "electronics_gradient",
-      "time": [
-        5,
-        6
-      ],
-      "opacity": [
-        0,
-        1
-      ],
-      "easing": "ease-out"
-    },
-    {
-      "target": "glow",
-      "time": [
-        5,
-        6
-      ],
-      "opacity": [
-        0,
-        1
-      ],
-      "easing": "ease-out"
-    },
-    {
-      "target": "glow",
-      "time": [
-        6,
         12
       ],
-      "opacity": [
-        1,
-        0.5
-      ],
-      "easing": "ease-in-out"
+      "glow": {
+        "blur": [
+          0,
+          3
+        ],
+        "intensity": [
+          0,
+          1
+        ],
+        "color": [
+          "#FF6B6B",
+          "#FF6B6B"
+        ]
+      },
+      "repeat": "infinite"
     },
     {
-      "target": "glow",
-      "time": [
-        6.8,
-        7.6
-      ],
-      "opacity": [
-        0.5,
-        1
-      ],
-      "easing": "ease-in-out"
-    },
-    {
-      "target": "software_slice",
+      "target": "other_slices",
       "time": [
         6,
         7
@@ -217,67 +155,10 @@
         1,
         0.4
       ],
-      "easing": "ease-out"
-    },
-    {
-      "target": "services_slice",
-      "time": [
-        6,
-        7
-      ],
-      "opacity": [
-        1,
-        0.4
-      ],
-      "easing": "ease-out"
-    },
-    {
-      "target": "support_slice",
-      "time": [
-        6,
-        7
-      ],
-      "opacity": [
-        1,
-        0.4
-      ],
-      "easing": "ease-out"
-    },
-    {
-      "target": "training_slice",
-      "time": [
-        6,
-        7
-      ],
-      "opacity": [
-        1,
-        0.4
-      ],
-      "easing": "ease-out"
-    },
-    {
-      "target": "other_slice",
-      "time": [
-        6,
-        7
-      ],
-      "opacity": [
-        1,
-        0.4
-      ],
-      "easing": "ease-out"
-    },
-    {
-      "target": "annotation_label",
-      "time": [
-        6,
-        7
-      ],
-      "opacity": [
-        0,
-        1
-      ],
-      "easing": "ease-out"
+      "color": [
+        "#CCCCCC",
+        "#999999"
+      ]
     },
     {
       "target": "annotation_box",
@@ -287,33 +168,42 @@
       ],
       "opacity": [
         0,
-        0.7
-      ],
-      "easing": "ease-out"
+        0.8
+      ]
     },
     {
-      "target": "annotation_label",
+      "target": "annotation_text",
       "time": [
         6,
         7
       ],
-      "x": [
-        100,
-        102
-      ],
-      "easing": "ease-in-out"
+      "opacity": [
+        0,
+        1
+      ]
     },
     {
-      "target": "annotation_label",
+      "target": "annotation_arrow",
       "time": [
-        6.5,
+        6,
         7
       ],
-      "x": [
-        102,
-        100
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "annotation_text",
+      "time": [
+        7,
+        12
       ],
-      "easing": "ease-in-out"
+      "x": [
+        200,
+        202
+      ],
+      "repeat": "infinite"
     }
   ]
 }

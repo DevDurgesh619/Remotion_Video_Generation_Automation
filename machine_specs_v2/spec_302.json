@@ -1,0 +1,332 @@
+{
+  "scene": "stick_figure_wave",
+  "duration": 8,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#F8F9FA",
+  "objects": [
+    {
+      "id": "body",
+      "shape": "rectangle",
+      "size": [
+        120,
+        120
+      ],
+      "color": "#333333",
+      "pos": [
+        0,
+        0
+      ],
+      "scale": 0.9,
+      "opacity": 0
+    },
+    {
+      "id": "head",
+      "shape": "circle",
+      "diameter": 70,
+      "color": "#333333",
+      "pos": [
+        0,
+        -200
+      ],
+      "scale": 0.9,
+      "opacity": 0
+    },
+    {
+      "id": "left_arm",
+      "shape": "line",
+      "size": [
+        70,
+        5
+      ],
+      "color": "#666666",
+      "pos": [
+        -300,
+        0
+      ],
+      "scale": 0.9,
+      "opacity": 0
+    },
+    {
+      "id": "right_arm",
+      "shape": "line",
+      "size": [
+        70,
+        5
+      ],
+      "color": "#666666",
+      "pos": [
+        300,
+        0
+      ],
+      "scale": 0.9,
+      "opacity": 0
+    },
+    {
+      "id": "left_leg",
+      "shape": "line",
+      "size": [
+        70,
+        5
+      ],
+      "color": "#666666",
+      "pos": [
+        -350,
+        200
+      ],
+      "scale": 0.9,
+      "opacity": 0
+    },
+    {
+      "id": "right_leg",
+      "shape": "line",
+      "size": [
+        70,
+        5
+      ],
+      "color": "#666666",
+      "pos": [
+        350,
+        200
+      ],
+      "scale": 0.9,
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "body",
+      "time": [
+        0,
+        1.5
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "body",
+      "time": [
+        0,
+        1.5
+      ],
+      "scale": [
+        0.9,
+        1
+      ]
+    },
+    {
+      "target": "head",
+      "time": [
+        0,
+        1.5
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "head",
+      "time": [
+        0,
+        1.5
+      ],
+      "scale": [
+        0.9,
+        1
+      ]
+    },
+    {
+      "target": "left_arm",
+      "time": [
+        0,
+        1.5
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "left_arm",
+      "time": [
+        0,
+        1.5
+      ],
+      "scale": [
+        0.9,
+        1
+      ]
+    },
+    {
+      "target": "right_arm",
+      "time": [
+        0,
+        1.5
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "right_arm",
+      "time": [
+        0,
+        1.5
+      ],
+      "scale": [
+        0.9,
+        1
+      ]
+    },
+    {
+      "target": "left_leg",
+      "time": [
+        0,
+        1.5
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "left_leg",
+      "time": [
+        0,
+        1.5
+      ],
+      "scale": [
+        0.9,
+        1
+      ]
+    },
+    {
+      "target": "right_leg",
+      "time": [
+        0,
+        1.5
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "right_leg",
+      "time": [
+        0,
+        1.5
+      ],
+      "scale": [
+        0.9,
+        1
+      ]
+    },
+    {
+      "target": "left_arm",
+      "time": [
+        1.5,
+        6
+      ],
+      "rotation": [
+        0,
+        30
+      ],
+      "repeat": "infinite"
+    },
+    {
+      "target": "right_arm",
+      "time": [
+        1.5,
+        6
+      ],
+      "rotation": [
+        0,
+        -30
+      ],
+      "repeat": "infinite"
+    },
+    {
+      "target": "head",
+      "time": [
+        1.5,
+        6
+      ],
+      "scale": [
+        1,
+        0.95
+      ],
+      "repeat": "infinite"
+    },
+    {
+      "target": "left_arm",
+      "time": [
+        6,
+        8
+      ],
+      "rotation": [
+        30,
+        0
+      ]
+    },
+    {
+      "target": "right_arm",
+      "time": [
+        6,
+        8
+      ],
+      "rotation": [
+        -30,
+        0
+      ]
+    },
+    {
+      "target": "head",
+      "time": [
+        6,
+        8
+      ],
+      "scale": [
+        0.95,
+        1
+      ]
+    },
+    {
+      "target": "body",
+      "time": [
+        6,
+        8
+      ],
+      "behavior": "fade-out"
+    },
+    {
+      "target": "head",
+      "time": [
+        6,
+        8
+      ],
+      "behavior": "fade-out"
+    },
+    {
+      "target": "left_arm",
+      "time": [
+        6,
+        8
+      ],
+      "behavior": "fade-out"
+    },
+    {
+      "target": "right_arm",
+      "time": [
+        6,
+        8
+      ],
+      "behavior": "fade-out"
+    },
+    {
+      "target": "left_leg",
+      "time": [
+        6,
+        8
+      ],
+      "behavior": "fade-out"
+    },
+    {
+      "target": "right_leg",
+      "time": [
+        6,
+        8
+      ],
+      "behavior": "fade-out"
+    }
+  ]
+}

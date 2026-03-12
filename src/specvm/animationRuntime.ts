@@ -150,27 +150,40 @@ export function computeColorValue(
  *
  * This walks every relevant timeline event and applies interpolations in
  * order, so later events override earlier ones when they overlap.
+ *
+ * @param parentState — when the object has a `parent`, pass the already-computed
+ *   parent state here. The parent's world-space x,y is added to the child's
+ *   computed x,y (simple additive 2D offset, no matrix math).
  */
 export function computeObjectState(
   frame: number,
   fps: number,
   spec: MotionSpec,
   obj: SceneObject,
+  parentState?: ComputedObjectState,
 ): ComputedObjectState {
   // ── Defaults from the object definition ──
-  const posX = obj.pos ? obj.pos[0] : 0;
-  const posY = obj.pos ? obj.pos[1] : 0;
+  // If the object has a parent, use localPos as the base offset (relative to parent).
+  // Otherwise fall back to pos (absolute canvas-center coordinates).
+  const basePos = obj.parent
+    ? (obj.localPos ?? obj.pos ?? [0, 0])
+    : (obj.pos ?? [0, 0]);
+  const posX = basePos[0];
+  const posY = basePos[1];
 
   const state: ComputedObjectState = {
     x: posX,
     y: posY,
     scale: obj.scale ?? 1,
+    scaleX: 1,
+    scaleY: 1,
     rotation: obj.rotation ?? 0,
     opacity: obj.opacity ?? 1,
     color: obj.color ?? "#000000",
     width: obj.size ? obj.size[0] : (obj.diameter ?? 100),
     height: obj.size ? obj.size[1] : (obj.diameter ?? 100),
     diameter: obj.diameter ?? (obj.size ? Math.max(obj.size[0], obj.size[1]) : 100),
+    cornerRadius: obj.cornerRadius ?? 0,
 
     shadow: obj.shadow
       ? { ...obj.shadow }
@@ -183,12 +196,15 @@ export function computeObjectState(
     text: obj.text
       ? { ...obj.text, fontWeight: obj.text.fontWeight ?? "normal" }
       : null,
+
+    glow: obj.glow ? { ...obj.glow } : null,
   };
 
-  // ── Collect all timeline events for this object ──
-  const events: TimelineEvent[] = spec.timeline.filter(
+  // ── Collect all timeline events for this object (with repeat expansion) ──
+  const rawEvents: TimelineEvent[] = spec.timeline.filter(
     (e) => e.target === obj.id,
   );
+  const events = expandRepeatingEvents(rawEvents, fps, spec.duration);
 
   // Helper to find the active event for a specific property
   function getActiveEvent(hasProp: (ev: TimelineEvent) => boolean): TimelineEvent | undefined {
@@ -253,7 +269,34 @@ export function computeObjectState(
     state.height = computeValue(frame, Math.round(evSize.time[0]*fps), Math.round(evSize.time[1]*fps), evSize.size[0][1], evSize.size[1][1], evSize.easing);
   }
 
-  // ── Evaluate Nested properties ──
+  // Individual width/height animations override compound size
+  const evWidth = getActiveEvent(e => e.width !== undefined);
+  if (evWidth && evWidth.width) {
+    state.width = computeValue(frame, Math.round(evWidth.time[0]*fps), Math.round(evWidth.time[1]*fps), evWidth.width[0], evWidth.width[1], evWidth.easing);
+  }
+
+  const evHeight = getActiveEvent(e => e.height !== undefined);
+  if (evHeight && evHeight.height) {
+    state.height = computeValue(frame, Math.round(evHeight.time[0]*fps), Math.round(evHeight.time[1]*fps), evHeight.height[0], evHeight.height[1], evHeight.easing);
+  }
+
+  // Directional scaling
+  const evScaleX = getActiveEvent(e => e.scaleX !== undefined);
+  if (evScaleX && evScaleX.scaleX) {
+    state.scaleX = computeValue(frame, Math.round(evScaleX.time[0]*fps), Math.round(evScaleX.time[1]*fps), evScaleX.scaleX[0], evScaleX.scaleX[1], evScaleX.easing);
+  }
+
+  const evScaleY = getActiveEvent(e => e.scaleY !== undefined);
+  if (evScaleY && evScaleY.scaleY) {
+    state.scaleY = computeValue(frame, Math.round(evScaleY.time[0]*fps), Math.round(evScaleY.time[1]*fps), evScaleY.scaleY[0], evScaleY.scaleY[1], evScaleY.easing);
+  }
+
+  // Corner radius
+  const evCornerRadius = getActiveEvent(e => e.cornerRadius !== undefined);
+  if (evCornerRadius && evCornerRadius.cornerRadius) {
+    state.cornerRadius = computeValue(frame, Math.round(evCornerRadius.time[0]*fps), Math.round(evCornerRadius.time[1]*fps), evCornerRadius.cornerRadius[0], evCornerRadius.cornerRadius[1], evCornerRadius.easing);
+  }
+
 
   const evShadowX = getActiveEvent(e => e.shadow?.offsetX !== undefined);
   const evShadowY = getActiveEvent(e => e.shadow?.offsetY !== undefined);
@@ -288,5 +331,116 @@ export function computeObjectState(
     if (evTextWeight && evTextWeight.text?.fontWeight) state.text!.fontWeight = evTextWeight.text.fontWeight;
   }
 
+  // Glow
+  const evGlowBlur = getActiveEvent(e => e.glow?.blur !== undefined);
+  const evGlowIntensity = getActiveEvent(e => e.glow?.intensity !== undefined);
+  const evGlowColor = getActiveEvent(e => e.glow?.color !== undefined);
+
+  if (evGlowBlur || evGlowIntensity || evGlowColor) {
+    if (!state.glow) state.glow = obj.glow ? { ...obj.glow } : { blur: 0, intensity: 0, color: "transparent" };
+    if (evGlowBlur && evGlowBlur.glow?.blur) state.glow.blur = computeValue(frame, Math.round(evGlowBlur.time[0]*fps), Math.round(evGlowBlur.time[1]*fps), evGlowBlur.glow.blur[0], evGlowBlur.glow.blur[1], evGlowBlur.easing);
+    if (evGlowIntensity && evGlowIntensity.glow?.intensity) state.glow.intensity = computeValue(frame, Math.round(evGlowIntensity.time[0]*fps), Math.round(evGlowIntensity.time[1]*fps), evGlowIntensity.glow.intensity[0], evGlowIntensity.glow.intensity[1], evGlowIntensity.easing);
+    if (evGlowColor && evGlowColor.glow?.color) state.glow.color = computeColorValue(frame, Math.round(evGlowColor.time[0]*fps), Math.round(evGlowColor.time[1]*fps), evGlowColor.glow.color[0], evGlowColor.glow.color[1], evGlowColor.easing);
+  }
+
+  // ── Parent-child transform (scene graph) ──
+  // Add parent's world-space position to this child's computed position.
+  // Simple additive 2D offset — no matrix math, no inherited scale/rotation.
+  if (parentState) {
+    state.x += parentState.x;
+    state.y += parentState.y;
+  }
+
   return state;
+}
+
+// ─── Repeat expansion (Phase D) ──────────────────────────────────────────────
+
+/**
+ * Pre-expands timeline events that carry a `repeat` field into sequential
+ * time windows before getActiveEvent() runs.
+ *
+ * Uses ping-pong: odd repetitions swap from/to so looping animations
+ * reverse smoothly (e.g. scale 1→1.08 then 1.08→1 then 1→1.08…).
+ *
+ * Example:
+ *   { time:[0,3], scale:[1,1.08], repeat:"infinite" }  (duration=6)
+ *   →  { time:[0,3], scale:[1,1.08] }
+ *      { time:[3,6], scale:[1.08,1] }   ← reversed
+ */
+function expandRepeatingEvents(
+  events: TimelineEvent[],
+  fps: number,
+  totalDuration: number,
+): TimelineEvent[] {
+  const result: TimelineEvent[] = [];
+
+  for (const ev of events) {
+    if (ev.repeat === undefined) {
+      result.push(ev);
+      continue;
+    }
+
+    const segDuration = ev.time[1] - ev.time[0];
+    if (segDuration <= 0) {
+      result.push({ ...ev, repeat: undefined });
+      continue;
+    }
+
+    const maxReps =
+      ev.repeat === "infinite"
+        ? Math.ceil((totalDuration - ev.time[0]) / segDuration) + 1
+        : (ev.repeat as number) + 1; // +1 includes the original play
+
+    for (let i = 0; i < maxReps; i++) {
+      const start = ev.time[0] + i * segDuration;
+      const end = start + segDuration;
+      if (start >= totalDuration) break;
+
+      const segment = { ...ev, time: [start, Math.min(end, totalDuration)] as [number, number], repeat: undefined };
+
+      // Ping-pong: reverse from/to on odd repetitions
+      if (i % 2 === 1) {
+        swapTuples(segment);
+      }
+
+      result.push(segment);
+    }
+  }
+
+  return result;
+}
+
+/** Swap [from, to] → [to, from] for all animatable tuple properties on an event (in place). */
+function swapTuples(ev: TimelineEvent): void {
+  const swap = <T>(t: [T, T] | undefined): [T, T] | undefined =>
+    t ? [t[1], t[0]] : undefined;
+
+  if (ev.opacity)      ev.opacity      = swap(ev.opacity)!;
+  if (ev.scale)        ev.scale        = swap(ev.scale)!;
+  if (ev.rotation)     ev.rotation     = swap(ev.rotation)!;
+  if (ev.x)            ev.x            = swap(ev.x)!;
+  if (ev.y)            ev.y            = swap(ev.y)!;
+  if (ev.color)        ev.color        = swap(ev.color)!;
+  if (ev.diameter)     ev.diameter     = swap(ev.diameter)!;
+  if (ev.width)        ev.width        = swap(ev.width)!;
+  if (ev.height)       ev.height       = swap(ev.height)!;
+  if (ev.scaleX)       ev.scaleX       = swap(ev.scaleX)!;
+  if (ev.scaleY)       ev.scaleY       = swap(ev.scaleY)!;
+  if (ev.cornerRadius) ev.cornerRadius = swap(ev.cornerRadius)!;
+  if (ev.pos)          ev.pos          = swap(ev.pos)!;
+  if (ev.size)         ev.size         = swap(ev.size)!;
+
+  if (ev.shadow) {
+    if (ev.shadow.offsetX) ev.shadow.offsetX = swap(ev.shadow.offsetX)!;
+    if (ev.shadow.offsetY) ev.shadow.offsetY = swap(ev.shadow.offsetY)!;
+    if (ev.shadow.blur)    ev.shadow.blur    = swap(ev.shadow.blur)!;
+    if (ev.shadow.color)   ev.shadow.color   = swap(ev.shadow.color)!;
+  }
+
+  if (ev.glow) {
+    if (ev.glow.blur)      ev.glow.blur      = swap(ev.glow.blur)!;
+    if (ev.glow.intensity) ev.glow.intensity = swap(ev.glow.intensity)!;
+    if (ev.glow.color)     ev.glow.color     = swap(ev.glow.color)!;
+  }
 }

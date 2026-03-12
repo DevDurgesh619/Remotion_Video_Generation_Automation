@@ -19,7 +19,7 @@
       },
       "pos": [
         0,
-        -500
+        -490
       ],
       "opacity": 0
     },
@@ -46,7 +46,7 @@
         "textColor": "#FFFFFF"
       },
       "pos": [
-        -850,
+        -860,
         0
       ],
       "opacity": 0
@@ -54,15 +54,14 @@
     {
       "id": "gridlines",
       "shape": "line",
-      "size": [
-        1200,
-        1
-      ],
-      "color": "#FFFFFF",
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 1
+      },
       "opacity": 0.15,
       "pos": [
-        100,
-        150
+        0,
+        0
       ]
     },
     {
@@ -72,28 +71,37 @@
         0,
         500
       ],
-      "color": "#2196F3",
+      "color": {
+        "type": "gradient",
+        "from": "#2196F3",
+        "to": "rgba(33, 150, 243, 0.1)",
+        "direction": "to bottom"
+      },
       "pos": [
-        100,
-        150
+        -860,
+        -150
       ],
-      "opacity": 0.1
+      "anchor": "left"
     },
     {
       "id": "line_stroke",
       "shape": "line",
+      "stroke": {
+        "color": "#1565C0",
+        "width": 4
+      },
+      "pos": [
+        -860,
+        -150
+      ],
       "size": [
         0,
-        4
+        500
       ],
-      "color": "#1565C0",
-      "pos": [
-        100,
-        150
-      ]
+      "anchor": "left"
     },
     {
-      "id": "marker_1",
+      "id": "markers",
       "shape": "circle",
       "diameter": 8,
       "color": "#FFFFFF",
@@ -102,353 +110,23 @@
         "width": 2
       },
       "pos": [
-        -800,
-        -200
+        -860,
+        -150
       ],
       "opacity": 0,
       "scale": 0.8
     },
     {
-      "id": "marker_2",
-      "shape": "circle",
-      "diameter": 8,
-      "color": "#FFFFFF",
-      "stroke": {
-        "color": "#1565C0",
-        "width": 2
-      },
-      "pos": [
-        -600,
-        -180
-      ],
-      "opacity": 0,
-      "scale": 0.8
-    },
-    {
-      "id": "marker_3",
-      "shape": "circle",
-      "diameter": 8,
-      "color": "#FFFFFF",
-      "stroke": {
-        "color": "#1565C0",
-        "width": 2
-      },
-      "pos": [
-        -400,
-        -140
-      ],
-      "opacity": 0,
-      "scale": 0.8
-    },
-    {
-      "id": "marker_4",
-      "shape": "circle",
-      "diameter": 8,
-      "color": "#FFFFFF",
-      "stroke": {
-        "color": "#1565C0",
-        "width": 2
-      },
-      "pos": [
-        -200,
-        -80
-      ],
-      "opacity": 0,
-      "scale": 0.8
-    },
-    {
-      "id": "marker_5",
-      "shape": "circle",
-      "diameter": 8,
-      "color": "#FFFFFF",
-      "stroke": {
-        "color": "#1565C0",
-        "width": 2
-      },
-      "pos": [
-        0,
-        -40
-      ],
-      "opacity": 0,
-      "scale": 0.8
-    },
-    {
-      "id": "marker_6",
-      "shape": "circle",
-      "diameter": 8,
-      "color": "#FFFFFF",
-      "stroke": {
-        "color": "#1565C0",
-        "width": 2
-      },
-      "pos": [
-        200,
-        20
-      ],
-      "opacity": 0,
-      "scale": 0.8
-    },
-    {
-      "id": "marker_7",
-      "shape": "circle",
-      "diameter": 8,
-      "color": "#FFFFFF",
-      "stroke": {
-        "color": "#1565C0",
-        "width": 2
-      },
-      "pos": [
-        400,
-        60
-      ],
-      "opacity": 0,
-      "scale": 0.8
-    },
-    {
-      "id": "marker_8",
-      "shape": "circle",
-      "diameter": 8,
-      "color": "#FFFFFF",
-      "stroke": {
-        "color": "#1565C0",
-        "width": 2
-      },
-      "pos": [
-        600,
-        40
-      ],
-      "opacity": 0,
-      "scale": 0.8
-    },
-    {
-      "id": "marker_9",
-      "shape": "circle",
-      "diameter": 8,
-      "color": "#FFFFFF",
-      "stroke": {
-        "color": "#1565C0",
-        "width": 2
-      },
-      "pos": [
-        800,
-        100
-      ],
-      "opacity": 0,
-      "scale": 0.8
-    },
-    {
-      "id": "marker_10",
-      "shape": "circle",
-      "diameter": 8,
-      "color": "#FFFFFF",
-      "stroke": {
-        "color": "#1565C0",
-        "width": 2
-      },
-      "pos": [
-        1000,
-        140
-      ],
-      "opacity": 0,
-      "scale": 0.8
-    },
-    {
-      "id": "marker_11",
-      "shape": "circle",
-      "diameter": 8,
-      "color": "#FFFFFF",
-      "stroke": {
-        "color": "#1565C0",
-        "width": 2
-      },
-      "pos": [
-        1200,
-        200
-      ],
-      "opacity": 0,
-      "scale": 0.8
-    },
-    {
-      "id": "marker_12",
-      "shape": "circle",
-      "diameter": 8,
-      "color": "#FFFFFF",
-      "stroke": {
-        "color": "#1565C0",
-        "width": 2
-      },
-      "pos": [
-        1400,
-        240
-      ],
-      "opacity": 0,
-      "scale": 0.8
-    },
-    {
-      "id": "label_1",
+      "id": "value_labels",
       "shape": "text",
       "text": {
-        "content": "$15K",
+        "content": "$XXK",
         "fontSize": 12,
         "textColor": "#FFFFFF"
       },
       "pos": [
-        -800,
-        -220
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "label_2",
-      "shape": "text",
-      "text": {
-        "content": "$18K",
-        "fontSize": 12,
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        -600,
-        -200
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "label_3",
-      "shape": "text",
-      "text": {
-        "content": "$22K",
-        "fontSize": 12,
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        -400,
-        -160
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "label_4",
-      "shape": "text",
-      "text": {
-        "content": "$28K",
-        "fontSize": 12,
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        -200,
-        -100
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "label_5",
-      "shape": "text",
-      "text": {
-        "content": "$32K",
-        "fontSize": 12,
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        0,
-        -60
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "label_6",
-      "shape": "text",
-      "text": {
-        "content": "$38K",
-        "fontSize": 12,
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        200,
-        0
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "label_7",
-      "shape": "text",
-      "text": {
-        "content": "$42K",
-        "fontSize": 12,
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        400,
-        40
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "label_8",
-      "shape": "text",
-      "text": {
-        "content": "$40K",
-        "fontSize": 12,
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        600,
-        20
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "label_9",
-      "shape": "text",
-      "text": {
-        "content": "$45K",
-        "fontSize": 12,
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        800,
-        80
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "label_10",
-      "shape": "text",
-      "text": {
-        "content": "$48K",
-        "fontSize": 12,
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        1000,
-        120
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "label_11",
-      "shape": "text",
-      "text": {
-        "content": "$52K",
-        "fontSize": 12,
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        1200,
-        180
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "label_12",
-      "shape": "text",
-      "text": {
-        "content": "$55K",
-        "fontSize": 12,
-        "textColor": "#FFFFFF"
-      },
-      "pos": [
-        1400,
-        220
+        -860,
+        -150
       ],
       "opacity": 0
     }
@@ -460,10 +138,7 @@
         0,
         0.5
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
     },
     {
       "target": "x_axis",
@@ -471,10 +146,7 @@
         0.5,
         1
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
     },
     {
       "target": "y_axis",
@@ -482,10 +154,7 @@
         0.5,
         1
       ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "fade-in"
     },
     {
       "target": "area_fill",
@@ -510,7 +179,7 @@
       ]
     },
     {
-      "target": "marker_1",
+      "target": "markers",
       "time": [
         7,
         8
@@ -525,172 +194,7 @@
       ]
     },
     {
-      "target": "marker_2",
-      "time": [
-        7,
-        8
-      ],
-      "opacity": [
-        0,
-        1
-      ],
-      "scale": [
-        0.8,
-        1
-      ]
-    },
-    {
-      "target": "marker_3",
-      "time": [
-        7,
-        8
-      ],
-      "opacity": [
-        0,
-        1
-      ],
-      "scale": [
-        0.8,
-        1
-      ]
-    },
-    {
-      "target": "marker_4",
-      "time": [
-        7,
-        8
-      ],
-      "opacity": [
-        0,
-        1
-      ],
-      "scale": [
-        0.8,
-        1
-      ]
-    },
-    {
-      "target": "marker_5",
-      "time": [
-        7,
-        8
-      ],
-      "opacity": [
-        0,
-        1
-      ],
-      "scale": [
-        0.8,
-        1
-      ]
-    },
-    {
-      "target": "marker_6",
-      "time": [
-        7,
-        8
-      ],
-      "opacity": [
-        0,
-        1
-      ],
-      "scale": [
-        0.8,
-        1
-      ]
-    },
-    {
-      "target": "marker_7",
-      "time": [
-        7,
-        8
-      ],
-      "opacity": [
-        0,
-        1
-      ],
-      "scale": [
-        0.8,
-        1
-      ]
-    },
-    {
-      "target": "marker_8",
-      "time": [
-        7,
-        8
-      ],
-      "opacity": [
-        0,
-        1
-      ],
-      "scale": [
-        0.8,
-        1
-      ]
-    },
-    {
-      "target": "marker_9",
-      "time": [
-        7,
-        8
-      ],
-      "opacity": [
-        0,
-        1
-      ],
-      "scale": [
-        0.8,
-        1
-      ]
-    },
-    {
-      "target": "marker_10",
-      "time": [
-        7,
-        8
-      ],
-      "opacity": [
-        0,
-        1
-      ],
-      "scale": [
-        0.8,
-        1
-      ]
-    },
-    {
-      "target": "marker_11",
-      "time": [
-        7,
-        8
-      ],
-      "opacity": [
-        0,
-        1
-      ],
-      "scale": [
-        0.8,
-        1
-      ]
-    },
-    {
-      "target": "marker_12",
-      "time": [
-        7,
-        8
-      ],
-      "opacity": [
-        0,
-        1
-      ],
-      "scale": [
-        0.8,
-        1
-      ]
-    },
-    {
-      "target": "label_1",
+      "target": "value_labels",
       "time": [
         8,
         9
@@ -701,125 +205,16 @@
       ]
     },
     {
-      "target": "label_2",
+      "target": "markers",
       "time": [
-        8,
-        9
+        9,
+        10
       ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "label_3",
-      "time": [
-        8,
-        9
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "label_4",
-      "time": [
-        8,
-        9
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "label_5",
-      "time": [
-        8,
-        9
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "label_6",
-      "time": [
-        8,
-        9
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "label_7",
-      "time": [
-        8,
-        9
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "label_8",
-      "time": [
-        8,
-        9
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "label_9",
-      "time": [
-        8,
-        9
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "label_10",
-      "time": [
-        8,
-        9
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "label_11",
-      "time": [
-        8,
-        9
-      ],
-      "opacity": [
-        0,
-        1
-      ]
-    },
-    {
-      "target": "label_12",
-      "time": [
-        8,
-        9
-      ],
-      "opacity": [
-        0,
-        1
-      ]
+      "behavior": "pulse",
+      "params": {
+        "amplitude": 0.1,
+        "cycles": 1
+      }
     }
   ]
 }

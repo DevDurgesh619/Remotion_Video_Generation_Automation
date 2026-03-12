@@ -1,0 +1,67 @@
+{
+  "intent": "shape_animation",
+  "title": "square_circle_rectangle_dancing",
+  "duration": 8,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": "#1a1a2e",
+    "palette": [
+      "#e94560",
+      "#0f3460",
+      "#533483"
+    ],
+    "mood": "playful"
+  },
+  "objects": [
+    {
+      "description": "Red square, medium",
+      "shape": "rectangle",
+      "size": "medium",
+      "color": "#e94560",
+      "position": "center"
+    },
+    {
+      "description": "Blue circle, medium",
+      "shape": "circle",
+      "size": "medium",
+      "color": "#0f3460",
+      "position": "center"
+    },
+    {
+      "description": "Purple rectangle, medium",
+      "shape": "rectangle",
+      "size": "medium",
+      "color": "#533483",
+      "position": "center"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        1.5
+      ],
+      "description": "Shapes appear with staggered bounce-in (0.3s apart). Each starts at opacity 0, scale 0 and bounces to full size."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        1.5,
+        6
+      ],
+      "description": "Shapes perform a synchronized dance with scale and rotation. Each shape scales up slightly and rotates 360° with ease-in-out. Staggered timing creates a wave effect."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        6,
+        8
+      ],
+      "description": "Shapes slow down and hold final position. All shapes fade out together over the last 1s with ease-in easing."
+    }
+  ]
+}
