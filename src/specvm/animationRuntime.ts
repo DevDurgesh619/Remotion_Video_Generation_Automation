@@ -41,6 +41,14 @@ function resolveEasing(easing?: string): EasingFn {
     "ease-in-circle": Easing.in(Easing.circle),
     "ease-out-circle": Easing.out(Easing.circle),
     "ease-in-out-circle": Easing.inOut(Easing.circle),
+    // Bounce — decelerating bounce at the end (great for drop/settle animations)
+    "bounce":            Easing.out(Easing.bounce),
+    "ease-out-bounce":   Easing.out(Easing.bounce),
+    "ease-in-bounce":    Easing.in(Easing.bounce),
+    // Elastic — springy overshoot (great for "pop in" reveals)
+    "elastic":           Easing.out(Easing.elastic(1)),
+    "ease-out-elastic":  Easing.out(Easing.elastic(1)),
+    "ease-in-elastic":   Easing.in(Easing.elastic(1)),
   };
 
   return map[easing] ?? Easing.linear;
@@ -152,8 +160,10 @@ export function computeColorValue(
  * order, so later events override earlier ones when they overlap.
  *
  * @param parentState — when the object has a `parent`, pass the already-computed
- *   parent state here. The parent's world-space x,y is added to the child's
- *   computed x,y (simple additive 2D offset, no matrix math).
+ *   parent state here. When inheritRotation/inheritScale are set, full 2D affine
+ *   math is applied; otherwise falls back to simple additive 2D position offset.
+ * @param allComputedStates — the running map of already-computed states for all
+ *   objects processed so far this frame. Used by motionType:"follow" events.
  */
 export function computeObjectState(
   frame: number,
@@ -161,6 +171,7 @@ export function computeObjectState(
   spec: MotionSpec,
   obj: SceneObject,
   parentState?: ComputedObjectState,
+  allComputedStates?: Map<string, ComputedObjectState>,
 ): ComputedObjectState {
   // ── Defaults from the object definition ──
   // If the object has a parent, use localPos as the base offset (relative to parent).
@@ -198,6 +209,17 @@ export function computeObjectState(
       : null,
 
     glow: obj.glow ? { ...obj.glow } : null,
+
+    blur: obj.blur ?? 0,
+    skewX: obj.skewX ?? 0,
+    skewY: obj.skewY ?? 0,
+
+    // World-space accumulated values — populated after parent-child resolution
+    worldRotation: obj.rotation ?? 0,
+    worldScale: obj.scale ?? 1,
+
+    // Pivot resolved below from events / obj.pivot
+    pivot: obj.pivot ?? [0, 0],
   };
 
   // ── Collect all timeline events for this object (with repeat expansion) ──
@@ -343,13 +365,88 @@ export function computeObjectState(
     if (evGlowColor && evGlowColor.glow?.color) state.glow.color = computeColorValue(frame, Math.round(evGlowColor.time[0]*fps), Math.round(evGlowColor.time[1]*fps), evGlowColor.glow.color[0], evGlowColor.glow.color[1], evGlowColor.easing);
   }
 
-  // ── Parent-child transform (scene graph) ──
-  // Add parent's world-space position to this child's computed position.
-  // Simple additive 2D offset — no matrix math, no inherited scale/rotation.
-  if (parentState) {
-    state.x += parentState.x;
-    state.y += parentState.y;
+  // Skew transform
+  const evSkewX = getActiveEvent(e => e.skewX !== undefined);
+  if (evSkewX && evSkewX.skewX) {
+    state.skewX = computeValue(frame, Math.round(evSkewX.time[0]*fps), Math.round(evSkewX.time[1]*fps), evSkewX.skewX[0], evSkewX.skewX[1], evSkewX.easing);
   }
+
+  const evSkewY = getActiveEvent(e => e.skewY !== undefined);
+  if (evSkewY && evSkewY.skewY) {
+    state.skewY = computeValue(frame, Math.round(evSkewY.time[0]*fps), Math.round(evSkewY.time[1]*fps), evSkewY.skewY[0], evSkewY.skewY[1], evSkewY.easing);
+  }
+
+  // CSS blur filter
+  const evBlur = getActiveEvent(e => e.blur !== undefined);
+  if (evBlur && evBlur.blur) {
+    state.blur = computeValue(frame, Math.round(evBlur.time[0]*fps), Math.round(evBlur.time[1]*fps), evBlur.blur[0], evBlur.blur[1], evBlur.easing);
+  }
+
+  // ── Pivot resolution ──
+  // Per-event pivotPoint overrides object-level pivot. Both default to [0,0].
+  const evPivot = events.find(
+    (e) =>
+      e.pivotPoint !== undefined &&
+      Math.round(e.time[0] * fps) <= frame &&
+      frame <= Math.round(e.time[1] * fps),
+  );
+  if (evPivot?.pivotPoint) {
+    state.pivot = evPivot.pivotPoint;
+  }
+
+  // ── motionType:"follow" — track another object's position ──
+  // Evaluated here so it can be overridden by the parent-child block below.
+  if (allComputedStates) {
+    const evFollow = events.find(
+      (e) =>
+        e.motionType === "follow" &&
+        e.followTarget &&
+        Math.round(e.time[0] * fps) <= frame &&
+        frame <= Math.round(e.time[1] * fps),
+    );
+    if (evFollow && evFollow.followTarget) {
+      const lagFrames = Math.round((evFollow.followLag ?? 0) * fps);
+      let targetState: ComputedObjectState | undefined;
+      if (lagFrames > 0) {
+        const laggedFrame = Math.max(0, frame - lagFrames);
+        const targetObj = spec.objects.find((o) => o.id === evFollow.followTarget);
+        if (targetObj) {
+          targetState = computeObjectState(laggedFrame, fps, spec, targetObj);
+        }
+      } else {
+        targetState = allComputedStates.get(evFollow.followTarget);
+      }
+      if (targetState) {
+        state.x = targetState.x + (evFollow.followOffset?.[0] ?? 0);
+        state.y = targetState.y + (evFollow.followOffset?.[1] ?? 0);
+      }
+    }
+  }
+
+  // ── Parent-child transform (scene graph) ──
+  if (parentState) {
+    if (obj.inheritRotation || obj.inheritScale) {
+      // Full 2D affine path — rotate child's local offset by parent world rotation
+      const parentRotRad = (parentState.worldRotation * Math.PI) / 180;
+      const parentSc = obj.inheritScale ? parentState.worldScale : 1;
+      const localX = state.x;
+      const localY = state.y;
+      const rotatedX = localX * Math.cos(parentRotRad) - localY * Math.sin(parentRotRad);
+      const rotatedY = localX * Math.sin(parentRotRad) + localY * Math.cos(parentRotRad);
+      state.x = parentState.x + rotatedX * parentSc;
+      state.y = parentState.y + rotatedY * parentSc;
+      if (obj.inheritRotation) state.rotation += parentState.worldRotation;
+      if (obj.inheritScale) state.scale *= parentState.worldScale;
+    } else {
+      // Backward-compat path: simple additive 2D position offset
+      state.x += parentState.x;
+      state.y += parentState.y;
+    }
+  }
+
+  // ── Accumulate world-space values for children ──
+  state.worldRotation = state.rotation;
+  state.worldScale = state.scale;
 
   return state;
 }
@@ -430,6 +527,9 @@ function swapTuples(ev: TimelineEvent): void {
   if (ev.cornerRadius) ev.cornerRadius = swap(ev.cornerRadius)!;
   if (ev.pos)          ev.pos          = swap(ev.pos)!;
   if (ev.size)         ev.size         = swap(ev.size)!;
+  if (ev.blur)         ev.blur         = swap(ev.blur)!;
+  if (ev.skewX)        ev.skewX        = swap(ev.skewX)!;
+  if (ev.skewY)        ev.skewY        = swap(ev.skewY)!;
 
   if (ev.shadow) {
     if (ev.shadow.offsetX) ev.shadow.offsetX = swap(ev.shadow.offsetX)!;

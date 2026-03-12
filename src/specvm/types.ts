@@ -50,6 +50,19 @@ export interface TextDefinition {
   textColor: string;
 }
 
+// ─── Constraint ─────────────────────────────────────────────────────────────
+
+export interface Constraint {
+  type: "follow" | "attach" | "lock";
+  target?: string;          // object ID (for follow/attach)
+  offsetX?: number;         // world-space offset from target center, default 0
+  offsetY?: number;
+  lag?: number;             // follow only: trail delay in seconds, default 0
+  lockX?: boolean;          // lock: freeze x at frame-0 computed value
+  lockY?: boolean;
+  lockRotation?: boolean;
+}
+
 // ─── Scene Object ───────────────────────────────────────────────────────────
 
 export interface SceneObject {
@@ -90,9 +103,36 @@ export interface SceneObject {
   // Scene graph — parent-child transform hierarchy
   parent?: string;               // ID of parent object; child world pos = parent world pos + localPos
   localPos?: [number, number];   // position relative to parent (used when parent is set)
+  inheritRotation?: boolean;     // child inherits parent world rotation (default: false)
+  inheritScale?: boolean;        // child inherits parent world scale (default: false)
+
+  // Transform pivot — local-space offset from center for rotation/scale origin
+  // [0,0] = object center (default), [-70,0] = 70px left of center (arm base / door hinge)
+  pivot?: [number, number];
+
+  // Persistent inter-object relationships resolved every frame
+  constraints?: Constraint[];
 
   // Asset reference — used with shape: "asset"
   assetId?: string;              // look up in assetRegistry for src + default size
+
+  // CSS blur filter (px). 0 = sharp, >0 = blurred. Animatable via timeline blur:[from,to].
+  blur?: number;
+
+  // Skew transform initial values in degrees (animatable via timeline skewX/skewY)
+  skewX?: number;
+  skewY?: number;
+}
+
+// ─── Orbit Params ────────────────────────────────────────────────────────────
+
+export interface OrbitParams {
+  centerX: number;
+  centerY: number;
+  radius: number;
+  startAngle: number;                              // degrees; 0 = right (math convention)
+  endAngle: number;                                // degrees
+  direction?: "clockwise" | "counterclockwise";    // default: "clockwise"
 }
 
 // ─── Timeline Event ─────────────────────────────────────────────────────────
@@ -138,6 +178,24 @@ export interface TimelineEvent {
   behavior?: string;
   params?: Record<string, number | string | boolean>;
 
+  // ── Motion Types ────────────────────────────────────────────────────────
+  // Semantic motion declarations. "orbit" and "move" are expanded into raw
+  // pos keyframes by motionTypeExpander before the spec reaches the runtime.
+  // "follow" is resolved per-frame in animationRuntime. "pivot" affects rendering.
+  motionType?: "orbit" | "move" | "follow" | "pivot";
+
+  // orbit — circular motion (used when motionType="orbit")
+  orbit?: OrbitParams;
+
+  // follow — track another object (used when motionType="follow")
+  followTarget?: string;
+  followOffset?: [number, number];  // world-space offset from target, default [0,0]
+  followLag?: number;               // trail delay in seconds, default 0
+
+  // pivotPoint — per-event local-space pivot override for rotation/scale origin
+  // Overrides the object-level pivot field for the duration of this event.
+  pivotPoint?: [number, number];
+
   // Nested animatable properties
   shadow?: {
     offsetX?: [number, number];
@@ -162,6 +220,13 @@ export interface TimelineEvent {
     intensity?: [number, number];
     color?: [string, string];
   };
+
+  // CSS blur filter animation in px (0 = sharp)
+  blur?: [number, number];
+
+  // Skew transform in degrees
+  skewX?: [number, number];
+  skewY?: [number, number];
 }
 
 // ─── Generator Types ───────────────────────────────────────────────────────
@@ -452,6 +517,13 @@ export interface ComputedObjectState {
   diameter: number;
   cornerRadius: number;
 
+  // World-space accumulated transforms — used by children with inheritRotation/inheritScale
+  worldRotation: number;
+  worldScale: number;
+
+  // Resolved pivot in local space [px from center] — used by buildTransform for correct rotation origin
+  pivot: [number, number];
+
   // Nested computed state
   shadow: {
     offsetX: number;
@@ -473,4 +545,11 @@ export interface ComputedObjectState {
   } | null;
 
   glow: GlowDefinition | null;
+
+  // CSS blur filter in px (0 = sharp)
+  blur: number;
+
+  // Skew transform in degrees
+  skewX: number;
+  skewY: number;
 }

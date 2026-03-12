@@ -21,6 +21,7 @@ import { fileURLToPath } from "url";
 import dotenv from "dotenv";
 import { expandPrompt } from "./promptExpander.js";
 import { convertFromBrief } from "./convertToSpec.js";
+import { enrichSpec } from "./specEnricher.js";
 import { execSync } from "child_process";
 
 dotenv.config();
@@ -122,7 +123,8 @@ async function handleSpec(req, res) {
   if (!body.brief) return json(res, 400, { error: "Missing 'brief' field" });
 
   try {
-    const spec = await convertFromBrief(body.brief);
+    const rawSpec = await convertFromBrief(body.brief);
+    const spec = enrichSpec(rawSpec);
     json(res, 200, { success: true, spec });
   } catch (err) {
     json(res, 500, { error: err.message });
@@ -148,7 +150,8 @@ async function handleGenerate(req, res) {
 
     // Step 2: Convert to spec
     console.log("📄 Step 2: Generating spec...");
-    const spec = await convertFromBrief(brief);
+    const rawSpec = await convertFromBrief(brief);
+    const spec = enrichSpec(rawSpec);
 
     await fs.ensureDir(SPEC_FOLDER);
     const specPath = path.join(SPEC_FOLDER, "spec_" + id + ".json");

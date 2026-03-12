@@ -23,15 +23,25 @@ import type { SceneObject, ComputedObjectState } from "./types";
 // ─── Transform ──────────────────────────────────────────────────────────────
 
 export function buildTransform(state: ComputedObjectState): string {
-  const parts: string[] = [
-    `translate(${state.x}px, ${state.y}px)`,
-  ];
+  const [px, py] = state.pivot ?? [0, 0];
+  const hasPivot = px !== 0 || py !== 0;
+
+  const parts: string[] = [`translate(${state.x}px, ${state.y}px)`];
+
+  // Shift to pivot point before applying rotation/scale, then undo the shift.
+  // Net world position remains (x, y); only rotation/scale pivots around [px, py].
+  if (hasPivot) parts.push(`translate(${px}px, ${py}px)`);
+
   if (state.scaleX !== 1 || state.scaleY !== 1) {
     parts.push(`scale(${state.scaleX}, ${state.scaleY})`);
   } else if (state.scale !== 1) {
     parts.push(`scale(${state.scale})`);
   }
   if (state.rotation !== 0) parts.push(`rotate(${state.rotation}deg)`);
+  if (state.skewX !== 0 || state.skewY !== 0) parts.push(`skew(${state.skewX}deg, ${state.skewY}deg)`);
+
+  if (hasPivot) parts.push(`translate(${-px}px, ${-py}px)`);
+
   return parts.join(" ");
 }
 
@@ -85,6 +95,20 @@ function applyAlpha(color: string, intensity: number): string {
   const g = parseInt(hex.substring(2, 4), 16);
   const b = parseInt(hex.substring(4, 6), 16);
   return `rgba(${r}, ${g}, ${b}, ${intensity.toFixed(3)})`;
+}
+
+// ─── Combined filter string ──────────────────────────────────────────────────
+
+/**
+ * Compose a single CSS filter string from blur + glow.
+ * Use this in place of buildGlowFilter() so both effects work together.
+ */
+export function buildFilterString(state: ComputedObjectState): string | undefined {
+  const parts: string[] = [];
+  if (state.blur > 0) parts.push(`blur(${state.blur.toFixed(2)}px)`);
+  const glow = buildGlowFilter(state);
+  if (glow) parts.push(glow);
+  return parts.length > 0 ? parts.join(" ") : undefined;
 }
 
 // ─── Wrapper Style ──────────────────────────────────────────────────────────

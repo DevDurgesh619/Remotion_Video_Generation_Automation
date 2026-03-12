@@ -1,0 +1,59 @@
+{
+  "intent": "shape_animation",
+  "title": "squares_orbit_and_swap",
+  "duration": 8,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": "#F8F9FA",
+    "palette": [
+      "#F44336",
+      "#2196F3"
+    ],
+    "mood": "playful"
+  },
+  "objects": [
+    {
+      "description": "Red square, 110px",
+      "shape": "rectangle",
+      "size": "medium",
+      "color": "#F44336",
+      "position": "left-third"
+    },
+    {
+      "description": "Blue square, 110px",
+      "shape": "rectangle",
+      "size": "medium",
+      "color": "#2196F3",
+      "position": "right-third"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        1
+      ],
+      "description": "Both squares fade in at their starting positions, 240px apart horizontally."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        1,
+        6
+      ],
+      "description": "1-3s: Both squares move toward the center while rotating 180°. 3-5s: Squares orbit around each other in a circular path (radius ~80px), completing one full rotation. 5-6s: During orbit, they swap positions horizontally (red moves to the right, blue to the left)."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        6,
+        8
+      ],
+      "description": "6-7s: Rotation stops and squares stabilize in new positions. 7-8s: Both scale up to 130px and return to original size."
+    }
+  ]
+}

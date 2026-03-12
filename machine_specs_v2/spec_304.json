@@ -1,6 +1,6 @@
 {
-  "scene": "wheel_motion_circle",
-  "duration": 6,
+  "scene": "orbiting_circle",
+  "duration": 8,
   "fps": 30,
   "canvas": {
     "w": 1920,
@@ -9,36 +9,35 @@
   "bg": "#1a1a2e",
   "objects": [
     {
-      "id": "circle_1",
+      "id": "large_circle",
       "shape": "circle",
-      "diameter": 180,
-      "color": "#e94560",
+      "diameter": 280,
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 5
+      },
+      "fill": false,
       "pos": [
         0,
         0
       ],
-      "opacity": 0,
-      "scale": 0.9
+      "opacity": 0
     },
     {
-      "id": "line_1",
-      "shape": "line",
-      "size": [
-        120,
-        2
-      ],
-      "color": "#0f3460",
+      "id": "small_circle",
+      "shape": "circle",
+      "diameter": 70,
+      "color": "#FFD700",
       "pos": [
         0,
-        0
+        -120
       ],
-      "opacity": 0,
-      "scale": 0.9
+      "opacity": 0
     }
   ],
   "timeline": [
     {
-      "target": "circle_1",
+      "target": "large_circle",
       "time": [
         0,
         1
@@ -46,19 +45,7 @@
       "behavior": "fade-in"
     },
     {
-      "target": "circle_1",
-      "time": [
-        0,
-        1
-      ],
-      "scale": [
-        0.9,
-        1
-      ],
-      "easing": "ease-out-cubic"
-    },
-    {
-      "target": "line_1",
+      "target": "small_circle",
       "time": [
         0,
         1
@@ -66,66 +53,76 @@
       "behavior": "fade-in"
     },
     {
-      "target": "line_1",
-      "time": [
-        0,
-        1
-      ],
-      "scale": [
-        0.9,
-        1
-      ],
-      "easing": "ease-out-cubic"
-    },
-    {
-      "target": "circle_1",
+      "target": "small_circle",
       "time": [
         1,
-        5
-      ],
-      "rotation": [
-        0,
-        360
-      ],
-      "easing": "ease-in-out",
-      "repeat": "infinite"
-    },
-    {
-      "target": "line_1",
-      "time": [
-        1,
-        5
-      ],
-      "rotation": [
-        0,
-        360
-      ],
-      "easing": "ease-in-out",
-      "repeat": "infinite"
-    },
-    {
-      "target": "circle_1",
-      "time": [
-        5,
         6
       ],
-      "opacity": [
-        1,
-        0
+      "pos": [
+        [
+          0,
+          -120
+        ],
+        [
+          120,
+          0
+        ]
       ],
-      "easing": "ease-in"
+      "easing": "ease-in-out"
     },
     {
-      "target": "line_1",
+      "target": "small_circle",
       "time": [
-        5,
+        1,
         6
       ],
-      "opacity": [
-        1,
-        0
+      "pos": [
+        [
+          120,
+          0
+        ],
+        [
+          0,
+          120
+        ]
       ],
-      "easing": "ease-in"
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "small_circle",
+      "time": [
+        1,
+        6
+      ],
+      "pos": [
+        [
+          0,
+          120
+        ],
+        [
+          -120,
+          0
+        ]
+      ],
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "small_circle",
+      "time": [
+        1,
+        6
+      ],
+      "pos": [
+        [
+          -120,
+          0
+        ],
+        [
+          0,
+          -120
+        ]
+      ],
+      "easing": "ease-in-out"
     }
   ]
 }

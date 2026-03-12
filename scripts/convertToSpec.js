@@ -234,6 +234,170 @@ Output:
 
 ---
 
+EXAMPLE 5A — Glow pulse loop
+
+Prompt: "Circle Glow Effect. Black background. White circle (#FFFFFF), 150px diameter, centered. Circle has outer glow. Glow intensity pulses: 0.3 → 0.9 → 0.3 alpha over 2.5s. Complete 1.5 pulses. Total duration: 4s."
+
+Output:
+{
+  "scene": "circle_glow_pulse",
+  "duration": 4,
+  "fps": 30,
+  "canvas": { "w": 1920, "h": 1080 },
+  "bg": "#000000",
+  "objects": [
+    {
+      "id": "circle_1",
+      "shape": "circle",
+      "diameter": 150,
+      "color": "#FFFFFF",
+      "pos": [0, 0],
+      "glow": { "blur": 30, "intensity": 0.3, "color": "#FFFFFF" }
+    }
+  ],
+  "timeline": [
+    { "target": "circle_1", "time": [0, 2.5], "easing": "ease-in-out", "glow": { "intensity": [0.3, 0.9] }, "repeat": "infinite" }
+  ]
+}
+
+NOTE: Set the initial glow on the object. Then animate glow.intensity with repeat:"infinite".
+The runtime ping-pongs: 0.3→0.9 then 0.9→0.3 then 0.3→0.9… Use half-cycle duration as the time window.
+
+---
+
+EXAMPLE 5B — Blur focus (defocus → sharp)
+
+Prompt: "Circle Blur Focus. White background. Red circle (#D32F2F), 175px diameter, centered. Starts heavily blurred (blur radius 20px, opacity 40%). Sharpens to crystal clear over 2s. Hold sharp 2s. Total duration: 4s."
+
+Output:
+{
+  "scene": "circle_blur_focus",
+  "duration": 4,
+  "fps": 30,
+  "canvas": { "w": 1920, "h": 1080 },
+  "bg": "#FFFFFF",
+  "objects": [
+    {
+      "id": "circle_1",
+      "shape": "circle",
+      "diameter": 175,
+      "color": "#D32F2F",
+      "pos": [0, 0],
+      "blur": 20,
+      "opacity": 0.4
+    }
+  ],
+  "timeline": [
+    { "target": "circle_1", "time": [0, 2], "easing": "ease-out", "blur": [20, 0] },
+    { "target": "circle_1", "time": [0, 2], "easing": "ease-out", "opacity": [0.4, 1.0] }
+  ]
+}
+
+NOTE: Set "blur" on the object for the initial blurred state. Animate blur:[20,0] to sharpen.
+Animate opacity simultaneously so the shape becomes fully opaque as it sharpens.
+
+---
+
+EXAMPLE 5C — Elastic scale overshoot (scale in with bounce)
+
+Prompt: "Circle Scale In. Light grey background. Blue circle (#1976D2), 180px, centered. Scale from 0% to 100% over 1s with elastic ease — slight overshoot to 105%, settle to 100%. Hold 3s. Total duration: 4s."
+
+Output:
+{
+  "scene": "circle_scale_elastic",
+  "duration": 4,
+  "fps": 30,
+  "canvas": { "w": 1920, "h": 1080 },
+  "bg": "#F5F5F5",
+  "objects": [
+    {
+      "id": "circle_1",
+      "shape": "circle",
+      "diameter": 180,
+      "color": "#1976D2",
+      "pos": [0, 0],
+      "opacity": 0,
+      "scale": 0
+    }
+  ],
+  "timeline": [
+    { "target": "circle_1", "time": [0, 0.7], "easing": "ease-out-cubic", "scale": [0, 1.07], "opacity": [0, 1] },
+    { "target": "circle_1", "time": [0.7, 1.0], "easing": "ease-in-out", "scale": [1.07, 1.0] }
+  ]
+}
+
+NOTE: For "elastic ease with overshoot to X%": use 2-phase approach.
+Phase 1 (70% of duration): scale 0→overshoot with ease-out-cubic.
+Phase 2 (30% of duration): scale overshoot→1.0 with ease-in-out.
+Alternative: use "easing": "ease-out-elastic" on a single scale event for automatic spring physics.
+
+---
+
+EXAMPLE 5D — Bounce gravity drop with multi-bounce
+
+Prompt: "Circle Drop Gravity. White background. Purple circle (#7B1FA2), 170px diameter. Starts off-screen top. Drops to center with gravity acceleration, bounces once (goes 30px below center, bounces 10px up, settles) over 1.6s total. Hold 2.4s. Total duration: 4s."
+
+Output:
+{
+  "scene": "circle_drop_gravity",
+  "duration": 4,
+  "fps": 30,
+  "canvas": { "w": 1920, "h": 1080 },
+  "bg": "#FFFFFF",
+  "objects": [
+    {
+      "id": "circle_1",
+      "shape": "circle",
+      "diameter": 170,
+      "color": "#7B1FA2",
+      "pos": [0, -700]
+    }
+  ],
+  "timeline": [
+    { "target": "circle_1", "time": [0, 0.9], "easing": "ease-in", "y": [-700, 30] },
+    { "target": "circle_1", "time": [0.9, 1.2], "easing": "ease-out", "y": [30, -10] },
+    { "target": "circle_1", "time": [1.2, 1.6], "easing": "ease-in-out", "y": [-10, 0] }
+  ]
+}
+
+NOTE: For gravity + bounce: start at y=-700 (off-screen top). Fall with ease-in to slightly below target.
+Bounce back up with ease-out. Settle with ease-in-out. For simple single-bounce settling you can
+also use: { "y": [-700, 0], "easing": "ease-out-bounce" } — the bounce easing handles it automatically.
+
+---
+
+EXAMPLE 5E — Line draw-on (growing line)
+
+Prompt: "Line Draw On Horizontal. Light background. Horizontal line 450px length, 3px thick, blue (#2196F3), centered. Draws from left to right over 2s. Hold complete 2s. Total duration: 4s."
+
+Output:
+{
+  "scene": "line_draw_horizontal",
+  "duration": 4,
+  "fps": 30,
+  "canvas": { "w": 1920, "h": 1080 },
+  "bg": "#F5F5F5",
+  "objects": [
+    {
+      "id": "h_line",
+      "shape": "rectangle",
+      "size": [0, 3],
+      "color": "#2196F3",
+      "pos": [-225, 0],
+      "anchor": "left"
+    }
+  ],
+  "timeline": [
+    { "target": "h_line", "time": [0, 2], "easing": "linear", "width": [0, 450] }
+  ]
+}
+
+NOTE: For horizontal line draw-on: use shape "rectangle", initial size [0, thickness], anchor:"left".
+The pos.x should be the LEFT EDGE of where the line starts (center_x - half_length).
+Animate width:[0, fullLength]. For vertical draw-on: size:[thickness,0], anchor:"top", animate height:[0,fullLength].
+
+---
+
 EXAMPLE 5 — Behavior shortcuts (Phase 2B)
 
 Prompt: "Hero entrance. Dark blue background (#0D1B2A). White circle (120px) slides in from the left, then pulses twice, then fades out. Total duration: 7s."
@@ -307,6 +471,34 @@ The spec has 7 top-level keys: scene, duration, fps, canvas, bg, objects, timeli
    - "facing": "up" | "down" | "left" | "right" (for triangles; default: "up")
    - "zIndex": number (for layering)
    - "anchor": "bottom" | "top" | "left" | "right" (for bars that grow FROM an edge; determines transformOrigin)
+   - "blur": number — initial CSS blur in px (default: 0). Use for shapes that start blurred.
+   - "skewX": number — initial horizontal skew in degrees (default: 0)
+   - "skewY": number — initial vertical skew in degrees (default: 0)
+
+   HIERARCHY (parent-child):
+   - "parent": string — ID of parent object. Child world position = parent world pos + localPos.
+   - "localPos": [x, y] — position relative to parent center (use instead of "pos" when parent is set).
+   - "inheritRotation": true — child inherits parent's world rotation. Use for arm rigs, solar systems.
+   - "inheritScale": true — child inherits parent's world scale. (default: false for both)
+   Example: pivot object at center + arm child with localPos:[70,0] + inheritRotation:true.
+   Animating the pivot object's rotation swings the arm in an arc.
+
+   TRANSFORM PIVOT (rotation/scale origin):
+   - "pivot": [x, y] — local-space offset from center for rotation and scale origin (default: [0,0]).
+   - pivot:[0,0] = rotate around center (default). pivot:[-70,0] = rotate around left edge of a 140px-wide shape.
+   - Use for door hinges, clock hands, robot arms attached at one end.
+   Example: { "id": "hand", "size": [120,10], "pos": [60,0], "pivot": [-60,0] }
+   → rotation animates around the left edge (the "shoulder" joint).
+
+   CONSTRAINTS (persistent inter-object relationships):
+   - "constraints": [{ "type": "follow"|"attach"|"lock", ... }]
+   - follow: { "type": "follow", "target": "id", "offsetX": 0, "offsetY": -60 }
+     → object tracks target's position every frame. Add "lag": 0.2 for a trail/shadow effect.
+   - attach: { "type": "attach", "target": "id", "offsetX": 30, "offsetY": 0 }
+     → like follow, but the offset rotates with the target's rotation (rigid attachment).
+   - lock: { "type": "lock", "lockX": true, "lockY": false }
+     → freezes the specified axes at the frame-0 position.
+   Example: label following a moving ball — add constraints:[{type:"follow",target:"ball",offsetY:-60}] to the label object.
 
    TEXT OBJECT FIELDS (when shape is "text"):
    - "text": { "content": "string", "fontSize": number, "fontWeight": "normal"|"bold", "textColor": "#hex", "fontFamily": "string" }
@@ -320,7 +512,11 @@ The spec has 7 top-level keys: scene, duration, fps, canvas, bg, objects, timeli
    - Each text element (title, each label, each axis tick) is a SEPARATE object
 
    POSITIONING: Canvas origin is center (0, 0). Positive x = right, positive y = down.
-   Off-screen left = x: -960, right = x: 960, top = y: -540, bottom = y: 540.
+   Canvas edges: left x=-960, right x=960, top y=-540, bottom y=540.
+   Off-screen (truly hidden outside canvas):
+     left x=-1200, right x=1200, top y=-700, bottom y=700.
+   When the prompt says "+120% canvas width" → x = ±1152. Always use off-screen values
+   (not edge values) when a shape "starts off-screen" or "slides in from outside".
 
 3. TIMELINE ARRAY
    Each entry animates ONE property of ONE object over ONE time range.
@@ -345,9 +541,40 @@ The spec has 7 top-level keys: scene, duration, fps, canvas, bg, objects, timeli
    - "shadow": { "offsetX": [f,t], "offsetY": [f,t], "blur": [f,t], "color": [fromHex, toHex] }
    - "glow": { "blur": [from, to], "intensity": [from, to], "color": [fromHex, toHex] }
      (blur = px spread, intensity = 0-1 opacity of glow, color = glow color)
+   - "blur": [from, to]   — CSS blur filter in px (0=sharp, 20=heavily blurred). Use for focus/defocus effects.
+   - "skewX": [from, to]  — horizontal skew in degrees. Creates parallelogram shape.
+   - "skewY": [from, to]  — vertical skew in degrees.
+
+   MOTION TYPES (semantic motion declarations — smarter than raw keyframes):
+   - "motionType": "orbit" — circular motion around a center point. Requires:
+     "orbit": { "centerX": 0, "centerY": 0, "radius": 150, "startAngle": 0, "endAngle": 360, "direction": "clockwise" }
+     Angles are in degrees; 0° = right, 90° = down, 180° = left, 270° = up (math convention).
+     Add "repeat": "infinite" for continuous orbiting. Add "easing": "linear" for smooth circular path.
+     PREFER this over manually chaining 4+ pos keyframes for circular motion.
+     Example: { "target": "planet", "time": [0,4], "motionType": "orbit",
+                "orbit": {"centerX":0,"centerY":0,"radius":150,"startAngle":0,"endAngle":360,"direction":"clockwise"},
+                "repeat": "infinite" }
+
+   - "motionType": "move" — semantic alias for a pos animation. Same as raw pos, but more readable.
+     Example: { "target": "box", "time": [0,2], "motionType": "move", "pos": [[-300,0],[300,0]], "easing": "ease-out-cubic" }
+
+   - "motionType": "follow" — track another object (time-bounded). Useful for shadow/trail effects.
+     "followTarget": "ball_id", "followOffset": [8, 8], "followLag": 0.2 (seconds of trail delay)
+     Example: { "target": "shadow", "time": [0,6], "motionType": "follow", "followTarget": "ball",
+                "followOffset": [8,8], "followLag": 0.15 }
+
+   - "pivotPoint": [x, y] — per-event local pivot override for this timeline event's rotation/scale.
+     Overrides the object-level "pivot" just for the duration of this entry.
 
    Optional per-entry:
-   - "easing": "linear" | "ease-in" | "ease-out" | "ease-in-out" | "bounce" (default: "linear")
+   - "easing": "linear" | "ease-in" | "ease-out" | "ease-in-out" |
+               "ease-in-cubic" | "ease-out-cubic" | "ease-in-out-cubic" |
+               "ease-in-sin" | "ease-out-sin" | "ease-in-out-sin" |
+               "bounce" | "ease-out-bounce" | "ease-in-bounce" |
+               "elastic" | "ease-out-elastic" | "ease-in-elastic"
+     (default: "linear")
+     - "ease-out-bounce": realistic multi-bounce deceleration (drop/gravity settle)
+     - "ease-out-elastic": springy overshoot then snap back (for impactful reveals)
    - "repeat": number | "infinite" — repeat the animation N additional times (ping-pong style).
      Use "repeat": "infinite" for continuous loops. Use "repeat": N to loop N extra times.
      Example: { "target": "icon", "time": [0, 1], "scale": [1, 1.1], "repeat": "infinite" }
@@ -365,9 +592,8 @@ The spec has 7 top-level keys: scene, duration, fps, canvas, bg, objects, timeli
 ---
 
 UNSUPPORTED PROPERTIES — DO NOT USE (they will be silently ignored):
-   - "skewX" / "skewY" — not implemented in the renderer
    - "strokeWidth" — use "stroke": { "width": [f,t] } instead
-   - "orbit", "bounce", "morphTo" — not implemented; use raw x/y/scale events instead
+   - "morphTo" — not implemented
    - "blendMode" — not implemented
    - "fontFamily" on text objects — not rendered (use fontSize/fontWeight instead)
 
@@ -407,6 +633,53 @@ UNSUPPORTED PROPERTIES — DO NOT USE (they will be silently ignored):
 
 ---
 
+COMMON ANIMATION PATTERNS (use these exact patterns when you see the corresponding description):
+
+  "elastic ease with overshoot to X%, settle to 100%"
+    → 2-phase scale: phase1 [0→1.07] ease-out-cubic (70% of duration), phase2 [1.07→1.0] ease-in-out (30%)
+
+  "drops with gravity, bounces once/twice, settles"
+    → 3-4 phase y-animation: ease-in fall → ease-out bounce up → ease-in fall → ease-out settle
+    OR use a single y event with "easing": "ease-out-bounce" for simple single-bounce settling
+
+  "blurred/out of focus, sharpens to crystal clear"
+    → object: { "blur": 20, "opacity": 0.4 }, timeline: { "blur": [20, 0], "opacity": [0.4, 1.0] }
+
+  "glow pulses / glow intensity oscillates"
+    → object: { "glow": { "blur": 30, "intensity": 0.5, "color": "#hex" } }
+      timeline: { "glow": { "intensity": [0.3, 0.9] }, "repeat": "infinite" }
+      (use half-cycle duration for one pulse period, repeat:"infinite" to loop)
+
+  "opacity pulses N times" / "scale breathes N times"
+    → Use "repeat": N-1 (or "repeat": "infinite" for continuous) with half-cycle duration
+    NEVER manually copy timeline entries for repeating animations.
+
+  "line draws from left to right" / "width expands from 0"
+    → shape: "rectangle", size: [0, thickness], anchor: "left"
+      timeline: { "width": [0, targetLength] }
+
+  "line draws from top to bottom" / "height grows from 0"
+    → shape: "rectangle", size: [thickness, 0], anchor: "top"
+      timeline: { "height": [0, targetLength] }
+
+  "skews to parallelogram" / "skew transform"
+    → timeline: { "skewX": [0, 15] } then { "skewX": [15, 0] }
+
+  "shadow grows" / "shadow moves"
+    → timeline: { "shadow": { "blur": [4, 32] } } or { "shadow": { "offsetX": [4, -4] } }
+
+  "stroke border pulses in thickness"
+    → timeline: { "stroke": { "width": [2, 8] }, "repeat": "infinite" }
+
+  "starts off-screen" (any direction)
+    → Use x: ±1200 for left/right, y: ±700 for top/bottom (NOT ±960/±540 which are canvas edges)
+
+  "slides in from left/right/top/bottom" (behavior shortcut)
+    → Use behavior: "slide-in-left" / "slide-in-right" / "slide-in-top" / "slide-in-bottom"
+      These automatically position the shape off-screen and slide it to its pos.
+
+---
+
 ${EXAMPLES}
 
 ---
@@ -421,20 +694,104 @@ Convert the following prompt into a Sparse Motion Spec JSON. Return ONLY the JSO
 
 const BRIEF_PREAMBLE = `You are receiving a structured Motion Brief (JSON) that has already been creatively planned by a motion graphics director. Your job is PRECISE TECHNICAL TRANSLATION — convert the Brief into a valid Sparse Motion Spec.
 
-IMPORTANT TRANSLATION RULES:
-- Semantic sizes: tiny=40px, small=70px, medium=120px, large=180px, xlarge=280px (use as diameter for circles, or [size, size] for rectangles/triangles)
-- Semantic positions:
+---
+
+EASING RULES — CRITICAL FOR ANIMATION QUALITY:
+- EVERY timeline entry MUST have an "easing" field. NEVER omit easing — linear motion looks mechanical and lifeless.
+- Use the Brief's style.mood to select easing curves:
+  - playful     → entrance: "bounce",           motion: "ease-in-out",       exit: "ease-in"
+  - dramatic    → entrance: "ease-out-cubic",    motion: "ease-in-out-cubic", exit: "ease-in-cubic"
+  - tech        → entrance: "ease-out-exp",      motion: "ease-in-out",       exit: "ease-in"
+  - premium     → entrance: "ease-out-elastic",  motion: "ease-in-out",       exit: "ease-in-out"
+  - professional→ entrance: "ease-out-cubic",    motion: "ease-in-out",       exit: "ease-in"
+  - energetic   → entrance: "bounce",            motion: "ease-out-bounce",   exit: "ease-in"
+  - calm        → entrance: "ease-out-sin",      motion: "ease-in-out-sin",   exit: "ease-in-sin"
+  - corporate   → entrance: "ease-out-cubic",    motion: "ease-in-out",       exit: "ease-in"
+- If the Brief has an "easingStrategy" field, use those easing values directly.
+- Special property rules: fade-in (opacity 0→1) → "ease-out", fade-out (opacity 1→0) → "ease-in", scale → "ease-in-out"
+- ONLY use "linear" if the prompt explicitly asks for constant-speed or mechanical motion.
+
+---
+
+CONTINUITY RULES — CRITICAL FOR SMOOTH MOTION:
+- When phase N animates a property to value V, phase N+1 MUST start that property at V.
+- Track end states of every animated property (position, rotation, scale, opacity) across phases.
+- Example: if phase 1 rotates circle_1 to 180°, phase 2's rotation MUST start at [180, ...].
+- Example: if phase 1 moves triangle to pos [0, -100], phase 2 MUST start from [0, -100].
+
+---
+
+TIMELINE STRUCTURE:
+- Each timeline entry should animate ONLY ONE property (or one compound like pos).
+- If an object moves AND fades simultaneously, create TWO separate entries with the same time range.
+- Exception: pos (combined x+y as [[fromX,fromY],[toX,toY]]) counts as one property.
+
+---
+
+SEMANTIC SIZE & POSITION TRANSLATION:
+- Sizes: tiny=40px, small=70px, medium=120px, large=180px, xlarge=280px
+  (use as diameter for circles, or [size, size] for rectangles/triangles)
+- Positions:
   center=[0, 0], left-third=[-300, 0], right-third=[300, 0],
+  left-center=[-300, 0], right-center=[300, 0],
   top-center=[0, -200], bottom-center=[0, 200],
   top-left=[-350, -200], top-right=[350, -200],
   bottom-left=[-350, 200], bottom-right=[350, 200]
-- For "circular-ring" positions: arrange N objects in a circle of radius 80-120px from center, evenly spaced
-- For "grid-2x2" positions: arrange at [-150, -100], [150, -100], [-150, 100], [150, 100]
-- Choreography phases: translate each phase description into concrete timeline events with exact values
+- For "circular-ring": arrange N objects in a circle of radius 80-120px from center, evenly spaced
+- For "grid-2x2": arrange at [-150, -100], [150, -100], [-150, 100], [150, 100]
+
+---
+
+TRANSLATION RULES:
+- Choreography phases: translate each phase description into concrete timeline events with exact numeric values
 - Honor the Brief's style (background, palette, duration) exactly
-- Use behavior shortcuts (fade-in, bounce-in, slide-in-*, pulse, shake) when the choreography description mentions them
-- For data_visualization intents: if dataHints exist, use generators (barChart, lineChart, pieChart) to keep specs compact
+- Use behavior shortcuts (fade-in, bounce-in, slide-in-*, pulse, shake) when the choreography mentions them
+- For data_visualization intents: if dataHints exist, use generators (barChart, lineChart, pieChart)
 - For infographic intents: use generators (statGrid, processFlow) and components (progress_bar, callout_box, badge)
+
+---
+
+BRIEF-TO-SPEC EXAMPLE:
+
+Input Brief (mood: "tech"):
+{
+  "intent": "shape_animation",
+  "title": "circle_slide_rotate",
+  "duration": 6,
+  "style": { "background": "#0a0a1a", "mood": "tech" },
+  "objects": [
+    { "description": "Cyan circle, medium, centered", "shape": "circle", "size": "medium", "color": "#00F5FF", "position": "center" }
+  ],
+  "choreography": [
+    { "phase": "entrance", "time": [0, 2], "description": "Circle slides in from the left to center." },
+    { "phase": "main_action", "time": [2, 4.5], "description": "Circle rotates 360 degrees and scales up to 130%." },
+    { "phase": "hold_and_exit", "time": [4.5, 6], "description": "Circle fades out while scaling back to 100%." }
+  ]
+}
+
+Correct Output Spec:
+{
+  "scene": "circle_slide_rotate",
+  "duration": 6,
+  "fps": 30,
+  "canvas": { "w": 1920, "h": 1080 },
+  "bg": "#0a0a1a",
+  "objects": [
+    { "id": "circle_1", "shape": "circle", "diameter": 120, "color": "#00F5FF", "pos": [-1200, 0] }
+  ],
+  "timeline": [
+    { "target": "circle_1", "time": [0, 2], "easing": "ease-out-exp", "x": [-1200, 0] },
+    { "target": "circle_1", "time": [2, 4.5], "easing": "ease-in-out", "rotation": [0, 360] },
+    { "target": "circle_1", "time": [2, 4.5], "easing": "ease-in-out", "scale": [1, 1.3] },
+    { "target": "circle_1", "time": [4.5, 6], "easing": "ease-in", "opacity": [1, 0] },
+    { "target": "circle_1", "time": [4.5, 6], "easing": "ease-in", "scale": [1.3, 1] }
+  ]
+}
+
+Note how: every entry has easing (tech mood → entrance: ease-out-exp, motion: ease-in-out, exit: ease-in),
+rotation and scale are SEPARATE entries, exit scale starts at 1.3 (continuity from main_action phase).
+
+---
 
 The Motion Brief is provided below. Convert it into a valid Sparse Motion Spec JSON.
 Return ONLY the JSON.
@@ -475,6 +832,9 @@ function validateSpec(spec) {
   }
 
   // Validate timeline entries
+  let missingEasingCount = 0;
+  let multiPropCount = 0;
+
   if (Array.isArray(spec.timeline)) {
     for (let i = 0; i < spec.timeline.length; i++) {
       const entry = spec.timeline[i];
@@ -487,6 +847,25 @@ function validateSpec(spec) {
       if (entry.target && !objectIds.has(entry.target)) {
         errors.push("Timeline[" + i + "] references unknown target '" + entry.target + "'");
       }
+
+      // Quality checks (non-blocking warnings)
+      if (!entry.easing && !entry.behavior) {
+        missingEasingCount++;
+      }
+      const hasOpacity = entry.opacity !== undefined;
+      const hasPosition = entry.x !== undefined || entry.y !== undefined || entry.pos !== undefined;
+      if (hasOpacity && hasPosition) {
+        multiPropCount++;
+      }
+    }
+
+    // Quality warnings
+    const totalEntries = spec.timeline.length;
+    if (totalEntries > 0 && missingEasingCount / totalEntries > 0.3) {
+      errors.push("Quality: " + missingEasingCount + "/" + totalEntries + " timeline entries missing easing (will default to linear)");
+    }
+    if (multiPropCount > 0) {
+      errors.push("Quality: " + multiPropCount + " entries combine opacity with position — consider splitting");
     }
   }
 
@@ -495,7 +874,7 @@ function validateSpec(spec) {
 
 export async function convertPrompt(promptText) {
   const response = await client.responses.create({
-    model: "gpt-4o",
+    model: "gpt-4o-mini",
     temperature: 0,
     input: [
       {
@@ -524,7 +903,7 @@ export async function convertFromBrief(motionBrief) {
     : JSON.stringify(motionBrief, null, 2);
 
   const response = await client.responses.create({
-    model: "gpt-4o",
+    model: "gpt-4o-mini",
     temperature: 0,
     input: [
       {

@@ -1,83 +1,187 @@
 {
-  "scene": "stick_figure_character_animation",
-  "duration": 8,
+  "scene": "circle_orbit_complex",
+  "duration": 10,
   "fps": 30,
   "canvas": {
     "w": 1920,
     "h": 1080
   },
-  "bg": "#F8F9FA",
+  "bg": "#000000",
   "objects": [
     {
-      "id": "stick_figure",
-      "shape": "rectangle",
-      "size": [
-        120,
-        120
-      ],
-      "color": "#333333",
+      "id": "large_circle",
+      "shape": "circle",
+      "diameter": 280,
+      "stroke": {
+        "color": "#FFFFFF",
+        "width": 2
+      },
+      "fill": false,
       "pos": [
-        -960,
+        0,
         0
       ],
-      "opacity": 0.9
+      "opacity": 0
+    },
+    {
+      "id": "red_circle",
+      "shape": "circle",
+      "diameter": 70,
+      "color": "#FF0000",
+      "pos": [
+        80,
+        0
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "green_circle",
+      "shape": "circle",
+      "diameter": 70,
+      "color": "#00FF00",
+      "pos": [
+        -40,
+        69
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "blue_circle",
+      "shape": "circle",
+      "diameter": 70,
+      "color": "#0000FF",
+      "pos": [
+        -40,
+        -69
+      ],
+      "opacity": 0
     }
   ],
   "timeline": [
     {
-      "target": "stick_figure",
+      "target": "large_circle",
       "time": [
         0,
-        1.5
-      ],
-      "behavior": "slide-in-left",
-      "params": {
-        "distance": 960
-      }
-    },
-    {
-      "target": "stick_figure",
-      "time": [
-        0,
-        1.5
-      ],
-      "scale": [
-        0.9,
         1
       ],
-      "easing": "bounce"
+      "behavior": "fade-in"
     },
     {
-      "target": "stick_figure",
+      "target": "red_circle",
       "time": [
-        1.5,
-        6
+        0,
+        1
       ],
-      "x": [
-        -20,
-        20
-      ],
-      "repeat": "infinite",
-      "easing": "ease-in-out"
+      "behavior": "fade-in"
     },
     {
-      "target": "stick_figure",
+      "target": "green_circle",
       "time": [
-        1.5,
-        6
+        0,
+        1
       ],
-      "rotation": [
-        -5,
-        5
-      ],
-      "repeat": "infinite",
-      "easing": "ease-in-out"
+      "behavior": "fade-in"
     },
     {
-      "target": "stick_figure",
+      "target": "blue_circle",
       "time": [
-        6,
-        8
+        0,
+        1
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "red_circle",
+      "time": [
+        1,
+        4
+      ],
+      "pos": [
+        [
+          80,
+          0
+        ],
+        [
+          -40,
+          69
+        ]
+      ],
+      "repeat": "infinite"
+    },
+    {
+      "target": "green_circle",
+      "time": [
+        1,
+        4
+      ],
+      "pos": [
+        [
+          -40,
+          69
+        ],
+        [
+          -40,
+          -69
+        ]
+      ],
+      "repeat": "infinite"
+    },
+    {
+      "target": "blue_circle",
+      "time": [
+        1,
+        4
+      ],
+      "pos": [
+        [
+          -40,
+          -69
+        ],
+        [
+          80,
+          0
+        ]
+      ],
+      "repeat": "infinite"
+    },
+    {
+      "target": "red_circle",
+      "time": [
+        9,
+        10
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "green_circle",
+      "time": [
+        9,
+        10
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "blue_circle",
+      "time": [
+        9,
+        10
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "large_circle",
+      "time": [
+        9,
+        10
       ],
       "opacity": [
         1,

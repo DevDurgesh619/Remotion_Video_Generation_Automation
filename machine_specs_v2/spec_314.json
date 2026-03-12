@@ -1,0 +1,243 @@
+{
+  "scene": "colorful_shapes_rotation",
+  "duration": 8,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#1a1a2e",
+  "objects": [
+    {
+      "id": "circle_red",
+      "shape": "circle",
+      "diameter": 120,
+      "color": "#FF6B6B",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0.9
+    },
+    {
+      "id": "rectangle_teal",
+      "shape": "rectangle",
+      "size": [
+        120,
+        120
+      ],
+      "color": "#4ECDC4",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0.9
+    },
+    {
+      "id": "square_yellow",
+      "shape": "rectangle",
+      "size": [
+        120,
+        120
+      ],
+      "color": "#FFD700",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0.9
+    },
+    {
+      "id": "triangle_pink",
+      "shape": "triangle",
+      "size": [
+        120,
+        120
+      ],
+      "color": "#E8505B",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0.9
+    }
+  ],
+  "timeline": [
+    {
+      "target": "circle_red",
+      "time": [
+        0,
+        0.8
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "circle_red",
+      "time": [
+        0,
+        0.8
+      ],
+      "scale": [
+        0.9,
+        1
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "rectangle_teal",
+      "time": [
+        0,
+        0.8
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "rectangle_teal",
+      "time": [
+        0,
+        0.8
+      ],
+      "scale": [
+        0.9,
+        1
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "square_yellow",
+      "time": [
+        0,
+        0.8
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "square_yellow",
+      "time": [
+        0,
+        0.8
+      ],
+      "scale": [
+        0.9,
+        1
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "triangle_pink",
+      "time": [
+        0,
+        0.8
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "triangle_pink",
+      "time": [
+        0,
+        0.8
+      ],
+      "scale": [
+        0.9,
+        1
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "circle_red",
+      "time": [
+        2,
+        6
+      ],
+      "rotation": [
+        0,
+        90
+      ]
+    },
+    {
+      "target": "rectangle_teal",
+      "time": [
+        2,
+        6
+      ],
+      "rotation": [
+        0,
+        180
+      ]
+    },
+    {
+      "target": "square_yellow",
+      "time": [
+        2,
+        6
+      ],
+      "rotation": [
+        0,
+        270
+      ]
+    },
+    {
+      "target": "triangle_pink",
+      "time": [
+        2,
+        6
+      ],
+      "rotation": [
+        0,
+        360
+      ]
+    },
+    {
+      "target": "circle_red",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        1,
+        0
+      ],
+      "easing": "ease-in"
+    },
+    {
+      "target": "rectangle_teal",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        1,
+        0
+      ],
+      "easing": "ease-in"
+    },
+    {
+      "target": "square_yellow",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        1,
+        0
+      ],
+      "easing": "ease-in"
+    },
+    {
+      "target": "triangle_pink",
+      "time": [
+        7,
+        8
+      ],
+      "opacity": [
+        1,
+        0
+      ],
+      "easing": "ease-in"
+    }
+  ]
+}

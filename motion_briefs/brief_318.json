@@ -1,0 +1,82 @@
+{
+  "intent": "shape_animation",
+  "title": "circle_stick_on_rotating_square",
+  "duration": 8,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": "#1a1a2e",
+    "palette": [
+      "#e94560",
+      "#0f3460",
+      "#533483",
+      "#FFD700"
+    ],
+    "mood": "playful"
+  },
+  "objects": [
+    {
+      "description": "Large square, gold color",
+      "shape": "rectangle",
+      "size": "large",
+      "color": "#FFD700",
+      "position": "center"
+    },
+    {
+      "description": "Small red circle",
+      "shape": "circle",
+      "size": "small",
+      "color": "#e94560",
+      "position": "top-left-corner"
+    },
+    {
+      "description": "Small blue circle",
+      "shape": "circle",
+      "size": "small",
+      "color": "#0f3460",
+      "position": "top-right-corner"
+    },
+    {
+      "description": "Small purple circle",
+      "shape": "circle",
+      "size": "small",
+      "color": "#533483",
+      "position": "bottom-left-corner"
+    },
+    {
+      "description": "Small cyan circle",
+      "shape": "circle",
+      "size": "small",
+      "color": "#4ECDC4",
+      "position": "bottom-right-corner"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        2
+      ],
+      "description": "The large square appears with a grow-from-center effect. The four small circles fade in and stick to each corner of the square."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        2,
+        6
+      ],
+      "description": "The square rotates continuously clockwise at a steady pace. The circles remain attached to the corners, rotating along with the square."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        6,
+        8
+      ],
+      "description": "The rotation slows down and stops. The square and circles hold in their final position. Fade out gently at the end."
+    }
+  ]
+}

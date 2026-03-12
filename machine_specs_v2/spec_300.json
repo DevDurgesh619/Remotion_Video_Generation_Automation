@@ -1,149 +1,110 @@
 {
-  "scene": "three_circles_bouncing",
-  "duration": 7,
+  "scene": "rotating_orange_circle",
+  "duration": 6,
   "fps": 30,
   "canvas": {
     "w": 1920,
     "h": 1080
   },
-  "bg": "#1a1a2e",
+  "bg": "#000000",
   "objects": [
     {
-      "id": "circle_red",
+      "id": "orange_circle",
       "shape": "circle",
       "diameter": 120,
-      "color": "#e94560",
-      "pos": [
-        -300,
-        0
-      ],
-      "opacity": 0,
-      "scale": 0
-    },
-    {
-      "id": "circle_blue",
-      "shape": "circle",
-      "diameter": 120,
-      "color": "#0f3460",
+      "color": "#FF9800",
       "pos": [
         0,
         0
-      ],
-      "opacity": 0,
-      "scale": 0
+      ]
     },
     {
-      "id": "circle_purple",
+      "id": "white_dot",
       "shape": "circle",
-      "diameter": 120,
-      "color": "#533483",
+      "diameter": 40,
+      "color": "#FFFFFF",
       "pos": [
-        300,
+        80,
         0
-      ],
-      "opacity": 0,
-      "scale": 0
+      ]
     }
   ],
   "timeline": [
     {
-      "target": "circle_red",
+      "target": "orange_circle",
       "time": [
         0,
+        2
+      ],
+      "rotation": [
+        0,
+        180
+      ],
+      "scale": [
+        1,
         1.5
-      ],
-      "behavior": "bounce-in"
+      ]
     },
     {
-      "target": "circle_blue",
+      "target": "white_dot",
       "time": [
-        0.3,
-        1.8
-      ],
-      "behavior": "bounce-in"
-    },
-    {
-      "target": "circle_purple",
-      "time": [
-        0.6,
-        2.1
-      ],
-      "behavior": "bounce-in"
-    },
-    {
-      "target": "circle_red",
-      "time": [
-        1.5,
-        5
-      ],
-      "y": [
         0,
-        80
+        2
       ],
-      "easing": "bounce",
-      "repeat": "infinite"
-    },
-    {
-      "target": "circle_blue",
-      "time": [
-        1.75,
-        5.25
-      ],
-      "y": [
+      "rotation": [
         0,
-        80
-      ],
-      "easing": "bounce",
-      "repeat": "infinite"
+        180
+      ]
     },
     {
-      "target": "circle_purple",
+      "target": "orange_circle",
       "time": [
         2,
-        5.5
+        4
       ],
-      "y": [
-        0,
-        80
+      "rotation": [
+        180,
+        360
       ],
-      "easing": "bounce",
-      "repeat": "infinite"
+      "scale": [
+        1.5,
+        1
+      ]
     },
     {
-      "target": "circle_red",
+      "target": "white_dot",
       "time": [
-        6,
-        7
+        2,
+        4
       ],
-      "opacity": [
-        1,
-        0
-      ],
-      "easing": "ease-in"
+      "rotation": [
+        180,
+        360
+      ]
     },
     {
-      "target": "circle_blue",
+      "target": "orange_circle",
       "time": [
-        6,
-        7
+        4,
+        6
       ],
-      "opacity": [
-        1,
-        0
+      "rotation": [
+        360,
+        390
       ],
-      "easing": "ease-in"
+      "repeat": 1
     },
     {
-      "target": "circle_purple",
+      "target": "white_dot",
       "time": [
-        6,
-        7
+        4,
+        6
       ],
-      "opacity": [
-        1,
-        0
+      "rotation": [
+        360,
+        390
       ],
-      "easing": "ease-in"
+      "repeat": 1
     }
   ]
 }

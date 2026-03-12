@@ -18,6 +18,7 @@ import { validateSpec } from "./specValidator";
 import { normalizeSpec } from "./specNormalizer";
 import { expandSpec } from "./specExpander";
 import { expandBehaviors } from "./behaviorExpander";
+import { expandMotionTypes } from "./motionTypeExpander";
 import { expandComponents } from "./componentExpander";
 import { resolveSceneGraph } from "./sceneGraphResolver";
 
@@ -58,7 +59,9 @@ export const SpecPlayer: React.FC<{ spec: MotionSpec }> = ({ spec }) => {
       );
     }
 
-    const expanded          = expandSpec(behaviorExpanded);
+    // Expand semantic motion types (orbit → pos keyframes, move → pass-through)
+    const motionExpanded    = expandMotionTypes(behaviorExpanded);
+    const expanded          = expandSpec(motionExpanded);
     const componentsExpanded = expandComponents(expanded);
     const graphResolved     = resolveSceneGraph(componentsExpanded);
     const validation = validateSpec(graphResolved);
@@ -84,15 +87,60 @@ export const SpecPlayer: React.FC<{ spec: MotionSpec }> = ({ spec }) => {
 
   // ── Scene graph: pre-compute all states in topological order ──
   // sceneGraphResolver guarantees parents appear before children in the array.
-  // We accumulate computed states so each child can look up its parent's world position.
+  // We accumulate computed states so each child can look up its parent's world position,
+  // and so motionType:"follow" events can read already-computed target states.
   const computedStates = new Map<string, ComputedObjectState>();
+
+  // PASS 1 — compute all object states (property interpolation + parent transform)
   for (const obj of objects) {
     try {
       const parentState = obj.parent ? computedStates.get(obj.parent) : undefined;
-      const state = computeObjectState(frame, safeSpec.fps, safeSpec, obj, parentState);
+      const state = computeObjectState(frame, safeSpec.fps, safeSpec, obj, parentState, computedStates);
       computedStates.set(obj.id, state);
     } catch (err) {
       // Leave this object's state absent — render step will emit the diagnostic overlay
+    }
+  }
+
+  // PASS 2 — apply persistent SceneObject.constraints
+  // Runs after all states are computed so targets are fully resolved.
+  for (const obj of objects) {
+    if (!obj.constraints?.length) continue;
+    const state = computedStates.get(obj.id);
+    if (!state) continue;
+
+    for (const c of obj.constraints) {
+      if (c.type === "follow" || c.type === "attach") {
+        const targetState = computedStates.get(c.target ?? "");
+        if (!targetState) continue;
+
+        if (c.lag && c.lag > 0) {
+          const lagFrame = Math.max(0, frame - Math.round(c.lag * safeSpec.fps));
+          const targetObj = safeSpec.objects.find((o) => o.id === c.target);
+          if (targetObj) {
+            const laggedTarget = computeObjectState(lagFrame, safeSpec.fps, safeSpec, targetObj);
+            state.x = laggedTarget.x + (c.offsetX ?? 0);
+            state.y = laggedTarget.y + (c.offsetY ?? 0);
+          }
+        } else if (c.type === "attach") {
+          // Attach: rotate the offset by target's current rotation
+          const θ = (targetState.rotation * Math.PI) / 180;
+          const ox = c.offsetX ?? 0;
+          const oy = c.offsetY ?? 0;
+          state.x = targetState.x + ox * Math.cos(θ) - oy * Math.sin(θ);
+          state.y = targetState.y + ox * Math.sin(θ) + oy * Math.cos(θ);
+        } else {
+          // Follow: simple offset from target's current position
+          state.x = targetState.x + (c.offsetX ?? 0);
+          state.y = targetState.y + (c.offsetY ?? 0);
+        }
+      } else if (c.type === "lock") {
+        // Lock: hold at frame-0 computed values
+        const frame0State = computeObjectState(0, safeSpec.fps, safeSpec, obj);
+        if (c.lockX) state.x = frame0State.x;
+        if (c.lockY) state.y = frame0State.y;
+        if (c.lockRotation) state.rotation = frame0State.rotation;
+      }
     }
   }
 

@@ -1,0 +1,200 @@
+{
+  "scene": "card_shuffle_effect",
+  "duration": 8,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#1a1a2e",
+  "objects": [
+    {
+      "id": "card_1",
+      "shape": "rectangle",
+      "size": [
+        120,
+        120
+      ],
+      "color": "#FF6B6B",
+      "pos": [
+        0,
+        540
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "card_2",
+      "shape": "rectangle",
+      "size": [
+        120,
+        120
+      ],
+      "color": "#4ECDC4",
+      "pos": [
+        0,
+        540
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "card_3",
+      "shape": "rectangle",
+      "size": [
+        120,
+        120
+      ],
+      "color": "#FFD700",
+      "pos": [
+        0,
+        540
+      ],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "card_1",
+      "time": [
+        0,
+        1.7
+      ],
+      "behavior": "slide-in-bottom",
+      "params": {
+        "distance": 740,
+        "easing": "ease-out"
+      }
+    },
+    {
+      "target": "card_2",
+      "time": [
+        0.3,
+        2
+      ],
+      "behavior": "slide-in-bottom",
+      "params": {
+        "distance": 740,
+        "easing": "ease-out"
+      }
+    },
+    {
+      "target": "card_3",
+      "time": [
+        0.6,
+        2.3
+      ],
+      "behavior": "slide-in-bottom",
+      "params": {
+        "distance": 740,
+        "easing": "ease-out"
+      }
+    },
+    {
+      "target": "card_1",
+      "time": [
+        2,
+        6
+      ],
+      "behavior": "shake",
+      "params": {
+        "amplitude": 20,
+        "cycles": 8
+      }
+    },
+    {
+      "target": "card_1",
+      "time": [
+        2,
+        6
+      ],
+      "rotation": [
+        -5,
+        5
+      ],
+      "repeat": "infinite"
+    },
+    {
+      "target": "card_2",
+      "time": [
+        2.3,
+        6.3
+      ],
+      "behavior": "shake",
+      "params": {
+        "amplitude": 20,
+        "cycles": 8
+      }
+    },
+    {
+      "target": "card_2",
+      "time": [
+        2.3,
+        6.3
+      ],
+      "rotation": [
+        -5,
+        5
+      ],
+      "repeat": "infinite"
+    },
+    {
+      "target": "card_3",
+      "time": [
+        2.6,
+        6.6
+      ],
+      "behavior": "shake",
+      "params": {
+        "amplitude": 20,
+        "cycles": 8
+      }
+    },
+    {
+      "target": "card_3",
+      "time": [
+        2.6,
+        6.6
+      ],
+      "rotation": [
+        -5,
+        5
+      ],
+      "repeat": "infinite"
+    },
+    {
+      "target": "card_1",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        1,
+        0
+      ],
+      "easing": "ease-in"
+    },
+    {
+      "target": "card_2",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        1,
+        0
+      ],
+      "easing": "ease-in"
+    },
+    {
+      "target": "card_3",
+      "time": [
+        6,
+        7
+      ],
+      "opacity": [
+        1,
+        0
+      ],
+      "easing": "ease-in"
+    }
+  ]
+}

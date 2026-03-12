@@ -1,0 +1,68 @@
+{
+  "intent": "logo_reveal",
+  "title": "logo_reveal_animation",
+  "duration": 6,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": {
+      "type": "gradient",
+      "from": "#0D1B2A",
+      "to": "#1B2838",
+      "direction": "to bottom"
+    },
+    "palette": [
+      "#FFD700",
+      "#FFFFFF",
+      "#4ECDC4"
+    ],
+    "mood": "premium"
+  },
+  "objects": [
+    {
+      "description": "Large central circle as logo mark, gold color",
+      "shape": "circle",
+      "size": "xlarge",
+      "color": "#FFD700",
+      "position": "center"
+    },
+    {
+      "description": "Brand name text 'BRAND' below the logo mark",
+      "shape": "text",
+      "position": "bottom-center"
+    },
+    {
+      "description": "Tagline text below brand name",
+      "shape": "text",
+      "position": "bottom-center"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        2
+      ],
+      "description": "Logo mark appears with dramatic grow-from-center (scale 0 to 1 with overshoot via bounce-in). Add a golden glow effect that intensifies as it appears."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        2,
+        4
+      ],
+      "description": "Brand name text slides in from bottom with fade-in. Then tagline fades in below it 0.5s later. Logo mark does a subtle pulse (scale 1→1.05→1) once."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        4,
+        6
+      ],
+      "description": "Everything holds in final position. Subtle glow pulsing on the logo mark for premium feel. Hold until end."
+    }
+  ]
+}

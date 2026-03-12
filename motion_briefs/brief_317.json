@@ -1,0 +1,64 @@
+{
+  "intent": "shape_animation",
+  "title": "two_circles_connected_rotation",
+  "duration": 6,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": "#1a1a2e",
+    "palette": [
+      "#e94560",
+      "#4ECDC4"
+    ],
+    "mood": "tech"
+  },
+  "objects": [
+    {
+      "description": "Red circle, medium",
+      "shape": "circle",
+      "size": "medium",
+      "color": "#e94560",
+      "position": "left-third"
+    },
+    {
+      "description": "Blue circle, medium",
+      "shape": "circle",
+      "size": "medium",
+      "color": "#4ECDC4",
+      "position": "right-third"
+    },
+    {
+      "description": "Line connecting two circles",
+      "shape": "line",
+      "position": "center"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        1
+      ],
+      "description": "Two circles and connecting line fade in together with a slight scale from 0.9 to 1."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        1,
+        5
+      ],
+      "description": "The entire structure rotates around the center of the line. The rotation is smooth and continuous, using ease-in-out easing."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        5,
+        6
+      ],
+      "description": "Rotation slows down and the structure holds in its final position. All elements fade out together."
+    }
+  ]
+}

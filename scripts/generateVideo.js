@@ -14,6 +14,7 @@ import { execSync } from "child_process";
 import dotenv from "dotenv";
 import { expandPrompt } from "./promptExpander.js";
 import { convertFromBrief } from "./convertToSpec.js";
+import { enrichSpec } from "./specEnricher.js";
 
 dotenv.config();
 
@@ -105,6 +106,9 @@ async function generate(opts) {
     console.error("❌ Spec generation failed:", err.message);
     process.exit(1);
   }
+
+  // Enrich spec: inject easing, repair continuity, split multi-property entries
+  spec = enrichSpec(spec);
 
   // Save the spec
   await fs.ensureDir(SPEC_FOLDER);

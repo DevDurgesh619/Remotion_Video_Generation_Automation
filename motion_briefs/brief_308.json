@@ -1,0 +1,67 @@
+{
+  "intent": "shape_animation",
+  "title": "card_shuffle_effect",
+  "duration": 8,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": "#1a1a2e",
+    "palette": [
+      "#FF6B6B",
+      "#4ECDC4",
+      "#FFD700"
+    ],
+    "mood": "playful"
+  },
+  "objects": [
+    {
+      "description": "Playing card, medium size",
+      "shape": "rectangle",
+      "size": "medium",
+      "color": "#FF6B6B",
+      "position": "center"
+    },
+    {
+      "description": "Playing card, medium size",
+      "shape": "rectangle",
+      "size": "medium",
+      "color": "#4ECDC4",
+      "position": "center"
+    },
+    {
+      "description": "Playing card, medium size",
+      "shape": "rectangle",
+      "size": "medium",
+      "color": "#FFD700",
+      "position": "center"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        2
+      ],
+      "description": "Cards appear with a staggered slide-in from the bottom (0.3s apart). Each card starts at opacity 0 and slides to the center with ease-out."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        2,
+        6
+      ],
+      "description": "Cards shuffle in place with a quick horizontal oscillation (20px amplitude) and slight rotation (5 degrees) to simulate a shuffle effect. Staggered timing creates a dynamic shuffle."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        6,
+        8
+      ],
+      "description": "Cards settle into a neat stack in the center. Fade out over the last 1s with ease-in."
+    }
+  ]
+}

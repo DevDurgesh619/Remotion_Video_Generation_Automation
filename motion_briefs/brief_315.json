@@ -1,0 +1,75 @@
+{
+  "intent": "shape_animation",
+  "title": "rotating_shapes_spread",
+  "duration": 8,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": "#1a1a2e",
+    "palette": [
+      "#FF6B6B",
+      "#4ECDC4",
+      "#FFD700",
+      "#E8505B"
+    ],
+    "mood": "energetic"
+  },
+  "objects": [
+    {
+      "description": "Red circle, medium",
+      "shape": "circle",
+      "size": "medium",
+      "color": "#FF6B6B",
+      "position": "center"
+    },
+    {
+      "description": "Teal rectangle, medium",
+      "shape": "rectangle",
+      "size": "medium",
+      "color": "#4ECDC4",
+      "position": "center"
+    },
+    {
+      "description": "Yellow square, medium",
+      "shape": "rectangle",
+      "size": "medium",
+      "color": "#FFD700",
+      "position": "center"
+    },
+    {
+      "description": "Pink triangle, medium",
+      "shape": "triangle",
+      "size": "medium",
+      "color": "#E8505B",
+      "position": "center"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        1.5
+      ],
+      "description": "All shapes appear at the center with a fade-in and slight scale (0.9 to 1) over 0.5s, creating a blend of colors."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        1.5,
+        6
+      ],
+      "description": "Each shape rotates around its z-axis at different speeds. The circle rotates slowly, the rectangle moderately, the square faster, and the triangle the fastest. As they rotate, they gradually spread outwards in different directions."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        6,
+        8
+      ],
+      "description": "Shapes continue rotating as they spread further apart. They fade out over the last 1s with ease-in easing."
+    }
+  ]
+}

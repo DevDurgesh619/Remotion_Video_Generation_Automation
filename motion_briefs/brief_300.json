@@ -1,41 +1,33 @@
 {
   "intent": "shape_animation",
-  "title": "three_circles_bouncing",
-  "duration": 7,
+  "title": "rotating_orange_circle",
+  "duration": 6,
   "canvas": {
     "w": 1920,
     "h": 1080
   },
   "style": {
-    "background": "#1a1a2e",
+    "background": "#000000",
     "palette": [
-      "#e94560",
-      "#0f3460",
-      "#533483"
+      "#FF9800",
+      "#FFFFFF"
     ],
-    "mood": "playful"
+    "mood": "tech"
   },
   "objects": [
     {
-      "description": "Red circle, medium",
+      "description": "Orange circle, 155px, centered with small white dot on edge",
       "shape": "circle",
       "size": "medium",
-      "color": "#e94560",
-      "position": "left-third"
-    },
-    {
-      "description": "Blue circle, medium",
-      "shape": "circle",
-      "size": "medium",
-      "color": "#0f3460",
+      "color": "#FF9800",
       "position": "center"
     },
     {
-      "description": "Purple circle, medium",
+      "description": "Small white dot on edge of circle",
       "shape": "circle",
-      "size": "medium",
-      "color": "#533483",
-      "position": "right-third"
+      "size": "tiny",
+      "color": "#FFFFFF",
+      "position": "circular-ring"
     }
   ],
   "choreography": [
@@ -43,25 +35,25 @@
       "phase": "entrance",
       "time": [
         0,
-        1.5
+        2
       ],
-      "description": "Three circles appear with staggered bounce-in (0.3s apart, left to right). Each starts at opacity 0, scale 0 and bounces to full size."
+      "description": "Circle rotates 180° clockwise while scaling from 100% to 150%. The white dot follows the edge of the circle."
     },
     {
       "phase": "main_action",
       "time": [
-        1.5,
-        5
+        2,
+        4
       ],
-      "description": "Each circle bounces vertically with y oscillation (80px amplitude, moving down then back up) using bounce easing. Stagger 0.25s apart creating a wave effect. Use repeat for continuous bouncing."
+      "description": "Circle continues rotating another 180° (total 360°) while scaling back from 150% to 100%. The white dot completes a full rotation."
     },
     {
       "phase": "hold_and_exit",
       "time": [
-        5,
-        7
+        4,
+        6
       ],
-      "description": "Bouncing slows. All three circles fade out together over the last 1s with ease-in easing."
+      "description": "Circle performs a gentle rotation wobble ±15° twice. The white dot moves accordingly."
     }
   ]
 }

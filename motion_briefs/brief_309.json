@@ -1,0 +1,67 @@
+{
+  "intent": "shape_animation",
+  "title": "three_balls_merge_and_return",
+  "duration": 8,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": "#1a1a2e",
+    "palette": [
+      "#e94560",
+      "#0f3460",
+      "#533483"
+    ],
+    "mood": "playful"
+  },
+  "objects": [
+    {
+      "description": "Red ball, medium",
+      "shape": "circle",
+      "size": "medium",
+      "color": "#e94560",
+      "position": "top-center"
+    },
+    {
+      "description": "Blue ball, medium",
+      "shape": "circle",
+      "size": "medium",
+      "color": "#0f3460",
+      "position": "left-third"
+    },
+    {
+      "description": "Purple ball, medium",
+      "shape": "circle",
+      "size": "medium",
+      "color": "#533483",
+      "position": "right-third"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        2
+      ],
+      "description": "Red ball slides in from top, blue ball slides in from left, and purple ball slides in from right. All use slide-in with ease-out."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        2,
+        5
+      ],
+      "description": "All three balls move towards the center and merge into one larger ball. Use ease-in-out for smooth merging."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        5,
+        8
+      ],
+      "description": "The merged ball splits back into three and moves back to their original positions. Use ease-out for smooth return."
+    }
+  ]
+}

@@ -6,7 +6,7 @@
 
 import OpenAI from "openai";
 import dotenv from "dotenv";
-import { ANIMATION_PRINCIPLES, PALETTE_PRESETS } from "./motionKnowledge.js";
+import { ANIMATION_PRINCIPLES, PALETTE_PRESETS, EASING_STRATEGIES } from "./motionKnowledge.js";
 
 dotenv.config();
 
@@ -32,6 +32,11 @@ Motion Brief:
     "palette": ["#e94560", "#0f3460", "#533483"],
     "mood": "playful"
   },
+  "easingStrategy": {
+    "entrance": "bounce",
+    "motion": "ease-in-out",
+    "exit": "ease-in"
+  },
   "objects": [
     { "description": "Red circle, medium", "shape": "circle", "size": "medium", "color": "#e94560", "position": "left-third" },
     { "description": "Blue circle, medium", "shape": "circle", "size": "medium", "color": "#0f3460", "position": "center" },
@@ -41,12 +46,12 @@ Motion Brief:
     {
       "phase": "entrance",
       "time": [0, 1.5],
-      "description": "Three circles appear with staggered bounce-in (0.3s apart, left to right). Each starts at opacity 0, scale 0 and bounces to full size."
+      "description": "Three circles appear with staggered bounce-in (0.3s apart, left to right) using bounce easing. Each starts at opacity 0, scale 0 and bounces to full size."
     },
     {
       "phase": "main_action",
       "time": [1.5, 5],
-      "description": "Each circle bounces vertically with y oscillation (80px amplitude, moving down then back up) using bounce easing. Stagger 0.25s apart creating a wave effect. Use repeat for continuous bouncing."
+      "description": "Each circle bounces vertically with y oscillation (80px amplitude, moving down then back up) using ease-in-out easing. Stagger 0.25s apart creating a wave effect. Use repeat for continuous bouncing."
     },
     {
       "phase": "hold_and_exit",
@@ -73,6 +78,11 @@ Motion Brief:
     "palette": ["#2196F3", "#4CAF50", "#FF9800", "#E91E63"],
     "mood": "professional"
   },
+  "easingStrategy": {
+    "entrance": "ease-out-cubic",
+    "motion": "ease-in-out",
+    "exit": "ease-in"
+  },
   "objects": [
     { "description": "Chart title 'Sales Performance'", "shape": "text", "position": "top-center" },
     { "description": "Bar chart with 4 categories (Q1-Q4) and sample revenue data", "shape": "barChart_generator", "position": "center" }
@@ -81,7 +91,7 @@ Motion Brief:
     {
       "phase": "entrance",
       "time": [0, 1],
-      "description": "Title fades in at top. Then axis labels and gridlines appear with fade-in."
+      "description": "Title fades in at top with ease-out easing. Then axis labels and gridlines appear with fade-in."
     },
     {
       "phase": "main_action",
@@ -91,7 +101,7 @@ Motion Brief:
     {
       "phase": "hold_and_exit",
       "time": [7, 10],
-      "description": "Value labels appear above each bar with fade-in (staggered). Legend appears bottom-right. Hold final chart for 2s."
+      "description": "Value labels appear above each bar with ease-out fade-in (staggered). Legend appears bottom-right. Hold final chart for 2s."
     }
   ],
   "dataHints": {
@@ -118,6 +128,11 @@ Motion Brief:
     "background": "#0a0a1a",
     "palette": ["#00F5FF", "#0088AA", "#004455"],
     "mood": "tech"
+  },
+  "easingStrategy": {
+    "entrance": "ease-out-exp",
+    "motion": "ease-in-out",
+    "exit": "ease-in"
   },
   "objects": [
     { "description": "8 small circles arranged in a ring (radius 80px from center)", "shape": "circle", "size": "small", "position": "circular-ring" },
@@ -159,6 +174,11 @@ Motion Brief:
     "palette": ["#FFD700", "#FFFFFF", "#4ECDC4"],
     "mood": "premium"
   },
+  "easingStrategy": {
+    "entrance": "ease-out-elastic",
+    "motion": "ease-in-out",
+    "exit": "ease-in-out"
+  },
   "objects": [
     { "description": "Large central circle as logo mark, gold color", "shape": "circle", "size": "xlarge", "color": "#FFD700", "position": "center" },
     { "description": "Brand name text 'BRAND' below the logo mark", "shape": "text", "position": "bottom-center" },
@@ -199,6 +219,11 @@ Motion Brief:
     "background": { "type": "gradient", "from": "#0d1117", "to": "#1a2744", "direction": "to bottom right" },
     "palette": ["#2196F3", "#4CAF50", "#FF9800", "#E91E63"],
     "mood": "corporate"
+  },
+  "easingStrategy": {
+    "entrance": "ease-out-cubic",
+    "motion": "ease-in-out",
+    "exit": "ease-in"
   },
   "objects": [
     { "description": "Dashboard title 'Performance Dashboard'", "shape": "text", "position": "top-center" },
@@ -254,6 +279,12 @@ OUTPUT FORMAT: Return ONLY valid JSON matching the Motion Brief schema below. No
     "background": string | { "type": "gradient", "from": "#hex", "to": "#hex", "direction": "to bottom" },
     "palette": string[],     // 2-4 hex colors for the animation
     "mood": string           // playful, professional, dramatic, tech, premium, energetic, calm
+  },
+
+  "easingStrategy": {        // REQUIRED — derived from mood. Tells the spec converter which easing to use.
+    "entrance": string,      // Easing for entrance phase (e.g., "bounce", "ease-out-cubic", "ease-out-elastic")
+    "motion": string,        // Easing for main action phase (e.g., "ease-in-out", "ease-in-out-cubic")
+    "exit": string           // Easing for exit/hold phase (e.g., "ease-in", "ease-in-out")
   },
 
   "objects": [               // What appears on screen
@@ -326,18 +357,31 @@ ${Object.entries(PALETTE_PRESETS).map(([name, p]) => `- ${name}: bg=${p.bg}, col
 
 ---
 
+## EASING STRATEGY (REQUIRED)
+
+Every Motion Brief MUST include an "easingStrategy" field derived from the mood.
+Use these mappings:
+${Object.entries(EASING_STRATEGIES).map(([mood, e]) => `- ${mood}: entrance="${e.entrance}", motion="${e.motion}", exit="${e.exit}"`).join("\n")}
+
+The easingStrategy tells the spec converter which easing curves to use for each phase.
+Also mention easing in choreography descriptions (e.g., "slides in with bounce easing").
+
+---
+
 ## CRITICAL RULES
 
 1. ALWAYS include exactly 3 choreography phases: entrance, main_action, hold_and_exit
 2. The choreography time ranges must cover the full duration with no gaps
 3. Objects should be SPECIFIC — don't say "some shapes", say "3 medium circles"
-4. Choreography descriptions must be DETAILED — include easing, stagger timing, amplitude
+4. Choreography descriptions must be DETAILED — include easing names, stagger timing, amplitude, and end positions
 5. Reference available behaviors (fade-in, bounce-in, slide-in-*, pulse, shake) in choreography descriptions
-6. For data visualizations, include plausible sample data in dataHints
-7. Duration should match the complexity (see duration guidelines in animation principles)
-8. Never leave objects invisible without an entrance animation
-9. If the user mentions a specific color or shape, honor their request
-10. If the prompt is extremely vague (e.g., "animate something"), create an appealing shape animation with 3-5 objects
+6. ALWAYS include "easingStrategy" field — derive it from the mood using the easing strategy table above
+7. Mention easing in choreography descriptions (e.g., "bounces in with bounce easing", "fades out with ease-in")
+8. For data visualizations, include plausible sample data in dataHints
+9. Duration should match the complexity (see duration guidelines in animation principles)
+10. Never leave objects invisible without an entrance animation
+11. If the user mentions a specific color or shape, honor their request
+12. If the prompt is extremely vague (e.g., "animate something"), create an appealing shape animation with 3-5 objects
 
 ---
 
@@ -400,6 +444,23 @@ function validateMotionBrief(brief) {
     errors.push(`Invalid intent '${brief.intent}'. Must be one of: ${validIntents.join(", ")}`);
   }
 
+  // Quality: warn if easingStrategy is missing
+  if (!brief.easingStrategy) {
+    errors.push("Missing 'easingStrategy' — easing will be inferred from mood by the enricher");
+  }
+
+  // Quality: warn if choreography descriptions lack easing terms
+  const easingTerms = ["easing", "ease", "bounce", "elastic", "cubic", "linear", "spring"];
+  if (Array.isArray(brief.choreography)) {
+    for (let i = 0; i < brief.choreography.length; i++) {
+      const desc = (brief.choreography[i].description || "").toLowerCase();
+      const hasEasingMention = easingTerms.some(term => desc.includes(term));
+      if (!hasEasingMention) {
+        errors.push(`Choreography[${i}] description doesn't mention easing — animations may feel mechanical`);
+      }
+    }
+  }
+
   return errors;
 }
 
@@ -409,7 +470,7 @@ export async function expandPrompt(simplePrompt) {
   console.log("🎬 Expanding prompt: \"" + simplePrompt + "\"");
 
   const response = await client.responses.create({
-    model: "gpt-4o",
+    model: "gpt-4o-mini",
     temperature: 0,
     input: [
       { role: "system", content: SYSTEM_PROMPT },
@@ -430,6 +491,13 @@ export async function expandPrompt(simplePrompt) {
     brief = JSON.parse(cleaned);
   } catch (parseErr) {
     throw new Error("Failed to parse Motion Brief JSON: " + parseErr.message + "\nRaw output:\n" + cleaned.slice(0, 500));
+  }
+
+  // Auto-inject easingStrategy if missing (derive from mood)
+  if (!brief.easingStrategy && brief.style?.mood) {
+    const mood = brief.style.mood;
+    brief.easingStrategy = EASING_STRATEGIES[mood] || EASING_STRATEGIES.professional;
+    console.log(`[promptExpander] Auto-injected easingStrategy from mood "${mood}"`);
   }
 
   // Validate the brief

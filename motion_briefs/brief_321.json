@@ -1,0 +1,65 @@
+{
+  "intent": "shape_animation",
+  "title": "pendulum_swing",
+  "duration": 8,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": "#F8F9FA",
+    "palette": [
+      "#FFB3BA",
+      "#BAFFC9",
+      "#BAE1FF"
+    ],
+    "mood": "calm"
+  },
+  "easingStrategy": {
+    "entrance": "ease-out-sin",
+    "motion": "ease-in-out",
+    "exit": "ease-in-sin"
+  },
+  "objects": [
+    {
+      "description": "Thin vertical rectangle acting as the rod",
+      "shape": "rectangle",
+      "size": "large",
+      "color": "#333333",
+      "position": "top-center"
+    },
+    {
+      "description": "Small circle acting as the pendulum weight",
+      "shape": "circle",
+      "size": "small",
+      "color": "#FFB3BA",
+      "position": "bottom-center"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        1
+      ],
+      "description": "The rod and pendulum weight fade in together from opacity 0 to full visibility with ease-out-sin easing."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        1,
+        7
+      ],
+      "description": "The rod swings left and right around the top anchor point with a pivot effect. The circle remains attached at the bottom. The swing amplitude is 30 degrees, using ease-in-out easing for a smooth motion."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        7,
+        8
+      ],
+      "description": "The swinging motion slows down gradually, coming to a gentle stop at the center position. The final state holds for 1 second before fading out with ease-in-sin easing."
+    }
+  ]
+}

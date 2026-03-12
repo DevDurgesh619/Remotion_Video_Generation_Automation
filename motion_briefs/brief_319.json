@@ -1,0 +1,74 @@
+{
+  "intent": "shape_animation",
+  "title": "robot_wave",
+  "duration": 8,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": "#F8F9FA",
+    "palette": [
+      "#333333",
+      "#666666",
+      "#999999"
+    ],
+    "mood": "playful"
+  },
+  "objects": [
+    {
+      "description": "Rectangle body of the robot",
+      "shape": "rectangle",
+      "size": "medium",
+      "color": "#666666",
+      "position": "center"
+    },
+    {
+      "description": "Circle head of the robot",
+      "shape": "circle",
+      "size": "small",
+      "color": "#333333",
+      "position": "top-center"
+    },
+    {
+      "description": "Left arm of the robot",
+      "shape": "rectangle",
+      "size": "tiny",
+      "color": "#999999",
+      "position": "left-third"
+    },
+    {
+      "description": "Right arm of the robot",
+      "shape": "rectangle",
+      "size": "tiny",
+      "color": "#999999",
+      "position": "right-third"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        1
+      ],
+      "description": "Robot components appear with a fade-in and slight scale (0.9→1) over 1s, easing out."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        1,
+        6
+      ],
+      "description": "The robot's body gently oscillates left and right (20px amplitude) with ease-in-out. Arms perform a waving motion using pivot rotation from their top connection points, alternating up and down. The head follows the body's movement."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        6,
+        8
+      ],
+      "description": "The robot stops moving and holds its final position. All components remain visible until the end."
+    }
+  ]
+}

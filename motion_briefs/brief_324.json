@@ -1,0 +1,57 @@
+{
+  "intent": "shape_animation",
+  "title": "checkerboard_fill_animation",
+  "duration": 5,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": "#000000",
+    "palette": [
+      "#FFFFFF",
+      "#000000"
+    ],
+    "mood": "playful"
+  },
+  "easingStrategy": {
+    "entrance": "ease-out-cubic",
+    "motion": "ease-in-out",
+    "exit": "ease-in"
+  },
+  "objects": [
+    {
+      "description": "White square outline, centered",
+      "shape": "rectangle",
+      "size": "large",
+      "color": "#FFFFFF",
+      "position": "center"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        1
+      ],
+      "description": "The white square outline appears with a fade-in effect and a 4px white stroke, using ease-out easing."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        1,
+        4
+      ],
+      "description": "The checkerboard pattern fills in sequentially with an 8x8 grid of alternating black and white squares. Each small square (30px) appears row by row from top to bottom, with each row taking 0.375s to fill. Use ease-in-out easing for smooth transitions."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        4,
+        5
+      ],
+      "description": "The complete checkerboard pattern holds for 1 second, maintaining the filled state before the animation ends."
+    }
+  ]
+}

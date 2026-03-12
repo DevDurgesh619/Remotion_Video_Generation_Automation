@@ -12,8 +12,8 @@ import {
   wrapperStyle,
   buildBoxShadow,
   buildGlowShadow,
-  buildGlowFilter,
   buildFillAndStroke,
+  buildFilterString,
 } from "./renderHelpers";
 
 /** Merge box-shadow and glow-shadow into a single CSS value. */
@@ -36,6 +36,7 @@ export function renderCircle(
       borderRadius: "50%",
       ...buildFillAndStroke(obj, state),
       boxShadow: combinedBoxShadow(state),
+      filter: buildFilterString(state),
     },
   });
 }
@@ -54,6 +55,7 @@ export function renderSquare(
       borderRadius: state.cornerRadius > 0 ? state.cornerRadius : undefined,
       ...buildFillAndStroke(obj, state),
       boxShadow: combinedBoxShadow(state),
+      filter: buildFilterString(state),
     },
   });
 }
@@ -73,6 +75,7 @@ export function renderRectangle(
       borderRadius: state.cornerRadius > 0 ? state.cornerRadius : undefined,
       ...buildFillAndStroke(obj, state),
       boxShadow: combinedBoxShadow(state),
+      filter: buildFilterString(state),
     },
   });
 }
@@ -95,7 +98,7 @@ export function renderTriangle(
 
   return React.createElement(
     "div",
-    { key: obj.id, style: { ...wrapperStyle(obj, state, w, h), filter: buildGlowFilter(state) } },
+    { key: obj.id, style: { ...wrapperStyle(obj, state, w, h), filter: buildFilterString(state) } },
     React.createElement(
       "svg",
       {
@@ -180,6 +183,86 @@ function buildTrianglePath(
 
 function tf(n: number): string { return n.toFixed(2); }
 
+// ─── Pentagon ────────────────────────────────────────────────────────────────
+
+export function renderPentagon(
+  obj: SceneObject,
+  state: ComputedObjectState,
+): React.ReactElement {
+  const w = state.width;
+  const h = state.height;
+  const r = Math.min(w, h) / 2;
+  const cx = w / 2;
+  const cy = h / 2;
+
+  // 5 vertices: start at top (-90°), step 72°
+  const pts = Array.from({ length: 5 }, (_, k) => {
+    const angle = (Math.PI / 180) * (-90 + k * 72);
+    return [cx + r * Math.cos(angle), cy + r * Math.sin(angle)] as [number, number];
+  });
+
+  const d = `M ${tf(pts[0][0])} ${tf(pts[0][1])} ` +
+    pts.slice(1).map(p => `L ${tf(p[0])} ${tf(p[1])}`).join(" ") + " Z";
+
+  const fillColor = obj.fill === false ? "none" : (state.color || "#000000");
+
+  return React.createElement(
+    "div",
+    { key: obj.id, style: { ...wrapperStyle(obj, state, w, h), filter: buildFilterString(state) } },
+    React.createElement(
+      "svg",
+      { width: w, height: h, viewBox: `0 0 ${w} ${h}`, style: { display: "block", overflow: "visible" } },
+      React.createElement("path", {
+        d,
+        fill: fillColor,
+        stroke: state.stroke ? state.stroke.color : "none",
+        strokeWidth: state.stroke ? state.stroke.width : 0,
+      }),
+    ),
+  );
+}
+
+// ─── Star ────────────────────────────────────────────────────────────────────
+
+export function renderStar(
+  obj: SceneObject,
+  state: ComputedObjectState,
+): React.ReactElement {
+  const w = state.width;
+  const h = state.height;
+  const outerR = Math.min(w, h) / 2;
+  const innerR = outerR * 0.4;
+  const cx = w / 2;
+  const cy = h / 2;
+
+  // 10 vertices: alternating outer (even) and inner (odd), start at top (-90°), step 36°
+  const pts = Array.from({ length: 10 }, (_, k) => {
+    const angle = (Math.PI / 180) * (-90 + k * 36);
+    const r = k % 2 === 0 ? outerR : innerR;
+    return [cx + r * Math.cos(angle), cy + r * Math.sin(angle)] as [number, number];
+  });
+
+  const d = `M ${tf(pts[0][0])} ${tf(pts[0][1])} ` +
+    pts.slice(1).map(p => `L ${tf(p[0])} ${tf(p[1])}`).join(" ") + " Z";
+
+  const fillColor = obj.fill === false ? "none" : (state.color || "#000000");
+
+  return React.createElement(
+    "div",
+    { key: obj.id, style: { ...wrapperStyle(obj, state, w, h), filter: buildFilterString(state) } },
+    React.createElement(
+      "svg",
+      { width: w, height: h, viewBox: `0 0 ${w} ${h}`, style: { display: "block", overflow: "visible" } },
+      React.createElement("path", {
+        d,
+        fill: fillColor,
+        stroke: state.stroke ? state.stroke.color : "none",
+        strokeWidth: state.stroke ? state.stroke.width : 0,
+      }),
+    ),
+  );
+}
+
 // ─── Line ───────────────────────────────────────────────────────────────────
 
 export function renderLine(
@@ -200,6 +283,7 @@ export function renderLine(
     style: {
       ...wrapperStyle(obj, state, lineW, lineH),
       backgroundColor: strokeColor,
+      filter: buildFilterString(state),
     },
   });
 }

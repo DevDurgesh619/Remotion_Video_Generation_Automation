@@ -1,0 +1,176 @@
+{
+  "scene": "circle_stick_on_rotating_square",
+  "duration": 8,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#1a1a2e",
+  "objects": [
+    {
+      "id": "square_1",
+      "shape": "rectangle",
+      "size": [
+        180,
+        180
+      ],
+      "color": "#FFD700",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "circle_1",
+      "shape": "circle",
+      "diameter": 70,
+      "color": "#e94560",
+      "pos": [
+        -90,
+        -90
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "circle_2",
+      "shape": "circle",
+      "diameter": 70,
+      "color": "#0f3460",
+      "pos": [
+        90,
+        -90
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "circle_3",
+      "shape": "circle",
+      "diameter": 70,
+      "color": "#533483",
+      "pos": [
+        -90,
+        90
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "circle_4",
+      "shape": "circle",
+      "diameter": 70,
+      "color": "#4ECDC4",
+      "pos": [
+        90,
+        90
+      ],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "square_1",
+      "time": [
+        0,
+        2
+      ],
+      "behavior": "grow-from-center"
+    },
+    {
+      "target": "circle_1",
+      "time": [
+        0,
+        2
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "circle_2",
+      "time": [
+        0,
+        2
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "circle_3",
+      "time": [
+        0,
+        2
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "circle_4",
+      "time": [
+        0,
+        2
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "square_1",
+      "time": [
+        2,
+        6
+      ],
+      "rotation": [
+        0,
+        360
+      ],
+      "easing": "linear",
+      "repeat": "infinite"
+    },
+    {
+      "target": "square_1",
+      "time": [
+        6,
+        8
+      ],
+      "rotation": [
+        360,
+        360
+      ]
+    },
+    {
+      "target": "square_1",
+      "time": [
+        6,
+        8
+      ],
+      "behavior": "fade-out"
+    },
+    {
+      "target": "circle_1",
+      "time": [
+        6,
+        8
+      ],
+      "behavior": "fade-out"
+    },
+    {
+      "target": "circle_2",
+      "time": [
+        6,
+        8
+      ],
+      "behavior": "fade-out"
+    },
+    {
+      "target": "circle_3",
+      "time": [
+        6,
+        8
+      ],
+      "behavior": "fade-out"
+    },
+    {
+      "target": "circle_4",
+      "time": [
+        6,
+        8
+      ],
+      "behavior": "fade-out"
+    }
+  ]
+}

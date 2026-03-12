@@ -1,41 +1,51 @@
 {
   "intent": "shape_animation",
-  "title": "square_circle_rectangle_dancing",
-  "duration": 8,
+  "title": "triangles_point_inward",
+  "duration": 7,
   "canvas": {
     "w": 1920,
     "h": 1080
   },
   "style": {
-    "background": "#1a1a2e",
+    "background": {
+      "type": "gradient",
+      "from": "#0d1117",
+      "to": "#1a1a2e",
+      "direction": "to bottom"
+    },
     "palette": [
-      "#e94560",
-      "#0f3460",
-      "#533483"
+      "#E53935"
     ],
-    "mood": "playful"
+    "mood": "dramatic"
   },
   "objects": [
     {
-      "description": "Red square, medium",
-      "shape": "rectangle",
+      "description": "Top triangle pointing down",
+      "shape": "triangle",
       "size": "medium",
-      "color": "#e94560",
-      "position": "center"
+      "color": "#E53935",
+      "position": "top-center"
     },
     {
-      "description": "Blue circle, medium",
-      "shape": "circle",
+      "description": "Bottom triangle pointing up",
+      "shape": "triangle",
       "size": "medium",
-      "color": "#0f3460",
-      "position": "center"
+      "color": "#E53935",
+      "position": "bottom-center"
     },
     {
-      "description": "Purple rectangle, medium",
-      "shape": "rectangle",
+      "description": "Left triangle pointing right",
+      "shape": "triangle",
       "size": "medium",
-      "color": "#533483",
-      "position": "center"
+      "color": "#E53935",
+      "position": "left-center"
+    },
+    {
+      "description": "Right triangle pointing left",
+      "shape": "triangle",
+      "size": "medium",
+      "color": "#E53935",
+      "position": "right-center"
     }
   ],
   "choreography": [
@@ -43,25 +53,25 @@
       "phase": "entrance",
       "time": [
         0,
-        1.5
+        2
       ],
-      "description": "Shapes appear with staggered bounce-in (0.3s apart). Each starts at opacity 0, scale 0 and bounces to full size."
+      "description": "All four triangles slide in from their respective edges toward the center, stopping 100px from the center."
     },
     {
       "phase": "main_action",
       "time": [
-        1.5,
-        6
+        2,
+        4
       ],
-      "description": "Shapes perform a synchronized dance with scale and rotation. Each shape scales up slightly and rotates 360° with ease-in-out. Staggered timing creates a wave effect."
+      "description": "Triangles rotate slowly 180° in place."
     },
     {
       "phase": "hold_and_exit",
       "time": [
-        6,
-        8
+        4,
+        7
       ],
-      "description": "Shapes slow down and hold final position. All shapes fade out together over the last 1s with ease-in easing."
+      "description": "Triangles move closer to the center, stopping 50px from the center, and lower opacity to 60%. In the last second, all triangles pulse scale from 100% to 110% and back to 100%."
     }
   ]
 }

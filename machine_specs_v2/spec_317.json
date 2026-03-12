@@ -1,0 +1,165 @@
+{
+  "scene": "two_circles_connected_rotation",
+  "duration": 6,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#1a1a2e",
+  "objects": [
+    {
+      "id": "circle_red",
+      "shape": "circle",
+      "diameter": 120,
+      "color": "#e94560",
+      "pos": [
+        -300,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0.9
+    },
+    {
+      "id": "circle_blue",
+      "shape": "circle",
+      "diameter": 120,
+      "color": "#4ECDC4",
+      "pos": [
+        300,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0.9
+    },
+    {
+      "id": "connecting_line",
+      "shape": "line",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0.9
+    }
+  ],
+  "timeline": [
+    {
+      "target": "circle_red",
+      "time": [
+        0,
+        1
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "circle_red",
+      "time": [
+        0,
+        1
+      ],
+      "scale": [
+        0.9,
+        1
+      ]
+    },
+    {
+      "target": "circle_blue",
+      "time": [
+        0,
+        1
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "circle_blue",
+      "time": [
+        0,
+        1
+      ],
+      "scale": [
+        0.9,
+        1
+      ]
+    },
+    {
+      "target": "connecting_line",
+      "time": [
+        0,
+        1
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "connecting_line",
+      "time": [
+        0,
+        1
+      ],
+      "scale": [
+        0.9,
+        1
+      ]
+    },
+    {
+      "target": "circle_red",
+      "time": [
+        1,
+        5
+      ],
+      "rotation": [
+        0,
+        360
+      ],
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "circle_blue",
+      "time": [
+        1,
+        5
+      ],
+      "rotation": [
+        0,
+        360
+      ],
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "connecting_line",
+      "time": [
+        1,
+        5
+      ],
+      "rotation": [
+        0,
+        360
+      ],
+      "easing": "ease-in-out"
+    },
+    {
+      "target": "circle_red",
+      "time": [
+        5,
+        6
+      ],
+      "behavior": "fade-out"
+    },
+    {
+      "target": "circle_blue",
+      "time": [
+        5,
+        6
+      ],
+      "behavior": "fade-out"
+    },
+    {
+      "target": "connecting_line",
+      "time": [
+        5,
+        6
+      ],
+      "behavior": "fade-out"
+    }
+  ]
+}

@@ -88,6 +88,19 @@ export const DURATION_GUIDELINES = {
   loading: { min: 3, max: 5, description: "spinners, loaders (looping feel)" },
 };
 
+// ─── Easing Strategies (mood → easing curves) ──────────────────────────────
+
+export const EASING_STRATEGIES = {
+  playful:      { entrance: "bounce",           motion: "ease-in-out",       exit: "ease-in" },
+  dramatic:     { entrance: "ease-out-cubic",    motion: "ease-in-out-cubic", exit: "ease-in-cubic" },
+  tech:         { entrance: "ease-out-exp",      motion: "ease-in-out",       exit: "ease-in" },
+  premium:      { entrance: "ease-out-elastic",  motion: "ease-in-out",       exit: "ease-in-out" },
+  professional: { entrance: "ease-out-cubic",    motion: "ease-in-out",       exit: "ease-in" },
+  energetic:    { entrance: "bounce",            motion: "ease-out-bounce",   exit: "ease-in" },
+  calm:         { entrance: "ease-out-sin",      motion: "ease-in-out-sin",   exit: "ease-in-sin" },
+  corporate:    { entrance: "ease-out-cubic",    motion: "ease-in-out",       exit: "ease-in" },
+};
+
 // ─── Animation Principles ───────────────────────────────────────────────────
 // These are embedded directly into the system prompt as expert knowledge.
 
@@ -196,4 +209,42 @@ When the intent is data_visualization or infographic, recommend generators:
 - pieChart — pie or donut charts with segments
 - statGrid — KPI stat cards in a grid layout
 - processFlow — step-by-step pipeline with arrows
+
+### K. ADVANCED MOTION CONCEPTS
+
+**ORBIT (circular paths):**
+Use motionType:"orbit" instead of manually chaining 4+ pos keyframes for circular motion.
+Specify center, radius, startAngle (0=right, 90=down, 180=left, 270=up), endAngle, direction.
+Add repeat:"infinite" for continuous orbiting; easing:"linear" gives smoothest circular arc.
+Example use case: planet orbiting a star, ball rolling around a track, loading spinner.
+
+**PIVOT POINTS (rotation around non-center points):**
+Use "pivot":[x,y] on the object to shift the rotation/scale anchor from the center.
+pivot:[0,70] — rotates around a point 70px below center (base of a pendulum).
+pivot:[-halfWidth,0] — rotates around the left edge (door hinge, clock hand base, arm shoulder).
+pivot:[0,0] — default, rotates around object center.
+The object's visual position (pos) stays where you put it; the pivot just shifts the rotation point.
+
+**INHERITANCE (complex rigs: robot arms, solar systems):**
+Use parent + localPos for basic position-only parent-child linking.
+Add inheritRotation:true when children should swing with the parent's rotation.
+Add inheritScale:true when children should grow/shrink with the parent's scale.
+Classic arm rig: parent = pivot joint (tiny circle at shoulder), child = arm rectangle with
+  localPos:[halfArmLength, 0] and inheritRotation:true.
+Animating the joint's rotation makes the arm sweep in an arc without any manual pos math.
+
+**FOLLOW CONSTRAINTS (shadow/trail/label-tracking effects):**
+Use motionType:"follow" on timeline events for time-bounded tracking within a time range.
+Use SceneObject.constraints:[{type:"follow",...}] for persistent tracking the whole video.
+followLag creates a trail effect — the shadow appears to chase the leader.
+followOffset positions the follower relative to the target (e.g., offsetY:-60 for a label above).
+Use attach (instead of follow) when the offset should rotate with the target (rigid attachment).
+
+**DESIGN PATTERNS:**
+- Solar system: large central circle + planets using motionType:"orbit" at different radii/speeds
+- Robot arm: pivot joint → upper arm (inheritRotation) → forearm (inheritRotation) chain
+- Bouncing ball with shadow: ball gets y animation; shadow uses constraints follow + offsetY:250
+- Clock: clock face + hour hand with pivot:[0,halfLength], minute hand with pivot:[0,halfLength]
+- Pendulum: anchor point at top + rod using pivot:[0,-halfLength] + rotation oscillation
 `;
+

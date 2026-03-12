@@ -1,0 +1,203 @@
+{
+  "scene": "robot_wave",
+  "duration": 8,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#F8F9FA",
+  "objects": [
+    {
+      "id": "robot_body",
+      "shape": "rectangle",
+      "size": [
+        120,
+        120
+      ],
+      "color": "#666666",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0.9
+    },
+    {
+      "id": "robot_head",
+      "shape": "circle",
+      "diameter": 70,
+      "color": "#333333",
+      "pos": [
+        0,
+        -200
+      ],
+      "opacity": 0,
+      "scale": 0.9
+    },
+    {
+      "id": "left_arm",
+      "shape": "rectangle",
+      "size": [
+        40,
+        40
+      ],
+      "color": "#999999",
+      "pos": [
+        -300,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0.9
+    },
+    {
+      "id": "right_arm",
+      "shape": "rectangle",
+      "size": [
+        40,
+        40
+      ],
+      "color": "#999999",
+      "pos": [
+        300,
+        0
+      ],
+      "opacity": 0,
+      "scale": 0.9
+    }
+  ],
+  "timeline": [
+    {
+      "target": "robot_body",
+      "time": [
+        0,
+        1
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "robot_body",
+      "time": [
+        0,
+        1
+      ],
+      "scale": [
+        0.9,
+        1
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "robot_head",
+      "time": [
+        0,
+        1
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "robot_head",
+      "time": [
+        0,
+        1
+      ],
+      "scale": [
+        0.9,
+        1
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "left_arm",
+      "time": [
+        0,
+        1
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "left_arm",
+      "time": [
+        0,
+        1
+      ],
+      "scale": [
+        0.9,
+        1
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "right_arm",
+      "time": [
+        0,
+        1
+      ],
+      "behavior": "fade-in"
+    },
+    {
+      "target": "right_arm",
+      "time": [
+        0,
+        1
+      ],
+      "scale": [
+        0.9,
+        1
+      ],
+      "easing": "ease-out"
+    },
+    {
+      "target": "robot_body",
+      "time": [
+        1,
+        6
+      ],
+      "x": [
+        -20,
+        20
+      ],
+      "easing": "ease-in-out",
+      "repeat": "infinite"
+    },
+    {
+      "target": "robot_head",
+      "time": [
+        1,
+        6
+      ],
+      "x": [
+        -20,
+        20
+      ],
+      "easing": "ease-in-out",
+      "repeat": "infinite"
+    },
+    {
+      "target": "left_arm",
+      "time": [
+        1,
+        6
+      ],
+      "rotation": [
+        0,
+        30
+      ],
+      "easing": "ease-in-out",
+      "repeat": "infinite"
+    },
+    {
+      "target": "right_arm",
+      "time": [
+        1,
+        6
+      ],
+      "rotation": [
+        0,
+        -30
+      ],
+      "easing": "ease-in-out",
+      "repeat": "infinite"
+    }
+  ]
+}

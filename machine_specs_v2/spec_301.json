@@ -1,188 +1,319 @@
 {
-  "scene": "square_circle_rectangle_dancing",
-  "duration": 8,
+  "scene": "triangles_point_inward",
+  "duration": 7,
   "fps": 30,
   "canvas": {
     "w": 1920,
     "h": 1080
   },
-  "bg": "#1a1a2e",
+  "bg": {
+    "type": "gradient",
+    "from": "#0d1117",
+    "to": "#1a1a2e",
+    "direction": "to bottom"
+  },
   "objects": [
     {
-      "id": "square_1",
-      "shape": "rectangle",
+      "id": "triangle_top",
+      "shape": "triangle",
       "size": [
         120,
         120
       ],
-      "color": "#e94560",
+      "color": "#E53935",
       "pos": [
         0,
-        0
+        -200
       ],
-      "opacity": 0,
-      "scale": 0
+      "facing": "down"
     },
     {
-      "id": "circle_1",
-      "shape": "circle",
-      "diameter": 120,
-      "color": "#0f3460",
-      "pos": [
-        0,
-        0
-      ],
-      "opacity": 0,
-      "scale": 0
-    },
-    {
-      "id": "rectangle_1",
-      "shape": "rectangle",
+      "id": "triangle_bottom",
+      "shape": "triangle",
       "size": [
         120,
         120
       ],
-      "color": "#533483",
+      "color": "#E53935",
       "pos": [
         0,
+        200
+      ],
+      "facing": "up"
+    },
+    {
+      "id": "triangle_left",
+      "shape": "triangle",
+      "size": [
+        120,
+        120
+      ],
+      "color": "#E53935",
+      "pos": [
+        -300,
         0
       ],
-      "opacity": 0,
-      "scale": 0
+      "facing": "right"
+    },
+    {
+      "id": "triangle_right",
+      "shape": "triangle",
+      "size": [
+        120,
+        120
+      ],
+      "color": "#E53935",
+      "pos": [
+        300,
+        0
+      ],
+      "facing": "left"
     }
   ],
   "timeline": [
     {
-      "target": "square_1",
+      "target": "triangle_top",
       "time": [
         0,
-        1.5
+        2
       ],
-      "behavior": "bounce-in"
-    },
-    {
-      "target": "circle_1",
-      "time": [
-        0.3,
-        1.8
-      ],
-      "behavior": "bounce-in"
-    },
-    {
-      "target": "rectangle_1",
-      "time": [
-        0.6,
-        2.1
-      ],
-      "behavior": "bounce-in"
-    },
-    {
-      "target": "square_1",
-      "time": [
-        1.5,
-        6
-      ],
-      "easing": "ease-in-out",
-      "scale": [
-        1,
-        1.1
+      "pos": [
+        [
+          0,
+          -200
+        ],
+        [
+          0,
+          -100
+        ]
       ]
     },
     {
-      "target": "square_1",
+      "target": "triangle_bottom",
       "time": [
-        1.5,
-        6
-      ],
-      "easing": "ease-in-out",
-      "rotation": [
         0,
-        360
+        2
+      ],
+      "pos": [
+        [
+          0,
+          200
+        ],
+        [
+          0,
+          100
+        ]
       ]
     },
     {
-      "target": "circle_1",
+      "target": "triangle_left",
+      "time": [
+        0,
+        2
+      ],
+      "pos": [
+        [
+          -300,
+          0
+        ],
+        [
+          -100,
+          0
+        ]
+      ]
+    },
+    {
+      "target": "triangle_right",
+      "time": [
+        0,
+        2
+      ],
+      "pos": [
+        [
+          300,
+          0
+        ],
+        [
+          100,
+          0
+        ]
+      ]
+    },
+    {
+      "target": "triangle_top",
       "time": [
         2,
-        6.5
+        4
       ],
-      "easing": "ease-in-out",
-      "scale": [
-        1,
-        1.1
+      "rotation": [
+        0,
+        180
       ]
     },
     {
-      "target": "circle_1",
+      "target": "triangle_bottom",
       "time": [
         2,
-        6.5
+        4
       ],
-      "easing": "ease-in-out",
       "rotation": [
         0,
-        360
+        180
       ]
     },
     {
-      "target": "rectangle_1",
+      "target": "triangle_left",
       "time": [
-        2.5,
-        7
+        2,
+        4
       ],
-      "easing": "ease-in-out",
-      "scale": [
-        1,
-        1.1
-      ]
-    },
-    {
-      "target": "rectangle_1",
-      "time": [
-        2.5,
-        7
-      ],
-      "easing": "ease-in-out",
       "rotation": [
         0,
-        360
+        180
       ]
     },
     {
-      "target": "square_1",
+      "target": "triangle_right",
       "time": [
-        7,
-        8
+        2,
+        4
       ],
-      "easing": "ease-in",
-      "opacity": [
-        1,
-        0
+      "rotation": [
+        0,
+        180
       ]
     },
     {
-      "target": "circle_1",
+      "target": "triangle_top",
       "time": [
-        7,
-        8
+        4,
+        6
       ],
-      "easing": "ease-in",
+      "pos": [
+        [
+          0,
+          -100
+        ],
+        [
+          0,
+          -50
+        ]
+      ],
       "opacity": [
         1,
-        0
+        0.6
       ]
     },
     {
-      "target": "rectangle_1",
+      "target": "triangle_bottom",
       "time": [
-        7,
-        8
+        4,
+        6
       ],
-      "easing": "ease-in",
+      "pos": [
+        [
+          0,
+          100
+        ],
+        [
+          0,
+          50
+        ]
+      ],
       "opacity": [
         1,
-        0
+        0.6
       ]
+    },
+    {
+      "target": "triangle_left",
+      "time": [
+        4,
+        6
+      ],
+      "pos": [
+        [
+          -100,
+          0
+        ],
+        [
+          -50,
+          0
+        ]
+      ],
+      "opacity": [
+        1,
+        0.6
+      ]
+    },
+    {
+      "target": "triangle_right",
+      "time": [
+        4,
+        6
+      ],
+      "pos": [
+        [
+          100,
+          0
+        ],
+        [
+          50,
+          0
+        ]
+      ],
+      "opacity": [
+        1,
+        0.6
+      ]
+    },
+    {
+      "target": "triangle_top",
+      "time": [
+        6,
+        7
+      ],
+      "behavior": "pulse",
+      "params": {
+        "amplitude": 0.1,
+        "cycles": 1
+      }
+    },
+    {
+      "target": "triangle_bottom",
+      "time": [
+        6,
+        7
+      ],
+      "behavior": "pulse",
+      "params": {
+        "amplitude": 0.1,
+        "cycles": 1
+      }
+    },
+    {
+      "target": "triangle_left",
+      "time": [
+        6,
+        7
+      ],
+      "behavior": "pulse",
+      "params": {
+        "amplitude": 0.1,
+        "cycles": 1
+      }
+    },
+    {
+      "target": "triangle_right",
+      "time": [
+        6,
+        7
+      ],
+      "behavior": "pulse",
+      "params": {
+        "amplitude": 0.1,
+        "cycles": 1
+      }
     }
   ]
 }

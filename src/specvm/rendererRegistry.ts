@@ -17,6 +17,8 @@ import {
   renderRectangle,
   renderTriangle,
   renderLine,
+  renderPentagon,
+  renderStar,
 } from "./shapeRenderers";
 import { renderSVG, renderImage, renderText, renderAsset } from "./mediaRenderers";
 import { renderArc, renderPolyline, renderPolygon } from "./chartRenderers";
@@ -43,6 +45,8 @@ export const rendererRegistry: Record<string, RendererFn> = {
   arc: renderArc,
   polyline: renderPolyline,
   polygon: renderPolygon,
+  pentagon: renderPentagon,
+  star: renderStar,
 };
 
 // ─── Track warnings to avoid per-frame spam ─────────────────────────────────

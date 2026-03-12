@@ -1,0 +1,53 @@
+{
+  "intent": "shape_animation",
+  "title": "line_glow_pulse",
+  "duration": 4,
+  "canvas": {
+    "w": 1080,
+    "h": 1920
+  },
+  "style": {
+    "background": "#0a0a1a",
+    "palette": [
+      "#00F5FF",
+      "#FF00E5",
+      "#39FF14"
+    ],
+    "mood": "tech"
+  },
+  "objects": [
+    {
+      "description": "Horizontal line with glowing effect",
+      "shape": "line",
+      "size": "large",
+      "color": "#00F5FF",
+      "position": "center"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        0.5
+      ],
+      "description": "Line fades in with a glowing effect, starting from opacity 0 to full visibility."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        0.5,
+        3.5
+      ],
+      "description": "Line pulses with a glow effect, increasing brightness and scale slightly (scale 1→1.08→1) in a loop. Use ease-in-out for smooth pulsing."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        3.5,
+        4
+      ],
+      "description": "Line holds in its final glowing state, maintaining the glow until the end."
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "intent": "shape_animation",
+  "title": "colorful_shapes_rotation",
+  "duration": 8,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": "#1a1a2e",
+    "palette": [
+      "#FF6B6B",
+      "#4ECDC4",
+      "#FFD700",
+      "#E8505B"
+    ],
+    "mood": "playful"
+  },
+  "objects": [
+    {
+      "description": "Red circle, medium",
+      "shape": "circle",
+      "size": "medium",
+      "color": "#FF6B6B",
+      "position": "center"
+    },
+    {
+      "description": "Teal rectangle, medium",
+      "shape": "rectangle",
+      "size": "medium",
+      "color": "#4ECDC4",
+      "position": "center"
+    },
+    {
+      "description": "Yellow square, medium",
+      "shape": "rectangle",
+      "size": "medium",
+      "color": "#FFD700",
+      "position": "center"
+    },
+    {
+      "description": "Pink triangle, medium",
+      "shape": "triangle",
+      "size": "medium",
+      "color": "#E8505B",
+      "position": "center"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        2
+      ],
+      "description": "Shapes appear with a fade-in and slight scale (0.9 to 1) over 0.8s, easing out. They are positioned to touch each other, forming a composite shape."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        2,
+        6
+      ],
+      "description": "Each shape rotates around its own z-axis at different speeds. The circle rotates slowly, the rectangle at medium speed, the square faster, and the triangle the fastest. Colors blend at the edges where they touch."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        6,
+        8
+      ],
+      "description": "Shapes slow their rotation and hold position. They fade out together over the last 1s with ease-in easing."
+    }
+  ]
+}

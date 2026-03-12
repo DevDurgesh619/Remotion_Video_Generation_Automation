@@ -1,7 +1,7 @@
 {
   "intent": "shape_animation",
-  "title": "wheel_motion_circle",
-  "duration": 6,
+  "title": "orbiting_circle",
+  "duration": 8,
   "canvas": {
     "w": 1920,
     "h": 1080
@@ -9,26 +9,26 @@
   "style": {
     "background": "#1a1a2e",
     "palette": [
-      "#e94560",
-      "#0f3460",
-      "#533483"
+      "#FFD700",
+      "#FFFFFF",
+      "#333333"
     ],
-    "mood": "tech"
+    "mood": "calm"
   },
   "objects": [
     {
-      "description": "Large circle with 12 lines radiating from center, resembling a wheel",
+      "description": "Large circle with stroke, no fill",
       "shape": "circle",
-      "size": "large",
-      "color": "#e94560",
+      "size": "xlarge",
+      "color": "#FFFFFF",
       "position": "center"
     },
     {
-      "description": "12 lines radiating from the center of the circle",
-      "shape": "line",
-      "size": "medium",
-      "color": "#0f3460",
-      "position": "center"
+      "description": "Small yellow circle orbiting around the large circle",
+      "shape": "circle",
+      "size": "small",
+      "color": "#FFD700",
+      "position": "circular-ring"
     }
   ],
   "choreography": [
@@ -38,23 +38,23 @@
         0,
         1
       ],
-      "description": "Circle and lines fade in together with a slight scale from 0.9 to 1, using ease-out-cubic."
+      "description": "Large circle fades in with a stroke, no fill. Small yellow circle fades in at the top of the large circle."
     },
     {
       "phase": "main_action",
       "time": [
         1,
-        5
+        6
       ],
-      "description": "The circle and lines rotate together clockwise, creating a wheel motion effect. Use continuous rotation with ease-in-out for smooth motion."
+      "description": "Small yellow circle orbits around the large circle in a clockwise direction. Use smooth ease-in-out for continuous motion."
     },
     {
       "phase": "hold_and_exit",
       "time": [
-        5,
-        6
+        6,
+        8
       ],
-      "description": "Rotation slows down and holds. The circle and lines fade out together over the last second with ease-in."
+      "description": "Small circle continues orbiting. Both circles hold position until the end."
     }
   ]
 }

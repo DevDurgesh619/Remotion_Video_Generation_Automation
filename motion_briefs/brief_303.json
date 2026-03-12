@@ -1,27 +1,49 @@
 {
   "intent": "shape_animation",
-  "title": "stick_figure_character_animation",
-  "duration": 8,
+  "title": "circle_orbit_complex",
+  "duration": 10,
   "canvas": {
     "w": 1920,
     "h": 1080
   },
   "style": {
-    "background": "#F8F9FA",
+    "background": "#000000",
     "palette": [
-      "#333333",
-      "#666666",
-      "#999999"
+      "#FFFFFF",
+      "#FF0000",
+      "#00FF00",
+      "#0000FF"
     ],
-    "mood": "playful"
+    "mood": "tech"
   },
   "objects": [
     {
-      "description": "Stick figure character",
-      "shape": "stick_figure_component",
-      "size": "medium",
-      "color": "#333333",
+      "description": "Large circle with white outline, no fill",
+      "shape": "circle",
+      "size": "xlarge",
+      "color": "#FFFFFF",
       "position": "center"
+    },
+    {
+      "description": "Red small circle",
+      "shape": "circle",
+      "size": "small",
+      "color": "#FF0000",
+      "position": "circular-ring"
+    },
+    {
+      "description": "Green small circle",
+      "shape": "circle",
+      "size": "small",
+      "color": "#00FF00",
+      "position": "circular-ring"
+    },
+    {
+      "description": "Blue small circle",
+      "shape": "circle",
+      "size": "small",
+      "color": "#0000FF",
+      "position": "circular-ring"
     }
   ],
   "choreography": [
@@ -29,25 +51,25 @@
       "phase": "entrance",
       "time": [
         0,
-        1.5
+        1
       ],
-      "description": "Stick figure character slides in from the left with a bounce-in effect, scaling slightly from 0.9 to 1."
+      "description": "Large circle fades in at center with white outline. Three small circles fade in at their starting positions on the perimeter of the large circle."
     },
     {
       "phase": "main_action",
       "time": [
-        1.5,
-        6
+        1,
+        9
       ],
-      "description": "The stick figure performs a simple dance routine, moving its arms and legs in a rhythmic pattern. The head nods slightly to the beat, and the figure sways side to side."
+      "description": "Three small circles orbit around the large circle's perimeter in a clockwise direction. Each completes a full orbit every 3 seconds, creating a continuous motion."
     },
     {
       "phase": "hold_and_exit",
       "time": [
-        6,
-        8
+        9,
+        10
       ],
-      "description": "The stick figure holds a final pose with arms raised, then fades out gently over the last 1.5 seconds."
+      "description": "Small circles slow down slightly and hold their positions. All elements fade out together at the end."
     }
   ]
 }

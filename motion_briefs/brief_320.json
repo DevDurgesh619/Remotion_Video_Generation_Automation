@@ -1,0 +1,59 @@
+{
+  "intent": "shape_animation",
+  "title": "planet_orbit",
+  "duration": 8,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "style": {
+    "background": "#0d1117",
+    "palette": [
+      "#FFD700",
+      "#1E90FF"
+    ],
+    "mood": "calm"
+  },
+  "objects": [
+    {
+      "description": "Large yellow circle representing the sun",
+      "shape": "circle",
+      "size": "xlarge",
+      "color": "#FFD700",
+      "position": "center"
+    },
+    {
+      "description": "Small blue circle representing the planet",
+      "shape": "circle",
+      "size": "small",
+      "color": "#1E90FF",
+      "position": "circular-ring"
+    }
+  ],
+  "choreography": [
+    {
+      "phase": "entrance",
+      "time": [
+        0,
+        1
+      ],
+      "description": "Both circles fade in together. The yellow circle appears at the center, and the blue circle appears 200px away on the right."
+    },
+    {
+      "phase": "main_action",
+      "time": [
+        1,
+        7
+      ],
+      "description": "The blue circle orbits around the yellow circle in a perfect circular path, maintaining a constant distance of 200px. The orbit is smooth and continuous."
+    },
+    {
+      "phase": "hold_and_exit",
+      "time": [
+        7,
+        8
+      ],
+      "description": "The orbit slows slightly but continues smoothly until the end."
+    }
+  ]
+}
