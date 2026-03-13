@@ -1,0 +1,245 @@
+{
+  "scene": "day_to_night_sky_transition",
+  "duration": 10,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#87CEFA",
+  "objects": [
+    {
+      "id": "sun",
+      "shape": "asset",
+      "assetId": "sun",
+      "size": [
+        120,
+        120
+      ],
+      "color": "#FFD700",
+      "pos": [
+        0,
+        -400
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "moon",
+      "shape": "asset",
+      "assetId": "moon",
+      "size": [
+        110,
+        110
+      ],
+      "color": "#FFF9C4",
+      "pos": [
+        -800,
+        -400
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "tree",
+      "shape": "asset",
+      "assetId": "tree",
+      "size": [
+        160,
+        160
+      ],
+      "color": "#2E7D32",
+      "stroke": {
+        "color": "#5D4037",
+        "width": 10
+      },
+      "pos": [
+        -200,
+        300
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "cloud_1",
+      "shape": "asset",
+      "assetId": "cloud",
+      "size": [
+        180,
+        100
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        -1100,
+        0
+      ]
+    },
+    {
+      "id": "cloud_2",
+      "shape": "asset",
+      "assetId": "cloud",
+      "size": [
+        180,
+        100
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        -1100,
+        100
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "target": "sun",
+      "time": [
+        0,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "tree",
+      "time": [
+        0,
+        1
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "sun",
+      "time": [
+        1,
+        5
+      ],
+      "easing": "ease-in-out",
+      "pos": [
+        [
+          0,
+          -400
+        ],
+        [
+          800,
+          400
+        ]
+      ]
+    },
+    {
+      "target": "bg",
+      "time": [
+        1,
+        5
+      ],
+      "color": [
+        "#87CEFA",
+        "#0D47A1"
+      ]
+    },
+    {
+      "target": "cloud_1",
+      "time": [
+        1,
+        5
+      ],
+      "x": [
+        -1100,
+        1100
+      ]
+    },
+    {
+      "target": "cloud_2",
+      "time": [
+        2,
+        6
+      ],
+      "x": [
+        -1100,
+        1100
+      ]
+    },
+    {
+      "target": "sun",
+      "time": [
+        5,
+        8
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "moon",
+      "time": [
+        5,
+        8
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "moon",
+      "time": [
+        5,
+        8
+      ],
+      "easing": "ease-out",
+      "pos": [
+        [
+          -800,
+          -400
+        ],
+        [
+          0,
+          -300
+        ]
+      ]
+    },
+    {
+      "target": "bg",
+      "time": [
+        5,
+        8
+      ],
+      "color": [
+        "#0D47A1",
+        "#020817"
+      ]
+    },
+    {
+      "target": "cloud_1",
+      "time": [
+        6,
+        10
+      ],
+      "color": [
+        "#FFFFFF",
+        "#546E7A"
+      ],
+      "opacity": [
+        1,
+        0.7
+      ]
+    },
+    {
+      "target": "cloud_2",
+      "time": [
+        6,
+        10
+      ],
+      "color": [
+        "#FFFFFF",
+        "#546E7A"
+      ],
+      "opacity": [
+        1,
+        0.7
+      ]
+    }
+  ]
+}

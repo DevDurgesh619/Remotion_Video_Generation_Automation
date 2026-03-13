@@ -1,141 +1,26 @@
 [
-  {
-  "id": 164,
+ 
+{
+  "id": 300,
+  "category": "asset",
+  "prompt": "Rocket Launch. Dark space background (#0F0F23). A white rocket (120px) starts at the bottom center and launches upward to the top with ease-in over 3s. Flame effect: an orange fire asset (60px) trails below the rocket. Both fade in over 0.5s first. Total duration: 5s."
+},
+{
+  "id": 301,
+  "category": "asset",
+  "prompt": "Day-to-Night Sky Transition with Sun, Moon, Clouds, and Tree. Background starts as a bright daytime sky: solid light blue (#87CEFA) filling the canvas. At the top center, a yellow sun asset (120px) is visible; at the bottom center, a simple green hill with a dark green tree asset (160px tall) rooted slightly left of center, trunk brown (#5D4037), foliage green (#2E7D32). Two white cloud assets (each 180px wide) begin off-screen on the left side at mid‑height. Total canvas 1920×1080px.\n\nAnimation timeline (10 seconds total): 0–1s: Scene fades in from black; sun, tree, and hill all fade from 0% to 100% opacity. 1–5s: Sun moves smoothly from near the top center down toward the right horizon line, following a gentle arc, using ease‑in‑out; simultaneously, the sky background color animates from light blue (#87CEFA) to a deep twilight blue (#0D47A1). 1–6s: Clouds drift from left to right across the sky: Cloud 1 enters at 1s and crosses to the right edge by 5s with slow, linear motion; Cloud 2 starts slightly later at 2s and exits by 6s, both maintaining soft movement. 5–8s: As the sun reaches the horizon and fades out to 0% opacity, a moon asset (110px, pale yellow #FFF9C4) fades in at the upper left and slowly rises slightly upward and to the center, ease‑out. During this period the background shifts from twilight blue (#0D47A1) to almost night black‑blue (#020817), and overall scene brightness subtly decreases. 6–10s: Clouds become darker grey‑blue (#546E7A) at 70% opacity and continue drifting slowly rightward, looping if necessary. The tree remains static but its colors darken slightly to suggest night. 8–10s: Final state holds with dark sky, visible moon high in the sky, dim clouds, and silhouetted tree, with no further motion except slow cloud drift. Total duration: 10s."
+},{
+  "id": 302,
   "category": "coordination",
-  "prompt": "Rotating Wheel Spokes. Light background. One circle (black #212121, 160px diameter) placed at the center acts as a wheel rim. Inside the circle four thin lines (160px length, 6px thickness, gray #616161) pass through the center forming cross spokes: one horizontal, one vertical, and two diagonal lines at 45°. All lines are fixed to the center of the circle like wheel spokes. Animation (8s): 0-1s: Circle and all four lines fade in together at center. 1-6s: The entire wheel system (circle and all attached lines) rotates continuously around its center completing two full rotations (0° -> 720°). The spokes remain fixed relative to the circle and rotate together with it. 6-8s: Rotation gradually slows until the wheel stops at its original orientation. Total duration: 8s."
-},
-{
-  "id": 165,
-  "category": "dataviz",
-  "prompt": "Basic Pie Chart Reveal. White background. Circle (300px diameter, centered). Acts as a pie chart with two slices: Blue (#2196F3) for 70%, Green (#4CAF50) for 30%. Animation (6s): 0-2s: Blue slice draws in radially from top center (0°) to 252° (using conic-gradient sweep). 2-4s: Green slice draws in from 252° to 360°, completing the circle. 4-6s: Hold complete. Total duration: 6s."
-},
-{
-  "id": 166,
-  "category": "dataviz",
-  "prompt": "Donut Chart with Metric Counter. Light grey background (#F5F5F5). Donut chart (280px diameter, 40px thickness, centered). Base ring is light grey (#E0E0E0). Progress ring is purple (#9C27B0). In the center: Text '0%'. Animation (7s): 0-1s: Base ring fades in. 1-4s: Progress ring draws radially from 0° to 270° (75% full). Simultaneously, center text counts up from '0%' to '75%'. 4-5s: Text pulses slightly (scale 100% -> 110% -> 100%). 5-7s: Hold. Total duration: 7s."
-},
-{
-  "id": 167,
-  "category": "dataviz",
-  "prompt": "Exploding Pie Chart Highlight. Dark background (#212121). Pie chart (250px diameter, centered) with three equal slices (120° each): Red (#E53935), Yellow (#FDD835), Blue (#1E88E5). Animation (8s): 0-3s: All three slices draw in radially simultaneously from 0° to 360°. 3-4s: Hold complete circle. 4-5.5s: Yellow slice 'explodes' by shifting 30px outward from the center along its bisecting angle, while others stay put. 5.5-8s: Label 'Top Seller' fades in next to Yellow slice. Hold. Total duration: 8s."
-},
-{
-  "id": 168,
-  "category": "dataviz",
-  "prompt": "Activity Rings (Concentric). Black background. Three concentric donut rings (thickness 20px each). Outer ring (300px diameter, red #FF5252), Middle ring (240px, green #69F0AE), Inner ring (180px, blue #448AFF). Animation (7s): 0-1s: All background tracks fade in (dimmed versions of colors). 1-3s: Outer ring draws to 80% (288°). 1.5-3.5s: Middle ring draws to 60% (216°). 2-4s: Inner ring draws to 40% (144°). (Overlapping sequential stagger). 4-7s: All rings hold. Total duration: 7s."
-},
-{
-  "id": 169,
-  "category": "dataviz",
-  "prompt": "Segmented Gauge Meter. White background. Half-circle gauge (300px width, 150px height, flat bottom). Divided into three equal colored conic-gradient segments: Red (0-60°), Yellow (60-120°), Green (120-180°). Animation (6s): 0-2s: The colored segments sweep in from left (0°) to right (180°) revealing the gauge. 2-3s: Hold. 3-4s: A dark grey needle (base at bottom center) sweeps from 0° to 150° (landing in the green zone). 4-6s: Needle wobbles slightly (150° -> 148° -> 152° -> 150°) settling perfectly. Total duration: 6s."
-},
-{
-  "id": 170,
-  "category": "dataviz",
-  "prompt": "Speedometer Progress to Target. Dark blue background (#1A237E). Circular gauge (260px). The track is an un-filled dashed line (grey). Animation (8s): 0-1s: Text 'Current Speed' fades in above. 1-4s: A solid cyan (#00E5FF) arc draws along the track from 0° to 220°. Simultaneously, a center number counts from 0 to '85'. 4-6s: Outer glow fades in around the cyan arc. 6-8s: Hold. Total duration: 8s."
-},
-{
-  "id": 171,
-  "category": "dataviz",
-  "prompt": "Three-Step Funnel Chart. Light background. Three stacked trapezoids forming a funnel (centered). Top tier (Blue #2196F3, 300px wide top, 200px wide bottom, 80px tall). Middle tier (Orange #FF9800, 180px wide top, 100px wide bottom, 80px tall). Bottom tier (Green #4CAF50, 80px wide top, 40px wide bottom, 80px tall). 10px vertical gaps between tiers. Animation (9s): 0-1.5s: Top tier slides down from above and fades in. 1.5-3s: Middle tier slides down and fades in. 3-4.5s: Bottom tier slides down and fades in. 4.5-6s: White text labels ('10k', '5k', '1k') fade in on each tier sequentially. 6-9s: Hold. Total duration: 9s."
-},
-{
-  "id": 172,
-  "category": "dataviz",
-  "prompt": "Connecting Line Graph (3 Data Points). Grid background (faint grey lines). Three connected line segments representing a graph (lines are 4px thick, blue #1976D2). Point A (bottom left) to Point B (middle high), Point B to Point C (middle low), Point C to Point D (right high). Animation (8s): 0-2s: Line 1 draws from A to B. 2-4s: Line 2 draws from B to C. 4-6s: Line 3 draws from C to D. 6-8s: Three solid blue circular dots (16px) pop in (scale 0->100% with bounce) at points B, C, and D simultaneously. Total duration: 8s."
-},
-{
-  "id": 173,
-  "category": "dataviz",
-  "prompt": "Area Graph Reveal. White background. A jagged 'mountain' shape forming an area graph (Base spans 400px horizontally). The area is filled with a vertical gradient (Light green to transparent). Top edge has a solid 3px green line. Animation (7s): 0-4s: The entire area graph is revealed from left to right using a clipping mask that expands its width from 0px to 400px (Linear ease). 4-5s: A vertical dashed line drops down from the highest peak to the X-axis. 5-7s: Hold. Total duration: 7s."
-},
-{
-  "id": 174,
-  "category": "dataviz",
-  "prompt": "Horizontal Stacked Bar Chart. Grey background (#EEEEEE). A single horizontal bar (height 60px, total width 500px, rounded ends). Composed of three stacked segments: Left (Red, 200px), Middle (Yellow, 150px), Right (Blue, 150px). Animation (8s): 0-2s: Red segment grows left-to-right from 0px to 200px. 2-4s: Yellow segment grows from 0px to 150px (pushing out from the red edge). 4-6s: Blue segment grows from 0px to 150px (pushing out from the yellow edge). 6-8s: White percentage text fades in centered inside each segment (40%, 30%, 30%). Total duration: 8s."
-},
-{
-  "id": 175,
-  "category": "dataviz",
-  "prompt": "Radial Bar Chart (Polar Area). Dark background. Center origin. Three bars that grow outward radially (like thick pie slices extending outward to different lengths). Slice 1 (Magenta, extends 150px). Slice 2 (Cyan, extends 100px). Slice 3 (Yellow, extends 200px). Each slice is 60° wide. Animation (7s): 0-1s: Inner circle (origin point) scales in. 1-2.5s: Slice 1 grows outward from center. 2-3.5s: Slice 2 grows outward. 3-4.5s: Slice 3 grows outward. 4.5-7s: Entire formation rotates slowly 45° clockwise. Total duration: 7s."
-},
-{
-  "id": 176,
-  "category": "dataviz",
-  "prompt": "Scatter Plot Generation. White background. L-shaped axes (X and Y, 2px black lines). Within the axes, 10 small circles (12px diameter, semi-transparent purple #9C27B0) scattered at different X/Y coordinates. Animation (9s): 0-2s: Y-axis draws bottom to top. X-axis draws left to right. 2-7s: The 10 dots pop in (scale 0->100%) sequentially one by one (0.5s stagger each). 7-9s: A trendline (dashed grey) draws diagonally through the cluster. Total duration: 9s."
-},
-{
-  "id": 177,
-  "category": "dataviz",
-  "prompt": "Pyramid Hierarchy Chart. Light blue background. A triangle (300px base, 300px height) divided horizontally into 4 sections (using 4 stacked divs with triangle/trapezoid clipPaths). Colors from bottom to top: Dark blue, Medium blue, Light blue, White. Animation (8s): 0-4s: The pyramid builds from the ground up. Bottom tier fades and slides up, then second tier stacks on top, then third, then the white tip (1s per tier). 4-6s: A pulsing white glow appears behind the top tip. 6-8s: Hold. Total duration: 8s."
-},
-{
-  "id": 178,
-  "category": "dataviz",
-  "prompt": "Comparison Split Bar (Tug-of-War). White background. One horizontal bar (500px wide, 40px tall, centered). Left half is Red, Right half is Blue. Text '40%' on red, '60%' on blue. Animation (6s): 0-1s: Bar appears as 50/50 split (250px each). 1-3s: The split line animates—Blue pushes Red, changing width to 300px Blue / 200px Red (simulating a tug-of-war data shift). 3-4s: Text labels fade in. 4-6s: Hold. Total duration: 6s."
-},
-{
-  "id": 179,
-  "category": "dataviz",
-  "prompt": "Radar/Spider Chart Expansion. Dark background. Faint background graphic of concentric pentagon web lines. In the center, a colored, semi-transparent pentagon shape (Green #4CAF50, 50% opacity). Animation (7s): 0-2s: The web lines fade in. 2-5s: The green pentagon shape animates from a tiny center point expanding outward. Its 5 vertices expand at different speeds to unequal lengths, forming an irregular, skewed data polygon. 5-7s: Dots appear at the 5 outer vertices. Total duration: 7s."
-},
-{
-  "id": 180,
-  "category": "dataviz",
-  "prompt": "Sales Bar Chart Dashboard. Background: light grey #F5F5F5. Title: 'Sales by Product Category' (30pt bold #2c3e50, top-center, 50px). Five vertical bars (70px width, 30px gaps), baseline 75% y. Product A: blue #2196F3, height 200px. Product B: green #4CAF50, height 240px. Product C: orange #FF9800, height 180px. Product D: purple #9C27B0, height 160px. Product E: red #E74C3C, height 190px. Above each bar: circular letter badge representing the product (40px diameter, white background, 50% border radius, containing letters A, B, C, D, and E in 20pt bold text matching their respective bar colors, centered). Below bars: product names (white 18pt on semi-transparent dark). Y-axis: 0K, 50K, 100K, 150K, 200K, 250K (16pt white labels). Horizontal gridlines (1px white 0.2 opacity). Values on bars: count numbers (16pt bold white, centered on bar). Canvas 1920x1080px. Animation (11s): 0-0.5s Title fades. 0.5-1s Y-axis labels and gridlines fade. 1-1.5s Circular badges appear above their bar positions with fade-in. 1.5-7s Bars grow 0 to target height sequentially L-R (each bar 0.8s, stagger 0.3s), ease-out. Rounded top corners 6px. 7-8.5s Value labels animate counting from 0 to target (1.5s). Color bar borders glow slightly (1px shadow). 8.5-10s Product names fade in below bars. 10-11s Hold with subtle shadow glow pulsing on bars. Total duration: 11s."
-},
-{
-  "id": 209,
-  "category": "effects",
-  "prompt": "Glowing Dashed Circle Loader. Dark background (#121212). A centered circle with 220px diameter and 8px stroke thickness. The stroke uses a dashed pattern creating rotating segments around the circumference. Stroke color is cyan (#00E5FF) with a soft outer glow blur. Animation (7s): 0-1s: Circle fades in. 1-6s: The dashed stroke rotates continuously around the center while the glow intensity increases slightly. 6-7s: The glow softens and the loader holds. Total duration: 7s."
+  "prompt": "Four Object Merge and Transform Sequence. Background dark (#111111). Canvas 1920x1080 with center-middle as the scene anchor. Four circles (diameter 120px) of different colors start from the four cardinal directions outside the frame and move toward the center. Top circle color red (#E53935) begins at top-center outside the frame. Bottom circle color blue (#1E88E5) begins at bottom-center outside the frame. Left circle color green (#43A047) begins at middle-left outside the frame. Right circle color yellow (#FDD835) begins at middle-right outside the frame. All circles travel toward the center-middle and perfectly overlap there, visually forming a stacked cluster. Animation (12s): 0–2s circles move from their starting directions (top-center, bottom-center, middle-left, middle-right) toward the center-middle using smooth ease-in-out motion and arrive simultaneously. 2–4s circles remain merged at the center-middle. During this hold the top-origin circle transitions its color smoothly from red (#E53935) to purple (#8E24AA) over 2 seconds while the other circles remain unchanged. 4–5s all circles fade out together while staying centered. 5–6s four squares appear stacked at the center-middle. Each square size 100px with different colors: square A cyan (#00ACC1), square B pink (#EC407A), square C lime (#7CB342), square D amber (#FFA000). Initial scale of all squares is 0 (not visible). 6–8s squares scale up simultaneously from scale 0 to scale 1.0 while remaining centered. 8–9s squares hold fully visible at the center-middle. 9–11s squares move outward from the center toward four directions while maintaining their size: cyan square moves toward top-center outside the frame, pink square moves toward middle-right outside the frame, lime square moves toward bottom-center outside the frame, amber square moves toward middle-left outside the frame using smooth ease-in motion. 11–12s squares fade out as they exit the frame. The entire sequence maintains symmetrical motion and centered composition using directional positioning (top, bottom, left, right, center, middle) rather than absolute pixel coordinates."
 },{
-  "id": 210,
-  "category": "effects",
-  "prompt": "Gradient Sweep Rectangle. White background. A large rounded rectangle (420px width, 220px height, 24px corner radius) centered on screen. The rectangle uses a linear gradient fill transitioning from purple (#9C27B0) to blue (#1E88E5). Animation (6s): 0-2s: Rectangle fades in. 2-5s: The gradient angle rotates smoothly from 0° to 360° creating a sweeping color motion across the shape. 5-6s: Gradient motion slows and holds. Total duration: 6s."
-},{
-  "id": 211,
-  "category": "effects",
-  "prompt": "Dashed Path Drawing With Glow. Dark background (#212121). A curved path line runs horizontally across the screen with 6px thickness using a dashed stroke pattern. The stroke color is bright orange (#FB8C00) with a subtle blur glow around it. Animation (8s): 0-2s: The dashed path draws from left to right using a stroke dash offset animation. 2-6s: The dashes animate continuously creating a flowing motion along the path while the glow pulsates slightly. 6-8s: Motion slows and the path holds. Total duration: 8s."
-},{
-  "id": 212,
-  "category": "effects",
-  "prompt": "Rotating Gradient Ring With Motion Blur. Black background. A centered circular ring with 260px diameter and 20px thickness. The ring uses a multi-color gradient stroke transitioning from red (#E53935) to yellow (#FDD835) to blue (#1E88E5). Animation (7s): 0-1s: Ring fades in. 1-5s: The ring rotates continuously around its center while the gradient angle rotates creating a moving color spectrum. The ring also has a subtle motion blur trail. 5-7s: Rotation gradually slows and the ring holds. Total duration: 7s."
-},{
-  "id": 213,
-  "category": "effects",
-  "prompt": "Dashed Square Orbit Indicator. Dark grey background (#2A2A2A). A square frame (240px size) with 6px dashed stroke lines centered on screen. Stroke color is neon green (#69F0AE). The dashed edges have a soft glow blur. Animation (6s): 0-1s: Square frame fades in. 1-4s: Dash segments move continuously along the square perimeter using stroke dash offset animation. 4-6s: Glow intensity increases slightly and then stabilizes while the dashed motion continues. Total duration: 6s."
+  "id": 303,
+  "category": "coordination",
+  "prompt": "Rolling Vehicle Motion with Parent–Child Wheel System and Cat Rider. Background light neutral (#F5F5F5). Canvas 1920x1080. A horizontal rectangle acts as the parent body of the system. Rectangle size approximately wide 500px and height 200px with dark blue color (#4A90E2). The rectangle initially starts slightly outside the left side of the frame at middle vertical alignment and moves across the screen toward the right side. Two circular ring wheels are attached to the rectangle along its bottom edge. The circles are children of the rectangle so they move together with the parent body. Each wheel is a hollow circle ring (diameter 160px) with dark grey stroke (#333333) and transparent center. One wheel is attached near the bottom-left edge of the rectangle and the other wheel is attached near the bottom-right edge of the rectangle. Inside each circle there are four straight line spokes connected from the center to the ring edges forming a wheel-like structure. The four lines are evenly spaced forming a cross-wheel pattern at 0°, 90°, 45°, and 135° angles giving the appearance of mechanical spokes. Sitting on top of the rectangle is a small cartoon cat which is also a child object of the rectangle. The cat is positioned at the top-center edge of the rectangle body as if riding the moving platform. The cat body is light orange (#FFB74D) with darker ear tips (#E65100), simple round head, triangular ears, small black eyes and a curved tail pointing upward. Because the cat is attached to the rectangle parent it remains perfectly fixed to the top of the rectangle and travels together with the entire system. Animation (10s): 0–1s the rectangle with both wheels and the cat rider enters smoothly from the left side into the visible canvas area while maintaining middle vertical alignment. Because the wheels and cat are children of the rectangle they remain fixed relative to their attachment points on the rectangle. 1–9s the entire rectangle system continues moving horizontally from left toward the right side of the screen with steady linear motion. During this motion both circular wheels rotate continuously around their Z-axis to simulate rolling wheels. The spoke lines rotate together with their respective circle parents so the whole wheel rotates as one unit. The cat remains sitting steadily on the top of the rectangle maintaining its upright orientation while traveling across the screen. 9–10s the vehicle body, wheels, and cat rider exit the frame toward the right side while the wheels continue rotating until they leave the screen. Throughout the animation the hierarchical structure remains intact where the rectangle is the parent object and both wheels with their spokes plus the cat rider are child objects attached respectively to the bottom-left, bottom-right, and top-center edges of the rectangle. The entire composition maintains consistent center alignment vertically while moving horizontally across the scene."
 },
 {
-  "id": 214,
-  "category": "effects",
-  "prompt": "Area Chart - Revenue Trend. Dark navy background (#0D1B3C). Title 'Monthly Revenue Trend' in bold white (32pt) positioned top-center with 40px margin. Chart area size 1200x500px positioned 100px from left and 150px from top. X-axis labels Jan through Dec in white (18pt). Y-axis labels $0, $10K, $20K, $30K, $40K, $50K in white (16pt). Horizontal gridlines 1px white at 0.15 opacity. Area fill uses blue (#2196F3) vertical gradient from solid at top to 0.1 opacity at bottom. Line stroke color #1565C0 with 4px thickness. Data points: 15K, 18K, 22K, 28K, 32K, 38K, 42K, 40K, 45K, 48K, 52K, 55K forming a smooth curve. Markers are 8px white circles with #1565C0 borders. Canvas size 1920x1080. Animation (10s): 0-0.5s title fades in. 0.5-1s axes and gridlines fade in. 1-7s area graph reveals from left to right over 6 seconds using a horizontal clipping mask while the line stroke appears simultaneously. 7-8s markers fade in at each data point with subtle scale animation (0.8 -> 1.0). 8-9s value labels appear above markers showing $XXK values counting up. 9-10s hold complete chart while marker glow pulses slightly."
-},{
-  "id": 215,
-  "category": "effects",
-  "prompt": "Bar Glow Emphasis - Highlighting Top Performer. White background. Vertical bar chart with four bars labeled Q1, Q2, Q3, Q4. Bar colors: Q1 blue (#2196F3), Q2 green (#4CAF50), Q3 orange (#FB8C00), Q4 red (#F44336). Q4 represents the highest value ($70K). Animation timeline (8s): 0-4s regular bar chart growth animation where all bars rise from the baseline to their final heights and value labels appear above each bar. 4-4.8s emphasis effect begins: Q4 bar receives an animated glow where a red glow (#F44336) expands from 2px to 8px blur radius over 0.8 seconds. At the same time the Q4 bar border thickens from 1px to 3px white (#FFFFFF) and the value label '$70K' scales from 20pt to 28pt bold with its color brightening to gold (#FFD700). A semi-transparent highlight box (#FFF8DC, 0.4 opacity) appears behind the value label with 4px padding. Simultaneously Q1, Q2, and Q3 bars dim to 0.5 opacity and slightly desaturate to create comparative focus. 4.8-8s the Q4 glow continues pulsing in a 1 second cycle while other bars remain dimmed. Final state holds at 8 seconds with Q4 clearly emphasized as the top performer."
-},
-{
-  "id": 273,
-  "category": "dataviz",
-  "prompt": "Area Graph Reveal. White background. A jagged 'mountain' shape forming an area graph (Base spans 400px horizontally). The area is filled with a vertical gradient (Light green to transparent). Top edge has a solid 3px green line. Animation (7s): 0-4s: The entire area graph is revealed from left to right using a clipping mask that expands its width from 0px to 400px (Linear ease). 4-5s: A vertical dashed line drops down from the highest peak to the X-axis. 5-7s: Hold. Total duration: 7s."
-},
-{
-  "id": 216,
-  "category": "dataviz",
-  "prompt": "Grouped Bar Chart - Product Sales by Month. Background white (#FFFFFF). Title 'Product Sales by Month' in bold (#2C3E50) 32pt centered with 50px top margin. Six visible month groups Jan–Jun. Each month has three bars: Product A blue (#2196F3), Product B green (#4CAF50), Product C orange (#FF9800). Bar width 45px, gap between bars 8px, gap between month groups 30px. Heights grow from 0 to targets: Jan (A 150px, B 120px, C 100px), Feb (A 170px, B 140px, C 110px), Mar (A 140px, B 130px, C 120px), Apr (A 180px, B 150px, C 140px), May (A 160px, B 170px, C 130px), Jun (A 190px, B 180px, C 160px). Baseline positioned at 75% Y. X-axis month labels Jan–Jun (20pt white text on semi-transparent background). Y-axis labels 0, 50, 100, 150, 200 (16pt white). Horizontal gridlines 1px white with 0.2 opacity. Legend top-right showing Product A blue, Product B green, Product C orange (12pt white text). Canvas 1920x1080. Animation (12s): 0–0.5s title fades in. 0.5–1s legend fades in. 1–8s bar groups appear sequentially by month (Jan 1–1.8s, Feb 1.8–2.6s, Mar 2.6–3.4s, Apr 3.4–4.2s, May 4.2–5s, Jun 5–5.8s). Within each month the three bars grow simultaneously left-to-right with 0.05s stagger using ease-out scaling. 8–9s value labels above bars (12pt white) count from 0 to the target values. 9–10s X-axis labels fade in. 10–12s final hold."
-},
-{
-  "id": 217,
-  "category": "effects",
-  "prompt": "Pie Chart Slice Pull-Out Emphasis. Background dark neutral (#1E1E1E). Base pie chart centered on canvas showing six segments: Electronics (32%, #FF6B6B), Software (#4CAF50), Services (#2196F3), Support (#FFC107), Training (#9C27B0), Other (#607D8B). Electronics is the largest slice. Canvas 1920x1080. Animation (12s): 0–5s normal pie chart animation completes with segments visible. At 5s the Electronics slice (32%, color #FF6B6B) pulls outward radially from the pie center by 50px while rotating +15° around its own center. A radial gradient overlay appears on this slice transitioning from bright #FF6B6B at the outer edge to darker #C62828 toward the center with soft radial falloff. Simultaneously the remaining slices (Software, Services, Support, Training, Other) dim to 0.4 opacity and slightly desaturate to reduce emphasis. A glow appears around the pulled Electronics slice using a 3px shadow (#FF6B6B) that pulses with a 0.8s cycle. 6–7s a small annotation arrow appears pointing toward the pulled slice with label 'Largest Market Segment' in bold white (12pt) placed inside a semi-transparent dark background box. The label fades in with a subtle horizontal wiggle (±2px). 7–12s hold state with the Electronics slice remaining pulled out and rotated while glow continues pulsing and the annotation stays visible."
-},{
-  "id": 276,
-  "category": "dataviz",
-  "prompt": "Scatter Plot Generation. White background. L-shaped axes (X and Y, 2px black lines). Within the axes, 10 small circles (12px diameter, semi-transparent purple #9C27B0) scattered at different X/Y coordinates. Animation (9s): 0-2s: Y-axis draws bottom to top. X-axis draws left to right. 2-7s: The 10 dots pop in (scale 0->100%) sequentially one by one (0.5s stagger each). 7-9s: A trendline (dashed grey) draws diagonally through the cluster. Total duration: 9s."
-},
-{
-  "id": 270,
-  "category": "dataviz",
-  "prompt": "Speedometer Progress to Target. Dark blue background (#1A237E). Circular gauge (260px). The track is an un-filled dashed line (grey). Animation (8s): 0-1s: Text 'Current Speed' fades in above. 1-4s: A solid cyan (#00E5FF) arc draws along the track from 0° to 220°. Simultaneously, a center number counts from 0 to '85'. 4-6s: Outer glow fades in around the cyan arc. 6-8s: Hold. Total duration: 8s."
+  "id": 304,
+  "category": "progress",
+  "prompt": "Order Status Timeline Progress Animation. Background light neutral (#F5F5F5). Canvas 1920x1080. A long horizontal rectangle strip acts as a timeline progress bar placed at center-middle of the canvas. The strip has rounded corners and light grey base color (#E0E0E0). The rectangle begins filling from the left side with a colored progress fill (#4CAF50) representing the order progress. Along the strip three status labels are positioned evenly from left to right: 'Order Placed', 'Order Processing', and 'Order Completed'. Animation (10s): 0–3s the progress fill starts from the left edge and smoothly expands toward the first status label 'Order Placed'. When the progress reaches this position a small circle appears directly on the strip at the same horizontal position and a check mark tick icon appears inside the circle indicating completion of the first step. 3–7s the rectangle progress continues filling toward the second status label 'Order Processing'. When the fill reaches this point another circle marker appears on the strip aligned with the text and a tick check appears inside the circle showing the second stage is completed. 7–10s the progress fill continues expanding until it reaches the final label 'Order Completed'. When the progress reaches this position a final circle marker appears aligned with the label and a check mark icon appears inside the circle. At the end the entire progress strip is fully filled showing the order process completed with three visible check circles along the timeline."
 }
 ]

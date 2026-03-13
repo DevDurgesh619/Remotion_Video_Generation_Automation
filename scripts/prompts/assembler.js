@@ -9,6 +9,7 @@ const SHAPE_RULES = require("./shapes");
 const ANIMATION_RULES = require("./animations");
 const { getAdvancedRules } = require("./advanced");
 const { getDatavizRules } = require("./dataviz");
+const { getAssetRules } = require("./assets");
 
 /**
  * Assemble a system prompt tailored to the given spec.
@@ -46,6 +47,17 @@ function assemblePrompt(specData) {
     }
   }
 
+  // Conditionally add asset rules based on spec content
+  const assetRules = getAssetRules(specData);
+  if (assetRules.length > 0) {
+    parts.push("");
+    parts.push("ASSET RENDERING RULES (specific to this spec):");
+    for (const rule of assetRules) {
+      parts.push("");
+      parts.push(rule);
+    }
+  }
+
   // Final validation checklist (always included)
   parts.push("");
   parts.push(`FINAL VALIDATION CHECKLIST
@@ -73,11 +85,13 @@ MULTI-OBJECT RULE: Each object in the spec gets its own div with correct timing.
 function getPromptSummary(specData) {
   const advancedRules = getAdvancedRules(specData);
   const datavizRules = getDatavizRules(specData);
+  const assetRulesSum = getAssetRules(specData);
   const baseCount = 3; // base + shapes + animations
+  const allConditional = advancedRules.concat(datavizRules).concat(assetRulesSum);
   return {
-    totalModules: baseCount + advancedRules.length + datavizRules.length,
-    advancedModules: advancedRules.length + datavizRules.length,
-    advancedTypes: advancedRules.concat(datavizRules).map(r => {
+    totalModules: baseCount + allConditional.length,
+    advancedModules: allConditional.length,
+    advancedTypes: allConditional.map(r => {
       // Extract first line as type name
       const firstLine = r.split("\n")[0];
       return firstLine.replace(/[^A-Za-z& ]/g, "").trim();

@@ -1,0 +1,112 @@
+{
+  "scene": "rocket_launch",
+  "duration": 5,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#0F0F23",
+  "objects": [
+    {
+      "id": "rocket_1",
+      "shape": "asset",
+      "assetId": "rocket",
+      "size": [
+        120,
+        120
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        0,
+        400
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "flame_1",
+      "shape": "asset",
+      "assetId": "fire",
+      "size": [
+        60,
+        60
+      ],
+      "color": "#FF6B35",
+      "pos": [
+        0,
+        460
+      ],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "rocket_1",
+      "time": [
+        0,
+        0.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "flame_1",
+      "time": [
+        0,
+        0.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "rocket_1",
+      "time": [
+        0.5,
+        3.5
+      ],
+      "easing": "ease-in",
+      "y": [
+        400,
+        -500
+      ]
+    },
+    {
+      "target": "flame_1",
+      "time": [
+        0.5,
+        3.5
+      ],
+      "easing": "ease-in",
+      "y": [
+        460,
+        -440
+      ]
+    },
+    {
+      "target": "rocket_1",
+      "time": [
+        3.5,
+        4
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    },
+    {
+      "target": "flame_1",
+      "time": [
+        3.5,
+        4
+      ],
+      "opacity": [
+        1,
+        0
+      ]
+    }
+  ]
+}

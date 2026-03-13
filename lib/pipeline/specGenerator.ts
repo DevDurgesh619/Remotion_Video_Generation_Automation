@@ -549,6 +549,49 @@ Output:
     { "target": "label_may", "time": [6.6, 7], "opacity": [0, 1] }
   ]
 }
+
+---
+
+EXAMPLE 12 — Asset object animation (real-world object)
+
+Prompt: "Rocket Launch. Dark space background (#0F0F23). A white rocket (120px) starts at the bottom center and launches upward to the top with ease-in over 3s. Flame effect: an orange fire asset (60px) trails below the rocket. Both fade in over 0.5s first. Total duration: 5s."
+
+Output:
+{
+  "scene": "rocket_launch",
+  "duration": 5,
+  "fps": 30,
+  "canvas": { "w": 1920, "h": 1080 },
+  "bg": "#0F0F23",
+  "objects": [
+    {
+      "id": "rocket_1",
+      "shape": "asset",
+      "assetId": "rocket",
+      "size": [120, 120],
+      "color": "#FFFFFF",
+      "pos": [0, 400],
+      "opacity": 0
+    },
+    {
+      "id": "flame_1",
+      "shape": "asset",
+      "assetId": "fire",
+      "size": [60, 60],
+      "color": "#FF6B35",
+      "pos": [0, 460],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    { "target": "rocket_1", "time": [0, 0.5], "opacity": [0, 1] },
+    { "target": "flame_1", "time": [0, 0.5], "opacity": [0, 1] },
+    { "target": "rocket_1", "time": [0.5, 3.5], "easing": "ease-in", "y": [400, -500] },
+    { "target": "flame_1", "time": [0.5, 3.5], "easing": "ease-in", "y": [460, -440] },
+    { "target": "rocket_1", "time": [3.5, 4], "opacity": [1, 0] },
+    { "target": "flame_1", "time": [3.5, 4], "opacity": [1, 0] }
+  ]
+}
 `;
 
 const SYSTEM_PROMPT = `You are an expert Motion Graphics Specification Generator.
@@ -575,7 +618,7 @@ The spec has 5 top-level keys: scene, duration, fps, canvas, bg, objects, timeli
 
    Required fields:
    - "id": unique string identifier (e.g., "circle_1", "rect_2")
-   - "shape": "circle" | "rectangle" | "triangle" | "pentagon" | "star" | "line" | "text" | "pie" | "donut" | "gauge" | "polygon" | "polyline"
+   - "shape": "circle" | "rectangle" | "triangle" | "pentagon" | "star" | "line" | "text" | "pie" | "donut" | "gauge" | "polygon" | "polyline" | "asset"
 
    Optional fields (include ONLY if needed):
    - "diameter": number (for circles)
@@ -607,6 +650,13 @@ The spec has 5 top-level keys: scene, duration, fps, canvas, bg, objects, timeli
    POLYGON / POLYLINE OBJECT FIELDS (for data-driven shapes):
    - "vertices": [[x1,y1], [x2,y2], ...] — vertex coordinates in px relative to canvas center. For polygon shapes, the area is filled. For polyline shapes, only the stroke is drawn.
    - "closed": true — for polyline, close the path back to the first point (default: false)
+
+   ASSET OBJECT FIELDS (include only when shape is "asset"):
+   - "assetId": string — the asset identifier. Available assets: rocket, car, airplane, bicycle, bus, ship, train, truck, smartphone, tablet, laptop, monitor, server, cpu, wifi, database, cloud, sun, moon, tree, fire, mountain, water, flower, heart, user, users, brain, eye, hand, briefcase, target, lightbulb, trophy, dollar, chart-up, lightning, gear, arrow-right, checkmark, home, bell, lock, star-icon, music, camera, microphone, play
+   - "size": [width, height] — display size in pixels
+   - Use "color" to set the SVG fill color override
+   - Use "stroke" to set SVG stroke overrides
+   - All standard positioning and animation properties (pos, opacity, rotation, scale, etc.) work the same as other shapes
 
    TEXT OBJECT FIELDS (include only when shape is "text"):
    - "text": string — the text content to display

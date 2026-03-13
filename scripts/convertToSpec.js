@@ -594,6 +594,49 @@ Output:
     { "target": "label_may", "time": [6.6, 7], "opacity": [0, 1] }
   ]
 }
+
+---
+
+EXAMPLE 12 — Asset object animation (real-world object)
+
+Prompt: "Rocket Launch. Dark space background (#0F0F23). A white rocket (120px) starts at the bottom center and launches upward to the top with ease-in over 3s. Flame effect: an orange fire asset (60px) trails below the rocket. Both fade in over 0.5s first. Total duration: 5s."
+
+Output:
+{
+  "scene": "rocket_launch",
+  "duration": 5,
+  "fps": 30,
+  "canvas": { "w": 1920, "h": 1080 },
+  "bg": "#0F0F23",
+  "objects": [
+    {
+      "id": "rocket_1",
+      "shape": "asset",
+      "assetId": "rocket",
+      "size": [120, 120],
+      "color": "#FFFFFF",
+      "pos": [0, 400],
+      "opacity": 0
+    },
+    {
+      "id": "flame_1",
+      "shape": "asset",
+      "assetId": "fire",
+      "size": [60, 60],
+      "color": "#FF6B35",
+      "pos": [0, 460],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    { "target": "rocket_1", "time": [0, 0.5], "opacity": [0, 1] },
+    { "target": "flame_1", "time": [0, 0.5], "opacity": [0, 1] },
+    { "target": "rocket_1", "time": [0.5, 3.5], "easing": "ease-in", "y": [400, -500] },
+    { "target": "flame_1", "time": [0.5, 3.5], "easing": "ease-in", "y": [460, -440] },
+    { "target": "rocket_1", "time": [3.5, 4], "opacity": [1, 0] },
+    { "target": "flame_1", "time": [3.5, 4], "opacity": [1, 0] }
+  ]
+}
 `;
 
 const SYSTEM_PROMPT = `You are an expert Motion Graphics Specification Generator.
@@ -620,7 +663,7 @@ The spec has 5 top-level keys: scene, duration, fps, canvas, bg, objects, timeli
 
    Required fields:
    - "id": unique string identifier (e.g., "circle_1", "rect_2")
-   - "shape": "circle" | "rectangle" | "triangle" | "pentagon" | "star" | "line" | "text" | "pie" | "donut" | "gauge" | "polygon" | "polyline"
+   - "shape": "circle" | "rectangle" | "triangle" | "pentagon" | "star" | "line" | "text" | "pie" | "donut" | "gauge" | "polygon" | "polyline" | "asset"
 
    Optional fields (include ONLY if needed):
    - "diameter": number (for circles)
@@ -653,6 +696,13 @@ The spec has 5 top-level keys: scene, duration, fps, canvas, bg, objects, timeli
    - "vertices": [[x1,y1], [x2,y2], ...] — vertex coordinates in px relative to canvas center. For polygon shapes, the area is filled. For polyline shapes, only the stroke is drawn.
    - "closed": true — for polyline, close the path back to the first point (default: false)
 
+   ASSET OBJECT FIELDS (include only when shape is "asset"):
+   - "assetId": string — the asset identifier. Available assets: rocket, car, airplane, bicycle, bus, ship, train, truck, smartphone, tablet, laptop, monitor, server, cpu, wifi, database, cloud, sun, moon, tree, fire, mountain, water, flower, heart, user, users, brain, eye, hand, briefcase, target, lightbulb, trophy, dollar, chart-up, lightning, gear, arrow-right, checkmark, home, bell, lock, star-icon, music, camera, microphone, play
+   - "size": [width, height] — display size in pixels
+   - Use "color" to set the SVG fill color override
+   - Use "stroke" to set SVG stroke overrides
+   - All standard positioning and animation properties (pos, opacity, rotation, scale, etc.) work the same as other shapes
+
    TEXT OBJECT FIELDS (include only when shape is "text"):
    - "text": string — the text content to display
    - "fontSize": number — font size in pixels (e.g., 64)
@@ -666,8 +716,36 @@ The spec has 5 top-level keys: scene, duration, fps, canvas, bg, objects, timeli
    - "maxWidth": number — maximum width in pixels before text wraps
    - "cursor": true — show a blinking cursor after text (for typewriter animations)
 
-   POSITIONING: Canvas origin is center (0, 0). Positive x = right, positive y = down.
-   Off-screen left = x: -960, right = x: 960, top = y: -540, bottom = y: 540.
+   POSITIONING — CENTER-RELATIVE COORDINATE SYSTEM (CRITICAL)
+
+   The canvas is 1920x1080 pixels, but ALL coordinates use a CENTER-RELATIVE system:
+   - Origin (0, 0) = the exact center of the canvas
+   - x ranges from -960 (left edge) to +960 (right edge)
+   - y ranges from -540 (top edge) to +540 (bottom edge)
+   - Positive x = rightward, Positive y = downward
+
+   This is NOT a top-left pixel coordinate system. Do NOT use absolute pixel positions.
+
+   REFERENCE POSITIONS:
+     Canvas center:       [0, 0]
+     Top-left corner:     [-960, -540]
+     Top-right corner:    [960, -540]
+     Bottom-left corner:  [-960, 540]
+     Bottom-right corner: [960, 540]
+     Off-screen left:     [-1080, 0]   (beyond left edge)
+     Off-screen right:    [1080, 0]    (beyond right edge)
+     Off-screen top:      [0, -640]    (beyond top edge)
+     Off-screen bottom:   [0, 640]     (beyond bottom edge)
+
+   WRONG vs RIGHT examples:
+     "Object at canvas center"        WRONG: [960, 540]    RIGHT: [0, 0]
+     "Object at top-left"             WRONG: [0, 0]        RIGHT: [-960, -540]
+     "Object off-screen right"        WRONG: [2040, 540]   RIGHT: [1080, 0]
+     "Object slightly left of center" WRONG: [860, 540]    RIGHT: [-100, 0]
+
+   FORBIDDEN VALUES: If you write pos: [960, 540] for "center", you are using absolute coordinates — STOP and convert. The value [960, 540] in this system means 960px RIGHT and 540px DOWN from center, which is the bottom-right CORNER of the canvas.
+
+   Timeline x, y, and pos values use the same center-relative coordinate system.
 
 3. TIMELINE ARRAY
    Each entry animates ONE property of ONE object over ONE time range.
@@ -815,6 +893,8 @@ ${EXAMPLES}
 
 ---
 
+COORDINATE SYSTEM REMINDER: All pos, x, y values must use center-relative coordinates where (0,0) is canvas center. Values like [960, 540] or [1920, 1080] are ABSOLUTE coordinates and are WRONG. Canvas center = [0, 0]. Always.
+
 Convert the following prompt into a Sparse Motion Spec JSON. Return ONLY the JSON.`;
 
 const DELAY_MS = 3000;
@@ -848,6 +928,9 @@ function validateSpec(spec) {
       if ((obj.shape === "polygon" || obj.shape === "polyline") && !Array.isArray(obj.vertices)) {
         errors.push("Object '" + (obj.id || "unknown") + "' with shape '" + obj.shape + "' missing 'vertices' array");
       }
+      if (obj.shape === "asset" && !obj.assetId) {
+        errors.push("Object '" + (obj.id || "unknown") + "' with shape 'asset' missing 'assetId'");
+      }
       if (obj.id) objectIds.add(obj.id);
     }
   }
@@ -864,6 +947,34 @@ function validateSpec(spec) {
       }
       if (entry.target && !objectIds.has(entry.target)) {
         errors.push("Timeline[" + i + "] references unknown target '" + entry.target + "'");
+      }
+    }
+  }
+
+  // Detect probable absolute (top-left origin) coordinates instead of center-relative
+  if (Array.isArray(spec.objects)) {
+    for (const obj of spec.objects) {
+      if (Array.isArray(obj.pos)) {
+        const x = obj.pos[0];
+        const y = obj.pos[1];
+        if (x === 960 && y === 540) {
+          errors.push("Object '" + (obj.id || "unknown") + "' pos [960,540] looks like absolute center — should be [0,0] in center-relative coords");
+        }
+        if (Math.abs(x) > 1100 || Math.abs(y) > 700) {
+          errors.push("Object '" + (obj.id || "unknown") + "' pos [" + x + "," + y + "] is far off-screen — verify center-relative coordinates");
+        }
+      }
+    }
+  }
+
+  // Check timeline pos values for absolute coordinates
+  if (Array.isArray(spec.timeline)) {
+    for (let i = 0; i < spec.timeline.length; i++) {
+      const entry = spec.timeline[i];
+      if (Array.isArray(entry.pos) && entry.pos.length === 2 && typeof entry.pos[0] === "number") {
+        if (entry.pos[0] === 960 && entry.pos[1] === 540) {
+          errors.push("Timeline[" + i + "] target '" + entry.target + "' pos [960,540] looks like absolute center — should be [0,0]");
+        }
       }
     }
   }

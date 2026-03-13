@@ -8,12 +8,12 @@ const durationInFrames = parseInt(
 );
 
 const videoWidth = parseInt(
-  process.env.REMOTION_APP_VIDEO_WIDTH || "720",
+  process.env.REMOTION_APP_VIDEO_WIDTH || "1920",
   10
 );
 
 const videoHeight = parseInt(
-  process.env.REMOTION_APP_VIDEO_HEIGHT || "720",
+  process.env.REMOTION_APP_VIDEO_HEIGHT || "1080",
   10
 );
 

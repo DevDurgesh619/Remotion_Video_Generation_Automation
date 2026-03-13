@@ -1,0 +1,219 @@
+{
+  "scene": "rolling_vehicle_motion",
+  "duration": 10,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#F5F5F5",
+  "objects": [
+    {
+      "id": "vehicle_body",
+      "shape": "rectangle",
+      "size": [
+        500,
+        200
+      ],
+      "color": "#4A90E2",
+      "pos": [
+        -1180,
+        0
+      ]
+    },
+    {
+      "id": "wheel_left",
+      "shape": "circle",
+      "diameter": 160,
+      "stroke": {
+        "color": "#333333",
+        "width": 10
+      },
+      "fill": false,
+      "parent": "vehicle_body",
+      "offset": [
+        -170,
+        100
+      ]
+    },
+    {
+      "id": "wheel_right",
+      "shape": "circle",
+      "diameter": 160,
+      "stroke": {
+        "color": "#333333",
+        "width": 10
+      },
+      "fill": false,
+      "parent": "vehicle_body",
+      "offset": [
+        170,
+        100
+      ]
+    },
+    {
+      "id": "spoke_1_left",
+      "shape": "line",
+      "size": [
+        0,
+        80
+      ],
+      "color": "#333333",
+      "parent": "wheel_left",
+      "rotation": 0
+    },
+    {
+      "id": "spoke_2_left",
+      "shape": "line",
+      "size": [
+        0,
+        80
+      ],
+      "color": "#333333",
+      "parent": "wheel_left",
+      "rotation": 90
+    },
+    {
+      "id": "spoke_3_left",
+      "shape": "line",
+      "size": [
+        0,
+        80
+      ],
+      "color": "#333333",
+      "parent": "wheel_left",
+      "rotation": 45
+    },
+    {
+      "id": "spoke_4_left",
+      "shape": "line",
+      "size": [
+        0,
+        80
+      ],
+      "color": "#333333",
+      "parent": "wheel_left",
+      "rotation": 135
+    },
+    {
+      "id": "spoke_1_right",
+      "shape": "line",
+      "size": [
+        0,
+        80
+      ],
+      "color": "#333333",
+      "parent": "wheel_right",
+      "rotation": 0
+    },
+    {
+      "id": "spoke_2_right",
+      "shape": "line",
+      "size": [
+        0,
+        80
+      ],
+      "color": "#333333",
+      "parent": "wheel_right",
+      "rotation": 90
+    },
+    {
+      "id": "spoke_3_right",
+      "shape": "line",
+      "size": [
+        0,
+        80
+      ],
+      "color": "#333333",
+      "parent": "wheel_right",
+      "rotation": 45
+    },
+    {
+      "id": "spoke_4_right",
+      "shape": "line",
+      "size": [
+        0,
+        80
+      ],
+      "color": "#333333",
+      "parent": "wheel_right",
+      "rotation": 135
+    },
+    {
+      "id": "ship_rider",
+      "shape": "asset",
+      "assetId": "ship",
+      "size": [
+        100,
+        100
+      ],
+      "color": "#FFB74D",
+      "parent": "vehicle_body",
+      "offset": [
+        0,
+        -150
+      ]
+    }
+  ],
+  "timeline": [
+    {
+      "target": "vehicle_body",
+      "time": [
+        0,
+        1
+      ],
+      "pos": [
+        -1180,
+        0
+      ],
+      "x": [
+        -1180,
+        -960
+      ]
+    },
+    {
+      "target": "vehicle_body",
+      "time": [
+        1,
+        9
+      ],
+      "x": [
+        -960,
+        960
+      ]
+    },
+    {
+      "target": "vehicle_body",
+      "time": [
+        9,
+        10
+      ],
+      "x": [
+        960,
+        1180
+      ]
+    },
+    {
+      "target": "wheel_left",
+      "time": [
+        1,
+        9
+      ],
+      "rotation": [
+        0,
+        2880
+      ]
+    },
+    {
+      "target": "wheel_right",
+      "time": [
+        1,
+        9
+      ],
+      "rotation": [
+        0,
+        2880
+      ]
+    }
+  ]
+}

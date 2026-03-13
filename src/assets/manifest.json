@@ -1,0 +1,338 @@
+[
+  {
+    "id": "rocket",
+    "url": "https://api.iconify.design/solar/rocket-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "transport",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "car",
+    "url": "https://api.iconify.design/mdi/car.svg",
+    "license": "Apache 2.0",
+    "category": "transport",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "airplane",
+    "url": "https://api.iconify.design/mdi/airplane.svg",
+    "license": "Apache 2.0",
+    "category": "transport",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "bicycle",
+    "url": "https://api.iconify.design/mdi/bicycle.svg",
+    "license": "Apache 2.0",
+    "category": "transport",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "bus",
+    "url": "https://api.iconify.design/mdi/bus.svg",
+    "license": "Apache 2.0",
+    "category": "transport",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "ship",
+    "url": "https://api.iconify.design/mdi/ship-wheel.svg",
+    "license": "Apache 2.0",
+    "category": "transport",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "train",
+    "url": "https://api.iconify.design/mdi/train.svg",
+    "license": "Apache 2.0",
+    "category": "transport",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "truck",
+    "url": "https://api.iconify.design/mdi/truck.svg",
+    "license": "Apache 2.0",
+    "category": "transport",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "smartphone",
+    "url": "https://api.iconify.design/solar/smartphone-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "tech",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "tablet",
+    "url": "https://api.iconify.design/solar/tablet-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "tech",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "laptop",
+    "url": "https://api.iconify.design/solar/laptop-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "tech",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "monitor",
+    "url": "https://api.iconify.design/solar/monitor-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "tech",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "server",
+    "url": "https://api.iconify.design/solar/server-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "tech",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "cpu",
+    "url": "https://api.iconify.design/mdi/cpu-64-bit.svg",
+    "license": "Apache 2.0",
+    "category": "tech",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "wifi",
+    "url": "https://api.iconify.design/mdi/wifi.svg",
+    "license": "Apache 2.0",
+    "category": "tech",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "database",
+    "url": "https://api.iconify.design/solar/database-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "tech",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "cloud",
+    "url": "https://api.iconify.design/solar/cloud-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "nature",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "sun",
+    "url": "https://api.iconify.design/solar/sun-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "nature",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "moon",
+    "url": "https://api.iconify.design/solar/moon-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "nature",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "tree",
+    "url": "https://api.iconify.design/mdi/tree.svg",
+    "license": "Apache 2.0",
+    "category": "nature",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "fire",
+    "url": "https://api.iconify.design/solar/fire-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "nature",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "mountain",
+    "url": "https://api.iconify.design/mdi/mountain.svg",
+    "license": "Apache 2.0",
+    "category": "nature",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "water",
+    "url": "https://api.iconify.design/solar/water-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "nature",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "flower",
+    "url": "https://api.iconify.design/mdi/flower.svg",
+    "license": "Apache 2.0",
+    "category": "nature",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "heart",
+    "url": "https://api.iconify.design/solar/heart-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "people",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "user",
+    "url": "https://api.iconify.design/solar/user-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "people",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "users",
+    "url": "https://api.iconify.design/mdi/account-group.svg",
+    "license": "Apache 2.0",
+    "category": "people",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "brain",
+    "url": "https://api.iconify.design/mdi/brain.svg",
+    "license": "Apache 2.0",
+    "category": "people",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "eye",
+    "url": "https://api.iconify.design/solar/eye-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "people",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "hand",
+    "url": "https://api.iconify.design/solar/hand-shake-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "people",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "briefcase",
+    "url": "https://api.iconify.design/solar/case-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "business",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "target",
+    "url": "https://api.iconify.design/mdi/target.svg",
+    "license": "Apache 2.0",
+    "category": "business",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "lightbulb",
+    "url": "https://api.iconify.design/solar/lightbulb-bolt-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "business",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "trophy",
+    "url": "https://api.iconify.design/solar/cup-star-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "business",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "dollar",
+    "url": "https://api.iconify.design/mdi/currency-usd.svg",
+    "license": "Apache 2.0",
+    "category": "business",
+    "source": "SVGRepo - Material Design Icons (via Iconify API)"
+  },
+  {
+    "id": "chart-up",
+    "url": "https://api.iconify.design/solar/chart-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "business",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "lightning",
+    "url": "https://api.iconify.design/solar/bolt-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "business",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "gear",
+    "url": "https://api.iconify.design/solar/settings-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "ui",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "arrow-right",
+    "url": "https://api.iconify.design/solar/arrow-right-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "ui",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "checkmark",
+    "url": "https://api.iconify.design/solar/check-circle-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "ui",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "home",
+    "url": "https://api.iconify.design/solar/home-2-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "ui",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "bell",
+    "url": "https://api.iconify.design/solar/bell-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "ui",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "lock",
+    "url": "https://api.iconify.design/solar/lock-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "ui",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "star-icon",
+    "url": "https://api.iconify.design/solar/star-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "ui",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "music",
+    "url": "https://api.iconify.design/solar/music-notes-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "media",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "camera",
+    "url": "https://api.iconify.design/solar/camera-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "media",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "microphone",
+    "url": "https://api.iconify.design/solar/microphone-3-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "media",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  },
+  {
+    "id": "play",
+    "url": "https://api.iconify.design/solar/play-bold.svg",
+    "license": "CC BY 4.0",
+    "category": "media",
+    "source": "SVGRepo - Solar Icons (via Iconify API)"
+  }
+]

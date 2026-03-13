@@ -1,0 +1,259 @@
+{
+  "scene": "order_status_timeline_progress",
+  "duration": 10,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#F5F5F5",
+  "objects": [
+    {
+      "id": "progress_bar",
+      "shape": "rectangle",
+      "size": [
+        800,
+        40
+      ],
+      "color": "#E0E0E0",
+      "pos": [
+        0,
+        0
+      ],
+      "cornerRadius": 20
+    },
+    {
+      "id": "progress_fill",
+      "shape": "rectangle",
+      "size": [
+        0,
+        40
+      ],
+      "color": "#4CAF50",
+      "pos": [
+        -400,
+        0
+      ],
+      "cornerRadius": 20,
+      "anchor": "left-center"
+    },
+    {
+      "id": "label_1",
+      "shape": "text",
+      "text": "Order Placed",
+      "fontSize": 24,
+      "fontFamily": "Arial",
+      "color": "#333333",
+      "pos": [
+        -400,
+        60
+      ],
+      "textAlign": "center"
+    },
+    {
+      "id": "label_2",
+      "shape": "text",
+      "text": "Order Processing",
+      "fontSize": 24,
+      "fontFamily": "Arial",
+      "color": "#333333",
+      "pos": [
+        0,
+        60
+      ],
+      "textAlign": "center"
+    },
+    {
+      "id": "label_3",
+      "shape": "text",
+      "text": "Order Completed",
+      "fontSize": 24,
+      "fontFamily": "Arial",
+      "color": "#333333",
+      "pos": [
+        400,
+        60
+      ],
+      "textAlign": "center"
+    },
+    {
+      "id": "circle_1",
+      "shape": "circle",
+      "diameter": 20,
+      "color": "#4CAF50",
+      "pos": [
+        -400,
+        0
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "check_1",
+      "shape": "asset",
+      "assetId": "checkmark",
+      "size": [
+        12,
+        12
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        -400,
+        0
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "circle_2",
+      "shape": "circle",
+      "diameter": 20,
+      "color": "#4CAF50",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "check_2",
+      "shape": "asset",
+      "assetId": "checkmark",
+      "size": [
+        12,
+        12
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        0,
+        0
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "circle_3",
+      "shape": "circle",
+      "diameter": 20,
+      "color": "#4CAF50",
+      "pos": [
+        400,
+        0
+      ],
+      "opacity": 0
+    },
+    {
+      "id": "check_3",
+      "shape": "asset",
+      "assetId": "checkmark",
+      "size": [
+        12,
+        12
+      ],
+      "color": "#FFFFFF",
+      "pos": [
+        400,
+        0
+      ],
+      "opacity": 0
+    }
+  ],
+  "timeline": [
+    {
+      "target": "progress_fill",
+      "time": [
+        0,
+        3
+      ],
+      "width": [
+        0,
+        266.67
+      ]
+    },
+    {
+      "target": "circle_1",
+      "time": [
+        3,
+        3.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "check_1",
+      "time": [
+        3,
+        3.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "progress_fill",
+      "time": [
+        3,
+        7
+      ],
+      "width": [
+        266.67,
+        533.33
+      ]
+    },
+    {
+      "target": "circle_2",
+      "time": [
+        7,
+        7.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "check_2",
+      "time": [
+        7,
+        7.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "progress_fill",
+      "time": [
+        7,
+        10
+      ],
+      "width": [
+        533.33,
+        800
+      ]
+    },
+    {
+      "target": "circle_3",
+      "time": [
+        10,
+        10.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    },
+    {
+      "target": "check_3",
+      "time": [
+        10,
+        10.5
+      ],
+      "opacity": [
+        0,
+        1
+      ]
+    }
+  ]
+}

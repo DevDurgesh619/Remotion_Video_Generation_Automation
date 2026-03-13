@@ -12,6 +12,9 @@ const { getAdvancedRules } = _require("../../scripts/prompts/advanced.js") as {
 const { getDatavizRules } = _require("../../scripts/prompts/dataviz.js") as {
   getDatavizRules: (spec: object) => string[];
 };
+const { getAssetRules } = _require("../../scripts/prompts/assets.js") as {
+  getAssetRules: (spec: object) => string[];
+};
 
 const VALIDATION_CHECKLIST = `FINAL VALIDATION CHECKLIST
 Before producing your output, ensure:
@@ -21,7 +24,7 @@ Before producing your output, ensure:
 - All interpolate ranges are valid (exactly 2 increasing values).
 - All variables are declared before use.
 - JSX braces and parentheses are balanced.
-- All shapes are div elements (except polyline shapes which use inline SVG).
+- All shapes are div elements (except polyline shapes which use inline SVG, and asset shapes which use the pre-imported Asset component).
 - There is exactly one AbsoluteFill root.
 - The AbsoluteFill has a backgroundColor matching the spec "bg" field.
 
@@ -48,6 +51,17 @@ function assembleSystemPrompt(specData: object): string {
     parts.push("");
     parts.push("DATA VISUALIZATION RULES (specific to this spec):");
     for (const rule of datavizRules) {
+      parts.push("");
+      parts.push(rule);
+    }
+  }
+
+  // Conditionally add asset rules based on spec content
+  const assetRules = getAssetRules(specData);
+  if (assetRules.length > 0) {
+    parts.push("");
+    parts.push("ASSET RENDERING RULES (specific to this spec):");
+    for (const rule of assetRules) {
       parts.push("");
       parts.push(rule);
     }
@@ -82,13 +96,27 @@ function staticValidate(code: string): string[] {
   return issues;
 }
 
-function wrapComponent(body: string): string {
+function wrapComponent(body: string, hasAssets: boolean = false): string {
+  let imports = 'import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";\n';
+  if (hasAssets) {
+    imports += 'import { Asset } from "./assets/Asset";\n';
+  }
   return (
-    'import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";\n\n' +
+    imports + "\n" +
     "export const GeneratedMotion = () => {\n" +
     body +
     "\n};\n"
   );
+}
+
+function specHasAssets(specData: object): boolean {
+  const data = specData as Record<string, unknown>;
+  if (Array.isArray(data.objects)) {
+    return data.objects.some(
+      (o: Record<string, unknown>) => o.shape === "asset"
+    );
+  }
+  return false;
 }
 
 export async function generateAnimationCode(
@@ -123,7 +151,8 @@ export async function generateAnimationCode(
   }
 
   const finalIssues = staticValidate(code);
-  const fullComponent = wrapComponent(code);
+  const hasAssets = specHasAssets(specData);
+  const fullComponent = wrapComponent(code, hasAssets);
 
   return { code, fullComponent, issues: finalIssues };
 }

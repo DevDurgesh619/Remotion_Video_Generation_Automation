@@ -150,6 +150,16 @@ function typeCheckComponent() {
 }
 
 // ---------------------------------------------------------------------------
+// ASSET DETECTION — Check if spec contains asset shape objects
+// ---------------------------------------------------------------------------
+function specHasAssets(specData) {
+  if (Array.isArray(specData.objects)) {
+    return specData.objects.some(function(o) { return o.shape === "asset"; });
+  }
+  return false;
+}
+
+// ---------------------------------------------------------------------------
 // DURATION EXTRACTION — from spec (sparse format)
 // ---------------------------------------------------------------------------
 function getDurationFromSpec(specData) {
@@ -297,12 +307,17 @@ async function run() {
     }
 
     // --- STEP 2: Wrap in full component ---
+    const hasAssets = specHasAssets(specData);
     let fullComponent;
     if (codeExists) {
       fullComponent = jsxContent;
     } else {
+      let imports = 'import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";\n';
+      if (hasAssets) {
+        imports += 'import { Asset } from "./assets/Asset";\n';
+      }
       fullComponent =
-        'import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";\n\n' +
+        imports + "\n" +
         "export const GeneratedMotion = () => {\n" +
         jsxContent +
         "\n};\n";
@@ -323,8 +338,12 @@ async function run() {
       // Retry with error context
       jsxContent = await generateCodeWithFix(spec, specData, jsxContent, tsResult.error);
 
+      let retryImports = 'import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";\n';
+      if (hasAssets) {
+        retryImports += 'import { Asset } from "./assets/Asset";\n';
+      }
       fullComponent =
-        'import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";\n\n' +
+        retryImports + "\n" +
         "export const GeneratedMotion = () => {\n" +
         jsxContent +
         "\n};\n";
@@ -359,8 +378,8 @@ async function run() {
     env: {
       ...process.env,
       REMOTION_APP_DURATION_FRAMES: String(durationInFrames),
-      VIDEO_WIDTH: "720",
-      VIDEO_HEIGHT: "720"
+      REMOTION_APP_VIDEO_WIDTH: "1920",
+      REMOTION_APP_VIDEO_HEIGHT: "1080"
     }
   }
 );
