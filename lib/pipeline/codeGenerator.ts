@@ -9,6 +9,9 @@ const ANIMATION_RULES = _require("../../scripts/prompts/animations.js") as strin
 const { getAdvancedRules } = _require("../../scripts/prompts/advanced.js") as {
   getAdvancedRules: (spec: object) => string[];
 };
+const { getDatavizRules } = _require("../../scripts/prompts/dataviz.js") as {
+  getDatavizRules: (spec: object) => string[];
+};
 
 const VALIDATION_CHECKLIST = `FINAL VALIDATION CHECKLIST
 Before producing your output, ensure:
@@ -18,7 +21,7 @@ Before producing your output, ensure:
 - All interpolate ranges are valid (exactly 2 increasing values).
 - All variables are declared before use.
 - JSX braces and parentheses are balanced.
-- All shapes are div elements.
+- All shapes are div elements (except polyline shapes which use inline SVG).
 - There is exactly one AbsoluteFill root.
 - The AbsoluteFill has a backgroundColor matching the spec "bg" field.
 
@@ -34,6 +37,17 @@ function assembleSystemPrompt(specData: object): string {
     parts.push("");
     parts.push("ADVANCED ANIMATION RULES (specific to this spec):");
     for (const rule of advancedRules) {
+      parts.push("");
+      parts.push(rule);
+    }
+  }
+
+  // Conditionally add dataviz rules based on spec content
+  const datavizRules = getDatavizRules(specData);
+  if (datavizRules.length > 0) {
+    parts.push("");
+    parts.push("DATA VISUALIZATION RULES (specific to this spec):");
+    for (const rule of datavizRules) {
       parts.push("");
       parts.push(rule);
     }

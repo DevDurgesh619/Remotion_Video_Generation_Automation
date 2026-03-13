@@ -56,7 +56,7 @@ Before producing your output, ensure:
 - All interpolate ranges are valid (exactly 2 increasing values).
 - All variables are declared before use.
 - JSX braces and parentheses are balanced.
-- All shapes are div elements.
+- All shapes are div elements (except polyline shapes which use inline SVG).
 - There is exactly one AbsoluteFill root.
 - The AbsoluteFill has a backgroundColor matching the spec "bg" field.
 
