@@ -1,124 +1,243 @@
 {
-  "scene": "heart_outline_and_pulse",
-  "duration": 10,
+  "scene": "stick_figure_animation",
+  "duration": 4,
   "fps": 30,
   "canvas": {
     "w": 1920,
     "h": 1080
   },
-  "bg": "#FFFFFF",
+  "bg": "#F5F5DC",
   "objects": [
     {
-      "id": "heart_1",
-      "shape": "heart",
-      "stroke": {
-        "color": "#E53935",
-        "width": 5
-      },
-      "fill": false,
+      "id": "body",
+      "shape": "rectangle",
+      "size": [
+        20,
+        100
+      ],
+      "color": "#333333",
       "pos": [
         0,
         0
       ],
-      "scale": 1
+      "scale": 0,
+      "opacity": 0
+    },
+    {
+      "id": "head",
+      "shape": "circle",
+      "diameter": 40,
+      "color": "#333333",
+      "parent": "body",
+      "offset": [
+        0,
+        -70
+      ]
+    },
+    {
+      "id": "left_arm",
+      "shape": "rectangle",
+      "size": [
+        10,
+        60
+      ],
+      "color": "#333333",
+      "parent": "body",
+      "offset": [
+        -15,
+        -20
+      ]
+    },
+    {
+      "id": "right_arm",
+      "shape": "rectangle",
+      "size": [
+        10,
+        60
+      ],
+      "color": "#333333",
+      "parent": "body",
+      "offset": [
+        15,
+        -20
+      ]
+    },
+    {
+      "id": "left_leg",
+      "shape": "rectangle",
+      "size": [
+        10,
+        80
+      ],
+      "color": "#333333",
+      "parent": "body",
+      "offset": [
+        -10,
+        50
+      ]
+    },
+    {
+      "id": "right_leg",
+      "shape": "rectangle",
+      "size": [
+        10,
+        80
+      ],
+      "color": "#333333",
+      "parent": "body",
+      "offset": [
+        10,
+        50
+      ]
     }
   ],
   "timeline": [
     {
-      "target": "heart_1",
+      "target": "body",
       "time": [
+        0,
+        0.5
+      ],
+      "easing": "ease-out",
+      "scale": [
         0,
         1
       ],
-      "easing": "ease-out",
-      "strokeDash": [
+      "opacity": [
         0,
-        100
+        1
       ]
     },
     {
-      "target": "heart_1",
+      "target": "left_leg",
       "time": [
-        1,
-        2
+        0.5,
+        2.5
       ],
-      "easing": "ease-in",
-      "fill": true,
-      "color": [
-        "#FFFFFF",
-        "#E53935"
+      "easing": "ease-in-out",
+      "rotation": [
+        0,
+        15
       ]
     },
     {
-      "target": "heart_1",
+      "target": "left_leg",
       "time": [
-        2,
+        1.5,
+        2.5
+      ],
+      "easing": "ease-in-out",
+      "rotation": [
+        15,
+        0
+      ]
+    },
+    {
+      "target": "right_leg",
+      "time": [
+        0.5,
+        2.5
+      ],
+      "easing": "ease-in-out",
+      "rotation": [
+        0,
+        -15
+      ]
+    },
+    {
+      "target": "right_leg",
+      "time": [
+        1.5,
+        2.5
+      ],
+      "easing": "ease-in-out",
+      "rotation": [
+        -15,
+        0
+      ]
+    },
+    {
+      "target": "left_arm",
+      "time": [
+        0.5,
+        2.5
+      ],
+      "easing": "ease-in-out",
+      "rotation": [
+        0,
+        -15
+      ]
+    },
+    {
+      "target": "left_arm",
+      "time": [
+        1.5,
+        2.5
+      ],
+      "easing": "ease-in-out",
+      "rotation": [
+        -15,
+        0
+      ]
+    },
+    {
+      "target": "right_arm",
+      "time": [
+        0.5,
+        2.5
+      ],
+      "easing": "ease-in-out",
+      "rotation": [
+        0,
+        15
+      ]
+    },
+    {
+      "target": "right_arm",
+      "time": [
+        1.5,
+        2.5
+      ],
+      "easing": "ease-in-out",
+      "rotation": [
+        15,
+        0
+      ]
+    },
+    {
+      "target": "right_arm",
+      "time": [
+        2.5,
         3
       ],
       "easing": "ease-in-out",
-      "scale": [
-        1,
-        1.1
+      "rotation": [
+        0,
+        30
       ]
     },
     {
-      "target": "heart_1",
+      "target": "right_arm",
       "time": [
         3,
+        3.5
+      ],
+      "easing": "ease-in-out",
+      "rotation": [
+        30,
+        -30
+      ]
+    },
+    {
+      "target": "right_arm",
+      "time": [
+        3.5,
         4
       ],
       "easing": "ease-in-out",
-      "scale": [
-        1.1,
-        1
-      ]
-    },
-    {
-      "target": "heart_1",
-      "time": [
-        4,
-        5
-      ],
-      "easing": "ease-in-out",
-      "scale": [
-        1,
-        1.1
-      ]
-    },
-    {
-      "target": "heart_1",
-      "time": [
-        5,
-        6
-      ],
-      "easing": "ease-in-out",
-      "scale": [
-        1.1,
-        1
-      ]
-    },
-    {
-      "target": "heart_1",
-      "time": [
-        6,
-        7
-      ],
-      "easing": "ease-in-out",
-      "scale": [
-        1,
-        1.1
-      ]
-    },
-    {
-      "target": "heart_1",
-      "time": [
-        7,
-        8
-      ],
-      "easing": "ease-in-out",
-      "scale": [
-        1.1,
-        1
+      "rotation": [
+        -30,
+        0
       ]
     }
   ]

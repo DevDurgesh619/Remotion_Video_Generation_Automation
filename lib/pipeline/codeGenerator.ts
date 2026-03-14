@@ -128,7 +128,7 @@ export async function generateAnimationCode(
 
   const callLLM = async (messages: { role: string; content: string }[]) => {
     const response = await client.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "gpt-5-mini",
       messages: messages as Parameters<typeof client.chat.completions.create>[0]["messages"],
     });
     return cleanCode(response.choices[0].message.content ?? "");

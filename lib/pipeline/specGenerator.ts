@@ -671,8 +671,36 @@ The spec has 5 top-level keys: scene, duration, fps, canvas, bg, objects, timeli
    - "maxWidth": number — maximum width in pixels before text wraps
    - "cursor": true — show a blinking cursor after text (for typewriter animations)
 
-   POSITIONING: Canvas origin is center (0, 0). Positive x = right, positive y = down.
-   Off-screen left = x: -960, right = x: 960, top = y: -540, bottom = y: 540.
+   POSITIONING — CENTER-RELATIVE COORDINATE SYSTEM (CRITICAL)
+
+   The canvas is 1920x1080 pixels, but ALL coordinates use a CENTER-RELATIVE system:
+   - Origin (0, 0) = the exact center of the canvas
+   - x ranges from -960 (left edge) to +960 (right edge)
+   - y ranges from -540 (top edge) to +540 (bottom edge)
+   - Positive x = rightward, Positive y = downward
+
+   This is NOT a top-left pixel coordinate system. Do NOT use absolute pixel positions.
+
+   REFERENCE POSITIONS:
+     Canvas center:       [0, 0]
+     Top-left corner:     [-960, -540]
+     Top-right corner:    [960, -540]
+     Bottom-left corner:  [-960, 540]
+     Bottom-right corner: [960, 540]
+     Off-screen left:     [-1080, 0]   (beyond left edge)
+     Off-screen right:    [1080, 0]    (beyond right edge)
+     Off-screen top:      [0, -640]    (beyond top edge)
+     Off-screen bottom:   [0, 640]     (beyond bottom edge)
+
+   WRONG vs RIGHT examples:
+     "Object at canvas center"        WRONG: [960, 540]    RIGHT: [0, 0]
+     "Object at top-left"             WRONG: [0, 0]        RIGHT: [-960, -540]
+     "Object off-screen right"        WRONG: [2040, 540]   RIGHT: [1080, 0]
+     "Object slightly left of center" WRONG: [860, 540]    RIGHT: [-100, 0]
+
+   FORBIDDEN VALUES: If you write pos: [960, 540] for "center", you are using absolute coordinates — STOP and convert. The value [960, 540] in this system means 960px RIGHT and 540px DOWN from center, which is the bottom-right CORNER of the canvas.
+
+   Timeline x, y, and pos values use the same center-relative coordinate system.
 
 3. TIMELINE ARRAY
    Each entry animates ONE property of ONE object over ONE time range.

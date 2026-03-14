@@ -26,7 +26,7 @@ const ASPECT_RATIO_PRESETS: Record<string, { width: number; height: number }> = 
   "2:3":   { width: 480,  height: 720 },
   "21:9":  { width: 1008, height: 432 },
 };
-const DEFAULT_DIMS = ASPECT_RATIO_PRESETS["16:9"];
+const DEFAULT_DIMS = { width: 1920, height: 1080 };
 
 function getDimensions(specData: Record<string, unknown>): { width: number; height: number } {
   // 1. Explicit aspect_ratio string e.g. "16:9"
@@ -35,10 +35,12 @@ function getDimensions(specData: Record<string, unknown>): { width: number; heig
     if (ASPECT_RATIO_PRESETS[key]) return ASPECT_RATIO_PRESETS[key];
   }
 
-  // 2. canvas object with width/height from the spec
+  // 2. canvas object with width/height from the spec (supports both w/h and width/height keys)
   const canvas = specData.canvas as Record<string, unknown> | undefined;
-  if (canvas && typeof canvas.width === "number" && typeof canvas.height === "number") {
-    return { width: canvas.width, height: canvas.height };
+  if (canvas) {
+    const cw = typeof canvas.w === "number" ? canvas.w : typeof canvas.width === "number" ? canvas.width : 0;
+    const ch = typeof canvas.h === "number" ? canvas.h : typeof canvas.height === "number" ? canvas.height : 0;
+    if (cw > 0 && ch > 0) return { width: cw, height: ch };
   }
 
   // 3. Top-level width/height
@@ -50,7 +52,7 @@ function getDimensions(specData: Record<string, unknown>): { width: number; heig
   return DEFAULT_DIMS;
 }
 
-function typeCheck(): { success: boolean; error: string | null } {
+export function typeCheck(): { success: boolean; error: string | null } {
   try {
     execSync("npx tsc --noEmit", { stdio: "pipe", cwd: PROJECT_ROOT });
     return { success: true, error: null };

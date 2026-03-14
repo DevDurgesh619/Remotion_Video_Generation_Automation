@@ -6,11 +6,13 @@
  * Module-level state persists across requests in Railway's Node.js process.
  */
 
+import fs from "fs";
+import path from "path";
 import { getJob, updateJob } from "./db";
 import { expandPrompt } from "./pipeline/promptExpander";
 import { generateSpec } from "./pipeline/specGenerator";
-import { generateAnimationCode } from "./pipeline/codeGenerator";
-import { renderAndUpload } from "./pipeline/renderer";
+import { generateAnimationCode, fixAnimationCode, wrapComponent } from "./pipeline/codeGenerator";
+import { renderAndUpload, typeCheck } from "./pipeline/renderer";
 import type { JobStatus, SSEEvent } from "./types";
 import { STEP_LABELS } from "./types";
 
@@ -123,11 +125,32 @@ async function runPipeline(jobId: string): Promise<void> {
 
     // Step 5: Generate animation code
     await setStep(jobId, 5, "code_generating");
-    const { fullComponent, issues } = await generateAnimationCode(specText, specResult.spec);
+    let { code, fullComponent, issues } = await generateAnimationCode(specText, specResult.spec);
     if (issues.length > 0) console.warn("[queue] Static issues for", jobId, issues.join(", "));
 
-    // Step 6: Code ready
+    // Step 6: Code ready — TypeScript check + fix loop
     await setStep(jobId, 6, "code_ready");
+    const specObj = specResult.spec as Record<string, unknown>;
+    // Write component to disk so typeCheck can compile it
+    const generatedPath = path.join(process.cwd(), "src", "GeneratedMotion.tsx");
+    fs.writeFileSync(generatedPath, fullComponent, "utf-8");
+    const tsResult = typeCheck();
+    if (!tsResult.success && tsResult.error) {
+      console.warn("[queue] TS errors for", jobId, "— retrying with error feedback");
+      const fixedCode = await fixAnimationCode(specText, specResult.spec, code, tsResult.error);
+      const hasAssets = Array.isArray(specObj.objects) &&
+        (specObj.objects as Record<string, unknown>[]).some(
+          (o: Record<string, unknown>) => o.shape === "asset"
+        );
+      fullComponent = wrapComponent(fixedCode, hasAssets);
+      fs.writeFileSync(generatedPath, fullComponent, "utf-8");
+      const recheck = typeCheck();
+      if (!recheck.success) {
+        console.warn("[queue] TS still failing after retry for", jobId, recheck.error?.slice(0, 200));
+      } else {
+        console.log("[queue] TS fixed on retry for", jobId);
+      }
+    }
 
     // Step 7: Render
     await setStep(jobId, 7, "rendering");

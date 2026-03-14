@@ -1,0 +1,125 @@
+{
+  "scene": "heart_outline_and_pulse",
+  "duration": 10,
+  "fps": 30,
+  "canvas": {
+    "w": 1920,
+    "h": 1080
+  },
+  "bg": "#FFFFFF",
+  "objects": [
+    {
+      "id": "heart_1",
+      "shape": "heart",
+      "stroke": {
+        "color": "#E53935",
+        "width": 5
+      },
+      "fill": false,
+      "pos": [
+        0,
+        0
+      ],
+      "scale": 1
+    }
+  ],
+  "timeline": [
+    {
+      "target": "heart_1",
+      "time": [
+        0,
+        1
+      ],
+      "easing": "ease-out",
+      "strokeDash": [
+        0,
+        100
+      ]
+    },
+    {
+      "target": "heart_1",
+      "time": [
+        1,
+        2
+      ],
+      "easing": "ease-in",
+      "fill": true,
+      "color": [
+        "#FFFFFF",
+        "#E53935"
+      ]
+    },
+    {
+      "target": "heart_1",
+      "time": [
+        2,
+        3
+      ],
+      "easing": "ease-in-out",
+      "scale": [
+        1,
+        1.1
+      ]
+    },
+    {
+      "target": "heart_1",
+      "time": [
+        3,
+        4
+      ],
+      "easing": "ease-in-out",
+      "scale": [
+        1.1,
+        1
+      ]
+    },
+    {
+      "target": "heart_1",
+      "time": [
+        4,
+        5
+      ],
+      "easing": "ease-in-out",
+      "scale": [
+        1,
+        1.1
+      ]
+    },
+    {
+      "target": "heart_1",
+      "time": [
+        5,
+        6
+      ],
+      "easing": "ease-in-out",
+      "scale": [
+        1.1,
+        1
+      ]
+    },
+    {
+      "target": "heart_1",
+      "time": [
+        6,
+        7
+      ],
+      "easing": "ease-in-out",
+      "scale": [
+        1,
+        1.1
+      ]
+    },
+    {
+      "target": "heart_1",
+      "time": [
+        7,
+        8
+      ],
+      "easing": "ease-in-out",
+      "scale": [
+        1.1,
+        1
+      ]
+    }
+  ]
+}
