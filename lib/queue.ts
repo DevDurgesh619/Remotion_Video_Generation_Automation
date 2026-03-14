@@ -125,7 +125,8 @@ async function runPipeline(jobId: string): Promise<void> {
 
     // Step 5: Generate animation code
     await setStep(jobId, 5, "code_generating");
-    let { code, fullComponent, issues } = await generateAnimationCode(specText, specResult.spec);
+    const { code, fullComponent: initialComponent, issues } = await generateAnimationCode(specText, specResult.spec);
+    let fullComponent = initialComponent;
     if (issues.length > 0) console.warn("[queue] Static issues for", jobId, issues.join(", "));
 
     // Step 6: Code ready — TypeScript check + fix loop
