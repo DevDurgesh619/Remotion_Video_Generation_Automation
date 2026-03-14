@@ -26,7 +26,7 @@ const ASPECT_RATIO_PRESETS: Record<string, { width: number; height: number }> = 
   "2:3":   { width: 480,  height: 720 },
   "21:9":  { width: 1008, height: 432 },
 };
-const DEFAULT_DIMS = { width: 1920, height: 1080 };
+const DEFAULT_DIMS = { width: 854, height: 480 };
 
 function getDimensions(specData: Record<string, unknown>): { width: number; height: number } {
   // 1. Explicit aspect_ratio string e.g. "16:9"
