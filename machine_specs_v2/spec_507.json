@@ -1,299 +1,52 @@
 {
-  "scene": "card_animation_with_highlight",
-  "duration": 6,
+  "scene": "green_triangle_bounce",
+  "duration": 3,
   "fps": 30,
   "canvas": {
     "w": 1920,
     "h": 1080
   },
-  "bg": "#FFFFFF",
+  "bg": "#E0F7FA",
   "objects": [
     {
-      "id": "card_product",
-      "shape": "rectangle",
+      "id": "triangle_1",
+      "shape": "triangle",
       "size": [
-        260,
+        140,
         140
       ],
-      "color": "#F5F5F5",
-      "cornerRadius": 12,
-      "pos": [
-        -320,
-        324
-      ],
-      "opacity": 0,
-      "shadow": {
-        "from": [
-          0,
-          0,
-          10,
-          0,
-          "#000000"
-        ],
-        "to": [
-          0,
-          0,
-          10,
-          0,
-          "#000000"
-        ]
-      }
-    },
-    {
-      "id": "card_sale",
-      "shape": "rectangle",
-      "size": [
-        260,
-        140
-      ],
-      "color": "#F5F5F5",
-      "cornerRadius": 12,
+      "color": "#4CAF50",
       "pos": [
         0,
-        324
-      ],
-      "opacity": 0,
-      "shadow": {
-        "from": [
-          0,
-          0,
-          10,
-          0,
-          "#000000"
-        ],
-        "to": [
-          0,
-          0,
-          10,
-          0,
-          "#000000"
-        ]
-      }
-    },
-    {
-      "id": "card_profit",
-      "shape": "rectangle",
-      "size": [
-        260,
-        140
-      ],
-      "color": "#F5F5F5",
-      "cornerRadius": 12,
-      "pos": [
-        320,
-        324
-      ],
-      "opacity": 0,
-      "shadow": {
-        "from": [
-          0,
-          0,
-          10,
-          0,
-          "#000000"
-        ],
-        "to": [
-          0,
-          0,
-          10,
-          0,
-          "#000000"
-        ]
-      }
-    },
-    {
-      "id": "text_product",
-      "shape": "text",
-      "text": "Product",
-      "fontSize": 28,
-      "fontWeight": "bold",
-      "fontFamily": "Arial",
-      "color": "#333333",
-      "textAlign": "center",
-      "pos": [
-        -320,
-        324
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "text_sale",
-      "shape": "text",
-      "text": "Sale",
-      "fontSize": 28,
-      "fontWeight": "bold",
-      "fontFamily": "Arial",
-      "color": "#333333",
-      "textAlign": "center",
-      "pos": [
-        0,
-        324
-      ],
-      "opacity": 0
-    },
-    {
-      "id": "text_profit",
-      "shape": "text",
-      "text": "Profit",
-      "fontSize": 28,
-      "fontWeight": "bold",
-      "fontFamily": "Arial",
-      "color": "#333333",
-      "textAlign": "center",
-      "pos": [
-        320,
-        324
+        -540
       ],
       "opacity": 0
     }
   ],
   "timeline": [
     {
-      "target": "card_product",
+      "target": "triangle_1",
       "time": [
         0,
-        1
+        0.5
       ],
       "easing": "ease-out",
       "opacity": [
         0,
         1
+      ]
+    },
+    {
+      "target": "triangle_1",
+      "time": [
+        0.5,
+        2
       ],
+      "easing": "bounce",
       "y": [
-        324,
-        270
+        -540,
+        540
       ]
-    },
-    {
-      "target": "card_sale",
-      "time": [
-        0,
-        1
-      ],
-      "easing": "ease-out",
-      "opacity": [
-        0,
-        1
-      ],
-      "y": [
-        324,
-        270
-      ]
-    },
-    {
-      "target": "card_profit",
-      "time": [
-        0,
-        1
-      ],
-      "easing": "ease-out",
-      "opacity": [
-        0,
-        1
-      ],
-      "y": [
-        324,
-        270
-      ]
-    },
-    {
-      "target": "text_product",
-      "time": [
-        0,
-        1
-      ],
-      "easing": "ease-out",
-      "opacity": [
-        0,
-        1
-      ],
-      "y": [
-        324,
-        270
-      ]
-    },
-    {
-      "target": "text_sale",
-      "time": [
-        0,
-        1
-      ],
-      "easing": "ease-out",
-      "opacity": [
-        0,
-        1
-      ],
-      "y": [
-        324,
-        270
-      ]
-    },
-    {
-      "target": "text_profit",
-      "time": [
-        0,
-        1
-      ],
-      "easing": "ease-out",
-      "opacity": [
-        0,
-        1
-      ],
-      "y": [
-        324,
-        270
-      ]
-    },
-    {
-      "target": "card_product",
-      "time": [
-        3,
-        6
-      ],
-      "easing": "ease-out",
-      "x": [
-        -320,
-        -1080
-      ],
-      "opacity": [
-        1,
-        0
-      ]
-    },
-    {
-      "target": "card_sale",
-      "time": [
-        3,
-        6
-      ],
-      "easing": "ease-out",
-      "x": [
-        0,
-        1080
-      ],
-      "opacity": [
-        1,
-        0
-      ]
-    },
-    {
-      "target": "card_profit",
-      "time": [
-        3,
-        6
-      ],
-      "scale": [
-        1,
-        1.5
-      ],
-      "strokeWidth": [
-        0,
-        4
-      ],
-      "stroke": {
-        "color": "#2196F3",
-        "width": 4
-      }
     }
   ]
 }

@@ -97,9 +97,9 @@ export async function renderAndUpload(
   // Remotion render
   try {
     execSync(
-      "npx remotion render src/index.ts GeneratedMotion " + videoLocalPath + " --concurrency=2",
+      "npx remotion render src/index.ts GeneratedMotion " + videoLocalPath,
       {
-        stdio: "inherit",
+        stdio: "pipe",
         cwd: PROJECT_ROOT,
         env: {
           ...process.env,
@@ -110,8 +110,11 @@ export async function renderAndUpload(
       }
     );
   } catch (err) {
-    const msg = (err as Error).message ?? "Unknown render error";
-    throw new Error("Remotion render failed: " + msg.slice(0, 500));
+    const e = err as { stderr?: Buffer; stdout?: Buffer; message?: string };
+    const stderr = e.stderr?.toString() ?? "";
+    const stdout = e.stdout?.toString() ?? "";
+    const detail = (stderr + "\n" + stdout).trim();
+    throw new Error("Remotion render failed: " + (detail || e.message || "Unknown error").slice(0, 1000));
   }
 
   // Upload to R2

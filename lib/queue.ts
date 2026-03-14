@@ -153,38 +153,57 @@ async function runPipeline(jobId: string): Promise<void> {
       }
     }
 
-    // Step 7: Render (retry once on failure)
+    // Step 7: Render (with code-fix retry on failure)
     await setStep(jobId, 7, "rendering");
-    const MAX_RENDER_ATTEMPTS = 2;
-    let renderResult: { videoKey: string; codeKey: string; specKey: string } | undefined;
-    for (let attempt = 1; attempt <= MAX_RENDER_ATTEMPTS; attempt++) {
-      try {
-        renderResult = await renderAndUpload(
-          jobId,
-          fullComponent,
-          specResult.spec as Record<string, unknown>,
-          specText
-        );
-        break;
-      } catch (renderErr) {
-        if (attempt < MAX_RENDER_ATTEMPTS) {
-          console.warn("[queue] Render attempt", attempt, "failed for", jobId, "— retrying...");
-          continue;
-        }
-        throw renderErr;
-      }
-    }
+    try {
+      const result = await renderAndUpload(
+        jobId,
+        fullComponent,
+        specResult.spec as Record<string, unknown>,
+        specText
+      );
 
-    // Step 8: Done
-    const { videoKey, codeKey, specKey } = renderResult!;
-    await updateJob(jobId, {
-      status: "done",
-      step: 8,
-      video_r2_key: videoKey,
-      code_r2_key: codeKey,
-      spec_r2_key: specKey,
-    });
-    emit(jobId, { jobId, step: 8, status: "done", label: STEP_LABELS[8], videoKey });
+      // Step 8: Done
+      await updateJob(jobId, {
+        status: "done",
+        step: 8,
+        video_r2_key: result.videoKey,
+        code_r2_key: result.codeKey,
+        spec_r2_key: result.specKey,
+      });
+      emit(jobId, { jobId, step: 8, status: "done", label: STEP_LABELS[8], videoKey: result.videoKey });
+    } catch (renderErr) {
+      const renderMsg = renderErr instanceof Error ? renderErr.message : String(renderErr);
+      console.warn("[queue] Render failed for", jobId, "— attempting code fix...");
+      console.warn("[queue] Render error:", renderMsg.slice(0, 500));
+
+      // Feed render error back to LLM to fix the code
+      const fixedCode = await fixAnimationCode(specText, specResult.spec, code, renderMsg);
+      const hasAssets = Array.isArray(specObj.objects) &&
+        (specObj.objects as Record<string, unknown>[]).some(
+          (o: Record<string, unknown>) => o.shape === "asset"
+        );
+      fullComponent = wrapComponent(fixedCode, hasAssets);
+      fs.writeFileSync(generatedPath, fullComponent, "utf-8");
+
+      // Retry render with fixed code
+      const result = await renderAndUpload(
+        jobId,
+        fullComponent,
+        specResult.spec as Record<string, unknown>,
+        specText
+      );
+
+      console.log("[queue] Render succeeded on retry for", jobId);
+      await updateJob(jobId, {
+        status: "done",
+        step: 8,
+        video_r2_key: result.videoKey,
+        code_r2_key: result.codeKey,
+        spec_r2_key: result.specKey,
+      });
+      emit(jobId, { jobId, step: 8, status: "done", label: STEP_LABELS[8], videoKey: result.videoKey });
+    }
   } catch (err) {
     const msg = err instanceof Error ? err.message : String(err);
     await failJob(jobId, 7, msg);

@@ -2,182 +2,78 @@ import { AbsoluteFill, useCurrentFrame, interpolate } from "remotion";
 
 export const GeneratedMotion = () => {
 const frame = useCurrentFrame();
-const bodyStart = 0;
-const bodyEnd = 15;
-const bodyScale = interpolate(frame, [bodyStart, bodyEnd], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-const bodyOpacity = interpolate(frame, [bodyStart, bodyEnd], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+const totalFrames = 90;
+const opacityStartFrame = 0;
+const opacityEndFrame = 15;
+const opacity = interpolate(frame, [opacityStartFrame, opacityEndFrame], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
 
-// Left leg rotations
-const ll_segA_start = 15;
-const ll_segA_end = 75;
-const ll_segB_start = 45;
-const ll_segB_end = 75;
-const ll_rotA = interpolate(frame, [ll_segA_start, ll_segA_end], [0, 15], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-const ll_rotB = interpolate(frame, [ll_segB_start, ll_segB_end], [15, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-let leftLegRot = 0;
-if (frame < ll_segB_start) {
-  leftLegRot = ll_rotA;
+// Bounce timeline frames
+const bounceStart = 15;
+const seg1End = 35;
+const seg2End = 43;
+const seg3End = 49;
+const seg4End = 54;
+const bounceEnd = 60;
+
+// Bounce heights and floor
+const floorY = 540;
+const h1 = 180;
+const h2 = 60;
+const peak1 = floorY - h1;
+const peak2 = floorY - h2;
+
+// Segment interpolations
+const y_drop1 = interpolate(frame, [bounceStart, seg1End], [-540, floorY], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+const y_rise1 = interpolate(frame, [seg1End, seg2End], [floorY, peak1], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+const y_drop2 = interpolate(frame, [seg2End, seg3End], [peak1, floorY], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+const y_rise2 = interpolate(frame, [seg3End, seg4End], [floorY, peak2], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+const y_drop3 = interpolate(frame, [seg4End, bounceEnd], [peak2, floorY], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
+
+// Compose final y value based on current frame
+let yVal = -540;
+if (frame < bounceStart) {
+  yVal = -540;
+} else if (frame <= seg1End) {
+  yVal = y_drop1;
+} else if (frame <= seg2End) {
+  yVal = y_rise1;
+} else if (frame <= seg3End) {
+  yVal = y_drop2;
+} else if (frame <= seg4End) {
+  yVal = y_rise2;
+} else if (frame <= bounceEnd) {
+  yVal = y_drop3;
 } else {
-  leftLegRot = ll_rotB;
+  yVal = floorY;
 }
 
-// Right leg rotations
-const rl_segA_start = 15;
-const rl_segA_end = 75;
-const rl_segB_start = 45;
-const rl_segB_end = 75;
-const rl_rotA = interpolate(frame, [rl_segA_start, rl_segA_end], [0, -15], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-const rl_rotB = interpolate(frame, [rl_segB_start, rl_segB_end], [-15, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-let rightLegRot = 0;
-if (frame < rl_segB_start) {
-  rightLegRot = rl_rotA;
-} else {
-  rightLegRot = rl_rotB;
-}
-
-// Left arm rotations
-const la_segA_start = 15;
-const la_segA_end = 75;
-const la_segB_start = 45;
-const la_segB_end = 75;
-const la_rotA = interpolate(frame, [la_segA_start, la_segA_end], [0, -15], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-const la_rotB = interpolate(frame, [la_segB_start, la_segB_end], [-15, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-let leftArmRot = 0;
-if (frame < la_segB_start) {
-  leftArmRot = la_rotA;
-} else {
-  leftArmRot = la_rotB;
-}
-
-// Right arm rotations (multiple segments)
-const ra_segA_start = 15;
-const ra_segA_end = 75;
-const ra_segB_start = 45;
-const ra_segB_end = 75;
-const ra_segC_start = 75;
-const ra_segC_end = 90;
-const ra_segD_start = 90;
-const ra_segD_end = 105;
-const ra_segE_start = 105;
-const ra_segE_end = 120;
-const ra_rotA = interpolate(frame, [ra_segA_start, ra_segA_end], [0, 15], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-const ra_rotB = interpolate(frame, [ra_segB_start, ra_segB_end], [15, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-const ra_rotC = interpolate(frame, [ra_segC_start, ra_segC_end], [0, 30], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-const ra_rotD = interpolate(frame, [ra_segD_start, ra_segD_end], [30, -30], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-const ra_rotE = interpolate(frame, [ra_segE_start, ra_segE_end], [-30, 0], { extrapolateLeft: "clamp", extrapolateRight: "clamp" });
-let rightArmRot = 0;
-if (frame < ra_segB_start) {
-  rightArmRot = ra_rotA;
-} else if (frame < ra_segA_end) {
-  // between 45 and 75
-  rightArmRot = ra_rotB;
-} else if (frame < ra_segC_end) {
-  rightArmRot = ra_rotC;
-} else if (frame < ra_segD_end) {
-  rightArmRot = ra_rotD;
-} else {
-  rightArmRot = ra_rotE;
-}
-
-// Parent (body) position
-const bodyPosX = 0;
-const bodyPosY = 0;
+const triWidth = 140;
+const triHeight = 140;
+const posX = 0;
+const posY = -540;
 
 return (
-  <AbsoluteFill style={{ backgroundColor: "#F5F5DC", overflow: "hidden" }}>
+  <AbsoluteFill style={{ backgroundColor: "#E0F7FA", overflow: "hidden" }}>
     <div
       style={{
         position: "absolute",
         left: "50%",
         top: "50%",
+        width: triWidth + "px",
+        height: triHeight + "px",
+        backgroundColor: "#4CAF50",
+        clipPath: "polygon(50% 0%, 0% 100%, 100% 100%)",
         transform:
-          "translate(-50%, -50%) translateX(" + bodyPosX + "px) translateY(" + bodyPosY + "px) scale(" + bodyScale + ")",
-        opacity: bodyOpacity,
-        display: "block"
+          "translate(-50%, -50%) translateX(" +
+          posX +
+          "px) translateY(" +
+          yVal +
+          "px)",
+        opacity: opacity,
+        pointerEvents: "none",
+        userSelect: "none"
       }}
-    >
-      {/* body rectangle */}
-      <div
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          width: "20px",
-          height: "100px",
-          backgroundColor: "#333333",
-          transform: "translate(-50%, -50%)"
-        }}
-      />
-      {/* head */}
-      <div
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          width: "40px",
-          height: "40px",
-          backgroundColor: "#333333",
-          borderRadius: "50%",
-          transform: "translate(-50%, -50%) translateX(" + 0 + "px) translateY(" + -70 + "px)"
-        }}
-      />
-      {/* left arm */}
-      <div
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          width: "10px",
-          height: "60px",
-          backgroundColor: "#333333",
-          transform:
-            "translate(-50%, -50%) translateX(" + -15 + "px) translateY(" + -20 + "px) rotate(" + leftArmRot + "deg)",
-          transformOrigin: "50% 0%"
-        }}
-      />
-      {/* right arm */}
-      <div
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          width: "10px",
-          height: "60px",
-          backgroundColor: "#333333",
-          transform:
-            "translate(-50%, -50%) translateX(" + 15 + "px) translateY(" + -20 + "px) rotate(" + rightArmRot + "deg)",
-          transformOrigin: "50% 0%"
-        }}
-      />
-      {/* left leg */}
-      <div
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          width: "10px",
-          height: "80px",
-          backgroundColor: "#333333",
-          transform:
-            "translate(-50%, -50%) translateX(" + -10 + "px) translateY(" + 50 + "px) rotate(" + leftLegRot + "deg)",
-          transformOrigin: "50% 0%"
-        }}
-      />
-      {/* right leg */}
-      <div
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: "50%",
-          width: "10px",
-          height: "80px",
-          backgroundColor: "#333333",
-          transform:
-            "translate(-50%, -50%) translateX(" + 10 + "px) translateY(" + 50 + "px) rotate(" + rightLegRot + "deg)",
-          transformOrigin: "50% 0%"
-        }}
-      />
-    </div>
+    />
   </AbsoluteFill>
 );
 };

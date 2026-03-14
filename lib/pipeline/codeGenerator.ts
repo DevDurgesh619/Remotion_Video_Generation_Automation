@@ -167,7 +167,7 @@ export async function fixAnimationCode(
   const systemPrompt = assembleSystemPrompt(specData);
 
   const response = await client.chat.completions.create({
-    model: "gpt-4o-mini",
+    model: "gpt-5-mini",
     messages: [
       { role: "system", content: systemPrompt },
       { role: "user", content: "Motion Spec JSON:\n" + specText },
